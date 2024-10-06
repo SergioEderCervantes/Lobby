@@ -54,7 +54,7 @@ ROOT_URLCONF = 'lobby.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/david/Documents/Repositories/Lobby/lobby/templates'],
+        'DIRS': ['C:/Users/ederc/OneDrive/Escritorio/Lobby Web Aplication/Lobby/lobby/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
