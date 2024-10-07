@@ -44,13 +44,13 @@ Instala los requisitos del proyecto ejecutando el siguiente comando:
 
 # Ejecutando el proyecto
 
-Primero será necesario hacer las migraciones correspondientes
+Realiza las migraciones necesarias:
 
 ```bash
 python manage.py migrate
 ```
 
-Ahora ejecutamos el comando para iniciar el servidor
+Inicia el servidor con el siguiente comando:
 
 ```bash
 python manage.py runserver
