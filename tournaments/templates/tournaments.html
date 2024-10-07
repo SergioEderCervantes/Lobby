@@ -1,0 +1,11 @@
+{% extends "index.html" %} {% block content %}
+<h2>Tournaments</h2>
+<section>
+  {% for tournament in tournaments %}
+  <h3>{{ tournament.name }}</h3>
+  <p>{{ tournament.date }}</p>
+  <p>Max players: {{ tournament.players }}</p>
+
+  {% endfor %}
+</section>
+{% endblock %}
