@@ -1,0 +1,25 @@
+.landpage{
+        display: flex; /* Esto permite que los elementos hijos se distribuyan en una fila */    
+        flex: 1; /* Esto permite que el contenido ocupe el espacio disponible */
+        padding: 20px;
+        justify-content: center;
+        flex-direction: column;
+        background: url(../img/landpage.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.landpage h1{
+    
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    justify-content: flex-start;
+    margin: 0;
+}
+.landpage nav{
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+}

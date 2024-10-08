@@ -7,12 +7,26 @@
     <title>Lobby bar</title>
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/body.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/informacion.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/promociones.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bottompage.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
   </head>
   <body>
-    {% include 'header/navbar.html' %}
+    <section class="landpage">
+      
+    
 
-    <h1>Lobby</h1>
-
+      
+      {% include 'header/navbar.html' %}
+    </section>
     {% block content %} {% endblock %}
+        
+
   </body>
 </html>

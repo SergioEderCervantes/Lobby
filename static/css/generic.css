@@ -1,0 +1,11 @@
+:root{
+   
+    font-size: 30%;
+    box-sizing: border-box;
+    font-size: clamp(12px, 1.5vw, 16px);
+    font-family: "Krub", sans-serif;
+  }
+
+*, *::before, *::after{
+    box-sizing: inherit;
+  }
