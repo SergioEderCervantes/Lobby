@@ -7,12 +7,9 @@
     <title>Lobby bar</title>
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/field.css' %}" />
   </head>
   <body>
-    {% include 'header/navbar.html' %}
-
-    <h1>Lobby</h1>
-
-    {% block content %} {% endblock %}
+    {% include 'header/navbar.html' %} {% block content %} {% endblock %}
   </body>
 </html>

@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block content %}
+  <div>
+    <div>
+      <h3>Login</h3>
+    </div>
+    <div>
+      <form id="userLoginForm"
+            action="{% url 'account_login' %}"
+            method="post"
+            role="form">
+        {% csrf_token %}
+        {% if request.GET.next %}<input type="hidden" name="next" value="{{ request.GET.next }}">{% endif %}
+        {% if form.non_field_errors %}
+          <div>
+            <ul>
+              {% for error in form.non_field_errors %}<li>{{ error|lower }}</li>{% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        <div>
+          <div>
+            <input type="text"
+                   id="id_login"
+                   name="login"
+                   placeholder="Username or Email">
+            <span>{{ form.login.errors }}</span>
+          </div>
+          <div>
+            <input type="password"
+                   id="id_password"
+                   name="password"
+                   placeholder="Password">
+            <span>{{ form.password.errors }}</span>
+          </div>
+          <div>
+            <button type="submit">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
