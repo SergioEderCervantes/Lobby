@@ -16,15 +16,26 @@
     <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bottompage.css' %}" />
     <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bottompage.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/contenedores.css' %}" />
   </head>
   <body>
     <section class="landpage">
-      
-    
 
+      <div class="login">{% include 'header/log.html' %}</div>
       
+      {% include 'header/logo.html' %}
       {% include 'header/navbar.html' %}
+    
+     
+      
     </section>
+    <main class="body">
+      {% include 'body/promociones.html' %}
+      {% include 'body/informacion.html' %}
+      {% include 'body/ubicacion.html' %}
+      {% include 'body/bottompage.html' %}
+    </main>
     {% block content %} {% endblock %}
         
 
