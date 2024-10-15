@@ -21,6 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('lobby.urls')),
+    path('accounts/', include('allauth.urls')),
     path('reservations/', include('reservations.urls')),
     path('tournaments/', include('tournaments.urls')),
 ]

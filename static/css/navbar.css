@@ -8,24 +8,17 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.navbar ul {
+.navbar .section{
   list-style-type: none;
   display: flex;
-  justify-content: center;
+  justify-content: row;
+  padding: 15px;
   
   
-}
-.login{
-  display: flex;
-  justify-content: flex-end;
-  align-items: right;
-  padding: 50px;
-}
-.navbar li {
-  margin: 0 6rem;
 }
 
 .navbar a {
+  margin: 0 6rem;
   color: white;
   text-decoration: none;
 }
