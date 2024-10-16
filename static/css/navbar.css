@@ -1,13 +1,28 @@
-nav {
+.navbar{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: bisque;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: row;
+  background: rgb(2,0,36);
+  background: linear-gradient(84deg, rgba(2,0,36,0.6050069686077556) 0%, rgba(111,9,121,0.5825980050223214) 56%, rgba(0,16,153,0.557387920988708) 100%);  border-radius: 10px;
+  position: sticky;
+  width: 60%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.navbar .section{
+  list-style-type: none;
+  display: flex;
+  justify-content: row;
+  padding: 15px;
+  
+  
 }
 
-nav a {
+.navbar a {
+  margin: 0 6rem;
+  color: white;
   text-decoration: none;
-  color: #333;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
 }
