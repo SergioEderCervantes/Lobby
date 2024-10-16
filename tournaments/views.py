@@ -22,7 +22,5 @@ def tournaments(request):
 
 def tournament_matches(request):
     data = crearMatch([1, 2, 3, 4, 5, 6, 7, 8])
-    print(type(data))
     matches = [{'id': match.id, 'player1': match.player1, 'player2': match.player2} for match in data]
-    print("hola")
     return JsonResponse({'matches': matches})

@@ -71,6 +71,5 @@ def crearMatch(jugadores = []):
     else:
        emparejamiento_no_ideal(matches,jugadores,n,abecedario, stages)
        
-    print(type(matches))
     return matches
 
