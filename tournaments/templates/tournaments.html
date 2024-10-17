@@ -1,33 +1,44 @@
-{% extends "index.html" %} {% block content %}
-<h2>Tournaments</h2>
-<section>
-  {% for tournament in tournaments %}
-  <h3>{{ tournament.name }}</h3>
-  <p>{{ tournament.date }}</p>
-  <p>Max players: {{ tournament.players }}</p>
-  <a href="#">Ingresar</a>
-  {% endfor %}
-</section>
-<section>
-  <button id="create_tournament">Crear torneo</button>
+{% extends 'index.html' %}
 
-  <ul id="matches-list">
+{% load static %}
 
-  </ul>
-</section>
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
+{% endblock %}
 
-<script>
-  document.getElementById('create_tournament').addEventListener('click', function() {
-    fetch('tournament_matches/')
-        .then(response => response.json())  // Suponiendo que la vista devuelva JSON
-        .then(data => {
-            const matches_list = document.getElementById('matches-list');
-            matches_list.innerHTML = '';
-            data.matches.forEach(match => {
-                matches_list.innerHTML += `<li>${match.id} : ${match.player1} vs ${match.player2}</li>`;
-            });
-        });
-});
-</script>
+{% block header %}
+    <div class="header">
+        {% include 'header/navbar.html' %}
+    </div>
+{% endblock %}
 
+{% block content %}
+  <h2>Tournaments</h2>
+  <section>
+    {% for tournament in tournaments %}
+      <h3>{{ tournament.name }}</h3>
+      <p>{{ tournament.date }}</p>
+      <p>Max players: {{ tournament.players }}</p>
+      <a href="#">Ingresar</a>
+    {% endfor %}
+  </section>
+  <section>
+    <button id="create_tournament">Crear torneo</button>
+
+    <ul id="matches-list"></ul>
+  </section>
+
+  <script>
+    document.getElementById('create_tournament').addEventListener('click', function () {
+      fetch('tournament_matches/')
+        .then((response) => response.json()) // Suponiendo que la vista devuelva JSON
+        .then((data) => {
+          const matches_list = document.getElementById('matches-list')
+          matches_list.innerHTML = ''
+          data.matches.forEach((match) => {
+            matches_list.innerHTML += `<li>${match.id} : ${match.player1} vs ${match.player2}</li>`
+          })
+        })
+    })
+  </script>
 {% endblock %}
