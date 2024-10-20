@@ -1,0 +1,36 @@
+.matches{
+    width: 100%;
+    height: 500px;
+    background-color: aqua;
+
+    margin: 40px 0;
+}
+
+#matches__list{
+    /* padding: 30px; */
+    background-color: aquamarine;
+    width: min(80%,300px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.match{
+    background-color: beige;
+    width: 50%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.match__jugadores{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.player{
+    color: white;
+    background-color: black;
+}
