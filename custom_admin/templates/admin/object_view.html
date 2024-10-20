@@ -1,0 +1,29 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <h2> Nombre del torneo: {{tournament.name}} </h2>
+    <p> Id del torneo: {{tournament.id}} </p>
+    <p> Maximo de jugadores: {{tournament.players}} </p>
+    <p> Fecha del torneo: {{tournament.date}} </p>
+
+    <section>
+        <button id="create_tournament">Crear Emparejamiento del torneo</button>
+    
+        <ul id="matches-list"></ul>
+    </section>
+    
+    <script>
+        document.getElementById('create_tournament').addEventListener('click', function () {
+            fetch('tournament_matches/')
+            .then((response) => response.json()) 
+            .then((data) => {
+                console.log("hola");
+                const matches_list = document.getElementById('matches-list')
+                matches_list.innerHTML = ''
+                data.matches.forEach((match) => {
+                matches_list.innerHTML += `<li>${match.id} : ${match.player1} vs ${match.player2}</li>`
+                })
+            })
+        })
+    </script> 
+{% endblock content %}

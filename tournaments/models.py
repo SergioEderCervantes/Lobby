@@ -3,7 +3,7 @@ from django.contrib import admin
 # Create your models here.
 
 
-class tournament_prueba(models.Model):
+class Tournament_prueba(models.Model):
     MODOS_DE_TORNEOS = models.TextChoices("Modo de Torneo", "Single 2v2")
     TEXTO_DESCRIPCION = "El tipo de torneo que sera, ya sea de equipos de n jugadores o de un jugador en solitario"
     tournament_id = models.BigAutoField(primary_key=True)
@@ -14,22 +14,22 @@ class tournament_prueba(models.Model):
         return self.tournament_name
     
     class Meta:
-        db_table = 'tournament_pruebas'
+        db_table = 'Tournament_pruebas'
         verbose_name = 'torneo'
 
 
 
 
-class users_prueba(models.Model):
+class Users_prueba(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
-    tournament_id = models.ForeignKey(tournament_prueba, verbose_name="ID del torneo que esta inscrito",on_delete=models.CASCADE)
+    tournament_id = models.ForeignKey(Tournament_prueba, verbose_name="ID del torneo que esta inscrito",on_delete=models.CASCADE)
     def __str__(self):
         return self.first_name + self.last_name
     class Meta:
-        db_table = 'users_prueba'
+        db_table = 'Users_prueba'
         verbose_name = 'prueba usuario'
 
 
-class users_admin(admin.ModelAdmin):
+class Users_admin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name')
