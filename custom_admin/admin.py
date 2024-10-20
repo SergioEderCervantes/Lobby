@@ -1,5 +1,4 @@
 from django.contrib.admin import AdminSite
-from django.shortcuts import render
 from django.urls import path
 from django.contrib.auth.models import Group, User
 from allauth.account.models import EmailAddress

@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from tournaments.models import Tournament_prueba
-from tournaments.services import crearMatch
+from custom_admin.services import crearMatch
 from django.http import JsonResponse
-from tournaments.views import Tournament
 
 # Create your views here.
 
+class Tournament(object):
+    def __init__(self,id, name, date, players):
+        self.id = id
+        self.name = name
+        self.date = date
+        self.players = players
 
 def object_view(request, object_id):
     objeto = Tournament_prueba.objects.get(tournament_id = object_id);
