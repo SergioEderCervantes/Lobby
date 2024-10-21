@@ -37,16 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Auth
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
 
     # Registro de apps
     'lobby',
     'reservations',
     'tournaments'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -151,7 +155,9 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-LOGIN_REDIRECT_URL = 'home'
-
 # Deshabilita confirmacion de logout
 ACCOUNT_LOGOUT_ON_GET = True
+
+# Configuraciones extra para allauth
+LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
