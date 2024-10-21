@@ -4,12 +4,12 @@
 {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Lobby site admin') }}{% endblock %}
 
 {% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/admin/custom_admin.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/admin/custom_admin.css' %}" />
 {% endblock extrahead %}
 
 {% block branding %}
-<h1 id="site-name" style="font-family: cursive;" ><a href="{% url 'admin:index' %}">Lobby Bar administration</a></h1>
-<h2>HOLA A TODOS DENTRO DE LA APP<h2>
+    <h1 id="site-name" style="font-family: cursive;" ><a href="{% url 'admin:index' %}">Lobby Bar administration</a></h1>
+    <h2>HOLA A TODOS DENTRO DE LA APP<h2>
 {% endblock %}
 
 {% block content %}{% endblock content %}

@@ -6,17 +6,19 @@
 
 
 {% endblock extrahead %}
+
+
 {% block content %}
+
     <h2> Nombre del torneo: {{tournament.name}} </h2>
     <p> Id del torneo: {{tournament.id}} </p>
     <p> Maximo de jugadores: {{tournament.players}} </p>
     <p> Fecha del torneo: {{tournament.date}} </p>
-
+    <a href="#" id="change_info"> Cambiar datos del torneo</a>
     <section>
-        <button id="create_tournament">Crear Emparejamiento del torneo</button>
-    
-        
 
+
+        <button id="create_tournament">Crear Emparejamiento del torneo</button>
         <div class="matches">
             <div id="matches__list"></div>
         </div>
