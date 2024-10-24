@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lobby',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'ThoryMia898',
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -137,6 +137,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
+    BASE_DIR / "node_modules"
 ]
 
 
