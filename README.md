@@ -36,10 +36,15 @@ Para crear el entorno virtual fuera del proyecto, sigue los siguientes pasos:
 
 ## Instalación de requisitos
 
-Instala los requisitos del proyecto ejecutando el siguiente comando:
+Instala los requisitos Python del proyecto ejecutando el siguiente comando:
 
 ```bash
  pip install -r local.txt
+```
+
+Aparte, instala los requisitos JavaScript del proyecto ejecutando el siguiente comando:
+```bash
+ npm install
 ```
 
 # Ejecutando el proyecto
