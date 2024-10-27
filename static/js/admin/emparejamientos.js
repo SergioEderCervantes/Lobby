@@ -49,6 +49,10 @@ for (let i = 0; i < connector_points.length; i++) {
     }
 }
 
+// Con el svg terminado, falta mandarlo al back
+
+const sent = send_SVG(draw, csrf_token, torneo_id);
+
 
 
 function create_match_square(draw, match_id, player1, player2, cx, cy) {
@@ -87,3 +91,33 @@ function connect_levels(draw,group, isIdeal, level1, level2){
 
 
 // ------------------------------------Parte que manda el SVG de vuelta al server------------------------------
+
+async function send_SVG(draw, csrf_token, torneo_id) {
+    const svgElement = draw.node;
+    const svgData = svgElement.outerHTML;
+    const formData = new FormData();
+    formData.append("svg_data",svgData);
+    formData.append("torneo_id",torneo_id);
+    try {
+        // TODO cambiar la url a la direccion del back que va a procesar esto
+        const response = await fetch('/ruta/al/servidor/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'image/svg+xml',
+                'X-CSRFToken': csrf_token
+            },
+            body: formData,
+        });    
+
+        if (response.ok) {
+            console.log("SVG enviado correctamente.");
+        }else{
+            
+            console.log("Hubo un problema al enviar el SVG.");
+        }
+        
+    }
+    catch (error){
+        console.error("Error en la solicitud:", error);
+    }
+}

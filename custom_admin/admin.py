@@ -2,7 +2,7 @@ from django.contrib.admin import AdminSite
 from django.urls import path
 from django.contrib.auth.models import Group, User
 from allauth.account.models import EmailAddress
-from .views import object_view
+from .views import object_view, save_svg
 # Register your models here.
 
 
@@ -13,6 +13,7 @@ class custom_admin_site(AdminSite):
         urls =  super().get_urls()
         custom_urls = [
             path('tournaments/tournament_prueba/<int:object_id>/view/', self.admin_view(object_view), name='vista_del_objeto'),
+            
         ]
         return custom_urls + urls
     

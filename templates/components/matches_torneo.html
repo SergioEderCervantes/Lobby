@@ -4,6 +4,7 @@
 <div class="matches">
     <div class="matches__list">
     {{matches|json_script:"enfrentamientos"}}
+
     </div>
 </div>
 
@@ -11,6 +12,8 @@
 <script>
     //Obtener las variables necesarias para la creacion de los enfrentamientos
     const enfrentamientos = JSON.parse(document.getElementById('enfrentamientos').textContent);
-    const is_ideal = {{is_ideal|yesno:"true,false" }}
+    const is_ideal = {{is_ideal|yesno:"true,false" }};
+    const csrf_token = " {{ csrf_token }} ";
+    const torneo_id = {{torneo_id|default:"0"}}
 </script>
 <script src="{% static 'js/admin/emparejamientos.js' %}"

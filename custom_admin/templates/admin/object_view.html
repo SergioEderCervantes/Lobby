@@ -17,7 +17,7 @@
     <a href="#" id="change_info"> Cambiar datos del torneo</a>
     <section>
         {% if matches %}
-            {% include "components/matches_torneo.html" with matches=matches is_ideal=is_ideal %}
+            {% include "components/matches_torneo.html" with matches=matches is_ideal=is_ideal torneo_id=object_id %}
         {% else %}
             <form method="post" action="{% url 'admin:vista_del_objeto' object_id=object_id %}">
                 {% csrf_token %}
