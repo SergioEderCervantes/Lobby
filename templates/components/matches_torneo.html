@@ -1,0 +1,16 @@
+{% load static %}
+
+
+<div class="matches">
+    <div class="matches__list">
+    {{matches|json_script:"enfrentamientos"}}
+    </div>
+</div>
+
+<script src="{% static '@svgdotjs/svg.js/dist/svg.min.js' %}"></script>
+<script>
+    //Obtener las variables necesarias para la creacion de los enfrentamientos
+    const enfrentamientos = JSON.parse(document.getElementById('enfrentamientos').textContent);
+    const is_ideal = {{is_ideal|yesno:"true,false" }}
+</script>
+<script src="{% static 'js/admin/emparejamientos.js' %}"

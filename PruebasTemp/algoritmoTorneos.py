@@ -47,8 +47,8 @@ def emparejamiento_no_ideal(matches,jugadores, n, abecedario, stages):
         adicionales.append(aux)
     jugadores_ptr = jugadores_ptr + 2
     #se los matches del bracket principal, inicialmente vacios 
-    bracket_principal = deque([Match('-', '-', '-') for _ in range(2**(j-1))]) # Cambiar el 5 por la cant de matches del bracket
-
+    bracket_principal = deque([Match('-', '-', '-') for _ in range(2**(j-1))]) 
+    
     for match in adicionales:
         if bracket_principal[0].id == '-': #Primera vez que pasa este elemento por el ciclo
             bracket_principal[0].id = next(abecedario)

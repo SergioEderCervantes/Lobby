@@ -16,12 +16,14 @@
     <p> Fecha del torneo: {{tournament.date}} </p>
     <a href="#" id="change_info"> Cambiar datos del torneo</a>
     <section>
-
-
-        <button id="create_tournament">Crear Emparejamiento del torneo</button>
-        <div class="matches">
-            <div id="matches__list"></div>
-        </div>
+        {% if matches %}
+            {% include "components/matches_torneo.html" with matches=matches is_ideal=is_ideal %}
+        {% else %}
+            <form method="post" action="{% url 'admin:vista_del_objeto' object_id=object_id %}">
+                {% csrf_token %}
+                <button type="submit" id="create_tournament">Crear Emparejamiento del torneo</button>
+            </form>
+        {% endif %}
     </section>
     <script src="{% static 'js/admin/object_view.js' %}"></script>
 {% endblock content %}

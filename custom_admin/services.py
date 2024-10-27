@@ -66,10 +66,12 @@ def crearMatch(jugadores = []):
 
     abecedario = iter([chr(i) for i in range(ord('A'), ord('Z') + 1)])
     random.shuffle(jugadores)
+    is_ideal = False
     if (n & (n - 1)) == 0 :     #los jugadores inscritos son potencia perfecta de 2, matching tradicional
         emparejamiento_ideal(matches, jugadores, n, abecedario, stages)
+        is_ideal=True
     else:
        emparejamiento_no_ideal(matches,jugadores,n,abecedario, stages)
        
-    return matches
+    return matches,is_ideal
 
