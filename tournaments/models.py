@@ -10,6 +10,7 @@ class Tournament_prueba(models.Model):
     tournament_name = models.CharField(max_length=30)
     tournament_mode = models.CharField(max_length=20, choices=MODOS_DE_TORNEOS, default="Un Jugador", help_text=TEXTO_DESCRIPCION)
     date = models.DateTimeField()
+    matchups_ready = models.BooleanField(default = False)
     def __str__(self):
         return self.tournament_name
     

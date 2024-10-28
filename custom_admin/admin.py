@@ -13,7 +13,7 @@ class custom_admin_site(AdminSite):
         urls =  super().get_urls()
         custom_urls = [
             path('tournaments/tournament_prueba/<int:object_id>/view/', self.admin_view(object_view), name='vista_del_objeto'),
-            
+            path('save_svg/',self.admin_view(save_svg), name="save_svg")
         ]
         return custom_urls + urls
     

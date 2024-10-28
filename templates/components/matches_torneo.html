@@ -3,7 +3,11 @@
 
 <div class="matches">
     <div class="matches__list">
-    {{matches|json_script:"enfrentamientos"}}
+        {% if matchups_ready %}
+            {{ svg_data|safe }}
+        {% else %}  
+            {{matches|json_script:"enfrentamientos"}}
+        {% endif %}
 
     </div>
 </div>
@@ -11,9 +15,12 @@
 <script src="{% static '@svgdotjs/svg.js/dist/svg.min.js' %}"></script>
 <script>
     //Obtener las variables necesarias para la creacion de los enfrentamientos
+    const matchups_ready = {{ matchups_ready|yesno:"true,false" }}
+
     const enfrentamientos = JSON.parse(document.getElementById('enfrentamientos').textContent);
     const is_ideal = {{is_ideal|yesno:"true,false" }};
     const csrf_token = " {{ csrf_token }} ";
     const torneo_id = {{torneo_id|default:"0"}}
+
 </script>
 <script src="{% static 'js/admin/emparejamientos.js' %}"
