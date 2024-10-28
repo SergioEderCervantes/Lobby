@@ -3,7 +3,7 @@
     /* Esto permite que los elementos hijos se distribuyan en una fila */
     flex: 1;
     /* Esto permite que el contenido ocupe el espacio disponible */
-    padding: 0 0 60px 0;
+    padding: 0 0 40px 0;
     justify-content: center;
     flex-direction: column;
     align-items: center;
