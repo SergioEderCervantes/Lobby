@@ -3,7 +3,7 @@
 {% block extrahead %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/admin/object_view.css' %}" />
-
+    <script src="{% static 'js/admin/object_view.js' %}" defer></script>
 
 {% endblock extrahead %}
 
@@ -25,5 +25,4 @@
             </form>
         {% endif %}
     </section>
-    <script src="{% static 'js/admin/object_view.js' %}"></script>
 {% endblock content %}

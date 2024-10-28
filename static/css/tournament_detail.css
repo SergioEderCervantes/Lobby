@@ -1,0 +1,23 @@
+p, li {
+    font-size: 18px;
+    text-align: start;
+}
+li{
+    margin: 1rem 0;
+}
+
+.tournament_info {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem 5rem;
+}
+
+.tournament__info__image{
+    height: 15rem;
+}
+
+.svg_container {
+    display: grid;
+    place-items: center;
+}

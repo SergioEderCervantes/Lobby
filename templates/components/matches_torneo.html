@@ -5,10 +5,8 @@
     <div class="matches__list">
         {% if matchups_ready %}
             {{ svg_data|safe }}
-        {% else %}  
-            {{matches|json_script:"enfrentamientos"}}
         {% endif %}
-
+        {{matches|json_script:"enfrentamientos"}}
     </div>
 </div>
 
