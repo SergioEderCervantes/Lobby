@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bottompage.css' %}" />
     <link rel="stylesheet" href="{% static 'css/contenedores.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/restaurante.css' %}" />
   </head>
   <body>
     <section class="landpage">
@@ -32,12 +33,12 @@
       
     </section>
     <main class="body">
-      {% include 'body/promociones.html' %}
+      <!-- {% include 'body/promociones.html' %}
       {% include 'body/informacion.html' %}
       {% include 'body/ubicacion.html' %}
-      {% include 'body/bottompage.html' %}
+      {% include 'body/bottompage.html' %} -->
+      {% block content %} {% endblock %}
     </main>
-    {% block content %} {% endblock %}
         
 
   </body>
