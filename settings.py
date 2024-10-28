@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     # Registro de apps
     'lobby',
     'reservations',
-    'tournaments'
+    'tournaments',
+    'restaurante'
 ]
 
 MIDDLEWARE = [
