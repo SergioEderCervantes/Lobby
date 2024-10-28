@@ -6,7 +6,6 @@ from custom_admin.services import crearMatch
 from django.shortcuts import get_object_or_404  
 from django.http import JsonResponse
 from settings import STATICFILES_DIRS
-from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 class Tournament(object):
