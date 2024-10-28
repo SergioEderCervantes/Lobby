@@ -7,9 +7,13 @@
 {% endblock %}
 
 {% block header %}
+    <div class="login">
+    {% include 'header/log.html' %}
+    </div>
     <div class="header">
         {% include 'header/navbar.html' %}
     </div>
+    
 {% endblock %}
 
 {% block content %}

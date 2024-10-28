@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     # Registro de apps
     'lobby',
     'reservations',
-    'tournaments'
+    'tournaments',
+    'restaurante'
 ]
 
 MIDDLEWARE = [
@@ -95,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lobby',
         'USER': 'root',
-        'PASSWORD': 'ThoryMia898',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306'
     }

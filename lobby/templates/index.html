@@ -11,13 +11,17 @@
         <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
         <link rel="stylesheet" href="{% static 'css/body.css' %}" />
         <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/login.css' %}" />
         {% block extrahead %}
 
         {% endblock %}
     </head>
     <body>
+        
         {% block header %}
+        
         <section class="landpage">
+            
         <div class="login">
         {% include 'header/log.html' %}
         </div>
@@ -25,6 +29,7 @@
         {% include 'header/logo.html' %}
         {% include 'header/navbar.html' %}
         </section>
+        
         {% endblock %}
 
         {% block content %}
