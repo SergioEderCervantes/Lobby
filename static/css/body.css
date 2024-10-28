@@ -1,12 +1,68 @@
-
-.body{
-   
+.body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgb(0,0,0);
-    background: radial-gradient(circle, rgba(0,0,0,1) 20%, rgba(0,39,75,1) 57%, rgba(55,1,60,1) 96%);
+    background: transparent;
     min-height: 100vh;
 }
 
+/* promociones */
+
+.carrousel_promos {
+    background: rgba(43, 9, 79, 0.236);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    border-radius: 10px;
+    width: 85%;
+    height: 700px;
+    margin-top: 6%;
+    margin-bottom: 1%;
+    border-radius: 30px;
+    display: flex;
+
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-basis: 200;
+}
+.carrousel {
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: auto;
+    gap: 1.2rem;
+    overflow-y: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.card {
+    background: rgba(43, 9, 79, 0.236);
+    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    border-radius: 10px;
+    width: 40rem;
+    height: 20rem;
+    margin: 12rem 0 0 2rem;
+    
+    padding: 22%;
+    border-radius: 30px;
+    display: flex;
+
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-basis: 200;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño al hacer hover */
+}
+
+/* ubicacion */
+
+
+/* informacion */
+
+
+/* Bottompage */

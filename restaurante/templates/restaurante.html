@@ -1,4 +1,20 @@
-{% extends "index.html" %} {% block content %}
+{% extends "index.html" %} {% load static %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'css/restaurant.css' %}" />
+{% endblock %}
+
+{% block header %}
+    <div class="login">
+    {% include 'header/log.html' %}
+    </div>
+    <div class="header">
+        {% include 'header/navbar.html' %}
+    </div>
+
+{% endblock %}
+
+{% block content %}
 <section>
     <div class="card">
         <h1>MENÚ</h1>
