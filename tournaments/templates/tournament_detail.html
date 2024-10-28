@@ -1,6 +1,12 @@
 {% extends "tournaments.html" %}
 
 {% block content %}
-    
+    <h2> Nombre del torneo: {{tournament.name}} </h2>
+    <p> Id del torneo: {{tournament.id}} </p>
+    <p> Maximo de jugadores: {{tournament.players}} </p>
+    <p> Fecha del torneo: {{tournament.date}} </p>
+    {% if svg_data %}
+        {{svg_data|safe}}
+    {% endif %}
 
 {% endblock content %}
