@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'reservations',
     'tournaments',
     'restaurante'
-    'tournaments',
-    'restaurante'
 ]
 
 MIDDLEWARE = [
