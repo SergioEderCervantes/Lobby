@@ -3,6 +3,9 @@
 {% block extrahead %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/admin/object_view.css' %}" />
+
+    <script src="{% static '/@svgdotjs/svg.js/dist/svg.min.js' %}" defer></script>
+    <script src="{% static '/@svgdotjs/svg.draggable.js/dist/svg.draggable.js' %}" defer></script>
     <script src="{% static 'js/admin/object_view.js' %}" defer></script>
 
 {% endblock extrahead %}

@@ -12,9 +12,27 @@ if (change_link){
 }
 
 // ------------------------------------Parte que maneja los eventos de Drag------------------------------------
+document.getElementById('svg_enfrentamientos').addEventListener('load', function(){
+    const draw = SVG('#svg_enfrentamientos')
+    draw.find('.matchup__player').forEach(element => {
+        element.draggable();
+        // Opcional: Añadir eventos para monitorear el arrastre
+        element.on('dragstart', function (event) {
+            console.log('Inicio de arrastre:', event.detail.p.x, event.detail.p.y);
+        });
+    
+        element.on('dragmove', function (event) {
+            console.log('Arrastrando:', event.detail.p.x, event.detail.p.y);
+        });
+    
+        element.on('dragend', function (event) {
+            console.log('Fin de arrastre:', event.detail.p.x, event.detail.p.y);
+        });
+    })
+    
+});
 
-
-
+// ------------------------------------Parte que maneja los eventos de Puntuacion------------------------------------
 // --------------------------Parte que Maneja el Boton de guardar si hubo modificaciones al svg----------------
 
 

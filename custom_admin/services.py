@@ -86,7 +86,7 @@ def create_svg_match(matchups, tournament_id, parent_dir, is_ideal):
     WIDTH = 1200
     HEIGHT = 800
     SVG_NAME = os.path.join(parent_dir,'svg', str(tournament_id) + '.svg')
-    dwg = svgwrite.Drawing(SVG_NAME, size=(WIDTH,HEIGHT))
+    dwg = svgwrite.Drawing(SVG_NAME, id="svg_enfrentamientos", size=(WIDTH,HEIGHT))
     # gupos para organizar los elementos
     machups_group = dwg.g(id="g__enfrentamientos")
     lines_group = dwg.g(id="g__conectores")
@@ -139,12 +139,20 @@ def create_match_square(dwg, match_data, cx, cy):
     match_group.add(dwg.text(match_data.id, insert=(x+8, y+30), class_="matchup__id", font_weight = 700))
     # Rectangulo de los jugadores
     match_group.add(dwg.rect(insert=(x+25,y), size=('175px',MATCH_HEIGHT), rx=10, ry=10, fill='#444444', class_="players__container"))
-
+    # Jugadores
+    group1 = dwg.g(class_="matchup__player")
+    group1.add(dwg.rect(insert=(x+25,y), size=('175px','25px'), fill='#444444',rx=10, ry=10))
+    group1.add(dwg.text(match_data.player1, insert=(x+30, y+18), class_="matchup__player1", fill="white", font_size="14px"))
+    match_group.add(group1)
+    
+    group2 = dwg.g(class_="matchup__player")
+    group2.add( dwg.rect(insert=(x+25,y+25), size=("175px","25px"), fill="#444444", rx=10, ry=10))
+    group2.add(dwg.text(match_data.player2, insert=(x+30, y+45), class_="matchup__player2", fill="white", font_size="14px"))
+    match_group.add(group2)
+    
     # Linea entre los jugadores
     match_group.add(dwg.line(start=(x+25, y+25), end=(x+175, y+25),stroke="black", stroke_width=1, class_="divisor_line"))
-    # Jugadores
-    match_group.add(dwg.text(match_data.player1, insert=(x+30, y+18), class_="matchup__player1", fill="white", font_size="14px"))
-    match_group.add(dwg.text(match_data.player2, insert=(x+30, y+45), class_="matchup__player2", fill="white", font_size="14px"))
+    
     # Linea para diferenciar la parte de jugadores de la parte de la insersion de puntaje
     match_group.add(dwg.line(start=(x+175,y), end = (x+175,y+50), stroke="black", stroke_width=1, class_="divisor_line_2"))
     # Campo para insersion del puntaje
