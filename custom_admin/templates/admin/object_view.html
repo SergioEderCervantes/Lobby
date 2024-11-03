@@ -16,8 +16,12 @@
     <p> Fecha del torneo: {{tournament.date}} </p>
     <a href="#" id="change_info"> Cambiar datos del torneo</a>
     <section>
-        {% if matches or matchups_ready %}
-            {% include "components/matches_torneo.html" with torneo_id=torneo_id matchups_ready=matchups_ready svg_data=svg_data matches=matches is_ideal=is_ideal %}
+        {% if svg_data %}
+            <div class="matches">
+                <div class="matches__list">
+                    {{ svg_data|safe }}
+                </div>
+            </div>
         {% else %}
             <form method="post" action="{% url 'admin:vista_del_objeto' object_id=torneo_id %}">
                 {% csrf_token %}
