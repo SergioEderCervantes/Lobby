@@ -140,12 +140,15 @@ def create_match_square(dwg, match_data, cx, cy):
     # Rectangulo de los jugadores
     match_group.add(dwg.rect(insert=(x+25,y), size=('175px',MATCH_HEIGHT), rx=10, ry=10, fill='#444444', class_="players__container"))
     # Jugadores
-    group1 = dwg.g(class_="matchup__player")
+    # Si es un rectangulo que no tiene jugadores, se referencia la clase como blanco
+    className  ="matchup__player" if match_data.player1 != "" else "matchup__player__blank"
+    
+    group1 = dwg.g(class_=className)
     group1.add(dwg.rect(insert=(x+25,y), size=('175px','25px'), fill='#444444',rx=10, ry=10))
     group1.add(dwg.text(match_data.player1, insert=(x+30, y+18), class_="matchup__player1", fill="white", font_size="14px"))
     match_group.add(group1)
     
-    group2 = dwg.g(class_="matchup__player")
+    group2 = dwg.g(class_=className)
     group2.add( dwg.rect(insert=(x+25,y+25), size=("175px","25px"), fill="#444444", rx=10, ry=10))
     group2.add(dwg.text(match_data.player2, insert=(x+30, y+45), class_="matchup__player2", fill="white", font_size="14px"))
     match_group.add(group2)
