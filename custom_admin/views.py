@@ -15,7 +15,7 @@ class Tournament(object):
         self.date = date
         self.players = players
 
-def object_view(request, object_id):
+def tournament_view(request, object_id):
     objeto = get_object_or_404(Tournament_prueba,pk=object_id)
     tournament = Tournament(objeto.tournament_id, objeto.tournament_name, objeto.date,10)
     matchups_ready = objeto.matchups_ready
@@ -41,7 +41,7 @@ def object_view(request, object_id):
         objeto.save()
         
 
-    return render(request, 'admin/object_view.html', {'torneo_id':object_id, 'tournament': tournament, 'svg_data':svg_data})
+    return render(request, 'admin/tournament_view.html', {'torneo_id':object_id, 'tournament': tournament, 'svg_data':svg_data})
 
 
 
@@ -53,7 +53,6 @@ def save_svg(request):
         data = json.loads(body_unicode)
     except:
         return JsonResponse({'error': 'No se pudo decodificar el JSON'}, status=400)   
-    print(f"Data:{data}")
     svg_data = data.get('svg_data')
     torneo_id = data.get('torneo_id')
     if not svg_data or torneo_id == 0:
@@ -65,9 +64,6 @@ def save_svg(request):
         with open(file_path,'w') as file:
             file.write(svg_data)
         
-        tournament = Tournament_prueba.objects.get(pk=torneo_id)
-        tournament.matchups_ready = True
-        tournament.save()
     except Exception as e:
         print(e)
         print("Algo sucedio mal, variables usadas:")

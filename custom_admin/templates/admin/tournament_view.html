@@ -2,11 +2,16 @@
 {% load static %}
 {% block extrahead %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/admin/object_view.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/admin/tournament_view.css' %}" />
 
+
+    <script>
+        const tournamentId = {{ tournament.id }};
+        const csrfToken = "{{ csrf_token }}";
+    </script>
     <script src="{% static '/@svgdotjs/svg.js/dist/svg.min.js' %}" defer></script>
     <script src="{% static '/@svgdotjs/svg.draggable.js/dist/svg.draggable.js' %}" defer></script>
-    <script src="{% static 'js/admin/object_view.js' %}" defer></script>
+    <script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
 
 {% endblock extrahead %}
 
@@ -24,9 +29,13 @@
                 <div class="matches__list">
                     {{ svg_data|safe }}
                 </div>
+                <input type="text" id="svg_input" maxlength="5">
+            </div>
+            <div class="send">
+                <button id="send__button" class="hide">Guardar Cambios</button>
             </div>
         {% else %}
-            <form method="post" action="{% url 'admin:vista_del_objeto' object_id=torneo_id %}">
+            <form method="post" action="{% url 'admin:vista_del_torneo' object_id=torneo_id %}">
                 {% csrf_token %}
                 <button type="submit" id="create_tournament">Crear Emparejamiento del torneo</button>
             </form>

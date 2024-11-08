@@ -135,7 +135,19 @@ def create_match_square(dwg, match_data, cx, cy):
     # Rectangulo de fondo
     match_group.add(dwg.rect(insert=(x,y), size=(MATCH_WIDTH,MATCH_HEIGHT), fill = '#444444', rx=10, ry=10,class_="fondo_matchup"))
     # Rectangulo de id
-    match_group.add(dwg.rect(insert=(x,y), size=('25px', MATCH_HEIGHT), fill='#a1a1a1', rx=10, ry=10, class_="matchup__id__container"))
+    radius = 10
+    width, height = 25, 50
+    
+    path_data = f"M {x + radius},{y} " \
+            f"h {width - radius} " \
+            f"v {height} " \
+            f"h {-width + radius} " \
+            f"a {radius},{radius} 0 0 1 {-radius},{-radius} " \
+            f"v {-height + 2 * radius} " \
+            f"a {radius},{radius} 0 0 1 {radius},{-radius} " \
+            f"Z"
+    
+    match_group.add(dwg.path(d=path_data, fill="#a1a1a1", class_="matchup__id__container"))
     match_group.add(dwg.text(match_data.id, insert=(x+8, y+30), class_="matchup__id", font_weight = 700))
     # Rectangulo de los jugadores
     match_group.add(dwg.rect(insert=(x+25,y), size=('175px',MATCH_HEIGHT), rx=10, ry=10, fill='#444444', class_="players__container"))
@@ -153,15 +165,36 @@ def create_match_square(dwg, match_data, cx, cy):
     group2.add(dwg.text(match_data.player2, insert=(x+30, y+45), class_="matchup__player2", fill="white", font_size="14px"))
     match_group.add(group2)
     
+
+    # Campo para insersion del puntaje
+    # match_group.add(dwg.rect(insert=(x+175,y), size=("25px", "25px"), fill='#a1a1a1', rx=10,ry=10, class_="match__puntaje__player1"))
+    width, height = 25, 25
+    path_data = f"M {x + 175},{y} " \
+            f"h {width - radius} " \
+            f"a {radius},{radius} 0 0 1 {radius},{radius} " \
+            f"v {height - radius} " \
+            f"h {-width} " \
+            f"v {-height} " \
+            f"Z"
+                
+    match_group.add(dwg.path(d=path_data, fill="#a1a1a1", class_="match__puntaje__player1"))
+    match_group.add(dwg.text("", insert=(x+180, y + 17), class_='match__puntaje__player1__text', fill="black", font_size="14px", font_weight = 700))
+    # match_group.add(dwg.rect(insert=(x+175,y+25), size=("25px", "25px"), fill='#a1a1a1', rx=10,ry=10, class_="match__puntaje__player2"))
+    path_data = f"M {x + 175},{y + 25} " \
+            f"h {width} " \
+            f"v {height - radius} " \
+            f"a {radius},{radius} 0 0 1 {-radius},{radius} " \
+            f"h {-width + radius} " \
+            f"v {-height} " \
+            f"Z"
+    match_group.add(dwg.path(d=path_data, fill="#a1a1a1", class_="match__puntaje__player2"))
+    match_group.add(dwg.text("", insert=(x+180, y + 42), class_='match__puntaje__player2__text', fill="black", font_size="14px", font_weight = 700))
+   
     # Linea entre los jugadores
-    match_group.add(dwg.line(start=(x+25, y+25), end=(x+175, y+25),stroke="black", stroke_width=1, class_="divisor_line"))
+    match_group.add(dwg.line(start=(x+25, y+25), end=(x+200, y+25),stroke="white", stroke_width=1, class_="divisor_line"))
     
     # Linea para diferenciar la parte de jugadores de la parte de la insersion de puntaje
-    match_group.add(dwg.line(start=(x+175,y), end = (x+175,y+50), stroke="black", stroke_width=1, class_="divisor_line_2"))
-    # Campo para insersion del puntaje
-    match_group.add(dwg.rect(insert=(x+175,y), size=("25px", "25px"), fill='#a1a1a1', rx=10,ry=10, class_="match__puntaje__player1"))
-    match_group.add(dwg.rect(insert=(x+175,y+25), size=("25px", "25px"), fill='#a1a1a1', rx=10,ry=10, class_="match__puntaje__player2"))
-    
+    match_group.add(dwg.line(start=(x+175,y), end = (x+175,y+50), stroke="white", stroke_width=1, class_="divisor_line_2"))
     return match_group
     
 # Funcion que, dado dos niveles del torneo, 

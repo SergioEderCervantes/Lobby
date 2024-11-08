@@ -65,7 +65,9 @@ function dragEnd(event, element) {
         const aux = prevNode.querySelector("text").textContent;
         prevNode.querySelector("text").textContent = nodeToSwitch.querySelector("text").textContent;
         nodeToSwitch.querySelector("text").textContent = aux;
-
+        // Que el boton de guardar aparezca
+        const button = document.getElementById('send__button');
+        button.classList.remove('hide');
     }
 
     //Regresar el elemento a su posicion original
@@ -94,7 +96,62 @@ function isNear(el1, el2, proximityTreshold) {
 
 // ------------------------------------Parte que maneja los eventos de Puntuacion------------------------------------
 
+document.querySelectorAll(".match__puntaje__player1").forEach((rect) =>{
+    rect.addEventListener('click',(event) => activateInput(event.target, 1))
+});
+document.querySelectorAll(".match__puntaje__player2").forEach((rect) =>{
+    rect.addEventListener('click',(event) => activateInput(event.target, 2))
+});
+
+function activateInput(target, playerNum){
+    const inputField = document.getElementById("svg_input")
+    const matchGroup = target.closest('g');
+    const className = playerNum == 1 ? ".match__puntaje__player1__text" : ".match__puntaje__player2__text";
+    const matchText = matchGroup.querySelector(className);
+    const parentGroup = target.closest('g');
+    const matchId = parentGroup.id;
+
+    // Pocisionar el input en donde se dio el click
+    const rect = target.getBoundingClientRect();
+    console.log(rect);
+    inputField.style.left = `${rect.left + window.scrollX + 0.5}px`;
+    inputField.style.top = `${rect.top + window.scrollY + 1}px`;
+
+    // Mostrar el input
+    inputField.value = matchText.textContent;
+    inputField.style.display = 'block';
+    inputField.focus();
+
+    // Actualizar texto
+    inputField.onblur = () => updateSVGText(inputField, matchText);
+    inputField.onkeyup = (e) => {
+        if (e.key === 'Enter'){
+            e.preventDefault(); // Asegurarnos de que no haya un comportamiento no deseado con Enter
+            updateSVGText(inputField, matchText);
+        }
+
+    } 
+}
+
+function updateSVGText(inputField, matchText){
+    
+    if ( inputField.value === ""){
+        return;
+    }
+    matchText.textContent = inputField.value;
+    inputField.value = "";
+    inputField.style.display = "none";
+}
+
+
 // --------------------------Parte que Maneja el Boton de guardar si hubo modificaciones al svg----------------
+
+
+document.getElementById('send__button').addEventListener('click', function () {
+    const draw = SVG('#svg_enfrentamientos');
+    send_SVG(draw,csrfToken,tournamentId);
+    this.classList.add('hide')
+})
 
 
 // ------------------------------------Parte que manda el SVG de vuelta al server------------------------------
@@ -107,7 +164,6 @@ async function send_SVG(draw, csrf_token, torneo_id) {
 
 
     try {
-        // TODO cambiar la url a la direccion del back que va a procesar esto
         const response = await fetch('/admin/save_svg/', {
             method: "POST",
             headers: {
