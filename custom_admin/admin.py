@@ -3,6 +3,7 @@ from django.urls import path
 from django.contrib.auth.models import Group, User
 from allauth.account.models import EmailAddress
 from .views import tournament_view, save_svg
+from tournaments.models import Tournament_prueba
 # Register your models here.
 
 
@@ -12,7 +13,8 @@ class custom_admin_site(AdminSite):
     def get_urls(self):
         urls =  super().get_urls()
         custom_urls = [
-            path('tournaments/tournament_prueba/<int:object_id>/view/', self.admin_view(tournament_view), name='vista_del_torneo'),
+            path('tournaments/tournament_prueba/<int:object_id>/view/', 
+                 self.admin_view(tournament_view), name='vista_del_torneo'),
             path('save_svg/',self.admin_view(save_svg), name="save_svg")
         ]
         return custom_urls + urls

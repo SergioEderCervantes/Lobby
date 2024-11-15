@@ -18,26 +18,39 @@
 
 {% block content %}
 
-    <h2> Nombre del torneo: {{tournament.name}} </h2>
-    <p> Id del torneo: {{tournament.id}} </p>
-    <p> Maximo de jugadores: {{tournament.players}} </p>
-    <p> Fecha del torneo: {{tournament.date}} </p>
-    <a href="#" id="change_info"> Cambiar datos del torneo</a>
+    <h2>Nombre del torneo: {{ tournament.name }}</h2>
+    <table class="tabla__datos">
+        <tr>
+            <td><strong>Id del torneo</strong></td>
+            <td><strong>Maximo de jugadores</strong></td>
+            <td><strong>Fecha del torneo</strong></td>
+        </tr>
+        <tr>
+            <td>{{ tournament.id }}</td>
+            <td>{{ tournament.players }}</td>
+            <td>{{ tournament.date }}</td>
+        </tr>
+    </table>
+    <a href="#" id="change_info" class="options__button"> Cambiar datos del torneo</a>
     <section>
         {% if svg_data %}
             <div class="matches">
                 <div class="matches__list">
                     {{ svg_data|safe }}
                 </div>
-                <input type="text" id="svg_input" maxlength="5">
+                <input type="number"  id="svg_input" max="100">
+                <div class="options">
+                    <button id="send__button" class="hide options__button">Guardar Cambios</button>
+                    <button id="cancel__button" class="hide options__button">Cancelar</button>
+                    <button id="reset__button" class="hide options__button">Reiniciar Torneo</button>
+                </div>
             </div>
-            <div class="send">
-                <button id="send__button" class="hide">Guardar Cambios</button>
-            </div>
+            
+
         {% else %}
             <form method="post" action="{% url 'admin:vista_del_torneo' object_id=torneo_id %}">
                 {% csrf_token %}
-                <button type="submit" id="create_tournament">Crear Emparejamiento del torneo</button>
+                <button type="submit" id="create_tournament" class="options__button">Crear Emparejamiento del torneo</button>
             </form>
         {% endif %}
     </section>

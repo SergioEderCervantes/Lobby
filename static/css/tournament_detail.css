@@ -21,3 +21,16 @@ li{
     display: grid;
     place-items: center;
 }
+/* Visualizacion de los ganados y perdidos */
+.matchup__player1, .matchup__player2{
+    fill: white;
+    transition: fill 1s ease, opacity 1s ease, font-weight 1s ease;
+}
+
+.winner{
+    font-weight: 700;
+    fill: #7388b9;
+}
+.loser{
+    opacity: 0.2;
+}

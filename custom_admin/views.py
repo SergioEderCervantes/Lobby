@@ -2,9 +2,10 @@ import os
 import json
 from django.shortcuts import render
 from tournaments.models import Tournament_prueba, Users_prueba
-from custom_admin.services import crearMatch, create_svg_match
+from custom_admin.services import crearMatch
 from django.shortcuts import get_object_or_404  
 from django.http import JsonResponse
+from django.template.response import TemplateResponse
 from settings import STATICFILES_DIRS
 # Create your views here.
 
@@ -16,13 +17,15 @@ class Tournament(object):
         self.players = players
 
 def tournament_view(request, object_id):
+    # Dios perdoname
+    from custom_admin.admin import admin_site
+    
     objeto = get_object_or_404(Tournament_prueba,pk=object_id)
     tournament = Tournament(objeto.tournament_id, objeto.tournament_name, objeto.date,10)
     matchups_ready = objeto.matchups_ready
     svg_data = None
-    is_ideal = False
-    # Si ya los matchups estan hechos, carga el svg y lo manda sin mas 
     parent_dir = STATICFILES_DIRS[0]
+    # Si ya los matchups estan hechos, carga el svg y lo manda sin mas 
     if (matchups_ready):
         file_name= str(tournament.id) + '.svg'
         file_path = os.path.join(parent_dir,'svg', file_name)
@@ -31,17 +34,28 @@ def tournament_view(request, object_id):
     # Si no estan los matchups pero el request es post, manda a crear los matchups
     elif request.method == "POST":      
         players = list(Users_prueba.objects.filter(tournament_id = tournament.id).values_list('first_name', flat=True))
-        data, is_ideal = crearMatch(players)
-        file_path = create_svg_match(data,tournament.id,parent_dir,is_ideal)
+        file_path = crearMatch(players, tournament.id, parent_dir=parent_dir)
         # Una vez creado, lo toma desde los archivos y lo guarda en svg_data
+        print(f"File path dado: {file_path}")
         with open(file_path,'r')as svg_file:
             svg_data = svg_file.read()
         matchups_ready = True
         objeto.matchups_ready = True
         objeto.save()
-        
-
-    return render(request, 'admin/tournament_view.html', {'torneo_id':object_id, 'tournament': tournament, 'svg_data':svg_data})
+    # Obtener el contexto de custom_admin_site
+    context = admin_site.each_context(request)
+    
+    # Extraer manualmente el app_label y otros detalles
+    context.update({
+        "title": f"Vista del Torneo: {tournament.name}",
+        "torneo_id": object_id,
+        "tournament": tournament,
+        "svg_data": svg_data,
+        "opts": Tournament_prueba._meta,  # Pasar opts explícitamente para compatibilidad con breadcrumbs
+        "app_label": "tournaments",  # Pasar app_label explícitamente
+    })
+    print(context["app_label"])
+    return TemplateResponse(request, 'admin/tournament_view.html', context)
 
 
 
