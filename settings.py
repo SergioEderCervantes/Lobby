@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Auth
+    'users',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
 
     # Registro de apps
     'lobby',
@@ -48,6 +51,8 @@ INSTALLED_APPS = [
     'tournaments',
     'restaurante'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -153,7 +158,15 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-LOGIN_REDIRECT_URL = 'home'
+# Configuracion de nuestro user para la AUTH
+AUTH_USER_MODEL = 'users.User'
+
 
 # Deshabilita confirmacion de logout
 ACCOUNT_LOGOUT_ON_GET = True
+
+# Configuraciones extra para allauth
+LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+# TODO: no se si debamos de dejar esto sin email de verificacion, ahorita esta asi para evitar error al crear una cuenta
+ACCOUNT_EMAIL_VERIFICATION = "none"
