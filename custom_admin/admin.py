@@ -1,7 +1,7 @@
 from django.contrib.admin import AdminSite
 from django.shortcuts import render
 from django.urls import path
-from django.contrib.auth.models import Group, User
+from users.models import User
 from allauth.account.models import EmailAddress
 # Register your models here.
 
@@ -23,5 +23,4 @@ class custom_admin_site(AdminSite):
 admin_site = custom_admin_site(name='customAdmin')
 
 admin_site.register(User)
-admin_site.register(Group)
 admin_site.register(EmailAddress)
