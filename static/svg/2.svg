@@ -10,16 +10,16 @@
       <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="75.0" y="125.0"></rect>
       <g class="matchup__player draggable">
         <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="75.0" y="125.0"></rect>
-        <text class="matchup__player1" fill="white" font-size="14px" x="80.0" y="143.0">dsfdsfsdf</text>
+        <text class="matchup__player1 loser" fill="white" font-size="14px" x="80.0" y="143.0">dsfdsfsdf</text>
       </g>
       <g class="matchup__player draggable">
         <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="75.0" y="150.0"></rect>
-        <text class="matchup__player2" fill="white" font-size="14px" x="80.0" y="170.0">a</text>
+        <text class="matchup__player2 winner" fill="white" font-size="14px" x="80.0" y="170.0">a</text>
       </g>
       <path class="match__puntaje__player1" d="M 225.0,125.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"></path>
-      <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="230.0" y="142.0"></text>
+      <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="230.0" y="142.0">12</text>
       <path class="match__puntaje__player2" d="M 225.0,150.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"></path>
-      <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="230.0" y="167.0"></text>
+      <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="230.0" y="167.0">24</text>
       <line class="divisor_line" stroke="white" stroke-width="1" x1="75.0" x2="250.0" y1="150.0" y2="150.0"></line>
       <line class="divisor_line_2" stroke="white" stroke-width="1" x1="225.0" x2="225.0" y1="125.0" y2="175.0"></line>
     </g>
@@ -32,7 +32,7 @@
       <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="325.0" y="175.0"></rect>
       <g class="matchup__player">
         <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="325.0" y="175.0"></rect>
-        <text class="matchup__player1" fill="white" font-size="14px" x="330.0" y="193.0">1</text>
+        <text class="matchup__player1 changed" fill="white" font-size="14px" x="330.0" y="193.0">a</text>
       </g>
       <g class="matchup__player draggable">
         <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="325.0" y="200.0"></rect>
