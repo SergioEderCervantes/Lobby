@@ -5,6 +5,8 @@
     justify-content: center;
     background: transparent;
     min-height: 100vh;
+    margin: 0;
+    padding-top: 70px; /* Ajusta según la altura de la navbar */
 }
 
 /* promociones */

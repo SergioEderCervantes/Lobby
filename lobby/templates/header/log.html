@@ -1,6 +1,6 @@
 <section>
   {% if user.is_authenticated %}
-    <a class="login__button" href="{%url 'profile'}"></a>
+   
     <a class="login__button" href="{% url 'account_logout' %}">Logout</a>
   {% else %}
     <a class="login__button" href="{% url 'account_login' %}">Login</a>

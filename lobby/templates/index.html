@@ -5,39 +5,52 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Lobby bar</title>
+        <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
         <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/field.css' %}" />
         <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
         <link rel="stylesheet" href="{% static 'css/body.css' %}" />
         <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+
         {% block extrahead %}
+        <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
+        <script src="{% static '\js\carrusel.js' %}" defer></script>
+        <script src="{% static '\js\navbar.js' %}" defer></script>
+
 
         {% endblock %}
     </head>
     <body>
         
         {% block header %}
-        
-        <section class="landpage">
-            
-        <div class="login">
+        <div class=" login pages">
         {% include 'header/log.html' %}
         </div>
+        <header class="navbar">
+            {% include 'header/navbar.html' %}
+        </header>
+        <section class="landpage">
+            
+        
 
         {% include 'header/logo.html' %}
-        {% include 'header/navbar.html' %}
         </section>
-        
+    
         {% endblock %}
 
         {% block content %}
-        <main class="body">
+        
+        <main >
+        
         {% include 'body/promociones.html' %}
+        <section class="body">
         {% include 'body/informacion.html' %}
         {% include 'body/ubicacion.html' %}
         {% include 'body/bottompage.html' %}
+        </section>
         </main>
         {% endblock %}
   </body>

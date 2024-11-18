@@ -5,16 +5,19 @@
     font-size: clamp(12px, 1.5vw, 16px);
     font-family: "Krub", sans-serif;
     background: radial-gradient(circle, rgb(28, 28, 28) 20%, rgba(0, 39, 75, 1) 57%, rgba(55, 1, 60, 1) 96%);
+    scrollbar-width: none;
 }
 .header{
     display: flex;
     justify-content: center;
 }
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
 }
+
 
 
 .tarjeta {

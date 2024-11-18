@@ -53,7 +53,6 @@ Realiza las migraciones necesarias:
 
 ```bash
 python manage.py migrate
-```
 
 Inicia el servidor con el siguiente comando:
 
