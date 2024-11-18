@@ -10,7 +10,7 @@
     <div class="login">
     {% include 'header/log.html' %}
     </div>
-    <div class="header">
+    <div class="navbar sticky">
         {% include 'header/navbar.html' %}
     </div>
     
@@ -18,7 +18,7 @@
 
 {% block content %}
 
-  <section class="tournament">
+  <section class="tournament" id="torneos">
     <h2>Tournaments</h2>
     <section>
       {% for tournament in tournaments %}

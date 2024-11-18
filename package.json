@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/SergioEderCervantes/Lobby#readme",
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.2.4"
+    "@svgdotjs/svg.js": "^3.2.4",
+    "swiper": "^11.1.14"
   }
 }

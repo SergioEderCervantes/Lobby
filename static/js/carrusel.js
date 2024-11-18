@@ -1,21 +1,31 @@
-let currentIndex = 0;
-const images = document.querySelectorAll('.carousel-images img');
-const totalImages = images.length;
+var swiper = new Swiper (".swiper" , {
+    effect: "coverflow",
+    grabCursor: true,
+    centerSlides: true,
+    spaceBetween: 20,
+    initialSlide: 2,
+    speed: 600,
+    loop: true,
+    preventClicks: true,
+    slidesPreview: 'auto',
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 80,
+        depth: 350,
+        modifier: 1,
+        slideShadows: true,
+    },
+    on: {
+        click(event){
+            swiper.slideTo(this.clickedIndex)
+        },
+    },
+    pagination: {
+        el: ".swiper-pagination",
+    },
+    autoplay: {
+        delay: 10000, // Tiempo entre transiciones (en milisegundos)
+        disableOnInteraction: false, // El autoplay no se detiene si el usuario interactúa
+    },
+});
 
-function showSlide(index) {
-    currentIndex = (index + totalImages) % totalImages; // Asegura que el índice sea válido
-    const offset = -currentIndex * 100; // Mueve el carrusel
-    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-}
-
-// Cambia la imagen automáticamente cada 3 segundos
-setInterval(() => {
-    showSlide(currentIndex + 1);
-}, 3000);
-
-function changeSlide(direction) {
-    showSlide(currentIndex + direction);
-}
-
-// Muestra la primera imagen al cargar
-showSlide(currentIndex);
