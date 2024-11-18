@@ -9,23 +9,6 @@ class User(AbstractUser):
         ('GU', 'Guest'),
     ]
 
-    username = models.CharField(
-        _("Nombre de usuario"), blank=False, max_length=30, unique=True, error_messages={
-            "unique": _("Ya existe un usuario con este nombre de usuario, por favor verifíquelo."),
-        },
-    )
-
-    nombre = models.CharField(
-        ("Nombre de usuario"), blank=False, max_length=30, default=""
-    )
-    
-    apellido = models.CharField(
-        _("Apellido de usuario"),
-        blank=False,
-        max_length=30,
-        default="",
-    )
-
     tipo_usuario = models.CharField(
         _("Tipo de usuario"),
         blank=False,
@@ -36,8 +19,10 @@ class User(AbstractUser):
 
     email = models.EmailField(
         _("Correo electrónico"),
-        blank=False,
-        unique=True,
+        # TODO: settear False si se quiere obligar a poner email
+        blank=True,
+        # TODO: Settear a True, este si es de ahuevo pero lo puse False para hacer pruebas
+        unique=False,
         error_messages={
             "unique": _("Ya existe un usuario con este correo electrónico, por favor verifíquelo."),
         },

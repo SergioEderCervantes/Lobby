@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #custom admin (nota: tiene que estar hasta aca arriba)
+    'custom_admin',
+    
+    #Django default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +52,8 @@ INSTALLED_APPS = [
     # Registro de apps
     'lobby',
     'reservations',
-    'tournaments'
+    'tournaments',
+    'restaurante'
 ]
 
 SITE_ID = 1
