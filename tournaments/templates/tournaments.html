@@ -24,7 +24,7 @@
       <div class="tournament blur">
         <h3>{{ tournament.name }}</h3>
         <p>{{ tournament.date }}</p>
-        <p>Max players: {{ tournament.players }}</p>
+        <p>Jugadores inscritos: {{ tournament.registered_players }}</p>
         <a href="{% url 'tournament_detail' tournament.name %}" class="btn">Ingresar</a>
       </div>
     {% endfor %}

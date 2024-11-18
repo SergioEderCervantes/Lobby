@@ -8,29 +8,22 @@
 {% block content %}
     <div class="tournament_info">
         <h1> {{tournament.name}} </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-        <p> {{ tournament.short_desc }} </p>
         <div class='tournament__info__image blur'> 
             <img src="#" alt="imagen del torneo" />
         </div>
 
-        <h2>Bases<h2>
-        <p>{% lorem 2 %}</p>
+        <h2>Descripcion<h2>
         <p> {{ tournament.description }} </p>
         <h2>Reglas<h2>
         <ul>
-            <li>Rule1</li>
-            <li>Rule2</li>
-            <li>Rule3</li>
-            <li>Rule4</li>
-            <li>Rule5</li>
+            {% for rule in tournament.rules %}
+                <li> {{rule}} </li>
+            {% endfor %}
         <ul>
-        <p> {{ tournament.rules }} </p>
 
     </div>
     {% if svg_data %}
-        <div class="svg_container">
+        <div class="svg_container blur">
             {{svg_data|safe}} 
         </div>
     {% else %}

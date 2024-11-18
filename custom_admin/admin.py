@@ -1,19 +1,18 @@
-from django.contrib.admin import AdminSite
+from django.contrib import admin
 from django.urls import path
-from django.contrib.auth.models import Group, User
 from allauth.account.models import EmailAddress
+from allauth.socialaccount.models import SocialAccount
 from .views import tournament_view, save_svg
-from tournaments.models import Tournament_prueba
 # Register your models here.
 
 
-class custom_admin_site(AdminSite):
+class custom_admin_site(admin.AdminSite):
     site_header = 'Lobby Bar Administration'
     
     def get_urls(self):
         urls =  super().get_urls()
         custom_urls = [
-            path('tournaments/tournament_prueba/<int:object_id>/view/', 
+            path('tournaments/torneo/<int:tournament_id>/view/', 
                  self.admin_view(tournament_view), name='vista_del_torneo'),
             path('save_svg/',self.admin_view(save_svg), name="save_svg")
         ]
@@ -23,6 +22,12 @@ class custom_admin_site(AdminSite):
 
 admin_site = custom_admin_site(name='customAdmin')
 
-admin_site.register(User)
-admin_site.register(Group)
-admin_site.register(EmailAddress)
+# Clases manejadoras del display de los modelos del allAuth
+class EmailAddress_Admin(admin.ModelAdmin):
+    list_display = ('email', 'user', 'verified', 'primary')
+
+class SocialAccount_Admin(admin.ModelAdmin):
+    list_display = ('user', 'provider', 'uid')
+
+admin_site.register(EmailAddress, EmailAddress_Admin)
+admin_site.register(SocialAccount,SocialAccount_Admin)

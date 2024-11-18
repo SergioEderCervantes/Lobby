@@ -21,13 +21,17 @@
     <h2>Nombre del torneo: {{ tournament.name }}</h2>
     <table class="tabla__datos">
         <tr>
-            <td><strong>Id del torneo</strong></td>
-            <td><strong>Maximo de jugadores</strong></td>
+            <td><strong>Nombre del torneo</strong></td>
+            <td><strong>Nombre del Juego</strong></td>
+            <td><strong>Modo del Torneo</strong></td>
+            <td><strong>Jugadores Inscritos</strong></td>
             <td><strong>Fecha del torneo</strong></td>
         </tr>
         <tr>
-            <td>{{ tournament.id }}</td>
-            <td>{{ tournament.players }}</td>
+            <td>{{ tournament.name }}</td>
+            <td>{{ tournament.game_name }}</td>
+            <td>{{ tournament.mode }}</td>
+            <td>{{ tournament.registered_players }}</td>
             <td>{{ tournament.date }}</td>
         </tr>
     </table>
@@ -48,7 +52,7 @@
             
 
         {% else %}
-            <form method="post" action="{% url 'admin:vista_del_torneo' object_id=torneo_id %}">
+            <form method="post" action="{% url 'admin:vista_del_torneo' tournament_id=torneo_id %}">
                 {% csrf_token %}
                 <button type="submit" id="create_tournament" class="options__button">Crear Emparejamiento del torneo</button>
             </form>
