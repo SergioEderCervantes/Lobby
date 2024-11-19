@@ -1,26 +1,33 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from .services import crearMatch
+from custom_admin.views import Tournament
+from .models import Torneo
+from django.shortcuts import get_object_or_404 
+import os
+from settings import STATICFILES_DIRS 
+
 # Create your views here.
 
-class Tournament(object):
-    def __init__(self,id, name, date, players):
-        self.id = id
-        self.name = name
-        self.date = date
-        self.players = players
-
-
 def tournaments(request):
-    tournaments = [
-        Tournament(1, 'Tournament 1', '2021-10-01', 10),
-        Tournament(2, 'Tournament 2', '2021-10-02', 20),
-        Tournament(3, 'Tournament 3', '2021-10-03', 30),
-    ]
+    data = Torneo.objects.all()
+    tournaments = [Tournament(t.nombre_torneo,t.nombre_juego,"",t.fecha,"","",t.usuarios_torneo.all().count()) for t in data]
+
 
     return render(request, 'tournaments.html', {'tournaments': tournaments})
 
-def tournament_matches(request):
-    data = crearMatch([1, 2, 3, 4, 5, 6, 7, 8])
-    matches = [{'id': match.id, 'player1': match.player1, 'player2': match.player2} for match in data]
-    return JsonResponse({'matches': matches})
+
+def tournament_detail(request, name):
+    torneo = get_object_or_404(Torneo,nombre_torneo=name)
+    matchups_ready = torneo.is_defined
+    svg_data = None
+    if(matchups_ready):
+        parent_dir = STATICFILES_DIRS[0]
+        file_name= str(torneo.pk) + '.svg'
+        file_path = os.path.join(parent_dir,'svg', file_name)
+        with open(file_path, 'r') as svg_file:
+            svg_data = svg_file.read()
+            
+    # Sacar solo la data del torneo necesaria para el render del html
+    tournament_data = Tournament(torneo.nombre_torneo,torneo.nombre_juego,torneo.get_modo_torneo_display(),
+                                 torneo.fecha, torneo.descripcion, torneo.reglas.splitlines(),
+                                 torneo.usuarios_torneo.all().count())
+    return render(request, 'tournament_detail.html', {'tournament' : tournament_data,'svg_data': svg_data})
