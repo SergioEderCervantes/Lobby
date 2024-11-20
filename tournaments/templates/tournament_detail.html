@@ -1,0 +1,41 @@
+{% extends "tournaments.html" %}
+{% load static %}
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/tournament_detail.css' %}" />
+{% endblock extrahead %}
+
+{% block content %}
+    <div class="tournament_info">
+        <h1> {{tournament.name}} </h1>
+        <div class='tournament__info__image blur'> 
+            <img src="#" alt="imagen del torneo" />
+        </div>
+
+        <h2>Descripcion<h2>
+        <p> {{ tournament.description }} </p>
+        <h2>Reglas<h2>
+        <ul>
+            {% for rule in tournament.rules %}
+                <li> {{rule}} </li>
+            {% endfor %}
+        <ul>
+
+    </div>
+    {% if svg_data %}
+        <div class="svg_container blur">
+            {{svg_data|safe}} 
+        </div>
+    {% else %}
+        <div class="Formulario_ingreso">
+            {% if user.is_authenticated %}
+                <h3> Ya esta registrado, deseas inscribirte a este torneo usando el correo: example@mail.com</h3>
+                <button> Inscribirme </button>
+            {% else %}
+                <h3> Para inscribirte a este torneo, llena este formulario</h3>
+                
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock content %}

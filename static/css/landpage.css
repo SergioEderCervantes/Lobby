@@ -13,48 +13,50 @@
     background: rgb(0, 0, 0);
     background: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 39, 75, 1) 57%, rgba(55, 1, 60, 1) 96%);
     width: 100%;
-    height: 100vh;
+    height:100vh;
 
 }
+.login.pages{
+    position: absolute;
+    
 
+}
 .login {
+    
     display: flex;
     justify-content: flex-end;
-    align-items: right;
     width: 90%;
-    padding: 50px;
+    margin-top: 5%;
     margin-left: 6rem;
+    flex-grow: 1;
 }
 
 .login__button {
-   /* From Uiverse.io by zjssun */ 
-
+    text-decoration: none;
     padding: 10px 20px;
-    text-transform: uppercase;
-    border-radius: 8px;
+    text-transform: uppercase; 
     font-size: 17px;
     font-weight: 500;
-    color: #ffffff80;
+    color: #ffffff;
     text-shadow: none;
-    background: transparent;
-    cursor: pointer;
-    box-shadow: transparent;
-    border: 1px solid #ffffff80;
-    transition: 0.5s ease;
+    background: rgb(0,51,98);
+    background: linear-gradient(109deg, rgba(0,51,98,0.7170517865349264) 20%, rgba(43,0,172,0.6358192935377276) 47%, rgba(152,0,153,0.6554271366749824) 77%);    box-shadow: 0 0 5px #d900ff, 0 0 10px #1a00c1, 0 0 10px #d900ff,
+    0 0 100px #00008ab6;    transition: 0.5s ease;
     user-select: none;
-  
-  
-  
-  
-  
+    border-radius: 17px;
+    margin-right: 1rem;
+    flex-basis: 200;
+    box-shadow: none
 }
+  
+
 
 .login__button:hover {
     color: #ffffff;
-    background: #ebb60e;
-    border: 1px solid #ebb60e;
-    box-shadow: 0 0 5px #ebb60e, 0 0 10px #ebb60e, 0 0 10px #ebb60e,
-      0 0 100px #ebb60e;
+    background: linear-gradient(109deg, rgba(0,51,98,0.7170517865349264) 20%, rgba(43,0,172,0.6358192935377276) 47%, rgba(152,0,153,0.6554271366749824) 77%);
+    border: none;
+    box-shadow: 0 0 5px #d900ff, 0 0 10px #1a00c1, 0 0 10px #d900ff,
+      0 0 100px #0000b8b6;
 }
 
 
@@ -71,4 +73,10 @@
 .landpage .imag {
     width: 600px;
     height: 450px;
+}
+
+@media (min-width: 768px) {
+    .landpage{
+        height: 100vh;
+    }
 }

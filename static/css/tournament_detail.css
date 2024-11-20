@@ -1,0 +1,36 @@
+p, li {
+    font-size: 18px;
+    text-align: start;
+}
+li{
+    margin: 1rem 0;
+}
+
+.tournament_info {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem 5rem;
+}
+
+.tournament__info__image{
+    height: 15rem;
+}
+
+.svg_container {
+    display: grid;
+    place-items: center;
+}
+/* Visualizacion de los ganados y perdidos */
+.matchup__player1, .matchup__player2{
+    fill: white;
+    transition: fill 1s ease, opacity 1s ease, font-weight 1s ease;
+}
+
+.winner{
+    font-weight: 700;
+    fill: #7388b9;
+}
+.loser{
+    opacity: 0.2;
+}
