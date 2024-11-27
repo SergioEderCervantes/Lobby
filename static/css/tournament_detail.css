@@ -1,9 +1,15 @@
-p, li {
+p,
+li {
     font-size: 18px;
     text-align: start;
 }
-li{
+
+li {
     margin: 1rem 0;
+}
+
+h3 {
+    margin: 1rem;
 }
 
 .tournament_info {
@@ -13,24 +19,268 @@ li{
     padding: 2rem 5rem;
 }
 
-.tournament__info__image{
+.tournament__info__image {
+    width: 100%;
     height: 15rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
+.tournament__info__image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;  
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+
+/* Parte del svg */
 .svg_container {
     display: grid;
     place-items: center;
 }
+
 /* Visualizacion de los ganados y perdidos */
-.matchup__player1, .matchup__player2{
+.matchup__player1,
+.matchup__player2 {
     fill: white;
     transition: fill 1s ease, opacity 1s ease, font-weight 1s ease;
 }
 
-.winner{
+.winner {
     font-weight: 700;
     fill: #7388b9;
 }
-.loser{
+
+.loser {
     opacity: 0.2;
+}
+
+
+/* Formulario de inscripcion y jugadores */
+
+.formulario_y_jugadores {
+    width: 100%;
+    display: flex;
+}
+
+.jugadores_container {
+    flex: 1 0 300px;
+    padding: 5rem;
+}
+
+.formulario_ingreso {
+    flex: 1 0 300px;
+    display: grid;
+    place-items: center;
+    padding: 5rem;
+}
+
+.already_authenticated {
+
+    height: auto;
+    min-height: 300px;
+    text-align: center;
+
+}
+
+.register_options {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Formulario */
+.guest_form {
+    width: 400px;
+    background: linear-gradient(#212121, #212121) padding-box,
+        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+    border: 2px solid transparent;
+    padding: 32px 24px;
+    font-size: 14px;
+    font-family: inherit;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    margin: 1rem;
+}
+
+.guest_form legend {
+    font-size: 22px;
+    font-weight: 700;
+    color: #b2b2b2;
+}
+
+.guest_form button:active {
+    scale: 0.95;
+}
+
+.guest_form .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.guest_form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.guest_form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #717171;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.guest_form .form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    background-color: transparent;
+    border: 1px solid #414141;
+}
+
+
+.guest_form .form-group input::placeholder {
+    opacity: 0.5;
+}
+
+.guest_form .form-group input:focus {
+    outline: none;
+    border-color: #e81cff;
+}
+
+.guest_form .form-group textarea:focus {
+    outline: none;
+    border-color: #e81cff;
+}
+
+.guest_form .form-submit-btn {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    align-self: flex-start;
+    font-family: inherit;
+    color: #717171;
+    font-weight: 600;
+    width: 40%;
+    background: #313131;
+    border: 1px solid #414141;
+    padding: 12px 16px;
+    font-size: inherit;
+    gap: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.guest_form .form-submit-btn:hover {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.form_bottom {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form_bottom a {
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+.form_bottom a:hover {
+    color: white;
+    font-weight: 600;
+}
+
+/* Imported from pruebas */
+/* Estilos del dropdown menu */
+.dropdown {
+
+    display: inline-block;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    animation: none;
+    background: linear-gradient(#212121, #212121) padding-box,
+        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.dropdown.expanded {
+    animation: expandWidth 0.5s forwards;
+
+}
+
+.dropdown.collapsing {
+    animation: collapseWidth 0.5s forwards;
+}
+
+/* Estilos del boton  */
+.dropdown-btn {
+    margin: 200px;
+    background-color: #212121;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    text-wrap: nowrap;
+    display: block;
+    transition: all 1s ease;
+    margin: 0 auto;
+
+}
+
+.dropdown-btn:hover {
+    background-color: #b2b2b2;
+}
+
+/* Estilos del contenido */
+.dropdown-menu {
+    list-style: none;
+    /* column-count: 2;
+    column-gap: 2px; */
+    margin: 1rem 0;
+    padding: 0;
+    display: none;
+    background-color: #212121;
+    color: white;
+    border-radius: 0 0 10px 10px;
+    transition: all 1s ease;
+
+}
+
+.dropdown-menu.expanded {
+    display: block;
+}
+
+.dropdown-menu li {
+    margin: 0;
+    padding: 10px 20px;
+    background-color: #212121;
+}
+
+
+.dropdown-menu li:hover {
+    background-color: #b2b2b2;
+}
+
+h1 {
+    color: white;
 }

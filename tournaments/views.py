@@ -30,4 +30,9 @@ def tournament_detail(request, name):
     tournament_data = Tournament(torneo.nombre_torneo,torneo.nombre_juego,torneo.get_modo_torneo_display(),
                                  torneo.fecha, torneo.descripcion, torneo.reglas.splitlines(),
                                  torneo.usuarios_torneo.all().count())
-    return render(request, 'tournament_detail.html', {'tournament' : tournament_data,'svg_data': svg_data})
+    
+    raw_users = torneo.usuarios_torneo.all()
+    
+    players = [user.username for user in raw_users]
+    print(len(players))
+    return render(request, 'tournament_detail.html', {'tournament' : tournament_data,'svg_data': svg_data, 'players': players})

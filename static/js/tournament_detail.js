@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdown_button.addEventListener("click", () => {
         const currentWidth = dropdown.offsetWidth; // Obtener el ancho actual
         const currentHeight = dropdown.offsetHeight // Alto actual
-        const liCant = dropdown_menu.querySelectorAll("li").length / 2;
+        const liCant = dropdown_menu.querySelectorAll("li").length;
         // Si no está expandido, expandimos
         if (!dropdown.classList.contains("expanded")) {
             dropdown_button.textContent = "Ocultar jugadores inscritos"
             
             const targetWidth = 300; // Ancho al que queremos expandir
-            const targetHeight = liCant * 38 + dropdown_button.offsetHeight + 20; // Alto a expandir
+            const targetHeight = liCant * 38 + dropdown_button.offsetHeight + 50; // Alto a expandir
             // Crear animación para expandir
             createAnimation("expandWidth", currentWidth, targetWidth, currentHeight, targetHeight);
             dropdown.classList.remove("collapsing"); // Asegurarnos de que no esté colapsando
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function createAnimation(name, fromWidth, toWidth, fromHeight, toHeight) {
         // Buscar la hoja de estilo específica
         const styleSheet = Array.from(document.styleSheets).find(sheet =>
-            sheet.href && sheet.href.includes("pruebas.css")
+            sheet.href && sheet.href.includes("tournament_detail.css")
         );
         if(!styleSheet){
             console.log("NO ENCONTRO LA STYLESHEET");
@@ -76,5 +76,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-console.log(document.styleSheets[document.styleSheets.length-1])

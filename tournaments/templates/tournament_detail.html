@@ -1,41 +1,74 @@
 {% extends "tournaments.html" %}
 {% load static %}
 {% block extrahead %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/tournament_detail.css' %}" />
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/tournament_detail.css' %}" />
+<script src="{% static 'js/tournament_detail.js' %}" defer></script>
 {% endblock extrahead %}
 
 {% block content %}
-    <div class="tournament_info">
-        <h1> {{tournament.name}} </h1>
-        <div class='tournament__info__image blur'> 
-            <img src="#" alt="imagen del torneo" />
-        </div>
-
-        <h2>Descripcion<h2>
-        <p> {{ tournament.description }} </p>
-        <h2>Reglas<h2>
-        <ul>
-            {% for rule in tournament.rules %}
-                <li> {{rule}} </li>
-            {% endfor %}
-        <ul>
-
+<div class="tournament_info">
+    <h1> {{tournament.name}} </h1>
+    <div class='tournament__info__image blur'>
+        <img src="{% static 'img/Torneo1.jpg' %}" alt="imagen del torneo" />
     </div>
-    {% if svg_data %}
-        <div class="svg_container blur">
-            {{svg_data|safe}} 
+
+    <h2>Descripcion<h2>
+            <p> {{ tournament.description }} </p>
+            <h2>Reglas<h2>
+                    <ul>
+                        {% for rule in tournament.rules %}
+                        <li> {{rule}} </li>
+                        {% endfor %}
+                        <ul>
+
+</div>
+{% if svg_data %}
+<div class="svg_container blur">
+    {{svg_data|safe}}
+</div>
+{% else %}
+<div class="formulario_y_jugadores">
+
+    <div class="formulario_ingreso">
+        {% if user.is_authenticated %}
+        <div class="already_authenticated">
+            <h3> Ya esta registrado, deseas inscribirte a este torneo usando el correo: {{user.email}}</h3>
+            <a href="#" class="login__button"> Inscribirme </a>
         </div>
-    {% else %}
-        <div class="Formulario_ingreso">
-            {% if user.is_authenticated %}
-                <h3> Ya esta registrado, deseas inscribirte a este torneo usando el correo: example@mail.com</h3>
-                <button> Inscribirme </button>
-            {% else %}
-                <h3> Para inscribirte a este torneo, llena este formulario</h3>
-                
-            {% endif %}
+        {% else %}
+        <div class="guest_form">
+            <form class="form">
+                <legend> Registrarse a {{tournament.name}} como invitado</legend>
+                <div class="form-group">
+                    <label for="playerName">Nombre de jugador</label>
+                    <input type="text" id="playerName" name="playerName" required="">
+                </div>
+                <div class="form-group">
+                    <label for="tel">Numero de telefono</label>
+                    <input type="tel" id="tel" name="tel" required="">
+                </div>
+                <div class="form_bottom">
+                    <button class="form-submit-btn" type="submit">Submit</button>
+
+                    <a class="signup" href="{% url 'account_login' %}" class="">Ya tienes cuenta?</a>
+
+                </div>
+            </form>
         </div>
-    {% endif %}
+        {% endif %}
+    </div>
+    <div class="jugadores_container">
+        <div class="dropdown">
+            <button id="dropdown-btn" class="dropdown-btn">Mostrar jugadores inscritos</button>
+            <ul id="dropdown-menu" class="dropdown-menu">
+                {% for player in players %}
+                    <li> {{player}} </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %}
 
 {% endblock content %}

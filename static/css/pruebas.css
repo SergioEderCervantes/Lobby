@@ -20,6 +20,7 @@
 }
 /* Estilos del boton  */
 .dropdown-btn {
+    margin: 200px;
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -30,12 +31,11 @@
     overflow: hidden;
     text-wrap: nowrap;
     display: block;
-    transition: margin 1s ease;
+    transition: all 10s ease;
+    margin: 0 auto;
 
 }
-.dropdown-btn.expanded{
-    margin: 0 auto;
-}
+
 .dropdown-btn:hover {
     background-color: #76c17a;
 }
@@ -68,3 +68,6 @@
     background-color: #a8d3aa;
 }
 
+h1{
+    color: white;
+}
