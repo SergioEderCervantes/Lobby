@@ -10,11 +10,10 @@ def home(request):
     promociones = {
         
             Promocion( "promocion1", static('img/promo.png')),
-            Promocion( "promocion2", static('img/promo.png')),
-            Promocion( "promocion3", static('img/promo.png')),
-            Promocion( "promocion4", static('img/promo.png')),
-            Promocion( "promocion5", static('img/promo.png')),
-            Promocion( "promocion6", static('img/promo.png')),
+            Promocion( "promocion2", static('img/promo2.jpg')),
+            Promocion( "promocion3", static('img/promo3.jpg')),
+            Promocion( "promocion4", static('img/promo4.jpg')),
+            Promocion( "promocion5", static('img/promo5.jpg')),
         
     }
     return render(request, 'index.html', {'promociones' : promociones})

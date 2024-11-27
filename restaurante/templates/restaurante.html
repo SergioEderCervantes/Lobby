@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-    <div class="login">
+    <div class="body login">
     {% include 'header/log.html' %}
     </div>
     <div class="navbar sticky">
@@ -15,22 +15,24 @@
 {% endblock %}
 
 {% block content %}
-<section id="restaurante">
-    <h1>MENÚ</h1>
+<div class="body">
+    <section id="restaurante">
+        <h1>MENÚ</h1>
     
-    {% for menu_section in menu_sections %}
-    <div class="product-card"> 
-        <h2> {{menu_section.section_title}} </h2>
-        <div class="container"> 
-            {% for product in menu_section.products %}
-            <div class="product">  
-                <h3> {{product.nombre_producto}} - ${{product.precio}} </h3>
-                <p> {{product.descripcion}} </p>
+        {% for menu_section in menu_sections %}
+        <div class="product-card">
+            <h2> {{menu_section.section_title}} </h2>
+            <div class="container">
+                {% for product in menu_section.products %}
+                <div class="product">
+                    <h3> {{product.nombre_producto}} - ${{product.precio}} </h3>
+                    <p> {{product.descripcion}} </p>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
-    {% endfor %} 
-</section>
+        {% endfor %}
+    </section>
+</div>
 
 {% endblock %}

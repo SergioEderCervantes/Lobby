@@ -1,14 +1,75 @@
-.body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    min-height: 100vh;
-    margin: 0;
-    padding-top: 70px; /* Ajusta según la altura de la navbar */
-}
 
+.body {
+    padding-bottom: 2%;
+    width: 100%;
+    height: 100%;
+    --s: 150px;
+   --c1: #1e001c;
+    --c2: #02071d;
+    --c3: #000000;
+    --c4: #45003a;
+    --c5: #080f3f;
+    --c6: #050b24;
+    --c7: #320030;
+    --c8: #05001a;
+    --c9: #171616;
+  
+    background: repeating-conic-gradient(
+          from 30deg,
+          #0000 0 120deg,
+          var(--c3) 0 180deg
+        )
+        calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+      repeating-conic-gradient(
+        from 30deg,
+        var(--c1) 0 45deg,
+        var(--c2) 0 90deg,
+        var(--c3) 0 135deg,
+        var(--c4) 0 180deg,
+        var(--c5) 0 225deg,
+        var(--c6) 0 270deg,
+        var(--c7) 0 315deg,
+        var(--c8) 0 360deg,
+        var(--c9) 0 405deg
+      );
+    background-size: var(--s) calc(var(--s) * 0.577);
+}
+.body-log {
+    width: 100%;
+    min-height: 88vh;
+    display: grid;
+    --s: 150px;
+   --c1: #1e001c;
+    --c2: #02071d;
+    --c3: #000000;
+    --c4: #45003a;
+    --c5: #080f3f;
+    --c6: #050b24;
+    --c7: #320030;
+    --c8: #05001a;
+    --c9: #171616;
+  
+    background: repeating-conic-gradient(
+          from 30deg,
+          #0000 0 120deg,
+          var(--c3) 0 180deg
+        )
+        calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+      repeating-conic-gradient(
+        from 30deg,
+        var(--c1) 0 45deg,
+        var(--c2) 0 90deg,
+        var(--c3) 0 135deg,
+        var(--c4) 0 180deg,
+        var(--c5) 0 225deg,
+        var(--c6) 0 270deg,
+        var(--c7) 0 315deg,
+        var(--c8) 0 360deg,
+        var(--c9) 0 405deg
+      );
+    background-size: var(--s) calc(var(--s) * 0.577);
+}
+  
 /* promociones */
 
 .carrousel_promos {
@@ -27,6 +88,7 @@
     flex-wrap: wrap;
     flex-grow: 1;
     flex-basis: 200;
+    
 }
 .carrousel {
     display: grid;
