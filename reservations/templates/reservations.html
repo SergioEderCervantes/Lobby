@@ -33,7 +33,9 @@
 
 {% if user.is_authenticated %}
   <!-- Usuario autenticado -->
-  <p>Bienvenido, {{ user.username }}</p>
+  <div class="hcontainer">
+    <h1>Bienvenido, {{ user.username }}</h1>
+  </div>
   <form method="post" action="{% url 'reservations' %}" id="reservation-form">
     {% csrf_token %}
     <label for="fecha">Fecha:</label>

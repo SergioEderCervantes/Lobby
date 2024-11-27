@@ -3,6 +3,15 @@
   font-weight: 700;
   font-style: normal;
 }
+h1{
+  color: white;
+  width: 300px;
+}
+
+.hcontainer{
+  display: grid;
+  place-items: center;
+}
 
 .header-container {
     max-width: 600px;
