@@ -20,3 +20,6 @@ def restaurante(request):
         ]
     }
     return render(request, 'restaurante.html', context)
+
+def prueba(request):
+    return render(request, "prueba.html", {})
