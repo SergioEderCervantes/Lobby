@@ -7,7 +7,7 @@ var swiper = new Swiper (".swiper" , {
     speed: 600,
     loop: true,
     preventClicks: true,
-    slidesPreview: 'auto',
+    slidespreview: 'auto',
     coverflowEffect: {
         rotate: 0,
         stretch: 80,

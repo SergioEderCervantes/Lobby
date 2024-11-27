@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block header %}
-    <div class="login">
+    <div class="body login">
     {% include 'header/log.html' %}
     </div>
     <div class="navbar sticky">
@@ -17,17 +17,24 @@
 {% endblock %}
 
 {% block content %}
-  <div class="tournaments"> 
-  <h1>Tournaments</h1>
-  <section class="tournament_container">
-    {% for tournament in tournaments %}
-      <div class="tournament blur">
-        <h3>{{ tournament.name }}</h3>
-        <p>{{ tournament.date }}</p>
-        <p>Jugadores inscritos: {{ tournament.registered_players }}</p>
-        <a href="{% url 'tournament_detail' tournament.name %}" class="btn">Ingresar</a>
-      </div>
-    {% endfor %}
-  </section>
-</div>
+  <div class="body">
+    <div class="tournaments">
+    <h1>Tournaments</h1>
+    <section class="tournament_container">
+      {% for tournament in tournaments %}
+        <div class="tournament blur">
+          <h3>{{ tournament.name }}</h3>
+          <p>{{ tournament.date }}</p>
+          <p>Jugadores inscritos: {{ tournament.registered_players }}</p>
+          <a href="{% url 'tournament_detail' tournament.name %}" class="btn">Ingresar</a>
+        </div>
+      {% endfor %}
+    </section>
+    </div>
+  </div>
+{% endblock %}
+{% block footer %}
+    <footer class="footer">
+        {% include 'footer/footer.html' %}
+    </footer>
 {% endblock %}

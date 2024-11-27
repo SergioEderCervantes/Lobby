@@ -1,0 +1,36 @@
+{% extends "index.html" %} {% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/politicas.css' %}" />
+{% endblock %}
+
+{% block header %}
+    <div class="login">
+    {% include 'header/log.html' %}
+    </div>
+    <div class="navbar sticky">
+        {% include 'header/navbar.html' %}
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+
+  <div class="body">
+    <div class="tarjeta_info">
+      <h1>Aviso de Cookies</h1>
+      <p>En nuestra página web utilizamos cookies para mejorar la experiencia del usuario. Este aviso explica qué son las cookies, qué tipo de cookies utilizamos y cómo puedes gestionarlas.</p>
+      <h2>¿Qué son las cookies?</h2>
+      <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas nuestro sitio web.</p>
+      <h2>Tipos de cookies que usamos</h2>
+      <h2>Cookies Esenciales</h2>
+      <p>Estas cookies son necesarias para el funcionamiento seguro de nuestra página web y no pueden ser desactivadas en nuestros sistemas. Utilizamos la cookie <strong>csrftoken</strong> para proteger la información enviada a través de formularios contra accesos no autorizados.</p>
+      {% comment %} <li><strong>Cookies analíticas:</strong> Nos ayudan a entender cómo los usuarios interactúan con nuestra página (ejemplo: Google Analytics).</li>
+      <li><strong>Cookies de preferencia:</strong> Guardan tus configuraciones (como idioma).</li> {% endcomment %}
+      <h2>Gestión de cookies</h2>
+      <p>Puedes aceptar o rechazar las cookies en cualquier momento desde el banner de cookies en nuestro sitio.</p>
+      <p>Para más información, contáctanos a través de nuestro correo: [tu correo de contacto].</p>
+    </div>
+  </div>
+
+{% endblock %}

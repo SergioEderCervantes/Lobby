@@ -5,27 +5,30 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Lobby bar</title>
-        <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
         <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/field.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
         <link rel="stylesheet" href="{% static 'css/body.css' %}" />
         <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
 
         {% block extrahead %}
+        <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
+
         <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
         <script src="{% static '\js\carrusel.js' %}" defer></script>
-        <script src="{% static '\js\navbar.js' %}" defer></script>
 
 
         {% endblock %}
+        <script src="{% static '\js\navbar.js' %}" defer></script>
+
     </head>
     <body>
         
-        {% block header %}
+        {% block header %}  
         <div class=" login pages">
         {% include 'header/log.html' %}
         </div>
@@ -35,8 +38,8 @@
         <section class="landpage">
             
         
-
-        {% include 'header/logo.html' %}
+        
+        <div class="imagen-land">{% include 'header/logo.html' %}</div>
         </section>
     
         {% endblock %}
@@ -54,4 +57,9 @@
         </main>
         {% endblock %}
   </body>
+
+    <footer class="footer">
+        {% include 'footer/footer.html' %}
+    </footer>
+   
 </html>

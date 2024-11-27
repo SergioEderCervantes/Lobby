@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     'lobby',
     'reservations',
     'tournaments',
-    'restaurante'
+    'restaurante',
+    'politicas',
+    'cookies_servicios'
 ]
 
 SITE_ID = 1

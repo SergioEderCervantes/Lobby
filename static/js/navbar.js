@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("scroll", () => {
         const landBottom = landpage.getBoundingClientRect().bottom;
 
-        if (landBottom <= 0 ) {
+        if (landBottom <= 125 ) {
             // Cambia el estilo de la navbar cuando la landing page desaparezca
             navbar.classList.add("sticky");
         } 
@@ -20,5 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
             // Restaura el estilo de la navbar mientras la landing page esté visible
             navbar.classList.remove("sticky");
         }
+    });
+});
+const icons = document.querySelectorAll('.icon');
+
+icons.forEach(icon => {
+    const image = icon.querySelector('img');
+    const hoverSrc = image.getAttribute('data-hover');
+    const defaultSrc = image.getAttribute('data-default');
+
+    icon.addEventListener('mouseenter', () => {
+        image.src = hoverSrc; // Cambia al ícono a color
+        
+    });
+
+    icon.addEventListener('mouseleave', () => {
+        image.src = defaultSrc; // Cambia de regreso al ícono en blanco y negro
     });
 });

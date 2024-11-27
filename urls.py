@@ -25,4 +25,6 @@ urlpatterns = [
     path('reservations/', include('reservations.urls')),
     path('tournaments/', include('tournaments.urls')),
     path('restaurante/', include('restaurante.urls')),
-]
+    path('politicas/', include('politicas.urls')),
+    path('cookies_servicios/', include('cookies_servicios.urls')),
+    ]
