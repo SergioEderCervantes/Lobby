@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="1020.0px" id="svg_enfrentamientos" version="1.1" viewBox="0 0 1000 1020.0" width="100%">
+  <defs/>
+  <g id="g__enfrentamientos">
+    <g id="round__1">
+      <text fill="black" font-size="16px" font-weight="bold" x="270" y="20">Ronda 1</text>
+      <g class="matchup" id="match__1">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="170.0" y="45.0"/>
+        <path class="matchup__id__container" d="M 180.0,45.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="178.0" y="75.0">1</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="195.0" y="45.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="45.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="200.0" y="63.0">Diego</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="70.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="200.0" y="90.0">jugador5</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 345.0,45.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="62.0"/>
+        <path class="match__puntaje__player2" d="M 345.0,70.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="87.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="195.0" x2="370.0" y1="70.0" y2="70.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="345.0" x2="345.0" y1="45.0" y2="95.0"/>
+      </g>
+      <g class="matchup" id="match__2">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="420.0" y="45.0"/>
+        <path class="matchup__id__container" d="M 430.0,45.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="428.0" y="75.0">2</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="445.0" y="45.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="45.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="450.0" y="63.0">jugador1</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="70.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="450.0" y="90.0">jugador4</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 595.0,45.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="62.0"/>
+        <path class="match__puntaje__player2" d="M 595.0,70.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="87.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="445.0" x2="620.0" y1="70.0" y2="70.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="595.0" x2="595.0" y1="45.0" y2="95.0"/>
+      </g>
+      <g class="matchup" id="match__3">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="670.0" y="45.0"/>
+        <path class="matchup__id__container" d="M 680.0,45.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="678.0" y="75.0">3</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="695.0" y="45.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="45.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="700.0" y="63.0">jugador2</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="70.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="700.0" y="90.0">jugador3</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 845.0,45.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="62.0"/>
+        <path class="match__puntaje__player2" d="M 845.0,70.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="87.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="695.0" x2="870.0" y1="70.0" y2="70.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="845.0" x2="845.0" y1="45.0" y2="95.0"/>
+      </g>
+    </g>
+    <g id="round__2">
+      <text fill="black" font-size="16px" font-weight="bold" x="270" y="220">Ronda 2</text>
+      <g class="matchup" id="match__4">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="170.0" y="245.0"/>
+        <path class="matchup__id__container" d="M 180.0,245.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="178.0" y="275.0">4</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="195.0" y="245.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="245.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="200.0" y="263.0">Diego</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="270.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="200.0" y="290.0">jugador4</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 345.0,245.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="262.0"/>
+        <path class="match__puntaje__player2" d="M 345.0,270.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="287.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="195.0" x2="370.0" y1="270.0" y2="270.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="345.0" x2="345.0" y1="245.0" y2="295.0"/>
+      </g>
+      <g class="matchup" id="match__5">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="420.0" y="245.0"/>
+        <path class="matchup__id__container" d="M 430.0,245.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="428.0" y="275.0">5</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="445.0" y="245.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="245.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="450.0" y="263.0">jugador5</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="270.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="450.0" y="290.0">jugador3</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 595.0,245.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="262.0"/>
+        <path class="match__puntaje__player2" d="M 595.0,270.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="287.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="445.0" x2="620.0" y1="270.0" y2="270.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="595.0" x2="595.0" y1="245.0" y2="295.0"/>
+      </g>
+      <g class="matchup" id="match__6">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="670.0" y="245.0"/>
+        <path class="matchup__id__container" d="M 680.0,245.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="678.0" y="275.0">6</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="695.0" y="245.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="245.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="700.0" y="263.0">jugador1</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="270.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="700.0" y="290.0">jugador2</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 845.0,245.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="262.0"/>
+        <path class="match__puntaje__player2" d="M 845.0,270.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="287.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="695.0" x2="870.0" y1="270.0" y2="270.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="845.0" x2="845.0" y1="245.0" y2="295.0"/>
+      </g>
+    </g>
+    <g id="round__3">
+      <text fill="black" font-size="16px" font-weight="bold" x="270" y="420">Ronda 3</text>
+      <g class="matchup" id="match__7">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="170.0" y="445.0"/>
+        <path class="matchup__id__container" d="M 180.0,445.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="178.0" y="475.0">7</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="195.0" y="445.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="445.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="200.0" y="463.0">Diego</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="470.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="200.0" y="490.0">jugador3</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 345.0,445.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="462.0"/>
+        <path class="match__puntaje__player2" d="M 345.0,470.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="487.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="195.0" x2="370.0" y1="470.0" y2="470.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="345.0" x2="345.0" y1="445.0" y2="495.0"/>
+      </g>
+      <g class="matchup" id="match__8">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="420.0" y="445.0"/>
+        <path class="matchup__id__container" d="M 430.0,445.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="428.0" y="475.0">8</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="445.0" y="445.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="445.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="450.0" y="463.0">jugador4</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="470.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="450.0" y="490.0">jugador2</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 595.0,445.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="462.0"/>
+        <path class="match__puntaje__player2" d="M 595.0,470.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="487.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="445.0" x2="620.0" y1="470.0" y2="470.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="595.0" x2="595.0" y1="445.0" y2="495.0"/>
+      </g>
+      <g class="matchup" id="match__9">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="670.0" y="445.0"/>
+        <path class="matchup__id__container" d="M 680.0,445.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="678.0" y="475.0">9</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="695.0" y="445.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="445.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="700.0" y="463.0">jugador5</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="470.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="700.0" y="490.0">jugador1</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 845.0,445.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="462.0"/>
+        <path class="match__puntaje__player2" d="M 845.0,470.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="487.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="695.0" x2="870.0" y1="470.0" y2="470.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="845.0" x2="845.0" y1="445.0" y2="495.0"/>
+      </g>
+    </g>
+    <g id="round__4">
+      <text fill="black" font-size="16px" font-weight="bold" x="270" y="620">Ronda 4</text>
+      <g class="matchup" id="match__10">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="170.0" y="645.0"/>
+        <path class="matchup__id__container" d="M 180.0,645.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="178.0" y="675.0">10</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="195.0" y="645.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="645.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="200.0" y="663.0">Diego</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="670.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="200.0" y="690.0">jugador2</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 345.0,645.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="662.0"/>
+        <path class="match__puntaje__player2" d="M 345.0,670.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="687.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="195.0" x2="370.0" y1="670.0" y2="670.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="345.0" x2="345.0" y1="645.0" y2="695.0"/>
+      </g>
+      <g class="matchup" id="match__11">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="420.0" y="645.0"/>
+        <path class="matchup__id__container" d="M 430.0,645.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="428.0" y="675.0">11</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="445.0" y="645.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="645.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="450.0" y="663.0">jugador3</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="670.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="450.0" y="690.0">jugador1</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 595.0,645.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="662.0"/>
+        <path class="match__puntaje__player2" d="M 595.0,670.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="687.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="445.0" x2="620.0" y1="670.0" y2="670.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="595.0" x2="595.0" y1="645.0" y2="695.0"/>
+      </g>
+      <g class="matchup" id="match__12">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="670.0" y="645.0"/>
+        <path class="matchup__id__container" d="M 680.0,645.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="678.0" y="675.0">12</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="695.0" y="645.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="645.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="700.0" y="663.0">jugador4</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="670.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="700.0" y="690.0">jugador5</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 845.0,645.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="662.0"/>
+        <path class="match__puntaje__player2" d="M 845.0,670.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="687.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="695.0" x2="870.0" y1="670.0" y2="670.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="845.0" x2="845.0" y1="645.0" y2="695.0"/>
+      </g>
+    </g>
+    <g id="round__5">
+      <text fill="black" font-size="16px" font-weight="bold" x="270" y="820">Ronda 5</text>
+      <g class="matchup" id="match__13">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="170.0" y="845.0"/>
+        <path class="matchup__id__container" d="M 180.0,845.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="178.0" y="875.0">13</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="195.0" y="845.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="845.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="200.0" y="863.0">Diego</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="195.0" y="870.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="200.0" y="890.0">jugador1</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 345.0,845.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="862.0"/>
+        <path class="match__puntaje__player2" d="M 345.0,870.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="350.0" y="887.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="195.0" x2="370.0" y1="870.0" y2="870.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="345.0" x2="345.0" y1="845.0" y2="895.0"/>
+      </g>
+      <g class="matchup" id="match__14">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="420.0" y="845.0"/>
+        <path class="matchup__id__container" d="M 430.0,845.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="428.0" y="875.0">14</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="445.0" y="845.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="845.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="450.0" y="863.0">jugador2</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="445.0" y="870.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="450.0" y="890.0">jugador5</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 595.0,845.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="862.0"/>
+        <path class="match__puntaje__player2" d="M 595.0,870.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="600.0" y="887.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="445.0" x2="620.0" y1="870.0" y2="870.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="595.0" x2="595.0" y1="845.0" y2="895.0"/>
+      </g>
+      <g class="matchup" id="match__15">
+        <rect class="fondo_matchup" fill="#444444" height="50px" rx="10" ry="10" width="200px" x="670.0" y="845.0"/>
+        <path class="matchup__id__container" d="M 680.0,845.0 h 15 v 50 h -15 a 10,10 0 0 1 -10,-10 v -30 a 10,10 0 0 1 10,-10 Z" fill="#a1a1a1"/>
+        <text class="matchup__id" font-weight="700" x="678.0" y="875.0">15</text>
+        <rect class="players__container" fill="#444444" height="50px" rx="10" ry="10" width="175px" x="695.0" y="845.0"/>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="845.0"/>
+          <text class="matchup__player1" fill="white" font-size="14px" x="700.0" y="863.0">jugador3</text>
+        </g>
+        <g class="matchup__player draggable">
+          <rect fill="#444444" height="25px" rx="10" ry="10" width="175px" x="695.0" y="870.0"/>
+          <text class="matchup__player2" fill="white" font-size="14px" x="700.0" y="890.0">jugador4</text>
+        </g>
+        <path class="match__puntaje__player1" d="M 845.0,845.0 h 15 a 10,10 0 0 1 10,10 v 15 h -25 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player1__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="862.0"/>
+        <path class="match__puntaje__player2" d="M 845.0,870.0 h 25 v 15 a 10,10 0 0 1 -10,10 h -15 v -25 Z" fill="#a1a1a1"/>
+        <text class="match__puntaje__player2__text" fill="black" font-size="14px" font-weight="700" x="850.0" y="887.0"/>
+        <line class="divisor_line" stroke="white" stroke-width="1" x1="695.0" x2="870.0" y1="870.0" y2="870.0"/>
+        <line class="divisor_line_2" stroke="white" stroke-width="1" x1="845.0" x2="845.0" y1="845.0" y2="895.0"/>
+      </g>
+    </g>
+  </g>
+</svg>

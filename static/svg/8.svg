@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="100%" id="svg_enfrentamientos" version="1.1" width="100%">
+  <defs/>
+  <text fill="black" font-size="16px" font-weight="bold" x="20" y="20">Ronda 1</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="20" y="40"/>
+  <text fill="white" font-size="12px" x="30" y="65">Diego vs jugador5</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="20" y="90"/>
+  <text fill="white" font-size="12px" x="30" y="115">jugador1 vs jugador4</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="20" y="140"/>
+  <text fill="white" font-size="12px" x="30" y="165">jugador2 vs jugador3</text>
+  <text fill="black" font-size="16px" font-weight="bold" x="170" y="20">Ronda 2</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="170" y="40"/>
+  <text fill="white" font-size="12px" x="180" y="65">Diego vs jugador4</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="170" y="90"/>
+  <text fill="white" font-size="12px" x="180" y="115">jugador5 vs jugador3</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="170" y="140"/>
+  <text fill="white" font-size="12px" x="180" y="165">jugador1 vs jugador2</text>
+  <text fill="black" font-size="16px" font-weight="bold" x="320" y="20">Ronda 3</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="320" y="40"/>
+  <text fill="white" font-size="12px" x="330" y="65">Diego vs jugador3</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="320" y="90"/>
+  <text fill="white" font-size="12px" x="330" y="115">jugador4 vs jugador2</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="320" y="140"/>
+  <text fill="white" font-size="12px" x="330" y="165">jugador5 vs jugador1</text>
+  <text fill="black" font-size="16px" font-weight="bold" x="470" y="20">Ronda 4</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="470" y="40"/>
+  <text fill="white" font-size="12px" x="480" y="65">Diego vs jugador2</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="470" y="90"/>
+  <text fill="white" font-size="12px" x="480" y="115">jugador3 vs jugador1</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="470" y="140"/>
+  <text fill="white" font-size="12px" x="480" y="165">jugador4 vs jugador5</text>
+  <text fill="black" font-size="16px" font-weight="bold" x="620" y="20">Ronda 5</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="620" y="40"/>
+  <text fill="white" font-size="12px" x="630" y="65">Diego vs jugador1</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="620" y="90"/>
+  <text fill="white" font-size="12px" x="630" y="115">jugador2 vs jugador5</text>
+  <rect fill="gray" height="40" rx="5" ry="5" width="130" x="620" y="140"/>
+  <text fill="white" font-size="12px" x="630" y="165">jugador3 vs jugador4</text>
+</svg>

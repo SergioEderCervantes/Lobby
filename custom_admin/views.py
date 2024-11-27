@@ -2,7 +2,8 @@ import os
 import json
 from tournaments.models import Torneo
 from users.models import User
-from custom_admin.services import crearMatch
+from custom_admin.eliminacion_directa import crearMatch
+from custom_admin.round_robin import createRounds
 from django.shortcuts import get_object_or_404  
 from django.http import JsonResponse
 from django.template.response import TemplateResponse
@@ -36,9 +37,11 @@ def tournament_view(request, tournament_id):
     # Si no estan los matchups pero el request es post, manda a crear los matchups
     elif request.method == "POST":      
         players = get_registered_players(tournament)
-        
-        file_path = crearMatch(players, tournament.pk, parent_dir=parent_dir)
-        # Una vez creado, lo toma desde los archivos y lo guarda en svg_data
+        if(tournament.modo_torneo == 'Direct'):
+            file_path = crearMatch(players, tournament.pk, parent_dir=parent_dir)
+            # Una vez creado, lo toma desde los archivos y lo guarda en svg_data
+        elif tournament.modo_torneo == 'Round':
+            file_path = createRounds(players, tournament.pk, parent_dir=parent_dir)
         print(f"File path dado: {file_path}")
         with open(file_path,'r')as svg_file:
             svg_data = svg_file.read()

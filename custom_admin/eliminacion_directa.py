@@ -131,8 +131,6 @@ def organizar_matchups(matches = [], adicionales = []):
             
     return nuevos_adicionales
             
-        
-        
     
 # ------------------------------------------------------------ Creacion del SVG de los torneos -----------------------------------
 # Toma como argumento un arreglo de objetos Match y un putero de cosas mas as olweis odio python
@@ -219,6 +217,9 @@ def create_svg_match(matchups, adicionales, tournament_id, parent_dir, is_ideal,
     dwg['id'] = id
     dwg['viewBox'] = f"0 0 {width + 200} {height + 50}"
     dwg.saveas(filename=SVG_NAME,pretty=True)
+
+    print(f"Width: {width}")
+    print(f"Height: {height}")
     
     return SVG_NAME
 
