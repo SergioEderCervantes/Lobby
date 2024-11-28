@@ -31,7 +31,7 @@ def tournament_view(request, tournament_id):
     # Si ya los matchups estan hechos, carga el svg y lo manda sin mas 
     if (matchups_ready):
         file_name= str(tournament.pk) + '.svg'
-        file_path = os.path.join(parent_dir,'svg', file_name)
+        file_path = os.path.join(parent_dir,'svg_tournaments', file_name)
         with open(file_path, 'r') as svg_file:
             svg_data = svg_file.read()
     # Si no estan los matchups pero el request es post, manda a crear los matchups
@@ -84,7 +84,7 @@ def save_svg(request):
     try:
         file_name= str(torneo_id) + '.svg'
         parent_dir = STATICFILES_DIRS[0]
-        file_path = os.path.join(parent_dir,'svg',file_name)
+        file_path = os.path.join(parent_dir,'svg_tournaments',file_name)
         with open(file_path,'w') as file:
             file.write(svg_data)
         

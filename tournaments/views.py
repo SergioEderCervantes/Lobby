@@ -22,7 +22,7 @@ def tournament_detail(request, name):
     if(matchups_ready):
         parent_dir = STATICFILES_DIRS[0]
         file_name= str(torneo.pk) + '.svg'
-        file_path = os.path.join(parent_dir,'svg', file_name)
+        file_path = os.path.join(parent_dir,'svg_tournaments', file_name)
         with open(file_path, 'r') as svg_file:
             svg_data = svg_file.read()
             
