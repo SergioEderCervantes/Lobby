@@ -29,7 +29,7 @@ def sql(request):
     # Consultas SQL
     with connection.cursor() as cursor:
         
-        # 1. Traer todos los datos del usuario con id 3
+        # 1. Traer todos los datos del usuario con id 1
         cursor.execute("select id, first_name, last_name, username, email from users_user where id = 1")
         user = cursor.fetchall()
 
