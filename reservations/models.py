@@ -11,10 +11,3 @@ class Reservacion(models.Model):
     fecha = models.DateField()
     fecha_reservacion = models.DateField()
 
-
-
-    class Meta:
-        db_table = 'reservaciones'
-
-    def __str__(self):
-        return self.id_reservacion

@@ -7,25 +7,126 @@
     </head>
     <body>
         <h1>Resultados de las consultas</h1>
+
+        <!-- 1. Datos del Usuario con ID 3 -->
         <h2>Datos del Usuario con ID 3</h2>
-        {% for row in user %}<p>{{ row }}</p>{% endfor %}
+        {% for row in user %}
+            <p>{{ row }}</p>
+        {% endfor %}
+
+        <!-- 2. Torneos -->
         <h2>Torneos</h2>
-        {% for torneo in torneos %}<p>{{ torneo }}</p>{% endfor %}
+        {% for torneo in torneos %}
+            <p>{{ torneo }}</p>
+        {% endfor %}
+
+        <!-- 3. Participantes en el Torneo -->
         <h2>Participantes en el Torneo</h2>
-        {% for participante in participantes %}<p>{{ participante }}</p>{% endfor %}
+        {% for participante in participantes %}
+            <p>{{ participante }}</p>
+        {% endfor %}
+
+        <!-- 4. Usuarios con Reservaciones -->
         <h2>Usuarios con Reservaciones</h2>
-        {% for usuario in usuarios_con_reservacion %}<p>{{ usuario }}</p>{% endfor %}
+        {% for usuario in usuarios_con_reservacion %}
+            <p>{{ usuario }}</p>
+        {% endfor %}
+
+        <!-- 5. Promociones asociadas a la sucursal 2 -->
         <h2>Promociones asociadas a la sucursal 2</h2>
-        {% for promocion in promociones_sucursal_2 %}<p>{{ promocion }}</p>{% endfor %}
+        {% for promocion in promociones_sucursal_2 %}
+            <p>{{ promocion }}</p>
+        {% endfor %}
+
+        <!-- 6. Productos de la Sucursal 3 -->
         <h2>Productos de la Sucursal 3</h2>
-        {% for producto in productos_sucursal_3 %}<p>{{ producto }}</p>{% endfor %}
+        {% for producto in productos_sucursal_3 %}
+            <p>{{ producto }}</p>
+        {% endfor %}
+
+        <!-- 7. Reservaciones del 24/11/24 -->
         <h2>Reservaciones del 24/11/24</h2>
-        {% for reservacion in reservaciones_24_nov %}<p>{{ reservacion }}</p>{% endfor %}
+        {% for reservacion in reservaciones_24_nov %}
+            <p>{{ reservacion }}</p>
+        {% endfor %}
+
+        <!-- 8. Productos de tipo Bebidas sin Alcohol -->
         <h2>Productos de tipo Bebidas sin Alcohol</h2>
-        {% for producto in productos_bebidas_sin_alcohol %}<p>{{ producto }}</p>{% endfor %}
+        {% for producto in productos_bebidas_sin_alcohol %}
+            <p>{{ producto }}</p>
+        {% endfor %}
+
+        <!-- 9. Torneos del 30/11/24 -->
         <h2>Torneos del 30/11/24</h2>
-        {% for torneo in torneos_30_nov %}<p>{{ torneo }}</p>{% endfor %}
+        {% for torneo in torneos_30_nov %}
+            <p>{{ torneo }}</p>
+        {% endfor %}
+
+        <!-- 10. Descripción de la Promoción con ID 27 -->
         <h2>Descripción de la Promoción con ID 27</h2>
-        {% for promocion in promocion_27 %}<p>{{ promocion }}</p>{% endfor %}
+        {% for promocion in promocion_27 %}
+            <p>{{ promocion }}</p>
+        {% endfor %}
+
+        <!-- 11. Sucursales con muchas reservaciones -->
+        <h2>Sucursales con muchas reservaciones</h2>
+        {% for sucursal in sucursales_con_muchas_reservaciones %}
+            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_reservaciones }}</p>
+        {% endfor %}
+
+        <!-- 12. Tipos con muchos productos -->
+        <h2>Tipos con muchos productos</h2>
+        {% for tipo in tipos_con_muchos_productos %}
+            <p>{{ tipo.tipo }}: {{ tipo.total_productos }}</p>
+        {% endfor %}
+
+        <!-- 13. Modos con muchos torneos -->
+        <h2>Modos con muchos torneos</h2>
+        {% for modo in modos_con_muchos_torneos %}
+            <p>{{ modo.modo_torneo }}: {{ modo.total_torneos }}</p>
+        {% endfor %}
+
+        <!-- 14. Torneos con muchos usuarios -->
+        <h2>Torneos con muchos usuarios</h2>
+        {% for torneo in torneos_con_muchos_usuarios %}
+            <p>{{ torneo.nombre_torneo }}: {{ torneo.total_usuarios }}</p>
+        {% endfor %}
+
+        <!-- 15. Fechas con muchas reservaciones -->
+        <h2>Fechas con muchas reservaciones</h2>
+        {% for fecha in fechas_con_muchas_reservaciones %}
+            <p>{{ fecha.fecha_reservacion }}: {{ fecha.total_reservaciones }}</p>
+        {% endfor %}
+
+        <!-- 16. Sucursales con muchas promociones -->
+        <h2>Sucursales con muchas promociones</h2>
+        {% for sucursal in sucursales_con_muchas_promociones %}
+            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_promociones }}</p>
+        {% endfor %}
+
+        <!-- 17. Sucursales con muchos productos -->
+        <h2>Sucursales con muchos productos</h2>
+        {% for sucursal in sucursales_con_muchos_productos %}
+            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_productos }}</p>
+        {% endfor %}
+
+        <!-- 18. Productos por tipo y sucursal -->
+        <h2>Productos por tipo y sucursal</h2>
+        {% for producto in productos_por_tipo_y_sucursal %}
+            <p>{{ producto.nombre_sucursal }} - {{ producto.tipo }}: {{ producto.total_productos }}</p>
+        {% endfor %}
+
+        <!-- 19. Torneos del 30/11/24 por modo -->
+        <h2>Torneos del 30/11/24 por modo</h2>
+        {% for torneo in torneos_30_nov_por_modo %}
+            <p>{{ torneo.modo_torneo }}: {{ torneo.total_torneos }}</p>
+        {% endfor %}
+
+        <!-- 20. Promedio de productos por sucursal -->
+        <h2>Promedio de productos por sucursal</h2>
+        {% for sucursal in promedio_productos_por_sucursal %}
+            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.promedio_productos }}</p>
+        {% endfor %}
+        
     </body>
 </html>
