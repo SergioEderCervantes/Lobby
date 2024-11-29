@@ -10,7 +10,7 @@ from settings import STATICFILES_DIRS
 # Create your views here.
 
 class Tournament(object):
-    def __init__(self, name, game_name, mode, date, description, rules, registered_players):
+    def __init__(self, name, game_name, mode, date, description, rules, registered_players,imagen):
         self.name = name
         self.game_name = game_name
         self.mode = mode
@@ -18,15 +18,24 @@ class Tournament(object):
         self.description = description
         self.rules = rules
         self.registered_players = registered_players
+        self.imagen = imagen
 
 def tournament_view(request, tournament_id):
     # Dios perdoname
-    from custom_admin.admin import admin_site
     
     tournament = get_object_or_404(Torneo,pk=tournament_id)
+    
+    if not tournament.matchup_img:
+        tournament.matchup_img = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+        tournament
+
+    
+
+
     matchups_ready = tournament.is_defined
     svg_data = None
     parent_dir = STATICFILES_DIRS[0]
+
     # Si ya los matchups estan hechos, carga el svg y lo manda sin mas 
     if (matchups_ready):
         file_name= str(tournament.pk) + '.svg'
