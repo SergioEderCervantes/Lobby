@@ -20,7 +20,6 @@ class Torneo(models.Model):
     is_defined = models.BooleanField(default=False)
     descripcion = models.TextField("Descripcion breve del torneo",max_length=1000, null=True, blank=True)
     reglas = models.TextField("Reglas del torneo (Poner cada regla separada por espacios)", max_length=150,  null=True, blank=True)
-    usuarios_torneo = models.ManyToManyField(User,verbose_name="Usuarios Inscritos al torneo", null= True, blank=True)
     
     class Meta:
         db_table = 'Torneo'
@@ -29,3 +28,6 @@ class Torneo(models.Model):
     def __str__(self):
         return self.nombre_torneo
 
+class Torneo_usuario(models.Model):
+    torneo = models.ForeignKey(Torneo, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
