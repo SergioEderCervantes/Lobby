@@ -4,4 +4,4 @@ __pycache__/
 
 node_modules/
 
-static/svg_tournaments/*
+static/svg_tournaments/

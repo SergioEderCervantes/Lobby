@@ -108,7 +108,7 @@ h1{
 #svg_enfrentamientos {
     width: 90%;      /* Ocupa todo el ancho del contenedor */
     height: auto;     /* Ajusta la altura de acuerdo al ancho sin crecer */
-    max-height: 700px; /* Limita la altura máxima */
+    /*max-height: 700px; /* Limita la altura máxima */
 }
 .connective__lines{
     stroke: var(--body-fg);
