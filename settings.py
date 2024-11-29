@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from google.oauth2 import service_account
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
@@ -149,7 +152,6 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    BASE_DIR / "node_modules"
 ]
 
 
@@ -176,3 +178,25 @@ LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # TODO: no se si debamos de dejar esto sin email de verificacion, ahorita esta asi para evitar error al crear una cuenta
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+# Configuracion google cloud storage
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+MEDIA_URL = "/app_gobierno/"
+
+GS_BUCKET_NAME = "app_gobierno_test_bucket"
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(
+    BASE_DIR, '.django/app-gobierno-432500-4ee8bc05bf56.json')
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE
+)

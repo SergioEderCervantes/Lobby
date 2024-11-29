@@ -2,15 +2,16 @@ from django.shortcuts import render
 from custom_admin.views import Tournament
 from .models import Torneo
 from django.shortcuts import get_object_or_404 
+from django.db.models import Count
 import os
 from settings import STATICFILES_DIRS 
 
 # Create your views here.
 
 def tournaments(request):
-    data = Torneo.objects.all()
-    tournaments = [Tournament(t.nombre_torneo,t.nombre_juego,"",t.fecha,"","",t.usuarios_torneo.all().count()) for t in data]
+    tournaments = Torneo.objects.all().annotate(num_users = Count('usuarios_torneo'))
 
+    #tournaments = [Tournament(t.nombre_torneo,t.nombre_juego,"",t.fecha,"","",t.imagen,t.usuarios_torneo.all().count()) for t in data]
 
     return render(request, 'tournaments.html', {'tournaments': tournaments})
 
@@ -27,12 +28,16 @@ def tournament_detail(request, name):
             svg_data = svg_file.read()
             
     # Sacar solo la data del torneo necesaria para el render del html
-    tournament_data = Tournament(torneo.nombre_torneo,torneo.nombre_juego,torneo.get_modo_torneo_display(),
+    tournament_data = Tournament(torneo.nombre_torneo,torneo.imagen,torneo.nombre_juego,torneo.get_modo_torneo_display(),
                                  torneo.fecha, torneo.descripcion, torneo.reglas.splitlines(),
                                  torneo.usuarios_torneo.all().count())
     
+<<<<<<< HEAD
     raw_users = torneo.usuarios_torneo.all()
     
     players = [user.username for user in raw_users]
     print(len(players))
     return render(request, 'tournament_detail.html', {'tournament' : tournament_data,'svg_data': svg_data, 'players': players})
+=======
+    return render(request, 'tournament_detail.html', {'tournament' : tournament_data,'svg_data': svg_data})
+>>>>>>> 6481c51628a07f709f72047740b0d016990ac978

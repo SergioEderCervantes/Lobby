@@ -17,6 +17,7 @@
 {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
   <div class="body">
     <div class="tournaments">
     <h1>Tournaments</h1>
@@ -37,4 +38,20 @@
     <footer class="footer">
         {% include 'footer/footer.html' %}
     </footer>
+=======
+  <div class="tournaments"> 
+  <h1>Tournaments</h1>
+  <section class="tournament_container">
+    {% for tournament in tournaments %}
+      <div class="tournament blur">
+        <h3>{{ tournament.nombre_torneo }}</h3>
+        <img src="{{tournament.imagen.url}}"></img>
+        <p>{{ tournament.fecha }}</p>
+        <p>Jugadores inscritos: {{ tournament.registered_players }}</p>
+        <a href="{% url 'tournament_detail' tournament.nombre_torneo %}" class="btn">Ingresar</a>
+      </div>
+    {% endfor %}
+  </section>
+</div>
+>>>>>>> 6481c51628a07f709f72047740b0d016990ac978
 {% endblock %}
