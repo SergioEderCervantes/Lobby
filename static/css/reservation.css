@@ -153,62 +153,72 @@ form .forgot a:hover {
 }
 
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    display: none;  /* Inicia oculto */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  display: none; /* Inicia oculto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+}
+
+.modal-content {
+  background: linear-gradient(
+      to bottom,
+      white 92%, /* Fondo blanco */
+      #ffcccc 92%, /* Simula el margen rojo de la izquierda */
+      #ffcccc 94% /* Continuación del margen */
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 24px,
+      #d3d3d3 25px /* Línea gris */
+    );
+  padding: 20px;
+  border-radius: 8px;
+  width: 60%;
+  max-width: 600px;
+  text-align: center;
+  border: 2px solid #d3d3d3; /* Opcional: Borde gris */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  padding: 10px 15px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #0b7dda;
+}
+
+/* Animaciones del modal */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 60%;
-    max-width: 600px;
-    text-align: center;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .modal-content h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  .modal-content p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .modal-content button {
-    padding: 10px 15px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .modal-content button:hover {
-    background-color: #0b7dda;
-  }
-  
-  /* Animaciones del modal */
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .modal-content {
-    animation: slideIn 0.3s ease-out;
-  }
+}
