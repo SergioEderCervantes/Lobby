@@ -1,31 +1,26 @@
-var swiper = new Swiper (".swiper" , {
+var swiper = new Swiper(".swiper", {
     effect: "coverflow",
     grabCursor: true,
-    centerSlides: true,
-    spaceBetween: 20,
-    initialSlide: 2,
-    speed: 600,
-    loop: true,
-    preventClicks: true,
-    slidespreview: 'auto',
+    centeredSlides: true, // Centra la diapositiva activa
+    spaceBetween: 20, // Espacio entre las diapositivas
+    slidesPerView: 'auto', // Permite que la diapositiva activa sea visible completamente y la siguiente parcialmente
+    initialSlide: 2, // Comienza desde la tercera diapositiva
+    speed: 600, // Velocidad de la transición
+    loop: true, // Activa el loop para que sea circular
+    preventClicks: true, // Previene clics durante el movimiento
     coverflowEffect: {
         rotate: 0,
-        stretch: 80,
-        depth: 350,
+        stretch: 80, // Desplaza las diapositivas lateralmente
+        depth: 350, // Profundidad de las diapositivas
         modifier: 1,
         slideShadows: true,
     },
-    on: {
-        click(event){
-            swiper.slideTo(this.clickedIndex)
-        },
+    autoplay: {
+        delay: 10000, // Tiempo entre transiciones automáticas (en milisegundos)
+        disableOnInteraction: false, // El autoplay no se detiene al interactuar
     },
     pagination: {
-        el: ".swiper-pagination",
-    },
-    autoplay: {
-        delay: 10000, // Tiempo entre transiciones (en milisegundos)
-        disableOnInteraction: false, // El autoplay no se detiene si el usuario interactúa
+        el: ".swiper-pagination", // Habilita la paginación
+        clickable: true, // Permite clics en los puntos de paginación
     },
 });
-
