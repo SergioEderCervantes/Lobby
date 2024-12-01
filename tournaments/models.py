@@ -16,8 +16,8 @@ class Torneo(models.Model):
     
     fecha = models.DateTimeField("Fecha y Hora del torneo")
     is_defined = models.BooleanField(default=False)
-    descripcion = models.TextField("Descripcion breve del torneo",max_length=1000, null=True, blank=True)
-    reglas = models.TextField("Reglas del torneo (Poner cada regla separada por espacios)", max_length=150,  null=True, blank=True)
+    descripcion = models.TextField("Descripcion breve del torneo",max_length=500, null=True, blank=True)
+    reglas = models.TextField("Reglas del torneo (Poner cada regla separada por espacios)", max_length=500,  null=True, blank=True)
     usuarios_torneo = models.ManyToManyField(User,verbose_name="Usuarios Inscritos al torneo", null= True, blank=True)
     
     class Meta:

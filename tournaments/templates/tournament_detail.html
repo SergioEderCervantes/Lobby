@@ -18,25 +18,25 @@
             <p> {{ tournament.description }} </p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur deserunt neque id temporibus. Ea ad saepe adipisci blanditiis? Harum quo voluptatem aut sint iusto in ab rem laboriosam facere repellendus.</p>
         </div>
-        <section class="reglas_jugadores_section">
-            <div class="container" id="prueba">
-                <h4>Reglas</h4>
-                <ul class="reglas">
+
+        <section class="accordion">
+            <div class="accordion_item">
+                <h4 class="accordion_header">Reglas</h4>
+                <ul class="accordion_content">
                     {% for rule in tournament.rules %}
                     <li> {{rule}} </li>
                     {% endfor %}
-                    <ul>
+                </ul>
             </div>
-            <div class="container">
-                <h4>Jugadores Inscritos</h4>
-                <ul class="Jugadores">
+            <div class="accordion_item">
+                <h4 class="accordion_header">Jugadores Inscritos</h4>
+                <ul class="accordion_content">
                     {% for player in players %}
                     <li> {{player}} </li>
                     {% endfor %}
                 </ul>
             </div>
         </section>
-
     </div>
     {% if svg_data %}
     <div class="svg_container blur">
