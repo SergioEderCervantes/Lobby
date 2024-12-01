@@ -1,15 +1,6 @@
 p,
 li {
     font-size: 18px;
-    text-align: start;
-}
-
-li {
-    margin: 1rem 0;
-}
-
-h3 {
-    margin: 1rem;
 }
 
 .tournament_info {
@@ -56,8 +47,6 @@ h3 {
     column-gap: 1rem;
 }
 
-
-
 /* Accordeon */
 
 .accordion{
@@ -70,19 +59,17 @@ h3 {
 }
 
 .accordion_item{
-    /* border: 1px solid #ddd; */
-    /* flex-grow: 1; */
     background: linear-gradient(#212121, #212121) padding-box,
     linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
     border-radius: 12px;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     width: 40%;
-    /* max-height: 50px; */
     height: fit-content;
+    text-align: start;
 }
 .accordion_item:hover {
-    background-color: #0056b3;
+    background-color: #e81cff;
 }
 
 
@@ -97,28 +84,28 @@ h3 {
 }
 
 
-/* Pseudo-elemento para la flecha */
+
 .accordion_header::after {
     content: ">";
     font-size: 16px;
     position: absolute;
-    right: 15px; /* Ajustar al borde derecho */
+    right: 15px; 
     top: 50%;
     transform: translateY(-50%);
-    transition: transform 0.3s ease; /* Suavizar la rotación */
+    transition: transform 0.3s ease; 
 }
 
-/* Cambiar flecha cuando el contenido está abierto */
+
 .accordion_header.active::after {
     content: "v";
 }
 
-/* Contenido inicial (oculto por defecto) */
+
 .accordion_content {
-    max-height: 0; /* Altura inicial para ocultarlo */
-    overflow: hidden; /* Esconder contenido cuando está cerrado */
-    transition: max-height 0.3s ease; /* Transición suave */
-    /* background-color: white; */
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.3s ease; 
+    
     list-style: circle;
     margin: 0;
     padding-left: 30px;
@@ -137,10 +124,10 @@ h3 {
 }
 
 
-/* Contenido visible */
+
 .accordion_content.open {
     overflow: auto;
-    max-height: 350px; /* Altura suficiente para mostrar el contenido */
+    max-height: 350px; 
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
