@@ -121,10 +121,14 @@ Con estos pasos, la base de datos queda limpia y actualizada con la estructura n
 
 1. Crear una carpeta llamada .django en el directorio raiz del proyecto
 
-2. Crear el archivo .env en donde pondremos las variables del entorno
+2. Pegar el archivo .env en donde pondremos las variables del entorno
 
-3. Poner el archivo secret y lobby dentro de la carpeta .django
+3. Pegar el archivo secret y lobby dentro de la carpeta .django
 
 4. Crear una carpeta tmp en C:/
 
-5. Ejecutar el comando python python manage.py runserver_plus --cert-file /tmp/cert
+5. Ejecutar el comando
+
+```bash
+python manage.py runserver_plus --cert-file /tmp/cert
+```
