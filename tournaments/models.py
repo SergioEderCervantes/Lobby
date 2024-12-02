@@ -36,7 +36,7 @@ class Torneo(models.Model):
 
     cantidad_usuarios_inscritos.short_description = 'Jugadores Inscritos'
     class Meta:
-        db_table = 'Torneo'
+        db_table = 'tournaments_torneo'
         verbose_name = 'torneo'
 
     def __str__(self):

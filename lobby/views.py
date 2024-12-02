@@ -1,5 +1,3 @@
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.templatetags.static import static
 from django.db import connection
@@ -21,9 +19,6 @@ def home(request):
     }
     return render(request, 'index.html', {'promociones' : promociones})
 
-from django.db import connection
-from django.shortcuts import render
-
 def sql(request):
     # Consultas SQL
     with connection.cursor() as cursor:
@@ -40,7 +35,7 @@ def sql(request):
         id_torneo = 1  # Ajusta el ID del torneo según sea necesario
         cursor.execute("""
             SELECT u.first_name, u.last_name 
-            FROM tournaments_torneo_usuario ut
+            FROM tournaments_torneo_jugadores_inscritos ut
             JOIN users_user u ON u.id = ut.id
             WHERE ut.torneo_id = %s
         """, [id_torneo])
@@ -50,7 +45,7 @@ def sql(request):
         cursor.execute("""
             SELECT u.first_name, u.last_name 
             FROM users_user u
-            JOIN reservations_reservacion r ON u.id = r.id
+            JOIN reservations_reservation r ON u.id = r.id
         """)
         usuarios_con_reservacion = cursor.fetchall()
 
@@ -75,7 +70,7 @@ def sql(request):
         # 7. Obtener todas las reservaciones del día 24/11/24
         cursor.execute("""
             SELECT * 
-            FROM reservations_reservacion 
+            FROM reservations_reservation 
             WHERE fecha = '2024-11-24'
         """)
         reservaciones_24_nov = cursor.fetchall()
@@ -107,7 +102,7 @@ def sql(request):
         # 11. Contar el número de reservaciones por sucursal, solo para las sucursales con más de 5 reservaciones
         cursor.execute("""
             SELECT s.nombre_sucursal, COUNT(r.id) AS total_reservaciones
-            FROM reservations_reservacion r
+            FROM reservations_reservation r
             JOIN lobby_sucursal s ON r.sucursal_id = s.id
             GROUP BY s.nombre_sucursal
             HAVING COUNT(r.id) > 5
@@ -136,7 +131,7 @@ def sql(request):
         # 14. Obtener el número de usuarios inscritos por torneo, solo aquellos torneos con más de 3 usuarios inscritos
         cursor.execute("""
             SELECT t.nombre_torneo, COUNT(tu.usuario_id) AS total_usuarios
-            FROM tournaments_torneo_usuario tu
+            FROM tournaments_torneo_jugadores_inscritos tu
             JOIN tournaments_torneo t ON tu.torneo_id = t.id
             GROUP BY t.nombre_torneo
             HAVING COUNT(tu.usuario_id) > 3
@@ -146,7 +141,7 @@ def sql(request):
         # 15. Contar el número de reservaciones por fecha, solo para fechas con más de 10 reservaciones
         cursor.execute("""
             SELECT r.fecha_reservacion, COUNT(r.id) AS total_reservaciones
-            FROM reservations_reservacion r
+            FROM reservations_reservation r
             GROUP BY r.fecha_reservacion
             HAVING COUNT(r.id) > 10
         """)
