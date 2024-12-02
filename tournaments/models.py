@@ -23,5 +23,5 @@ class Torneo(models.Model):
     
 
 class Torneo_usuario(models.Model):
-    torneo = models.ForeignKey(Torneo, on_delete=models.CASCADE, null=True, blank=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    torneo = models.ForeignKey(Torneo,on_delete=models.SET_NULL, null=True, blank=True)
+    usuario = models.ForeignKey(User,on_delete=models.SET_NULL, null=True, blank=True)

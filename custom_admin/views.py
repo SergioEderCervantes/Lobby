@@ -11,27 +11,25 @@ from settings import STATICFILES_DIRS
 # Create your views here.
 
 class Tournament(object):
-    def __init__(self, name, game_name, mode, date, description, rules, registered_players,imagen):
+    def __init__(self, name, game_name, mode, date, description, rules):
         self.name = name
         self.game_name = game_name
         self.mode = mode
         self.date = date
         self.description = description
         self.rules = rules
-        self.registered_players = registered_players
-        self.imagen = imagen
+        # self.registered_players = registered_players
+        # self.imagen = imagen
 
 def tournament_view(request, tournament_id):
     # Dios perdoname
+    from custom_admin.admin import admin_site
     
     tournament = get_object_or_404(Torneo,pk=tournament_id)
     
-    if not tournament.matchup_img:
-        tournament.matchup_img = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+    if not tournament.imagen:
+        tournament.imagen = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
         tournament
-
-    
-
 
     matchups_ready = tournament.is_defined
     svg_data = None
@@ -61,7 +59,7 @@ def tournament_view(request, tournament_id):
     # Sacar solo la data del torneo necesaria para el render del html
     tournament_data = Tournament(tournament.nombre_torneo,tournament.nombre_juego,tournament.get_modo_torneo_display(),
                                  tournament.fecha, tournament.descripcion, tournament.reglas.splitlines(),
-                                 tournament.usuarios_torneo.all().count())
+                                 )
     # Obtener el contexto de custom_admin_site
     context = admin_site.each_context(request)
     
