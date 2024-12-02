@@ -9,24 +9,19 @@
 {% block content %}
 <div class="body">
     <div class="tournament_info">
-        <h1> {{tournament.name}} </h1>
-<<<<<<< HEAD
+        <h1> {{torneo.nombre_torneo}} </h1>
         <div class='tournament__info__image blur'>
-            <img src="{% static 'img/Torneo1.jpg' %}" alt="imagen del torneo" />
-=======
-        <div class='tournament__info__image blur'> 
-            <img src="{{tournament.imagen.url}}" alt="imagen del torneo" />
->>>>>>> 6481c51628a07f709f72047740b0d016990ac978
+            <img src="{{torneo.imagen.url}}" alt="imagen del torneo" />
         </div>
 
-        <h2>Descripcion<h2>
-                <p> {{ tournament.description }} </p>
-                <h2>Reglas<h2>
-                        <ul>
-                            {% for rule in tournament.rules %}
-                            <li> {{rule}} </li>
-                            {% endfor %}
-                            <ul>
+        <h2>Descripcion</h2>
+        <p> {{ torneo.descripcion }} </p>
+        <h2>Reglas</h2>
+        <ul>
+        {% for rule in reglas %}
+            <li> {{rule}} </li>
+        {% endfor %}
+        </ul>
 
     </div>
     {% if svg_data %}
@@ -45,7 +40,7 @@
             {% else %}
             <div class="guest_form">
                 <form class="form">
-                    <legend> Registrarse a {{tournament.name}} como invitado</legend>
+                    <legend> Registrarse a {{torneo.nombre_torneo}} como invitado</legend>
                     <div class="form-group">
                         <label for="playerName">Nombre de jugador</label>
                         <input type="text" id="playerName" name="playerName" required="">
