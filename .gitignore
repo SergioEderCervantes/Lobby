@@ -1,7 +1,18 @@
 # GitIgnore creado por el checo
 
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
 
 node_modules/
 
-static/svg_tournaments/
+<<<<<<< HEAD
+static/svg_tournaments/*
+=======
+static/svg/*
+
+.env
+
+.django
+>>>>>>> 6481c51628a07f709f72047740b0d016990ac978

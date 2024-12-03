@@ -3,10 +3,10 @@
 {% block extrahead %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/admin/tournament_view.css' %}" />
-
+    <link rel="stylesheet" href="{% static 'css/resultTable.css' %}" />
 
     <script>
-        const tournamentId = "{{ torneo_id }}";
+        const tournamentId = "{{ torneo.id }}";
         const csrfToken = "{{ csrf_token }}";
     </script>
     <script src="{% static '/@svgdotjs/svg.js/dist/svg.min.js' %}" defer></script>
@@ -18,7 +18,7 @@
 
 {% block content %}
 
-    <h2>Nombre del torneo: {{ tournament.name }}</h2>
+    <h2>Nombre del torneo: {{ torneo.nombre_torneo }}</h2>
     <table class="tabla__datos">
         <tr>
             <td><strong>Nombre del torneo</strong></td>
@@ -28,11 +28,11 @@
             <td><strong>Fecha del torneo</strong></td>
         </tr>
         <tr>
-            <td>{{ tournament.name }}</td>
-            <td>{{ tournament.game_name }}</td>
-            <td>{{ tournament.mode }}</td>
-            <td>{{ tournament.registered_players }}</td>
-            <td>{{ tournament.date }}</td>
+            <td>{{ torneo.nombre_torneo }}</td>
+            <td>{{ torneo.nombre_juego }}</td>
+            <td>{{ torneo.get_modo_torneo_display }}</td>
+            <td>{{ num_players }}</td>
+            <td>{{ torneo.fecha }}</td>
         </tr>
     </table>
     <section>
@@ -49,7 +49,7 @@
                     <button id="reset__button" class="hide options__button">Reiniciar Torneo</button>
                 </div>
             </div>
-            {% if tournament.mode == 'Round Robin' %}
+            {% if torneo.get_modo_torneo_display == 'Round Robin' %}
             <div class = "standings__container" id =>
                 <table id = "standings_table">
                     <thead>
@@ -81,7 +81,7 @@
             {% endif %}
 
         {% else %}
-            <form method="post" action="{% url 'admin:vista_del_torneo' tournament_id=torneo_id %}">
+            <form method="post" action="{% url 'admin:vista_del_torneo' tournament_id=torneo.id %}">
                 {% csrf_token %}
                 <button type="submit" id="create_tournament" class="options__button">Crear Emparejamiento del torneo</button>
             </form>
