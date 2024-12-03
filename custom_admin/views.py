@@ -29,6 +29,9 @@ def tournament_view(request, tournament_id):
 
     # Obtener el número de jugadores inscritos
     num_players = tournament.cantidad_usuarios_inscritos()
+
+    #Obtener lista de los jugadores inscritos
+    players = tournament.usuarios_inscritos()
     
     if not tournament.imagen:
         tournament.imagen = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
@@ -52,7 +55,9 @@ def tournament_view(request, tournament_id):
         "svg_data": svg_data,
         "opts": Torneo._meta,  # Pasar opts explícitamente para compatibilidad con breadcrumbs
         "app_label": "tournaments",  # Pasar app_label explícitamente
+        "players": players
     })
+    #if(tournament.modo_torneo == 'Round') : context.update(results_table)
     return TemplateResponse(request, 'admin/tournament_view.html', context)
 
 

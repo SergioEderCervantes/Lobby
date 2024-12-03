@@ -30,6 +30,7 @@ def createRounds(players = [], tournament_id = 0, parent_dir = ""):
 
     totalMatches = n // 2  # Matches por ronda
 
+    random.shuffle(players) #shuffle al array de jugadores
     # Para evitar problemas con num impar de jugadores
     if n % 2 != 0:
         players.append(None) 
@@ -68,59 +69,57 @@ def create_svg(rounds, tournament_id, parent_dir):
     XOFFSET = 250
     YOFFSET= 100
 
-    machups_group = dwg.g(id="g__enfrentamientos")
+    columns = len(rounds[0].matches) // 2
 
+    machups_group = dwg.g(id="g__enfrentamientos")
 
     x_pos = x_start = 20
     y_pos = y_start = 20
+    x_max = 0
+    y_max = 0
+    
 
     for round in rounds:
         count = 0
         y_pos = y_start + YOFFSET/2
         x_pos = x_start + XOFFSET
+        
         rounds_group = dwg.g(id = "round__" + str(round.id))
-        rounds_group.add(dwg.text(f"Ronda {round.id}",
-                         insert=(x_pos, y_start),
-                         fill="black",
-                         font_size="16px",
-                         font_weight="bold"))
+        #rounds_group.add(dwg.rect(insert=(x_pos, y_start), size=(150,35), fill="#a1a1a1", rx=0, ry=0, class_="label__rect"))
+        text = dwg.text(f"Ronda {round.id}",insert=(x_pos, y_start), class_="etiquetas_levels", font_weight = 700, fill="white")
+        text.attribs["dominant-baseline"] = "middle"
+        text.attribs["text-anchor"] = "middle"
+        rounds_group.add(text)
+        #Crear matches para cada ronda
         for match in round.matches:
             match_square = create_match_square(dwg, match, x_pos, y_pos)
             rounds_group.add(match_square)
             x_pos += XOFFSET
             count += 1
+            if(x_pos > x_max): x_max = x_pos
             if count == 3: 
                 count = 0
                 x_pos = x_start + XOFFSET
-                y_pos += YOFFSET
-                y_start += YOFFSET
-        y_start += YOFFSET
+                y_pos += YOFFSET / 1.5
+        y_start = y_pos + YOFFSET
+        if(y_pos > y_max): y_max = y_pos
         machups_group.add(rounds_group)
 
     dwg.add(machups_group)
 
     SVG_NAME = os.path.join(parent_dir,'svg_tournaments', str(tournament_id) + '.svg')
 
-    # Calcular las dimensiones que debe de tener el svg
-    #width, height = get_max_dimensions(dwg.elements)
-    width = 800
-    height = y_pos
     
-
-    # Guardar el archivo SVG
     id="svg_enfrentamientos"
-    #dwg['width'] = width + 200
-    #dwg['height'] = height + 200
-    #dwg['width'] = '100%'
-    #dwg['height'] = 'auto'
-    calculated_height = y_pos + 50  # Agrega un margen extra si es necesario
-    print(f"height: {calculated_height}")
-    
-    dwg['height'] = f"{calculated_height}px"
-    dwg['width'] = '100%'  # Ancho relativo al contenedor
-    dwg['viewBox'] = f"0 0 {width + 200} {calculated_height}"
+    svgClass = 'Round'
+    dwg['width'] = x_max
+    dwg['height'] = y_max + 100
     dwg['id'] = id
-    #dwg['viewBox'] = f"0 0 {width} {height + 50}"
+    dwg['class'] = svgClass
+    dwg['viewBox'] = f"0 0 {x_max} {y_max}"
+
+    print(f"Width: {x_max}")
+    print(f"Height: {y_max}")
     dwg.saveas(filename=SVG_NAME,pretty=True)
 
     return SVG_NAME
@@ -153,7 +152,7 @@ def create_match_square(dwg, match_data, cx, cy):
     match_group.add(dwg.rect(insert=(x+25,y), size=('175px',MATCH_HEIGHT), rx=10, ry=10, fill='#444444', class_="players__container"))
     # Jugadores
     # Si es un rectangulo que no tiene jugadores, se referencia la clase como blanco
-    className  ="matchup__player draggable" if not match_data.player1.isdigit() else "matchup__player"
+    className  ="matchup__player" if not match_data.player1.isdigit() else "matchup__player"
     
     
     group1 = dwg.g(class_=className)
@@ -161,7 +160,7 @@ def create_match_square(dwg, match_data, cx, cy):
     group1.add(dwg.text(match_data.player1, insert=(x+30, y+18), class_="matchup__player1", fill="white", font_size="14px"))
     match_group.add(group1)
     
-    className  ="matchup__player draggable" if not match_data.player2.isdigit() else "matchup__player"
+    className  ="matchup__player" if not match_data.player2.isdigit() else "matchup__player"
     group2 = dwg.g(class_=className)
     group2.add( dwg.rect(insert=(x+25,y+25), size=("175px","25px"), fill="#444444", rx=10, ry=10))
     group2.add(dwg.text(match_data.player2, insert=(x+30, y+45), class_="matchup__player2", fill="white", font_size="14px"))
@@ -197,33 +196,3 @@ def create_match_square(dwg, match_data, cx, cy):
     # Linea para diferenciar la parte de jugadores de la parte de la insersion de puntaje
     match_group.add(dwg.line(start=(x+175,y), end = (x+175,y+50), stroke="white", stroke_width=1, class_="divisor_line_2"))
     return match_group
-
-def get_max_dimensions(elements, max_x = 0, max_y = 0):
-    """
-    Recursivamente encuentra las coordenadas máximas de los elementos.
-    """
-    for element in elements:
-        if isinstance(element, svgwrite.container.Group):  # Si es un grupo, iterar recursivamente
-            max_x, max_y = get_max_dimensions(element.elements, max_x, max_y)
-        else:
-            attribs = element.attribs
-            if isinstance(element, svgwrite.shapes.Rect):  # Rectángulo
-                x, y = attribs.get('insert', (0, 0))
-                width, height = attribs.get('size', (0, 0))
-                max_x = max(max_x, x + width)
-                max_y = max(max_y, y + height)
-            elif isinstance(element, svgwrite.text.Text):  # Texto
-                x, y = attribs.get('insert', (0, 0))
-                max_x = max(max_x, x)
-                max_y = max(max_y, y)
-            elif isinstance(element, svgwrite.shapes.Line):  # Línea
-                x1, y1 = attribs.get('start', (0, 0))
-                x2, y2 = attribs.get('end', (0, 0))
-                max_x = max(max_x, x1, x2)
-                max_y = max(max_y, y1, y2)
-            elif isinstance(element, svgwrite.shapes.Polyline):  # Polilínea
-                points = list(element.points)  # Obtener los puntos como una lista
-                max_x = max(max_x, *[p[0] for p in points])
-                max_y = max(max_y, *[p[1] for p in points])
-
-    return max_x, max_y
