@@ -87,7 +87,8 @@ CREATE DATABASE lobby;
 Ahora, abre una terminal powershell en el proyecto de lobby (con el entorno virtual encendido) y ejecuta este comando
 
 ```powershell
-Get-ChildItem -Path . -Recurse -Filter ".py" | Where-Object { $.Name -ne "init.py" -and $.DirectoryName -like "*migrations" } | Remove-Item
+Get-ChildItem -Recurse -File -Include "*.py" | Where-Object { $_.Name -ne "__init__.py" -and $_.DirectoryName -match "migrations" } | Remove-Item -Force
+
 ```
 
 O si es en linux/MacOS:
