@@ -69,13 +69,15 @@ def create_svg(rounds, tournament_id, parent_dir):
     XOFFSET = 250
     YOFFSET= 100
 
-    machups_group = dwg.g(id="g__enfrentamientos")
+    columns = len(rounds[0].matches) // 2
 
+    machups_group = dwg.g(id="g__enfrentamientos")
 
     x_pos = x_start = 20
     y_pos = y_start = 20
     x_max = 0
     y_max = 0
+    
 
     for round in rounds:
         count = 0
@@ -88,11 +90,7 @@ def create_svg(rounds, tournament_id, parent_dir):
         text.attribs["dominant-baseline"] = "middle"
         text.attribs["text-anchor"] = "middle"
         rounds_group.add(text)
-        #rounds_group.add(dwg.text(f"Ronda {round.id}",
-        ###                 insert=(x_pos, y_start),
-        #                 fill="black",
-        #                 font_size="16px",
-        #                 font_weight="bold"))
+        #Crear matches para cada ronda
         for match in round.matches:
             match_square = create_match_square(dwg, match, x_pos, y_pos)
             rounds_group.add(match_square)
@@ -102,9 +100,8 @@ def create_svg(rounds, tournament_id, parent_dir):
             if count == 3: 
                 count = 0
                 x_pos = x_start + XOFFSET
-                y_pos += YOFFSET
-                y_start += YOFFSET
-        y_start += YOFFSET
+                y_pos += YOFFSET / 1.5
+        y_start = y_pos + YOFFSET
         if(y_pos > y_max): y_max = y_pos
         machups_group.add(rounds_group)
 
@@ -112,24 +109,13 @@ def create_svg(rounds, tournament_id, parent_dir):
 
     SVG_NAME = os.path.join(parent_dir,'svg_tournaments', str(tournament_id) + '.svg')
 
-    # Calcular las dimensiones que debe de tener el svg
-   # width, height = get_max_dimensions(dwg.elements)
-    #width = 800
-    #height = y_pos
-    
-
-    # Guardar el archivo SVG
-    id="svg_enfrentamientos"
-    #dwg['width'] = width + 200
-    #dwg['height'] = height + 200
-    #dwg['width'] = '100%'
-    #dwg['height'] = 'auto'
-   # print(f"height: {calculated_height}")
     
     id="svg_enfrentamientos"
+    svgClass = 'Round'
     dwg['width'] = x_max
     dwg['height'] = y_max + 100
     dwg['id'] = id
+    dwg['class'] = svgClass
     dwg['viewBox'] = f"0 0 {x_max} {y_max}"
 
     print(f"Width: {x_max}")
@@ -166,7 +152,7 @@ def create_match_square(dwg, match_data, cx, cy):
     match_group.add(dwg.rect(insert=(x+25,y), size=('175px',MATCH_HEIGHT), rx=10, ry=10, fill='#444444', class_="players__container"))
     # Jugadores
     # Si es un rectangulo que no tiene jugadores, se referencia la clase como blanco
-    className  ="matchup__player draggable" if not match_data.player1.isdigit() else "matchup__player"
+    className  ="matchup__player" if not match_data.player1.isdigit() else "matchup__player"
     
     
     group1 = dwg.g(class_=className)
@@ -174,7 +160,7 @@ def create_match_square(dwg, match_data, cx, cy):
     group1.add(dwg.text(match_data.player1, insert=(x+30, y+18), class_="matchup__player1", fill="white", font_size="14px"))
     match_group.add(group1)
     
-    className  ="matchup__player draggable" if not match_data.player2.isdigit() else "matchup__player"
+    className  ="matchup__player" if not match_data.player2.isdigit() else "matchup__player"
     group2 = dwg.g(class_=className)
     group2.add( dwg.rect(insert=(x+25,y+25), size=("175px","25px"), fill="#444444", rx=10, ry=10))
     group2.add(dwg.text(match_data.player2, insert=(x+30, y+45), class_="matchup__player2", fill="white", font_size="14px"))

@@ -9,7 +9,7 @@ from settings import STATICFILES_DIRS
 
 def tournaments(request):
     data = Torneo.objects.all()
-    tournaments = [Tournament(t.nombre_torneo,t.nombre_juego,"",t.fecha,"","",t.usuarios_torneo.all().count()) for t in data]
+    tournaments = [Tournament(t.nombre_torneo,t.nombre_juego,"",t.fecha,"","",t.usuarios_torneo.all().count(), []) for t in data]
 
 
     return render(request, 'tournaments.html', {'tournaments': tournaments})

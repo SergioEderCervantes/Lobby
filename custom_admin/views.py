@@ -25,6 +25,7 @@ def tournament_view(request, tournament_id):
     from custom_admin.admin import admin_site
     
     tournament = get_object_or_404(Torneo,pk=tournament_id)
+    players = get_registered_players(tournament)
     matchups_ready = tournament.is_defined
     svg_data = None
     parent_dir = STATICFILES_DIRS[0]
@@ -36,7 +37,6 @@ def tournament_view(request, tournament_id):
             svg_data = svg_file.read()
     # Si no estan los matchups pero el request es post, manda a crear los matchups
     elif request.method == "POST":      
-        players = get_registered_players(tournament)
         if(tournament.modo_torneo == 'Direct'):
             file_path = crearMatch(players, tournament.pk, parent_dir=parent_dir)
             # Una vez creado, lo toma desde los archivos y lo guarda en svg_data
@@ -64,7 +64,9 @@ def tournament_view(request, tournament_id):
         "svg_data": svg_data,
         "opts": Torneo._meta,  # Pasar opts explícitamente para compatibilidad con breadcrumbs
         "app_label": "tournaments",  # Pasar app_label explícitamente
+        "players": players
     })
+    #if(tournament.modo_torneo == 'Round') : context.update(results_table)
     return TemplateResponse(request, 'admin/tournament_view.html', context)
 
 
