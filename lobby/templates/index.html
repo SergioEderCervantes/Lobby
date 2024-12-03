@@ -12,27 +12,36 @@
         <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
         <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/perfil.css' %}" />
 
         {% block extrahead %}
         <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
         <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/torneo_home.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/info_general.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/ubicacion_bottompage.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/contenedor_linkhome.css' %}" />
 
-        <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
-        <script src="{% static '\js\carrusel.js' %}" defer></script>
-
+        
 
         {% endblock %}
+        
+        {% block extrascripts %}
+        <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
+        <script src="{% static '\js\carrusel.js' %}" defer></script>
         <script src="{% static '\js\navbar.js' %}" defer></script>
+        <script src="{% static '\js\perfil.js' %}" defer></script>
 
+        {% endblock %}
+        
     </head>
     <body>
         
         {% block header %}  
-        <div class=" login pages">
+        
         {% include 'header/log.html' %}
-        </div>
-        <header class="navbar">
+        <header class=" navbar">
             {% include 'header/navbar.html' %}
         </header>
         <section class="landpage">
@@ -50,6 +59,7 @@
         
         {% include 'body/promociones.html' %}
         <section class="body">
+        {% include 'body/torneo.html' %}
         {% include 'body/informacion.html' %}
         {% include 'body/ubicacion.html' %}
         {% include 'body/bottompage.html' %}
