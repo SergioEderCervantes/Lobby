@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.templatetags.static import static
 from django.db import connection
-
+from tournaments.models import Torneo
+from django.utils.timezone import now
 
 class Promocion(object):
     def __init__(self, nombre, imagen):
@@ -17,7 +18,10 @@ def home(request):
             Promocion( "promocion5", static('img/promo5.jpg')),
         
     }
-    return render(request, 'index.html', {'promociones' : promociones})
+    
+    proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()
+    
+    return render(request, 'index.html', {'promociones' : promociones, 'prox_torneo': proximo_torneo})
 
 def sql(request):
     # Consultas SQL

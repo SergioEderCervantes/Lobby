@@ -4,6 +4,7 @@
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
+<script src="{% static 'js/tournaments.js' %}" defer></script>
 {% endblock %}
 
 {% block header %}
@@ -23,13 +24,14 @@
     <h1>Tournaments</h1>
     <section class="tournament_container">
       {% for tournament in tournaments %}
-      <h2>hola</h2>
-      <div class="tournament blur">
-        <h3>{{ tournament.nombre_torneo }}</h3>
-        <img src="{{tournament.imagen.url}}"></img>
-        <p>{{ tournament.fecha }}</p>
-        <p>Jugadores inscritos: {{ tournament.num_players}}</p>
-        <a href="{% url 'tournament_detail' tournament.nombre_torneo %}" class="btn">Ingresar</a>
+      <div class="tournament blur backImage " data-bg-url="{{ tournament.imagen.url }}" >
+        <div class="foreground">
+          <h3>{{tournament.nombre_torneo}}</h3>
+          <p>fecha: {{tournament.fecha}}</p>
+          <p>Jugadores inscritos:{{tournament.num_players}}</p> 
+          <a href="{% url 'tournament_detail' tournament.nombre_torneo %}" class="btn">Ingresar</a>
+        </div>
+
       </div>
       {% endfor %}
     </section>
