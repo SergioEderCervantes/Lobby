@@ -7,12 +7,8 @@ __pycache__/
 
 node_modules/
 
-<<<<<<< HEAD
 static/svg_tournaments/*
-=======
-static/svg/*
 
 .env
 
 .django
->>>>>>> 6481c51628a07f709f72047740b0d016990ac978
