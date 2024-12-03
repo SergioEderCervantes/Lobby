@@ -5,7 +5,7 @@
     src="{% static 'svg/profile.svg' %}"
     data-hover="{% static 'svg/profile.svg' %}"
     data-default="{% static 'svg/profile.svg' %}"
-    alt="Reserv"
+    alt="Porfile"
     />
 
     </div>
@@ -15,7 +15,7 @@
         <h3>¡Hola, {{ user.username }}!</h3>
         <p>{{ user.email }}</p>
         <a href="#">editar</a>
-        <p>Nó. de Reservaciones</p>
+        <p>Nó. Torneos</p>
         <div class="rating">
           
           <input type="radio" id="heart5" name="rate" value="5" />
@@ -63,7 +63,6 @@
             </svg>
           </label>
         </div>
-        
         <button class="login-button">
           <span class="shadow"></span>
           <span class="edge"></span>  
@@ -85,7 +84,6 @@
   <div id="sidebar" class="sidebar-out">
     <div class="sidebar-content">
   <section class="position-out">
-   
   <button class="login-button-out">
     <span class="shadow"></span>
     <span class="edge"></span>
@@ -100,4 +98,3 @@
 </div>
 </div>
   {% endif %}
-

@@ -1,5 +1,19 @@
-<section class="tarjeta">
-    <div>
-    </div>
+{% load static %}
+{% block extracard %}
+        <script src="{% static '\js\cards_home.js' %}" defer></script>
+        {% endblock %}
+<section class="ubicacion_contenedor">
 
+  
+  <div class="contenedor_h">
+    <img src="{% static 'img/restaurant.jpg' %}" alt="Lobby bar">
+    <h3 id="texto">Restaurante</h3>
+    <a href="{% url 'restaurante' %}">Ingresar</a>
+  </div>
+  
+  <div class="ubicacion">
+    <h2>Encuentranos!!!</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3702.4417307616463!2d-102.29037989999999!3d21.8790594!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429efa2f301cdf7%3A0x4786a37813d7375e!2sLobby%20Restaurant%20bar!5e0!3m2!1ses-419!2smx!4v1733229326852!5m2!1ses-419!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  </div>
+ 
+    
 </section>
