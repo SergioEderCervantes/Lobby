@@ -209,7 +209,7 @@ def create_svg_match(matchups, adicionales, tournament_id, parent_dir, is_ideal,
     width, height = get_max_dimensions(dwg.elements)
     # Guardar el SVG creado 
     
-    SVG_NAME = os.path.join(parent_dir,'svg', str(tournament_id) + '.svg')
+    SVG_NAME = os.path.join(parent_dir,'svg_tournaments', str(tournament_id) + '.svg')
     
     id="svg_enfrentamientos"
     dwg['width'] = width + 200

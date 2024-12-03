@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('lobby.urls')),
     path('admin/', admin_site.urls),
     path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.socialaccount.urls')),
     path('reservations/', include('reservations.urls')),
     path('tournaments/', include('tournaments.urls')),
     path('restaurante/', include('restaurante.urls')),

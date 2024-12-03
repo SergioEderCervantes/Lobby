@@ -99,7 +99,7 @@ def create_svg(rounds, tournament_id, parent_dir):
 
     dwg.add(machups_group)
 
-    SVG_NAME = os.path.join(parent_dir,'svg', str(tournament_id) + '.svg')
+    SVG_NAME = os.path.join(parent_dir,'svg_tournaments', str(tournament_id) + '.svg')
 
     # Calcular las dimensiones que debe de tener el svg
     #width, height = get_max_dimensions(dwg.elements)
