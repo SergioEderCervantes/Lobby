@@ -12,26 +12,34 @@
         <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
         <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/perfil.css' %}" />
 
         {% block extrahead %}
         <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
         <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
 
-        <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
-        <script src="{% static '\js\carrusel.js' %}" defer></script>
-
+        
 
         {% endblock %}
+        
+        {% block extrascripts %}
+        <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
+        <script src="{% static '\js\carrusel.js' %}" defer></script>
         <script src="{% static '\js\navbar.js' %}" defer></script>
-
+        <script src="{% static '\js\perfil.js' %}" defer></script>
+        {% endblock %}
     </head>
     <body>
         
         {% block header %}  
-        <div class=" login pages">
-        {% include 'header/log.html' %}
-        </div>
+        
+        
+        
+       
+                {% include 'header/log.html' %}
+
+  
         <header class=" navbar">
             {% include 'header/navbar.html' %}
         </header>
