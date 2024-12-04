@@ -24,7 +24,7 @@
     <h1>Tournaments</h1>
     <section class="tournament_container">
       {% for tournament in tournaments %}
-      <div class="tournament blur backImage " data-bg-url="{{ tournament.imagen.url }}" >
+      <div class="tournament blur backImage " data-bg-url="{{ tournament.imagen_banner.url }}" >
         <div class="foreground">
           <h3>{{tournament.nombre_torneo}}</h3>
           <p>fecha: {{tournament.fecha}}</p>

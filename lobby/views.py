@@ -20,8 +20,9 @@ def home(request):
     }
     
     proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()
+    num_players = proximo_torneo.cantidad_usuarios_inscritos()
     
-    return render(request, 'index.html', {'promociones' : promociones, 'prox_torneo': proximo_torneo})
+    return render(request, 'index.html', {'promociones' : promociones, 'prox_torneo': proximo_torneo, 'num_players': num_players})
 
 def sql(request):
     # Consultas SQL

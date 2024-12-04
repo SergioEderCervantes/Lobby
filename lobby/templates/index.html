@@ -59,7 +59,7 @@
         
         {% include 'body/promociones.html' %}
         <section class="body">
-        {% include 'body/torneo.html' %}
+        {% include 'body/torneo.html' with prox_torneo=prox_torneo num_players=num_players%}
         {% include 'body/informacion.html' %}
         {% include 'body/ubicacion.html' %}
         {% include 'body/bottompage.html' %}
