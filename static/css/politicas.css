@@ -1,0 +1,44 @@
+.tarjeta_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(43, 9, 79, 0.236);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    border-radius: 10px;
+    color: white;
+    margin: 0 auto;
+    width: 60%;
+    line-height: 1.6;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    padding: 5%;
+}
+ 
+
+.tarjeta_info h1,h2,h3 {
+    color: #bdbbbb; /* Títulos ligeramente más oscuros */
+    font-weight: bold; /* Resaltar títulos */
+    margin-top: 20px; /* Espacio antes del título */
+    margin-bottom: 10px; /* Espacio después del título */
+}
+
+.tarjeta_info h1 {
+    font-size: 28px; /* Tamaño grande para el título principal */
+    text-align: center; /* Centrar el título principal */
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+.tarjeta_info h2, h3 {
+    font-size: 20px; /* Tamaño intermedio para subtítulos */
+    margin-top: 30px; /* Espacio superior */
+}
+
+.tarjeta_info p {
+   
+    margin-top: 10px; /* Espacio antes del párrafo */
+    margin-bottom: 15px; /* Espacio después del párrafo */
+    text-align: center; /* Opcional: texto justificado */
+    text-indent: 20px; /* Opcional: sangría en la primera línea */
+}

@@ -1,0 +1,63 @@
+{% extends "index.html" %} {% load static %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'css/politicas.css' %}" />
+{% endblock %}
+
+{% block header %}
+    <div class="login">
+    {% include 'header/log.html' %}
+    </div>
+    <div class="navbar sticky">
+        {% include 'header/navbar.html' %}
+    </div>
+    
+{% endblock %}
+
+{% block content %}
+<div class="body">
+  
+    <div class="tarjeta_info">
+      <h1>Políticas de Privacidad</h1>
+      <p>En Lobby Restaurant Bar, valoramos y respetamos la privacidad de nuestros usuarios. Este documento describe cómo recopilamos, usamos, protegemos y compartimos la información personal que nos proporcionas al registrarte en nuestra página web.</p>
+      <h2>1. Información que recopilamos</h2>
+      <p>Cuando creas una cuenta en nuestra página, podemos recopilar la siguiente información:</p>
+      <p>Nombre completo</p>
+      <p>Correo electrónico</p>
+      <p>Número de teléfono</p>
+      <h2>2. Cómo utipzamos tu información</h2>
+      <p>La información que recopilamos se utipza para los siguientes fines:</p>
+  
+      <p>Gestionar tu cuenta y ofrecerte acceso a funciones personapzadas de nuestro sitio.</p>
+      <p>Contactarte para responder a tus consultas, sopcitudes o comentarios.</p>
+      <p>Enviar promociones, ofertas especiales o eventos relacionados con nuestro restaurante bar (si has dado tu consentimiento).</p>
+      <h2>3. Protección de tu información</h2>
+      <p>Mantenemos medidas técnicas y organizativas adecuadas para proteger tu información personal contra accesos no autorizados, pérdidas o modificaciones. Sin embargo, ningún sistema es completamente seguro, por lo que no podemos garantizar la seguridad absoluta.</p>
+  
+      <h2>4. Compartir tu información</h2>
+      <p>No compartiremos tu información personal con terceros, excepto en las siguientes circunstancias:</p>
+      <p>Cuando sea requerido por ley o por una autoridad legal.
+      Para proteger nuestros derechos legales o evitar fraudes.</p>
+      <p>Tus derechos como usuario sobre tus datos personales son :</p>
+      <p>Acceder a los datos personales que hemos recopilado sobre ti.</p>
+      <p>Sopcitar la corrección de datos inexactos o incompletos.</p>
+      <p>Sopcitar la epminación de tus datos personales.</p>
+  
+      <p>Para ejercer estos derechos, puedes contactarnos a través de nuestro correo electrónico: [correo de contacto].</p>
+  
+  
+  
+  
+      <h2>6. Cookies</h2>
+      <p>Utipzamos cookies para mejorar tu experiencia en nuestra página web. Puedes obtener más información en nuestro <a href="{% url 'cookies_servicios' %}">Aviso de Cookies</a>.</p>
+      <h2>7. Cambios a esta Política de Privacidad</h2>
+      <p>Nos reservamos el derecho de actuapzar esta Política de Privacidad en cualquier momento. Cualquier cambio será notificado en esta página.</p>
+      <h2>8. Contacto</h2>
+      <p>Si tienes alguna pregunta o inquietud sobre esta Política de Privacidad, puedes contactarnos en:</p>
+      <p>Correo electrónico: <strong>[correo de contacto]</strong></p>
+      <p>Teléfono: <strong>[número de teléfono]</strong></p>
+      <p>Última actuapzación: 2024</p>
+    </div>
+</div>
+
+{% endblock %}
