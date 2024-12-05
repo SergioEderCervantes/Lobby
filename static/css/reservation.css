@@ -3,135 +3,129 @@
   font-weight: 700;
   font-style: normal;
 }
+
 h1{
+  font-size: 40px;
   color: white;
-  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
-.hcontainer{
-  display: grid;
-  place-items: center;
-}
-
-.header-container {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo transparente */
-    border-radius: 12px; /* Esquinas redondeadas */
-    padding: 5px;
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-}
-
-.header-container svg {
-    stroke: #FFFF;   /* Color del icono */
-    /*opacity: 0.5;  /* Transparente */
-  }
-
-h2 {
-    text-align: center;
-    color: #FFFF; /* Color dorado */
-    margin-top: 40px;
-    font-size: 2.5rem; /* Tamaño de letra más grande */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.2); /* Sombra y brillo sutil */
-    transform: translateY(-2px); /* Leve efecto de flotación hacia arriba */
-    transition: transform 0.3s ease, text-shadow 0.3s ease; /* Transición suave */
-    padding-right: 30px;
+h2{
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  color: #f1c40f;
 }
 
 
-/* Styling the form container */
 form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo más claro y translúcido */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    border-radius: 16px; /* Esquinas redondeadas */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más suave */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde claro y sutil */
-    color: #e0e0e0; /* Letras claras para combinar */
+  margin: 0 auto;
+  max-width: 600px; /* Controla el ancho del formulario */
 }
 
-/* Form labels */
-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #f5f5f5; /* Blanco suave */
+/* Styling for each individual field container */
+.campoForm {
+  margin-bottom: 20px; /* Espacio entre los campos */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  backdrop-filter: blur(5px); /* Desenfoque */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para cada campo */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
 }
 
-/* Input fields */
-/* General styles for inputs */
-form input,
-form textarea {
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
-    color: #f5f5f5; /* Texto claro */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    transition: background-color 0s, color 0s; /* Elimina animaciones no deseadas */
+/* Label styling */
+.campoForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #f5f5f5; /* Texto blanco */
 }
 
-/* Target autofill styles for Webkit browsers (Chrome, Edge, Safari) */
-form input:-webkit-autofill,
-form textarea:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
-    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
-    background-color: rgba(255, 255, 255, 0.1) !important; /* Asegura el fondo */
-    color: #f5f5f5 !important; /* Asegura el texto */
-    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Mantén el borde */
+/* Input and textarea styling */
+.campoForm input,
+.campoForm textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: #f5f5f5; /* Texto blanco */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
-/* Extra for first-line to ensure text color doesn't change */
-form input:-webkit-autofill::first-line {
-    color: #f5f5f5 !important;
+/* Add focus effects */
+.campoForm input:focus,
+.campoForm textarea:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Focused inputs (for consistency) */
-form input:focus,
-form textarea:focus {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.1);
+/* Button styling */
+.campoForm button {
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(167, 139, 250, 1); /* Color del botón */
+  color: rgba(17, 24, 39, 1); /* Texto oscuro */
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.campoForm button:hover {
+  background-color: rgba(139, 92, 246, 1);
+  transform: translateY(-2px); /* Efecto de elevación */
 }
 
 
-/* Textarea specific styling */
-form textarea {
-    height: 100px;
-    resize: none;
+.flatpickr-calendar .flatpickr-day {
+  color: black; /* Color de texto */
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-/* Modificación para el botón de Reservar */
-form button {
-    display: block;
-    width: 100%;
-    background-color: rgba(167, 139, 250, 1); /* Mismo color de fondo del botón de Log In */
-    padding: 0.75rem;
-    text-align: center;
-    color: rgba(17, 24, 39, 1); /* Color de texto oscuro */
-    border: none;
-    border-radius: 0.375rem;
-    font-weight: 600;
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.flatpickr-calendar .flatpickr-day:hover {
+  background: rgba(255, 255, 255, 0.3); /* Fondo semi-transparente al pasar */
 }
 
-/* Estilo de los enlaces en la parte inferior */
-form .forgot a {
-    color: rgba(243, 244, 246, 1);
-    text-decoration: none;
-    font-size: 14px;
+.flatpickr-calendar .flatpickr-day.today {
+  background: #4caf50; /* Verde para el día actual */
+  color: #fff;
 }
 
-form .forgot a:hover {
-    text-decoration: underline rgba(167, 139, 250, 1);
+.flatpickr-calendar .flatpickr-day.selected {
+  background:;
+  color: #fff;
 }
+
+
+.time-picker {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.time-picker:focus {
+  outline: none;      /* Elimina el contorno al hacer foco */
+  border-color: #ccc; /* El borde sigue siendo el mismo color que el de estado normal */
+  background-color: #f9f9f9; /* Mantiene el fondo igual al de estado normal */
+}
+
 
 /* Message styling */
 .messages {

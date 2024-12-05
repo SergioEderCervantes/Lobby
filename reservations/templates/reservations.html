@@ -3,6 +3,8 @@
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/reservation.css' %}" />
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 {% endblock %}
 
 {% block header %}
@@ -17,42 +19,41 @@
 
 {% block content %}
 <div class="body">
-  <container class="header-container">
-    <h2 class="lato-bold">Realiza tu reservación</h2>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
-      stroke-linejoin="round" width="56" height="56" stroke-width="2">
-      <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-      <path d="M16 3l0 4"></path>
-      <path d="M8 3l0 4"></path>
-      <path d="M4 11l16 0"></path>
-      <path d="M8 15h2v2h-2z"></path>
-    </svg>
-
-  </container>
-
+  <h2>¡Bienvenido {{user.username }}!</h2>
 
   {% if user.is_authenticated %}
   <!-- Usuario autenticado -->
-  <div class="hcontainer">
-    <h1>Bienvenido, {{ user.username }}</h1>
-  </div>
+    <h1>Realiza tu reservación</h1>
+
   <form method="post" action="{% url 'reservations' %}" id="reservation-form">
     {% csrf_token %}
-    <label for="fecha">Fecha:</label>
-    <input type="date" id="fecha" name="fecha" required />
+    
+    <div class="campoForm">   
+      <label for="fecha">Fecha de Reservación:</label>
+      <input type="text" id="fecha" class="date-picker" placeholder="Selecciona una fecha">
+    </div>
+    
+    <div class="campoForm">
+      <label for="hora">Hora de Reservación:</label>
+      <input type="text" id="hora" class="time-picker" placeholder="Selecciona una hora">     
+    </div>
+    
+    <div class="campoForm">
+      <label for="num_personas">Número de personas:</label>
+      <input type="number" id="num_personas" name="num_personas" required />
+    </div>
 
-    <label for="hora">Hora:</label>
-    <input type="time" id="hora" name="hora" required min="18:00" max="" />
-
-    <label for="num_personas">Número de personas:</label>
-    <input type="number" id="num_personas" name="num_personas" required />
-
-    <label for="comentarios">Comentarios:</label>
-    <textarea id="comentarios" name="comentarios"></textarea>
+    <div class="campoForm">
+      <label for="comentarios">Comentarios:</label>
+      <textarea id="comentarios" name="comentarios"></textarea>
+    </div>
 
     <button type="submit">Reservar</button>
+
   </form>
+
+
   {% else %}
   <!-- Usuario no autenticado -->
   <form method="post" action="{% url 'reservations' %}" id="reservation-form">
@@ -93,10 +94,13 @@
     </div>
   </div>
 
-
-  <script src="{% static 'js/reservations.js' %}" defer></script>
-
-
   {% endif %}
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{% static 'js/calendario.js' %}"></script>
+<script src="{% static 'js/hora.js' %}"></script>
+<script src="{% static 'js/autorrelleno.js' %}"></script>
+
 {%endblock%}
