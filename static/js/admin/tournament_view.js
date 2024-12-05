@@ -75,14 +75,18 @@ function activateInput(target, playerNum) {
     inputField.style.top = `${rect.top + window.scrollY}px`;
 
     // Mostrar el input
-    inputField.value = matchText.textContent;
+    //inputField.value = matchText.textContent;
+    inputField.value;
     inputField.style.display = 'block';
     inputField.focus();
 
     // Actualizar texto
     inputField.onblur = () => {
+        if(inputField.value != "") {
+            inputField.value = "";
+        }
         //Mostrar nuevamente valor cuando se pierde el foco
-        if(aux != "") {
+        if(aux != "" && matchText.textContent == "") {
             inputField.value = aux;
             aux = "";
             putPuntuationValue(inputField, matchText, matchGroup);
@@ -131,16 +135,37 @@ function putPuntuationValue(inputField, matchText, parentGroup) {
     const puntaje1 = parentGroup.querySelector(".match__puntaje__player1__text").textContent;
     const puntaje2 = parentGroup.querySelector(".match__puntaje__player2__text").textContent;
     if (puntaje1 != "" && puntaje2 != "") {
+        const players = parentGroup.querySelectorAll('.matchup__player1, .matchup__player2');
+        let changeBand = false; //bandera para cuando hay cambio de resultados en el match
+        players.forEach(player => {
+            // Verifica si el elemento tiene la clase 'winner' y la elimina
+            if (player.classList.contains('winner')) {
+                player.classList.remove('winner');
+                changeBand = true;
+            }
+        
+            // Verifica si el elemento tiene la clase 'loser' y la elimina
+            if (player.classList.contains('loser')) {
+                player.classList.remove('loser');
+                changeBand = true;
+            }
+
+            // Verifica si el elemento tiene la clase 'tie' y la elimina
+            if (player.classList.contains('tie')) {
+                player.classList.remove('tie');
+                changeBand = true;
+            }
+        });
         if(tournamentType == "Round") {
-            calculatePuntuation(puntaje1, puntaje2, parentGroup);
+            calculatePuntuation(puntaje1, puntaje2, parentGroup, changeBand);
         } else {
-            playerToNextMatch(puntaje1, puntaje2, parentGroup);
+            playerToNextMatch(puntaje1, puntaje2, parentGroup, changeBand);
         }
     }  
 }
 
 // Funcion que maneja la logica cuando ya se introdujeron los dos puntajes de los players y uno debe de pasar a la siguente ronda
-function playerToNextMatch(puntaje1, puntaje2, parentGroup) {
+function playerToNextMatch(puntaje1, puntaje2, parentGroup, changeBand) {
     const intPuntaje1 = parseInt(puntaje1)
     const intPuntaje2 = parseInt(puntaje2)
     const matchId = parentGroup.id.split("__")[1];
@@ -165,7 +190,7 @@ function playerToNextMatch(puntaje1, puntaje2, parentGroup) {
     const nextPlayerPlace= findPlayerInOtherMatch(matchId);
     // Sabiendo el jugador del matchup, ponemos el nombre del ganador en vez del id del matchup
     nextPlayerPlace.textContent = ganador.textContent;
-    nextPlayerPlace.classList.add('changed');
+    nextPlayerPlace.classList.add('changed', matchId);
 }
 
 // Devuelve el elemento text del DOM que tenga el idToSearch como player
@@ -174,6 +199,15 @@ function findPlayerInOtherMatch(idToSearch) {
     let result;
     for (let i = 0; i < matchups.length; i++) {
         const element = matchups[i];
+
+        if(element.querySelector(".matchup__player1").classList.contains(idToSearch)) { 
+            result = element.querySelector(".matchup__player1");
+            break;     
+        }
+        if(element.querySelector(".matchup__player2").classList.contains(idToSearch)) {
+            result = element.querySelector(".matchup__player2");
+            break;
+        }
         if (element.querySelector(".matchup__player1").textContent == idToSearch){
             result = element.querySelector(".matchup__player1");
             break;
@@ -229,7 +263,7 @@ function regresarPlayers(players, changed){
 }
 
 //Función que hace el calculo de puntuaciones para Round Robin
-function calculatePuntuation(puntaje1, puntaje2, parentGroup) {
+function calculatePuntuation(puntaje1, puntaje2, parentGroup, changeBand) {
     const intPuntaje1 = parseInt(puntaje1)
     const intPuntaje2 = parseInt(puntaje2)
     const player1 = new Player(parentGroup.querySelector(".matchup__player1").textContent);
@@ -264,8 +298,12 @@ function calculatePuntuation(puntaje1, puntaje2, parentGroup) {
     player1.goals = parseInt(parentGroup.querySelector(".match__puntaje__player1__text").textContent);
     player2.goals = parseInt(parentGroup.querySelector(".match__puntaje__player2__text").textContent);
    
-    modificateTable(player1);
-    modificateTable(player2);
+    if(changeBand) {
+        calculateSVGStats()
+    } else {
+        modificateTable(player1);
+        modificateTable(player2);
+    }
 }
 
 //Función que modifica la tabla de resultados 
