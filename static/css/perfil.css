@@ -1,0 +1,161 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Estilo para el ícono del menú */
+.menu-icon {
+    background-color: #333;
+    position: fixed;
+    top: 8%;
+    left: 86%;
+    cursor: pointer;
+    border-radius: 25px;
+    z-index: 1000;
+    height: 7.5%;
+    transition: all 0.4s ease-out 0s;  /* El 0.3s es el retraso antes de que comience */
+}
+.menu-icon-login {
+    background-color: #333;
+    position: fixed;
+    top: 8%;
+    left: 88%;
+    cursor: pointer;
+    border-radius: 25px;
+    z-index: 1000;
+    height: 7.5%;
+    transition: all 0.4s ease-out 0s;  /* El 0.3s es el retraso antes de que comience */
+}
+
+
+/* Estilo para la barra lateral */
+.sidebar {
+  z-index: 800;
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    margin: 0 2% 0 0;
+    width: 0;
+    position: fixed;
+    top: 5%;
+    right: -250px;
+    color: rgb(255, 255, 255);
+    border-radius: 24px;
+    background: rgba(33, 33, 33, 0.9);
+    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    align-items: center;
+    transition: all 0.2s ease-out 0s;
+}
+.sidebar-out{
+  z-index: 800;
+    display: flex;
+    flex-direction: column;
+    height: 35%;
+    margin: 0 2% 0 0;
+    width: 0;
+    position: fixed;
+    top: 5%;
+    right: -250px;
+    color: rgb(255, 255, 255);
+    border-radius: 24px;
+    background: rgba(33, 33, 33, 0.9);
+    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    align-items: center;
+    transition: all 0.2s ease-out 0s;
+}
+
+.sidebar-content {
+    height: 100%;
+    width: 100%;
+    margin-top: 9%;
+    padding: 1% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar.open {
+  right: 0;
+  width: 20%;
+  overflow: hidden; 
+  transition: all 0.2s ease-out 0s;
+}
+.sidebar-out.open {
+  right: 0;
+  width: 16%;
+  overflow: hidden; 
+  transition: all 0.2s ease-out 0s;
+}
+
+
+
+.rating > label {
+  margin-right: 4px;
+}
+
+.rating:not(:checked) > input {
+  display: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.rating:not(:checked) > label > svg {
+  fill: #666;
+  transition:
+    fill 0.3s ease,
+    transform 0.3s ease;
+}
+
+.rating > input:checked ~ label > svg {
+  fill: #ff0000;
+  transform: scale(1.1);
+}
+
+.rating:not(:checked) > label:hover ~ label > svg,
+.rating:not(:checked) > label:hover > svg {
+  fill: #ff1a1a;
+  transform: scale(1.05);
+}
+
+#heart1:checked ~ label > svg {
+  fill: #ff0000;
+}
+
+#heart2:checked ~ label > svg {
+  fill: #ff4d00;
+}
+
+#heart3:checked ~ label > svg {
+  fill: #ff9900;
+}
+
+#heart4:checked ~ label > svg {
+  fill: #ccff00;
+}
+
+#heart5:checked ~ label > svg {
+  fill: #66ff00;
+}
+
+
+
+
+
+  

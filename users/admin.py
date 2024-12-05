@@ -3,4 +3,9 @@ from .models import User
 from custom_admin.admin import admin_site
 # Register your models here.
 
-admin_site.register(User)
+
+
+class user_admin(admin.ModelAdmin):
+    list_display = ('username', 'email', 'tipo_usuario')
+    
+admin_site.register(User,user_admin)

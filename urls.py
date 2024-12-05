@@ -22,7 +22,10 @@ urlpatterns = [
     path('', include('lobby.urls')),
     path('admin/', admin_site.urls),
     path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.socialaccount.urls')),
     path('reservations/', include('reservations.urls')),
     path('tournaments/', include('tournaments.urls')),
     path('restaurante/', include('restaurante.urls')),
-]
+    path('politicas/', include('politicas.urls')),
+    path('cookies_servicios/', include('cookies_servicios.urls')),
+    ]

@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from google.oauth2 import service_account
+import os
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
@@ -48,12 +52,20 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.instagram',
 
     # Registro de apps
     'lobby',
     'reservations',
     'tournaments',
-    'restaurante'
+    'restaurante',
+    'politicas',
+    'cookies_servicios',
+
+    # Desinstalar django extensions para produccion
+    'django_extensions',
 ]
 
 SITE_ID = 1
@@ -99,7 +111,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lobby',
         'USER': 'root',
-        'PASSWORD': 'campeon09',
+        'PASSWORD': 'ThoryMia898',
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -129,9 +141,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -147,7 +159,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    BASE_DIR / "node_modules"
+    BASE_DIR / "node_modules",   
 ]
 
 
@@ -174,3 +186,100 @@ LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # TODO: no se si debamos de dejar esto sin email de verificacion, ahorita esta asi para evitar error al crear una cuenta
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+# Configuracion google cloud storage
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+env = environ.Env()
+
+env.read_env(str(BASE_DIR / ".django/.env"))
+
+MEDIA_URL = "/app_gobierno/"
+
+GS_BUCKET_NAME = env("GS_BUCKET_NAME")
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(
+    BASE_DIR, '.django/lobby-443421-1887ded976cd.json')
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE
+)
+
+GS_SECRET_KEY = env("GS_SECRET_KEY")
+GS_CLIENT_ID = env("GS_CLIENT_ID")
+
+FB_SECRET_KEY = env("FB_SECRET_KEY")
+FB_PROJECT_ID = env("FB_PROJECT_ID")
+
+GOOGLE_CREDENTIALS = os.path.join(BASE_DIR, '.django/client_secret_324906867711-c6ujnioalu9fdtnou3upu8bia4n6euhd.apps.googleusercontent.com.json')
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'name':'Lobby',
+            'client_id': GS_CLIENT_ID,
+            'secret': GS_SECRET_KEY,
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    },
+    'facebook': {
+        'METHOD': 'oauth2',  # Set to 'js_sdk' to use the Facebook connect SDK
+        # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        # 'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
+        'APP': {
+            'name': 'Lobby',
+            'client_id': FB_PROJECT_ID,
+            'secret': FB_SECRET_KEY,
+            'key': ''
+        }
+    },
+    'instagram': {
+        'APP': {
+            'client_id': FB_PROJECT_ID,
+            'secret': FB_SECRET_KEY,
+            'key': ''
+        },
+        'SCOPE': [
+            'user_profile',
+            'user_media',
+        ],
+        'AUTH_PARAMS': {
+            'auth_type': 'reauthenticate',
+        },
+    }
+}
+SOCIALACCOUNT_LOGIN_ON_GET=True
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+

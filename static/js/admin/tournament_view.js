@@ -1,5 +1,16 @@
 // ------------------------------------ Miscelaneos ------------------------------------
 
+//Clase para manejar las puntuaciones de los jugadores Round Robin
+class Player {
+    constructor(name) {
+        this.name = name;
+        this.wins = 0;
+        this.losses = 0;
+        this.ties = 0;
+        this.points = 0;
+        this.goals = 0;
+    }
+}
 
 // Cambiar la url para que la redirija al change
 const change_link = document.getElementById('change_info')
@@ -14,6 +25,9 @@ if (change_link) {
 
 // ------------------------------------Parte que maneja los eventos de Puntuacion------------------------------------
 const svg = document.getElementById("svg_enfrentamientos");
+const tournamentType = svg.classList[0]; //Clase Round
+if(tournamentType == 'Round') calculateSVGStats();
+
 let puntuationEnteredBand = checkPuntuationsEntered();
 if (puntuationEnteredBand){
     document.getElementById('reset__button').classList.remove('hide');
@@ -41,15 +55,20 @@ function activateInput(target, playerNum) {
     // Primero que nada, evaluar si tiene un jugador real referenciado o es un valor de id de match
     const matchGroup = target.closest('g');
     const playerClassName = playerNum == 1 ? ".matchup__player1" : ".matchup__player2";
-    const aux =  matchGroup.querySelector(playerClassName);
+    aux = "";
     // si tiene un numero, no hacer nada
     if(isDigit( matchGroup.querySelector(playerClassName).textContent)){
         return;
     }
     const className = playerNum == 1 ? ".match__puntaje__player1__text" : ".match__puntaje__player2__text";
     const matchText = matchGroup.querySelector(className);
+    const inputField = document.getElementById("svg_input");
     
-    const inputField = document.getElementById("svg_input")
+    //Cuando se hace click dentro de un campo con un numero ya ingresado, se elimina el numero para mejorar la visualización
+    if(isDigit(matchText.textContent)) {
+        aux = matchText.textContent
+        matchText.textContent = ""; 
+    }
     // Pocisionar el input en donde se dio el click
     const rect = target.getBoundingClientRect();
     inputField.style.left = `${rect.left + window.scrollX}px`;
@@ -61,7 +80,14 @@ function activateInput(target, playerNum) {
     inputField.focus();
 
     // Actualizar texto
-    inputField.onblur = () => putPuntuationValue(inputField, matchText, matchGroup);
+    inputField.onblur = () => {
+        //Mostrar nuevamente valor cuando se pierde el foco
+        if(aux != "") {
+            inputField.value = aux;
+            aux = "";
+            putPuntuationValue(inputField, matchText, matchGroup);
+        }
+    }
     inputField.onkeyup = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault(); // Asegurarnos de que no haya un comportamiento no deseado con Enter
@@ -100,13 +126,17 @@ function putPuntuationValue(inputField, matchText, parentGroup) {
     document.getElementById('send__button').classList.remove('hide');
     document.getElementById('cancel__button').classList.remove('hide');
     document.getElementById('reset__button').classList.remove('hide');
-
+    
     // Comprobar si ya hay valores en ambos lados
     const puntaje1 = parentGroup.querySelector(".match__puntaje__player1__text").textContent;
     const puntaje2 = parentGroup.querySelector(".match__puntaje__player2__text").textContent;
     if (puntaje1 != "" && puntaje2 != "") {
-        playerToNextMatch(puntaje1, puntaje2, parentGroup);
-    }
+        if(tournamentType == "Round") {
+            calculatePuntuation(puntaje1, puntaje2, parentGroup);
+        } else {
+            playerToNextMatch(puntaje1, puntaje2, parentGroup);
+        }
+    }  
 }
 
 // Funcion que maneja la logica cuando ya se introdujeron los dos puntajes de los players y uno debe de pasar a la siguente ronda
@@ -174,8 +204,8 @@ function resetPuntajes(){
     }
     
     // Quitar winners y losers
-    svg.querySelectorAll(".matchup__player1").forEach((element) => element.classList.remove('winner','loser'));
-    svg.querySelectorAll(".matchup__player2").forEach((element) => element.classList.remove('winner','loser'));
+    svg.querySelectorAll(".matchup__player1").forEach((element) => element.classList.remove('winner','loser', 'tie'));
+    svg.querySelectorAll(".matchup__player2").forEach((element) => element.classList.remove('winner','loser', 'tie'));
 }
 
 function regresarPlayers(players, changed){
@@ -196,6 +226,158 @@ function regresarPlayers(players, changed){
 
         changedElement.classList.remove('changed');
     })
+}
+
+//Función que hace el calculo de puntuaciones para Round Robin
+function calculatePuntuation(puntaje1, puntaje2, parentGroup) {
+    const intPuntaje1 = parseInt(puntaje1)
+    const intPuntaje2 = parseInt(puntaje2)
+    const player1 = new Player(parentGroup.querySelector(".matchup__player1").textContent);
+    const player2 = new Player(parentGroup.querySelector(".matchup__player2").textContent);
+    const matchId = parentGroup.id.split("__")[1];
+    // Validacion de empate 
+    if (intPuntaje1 == intPuntaje2) {
+        // Agregamos la clase empate a los jugadores 
+        parentGroup.querySelector(".matchup__player1").classList.add('tie');
+        parentGroup.querySelector(".matchup__player2").classList.add('tie');
+        player1.ties = 1;
+        player2.ties = 1;
+    } else {
+        
+        let ganador;
+        let perdedor;
+        if (intPuntaje1 > intPuntaje2){
+            ganador = parentGroup.querySelector(".matchup__player1");
+            perdedor = parentGroup.querySelector(".matchup__player2");
+            player1.wins = 1;
+            player2.losses = 1;
+        }
+        else{
+            ganador = parentGroup.querySelector(".matchup__player2");
+            perdedor = parentGroup.querySelector(".matchup__player1");
+            player2.wins = 1;
+            player1.losses = 1;
+        }
+        ganador.classList.add('winner');
+        perdedor.classList.add('loser');
+    }
+    player1.goals = parseInt(parentGroup.querySelector(".match__puntaje__player1__text").textContent);
+    player2.goals = parseInt(parentGroup.querySelector(".match__puntaje__player2__text").textContent);
+   
+    modificateTable(player1);
+    modificateTable(player2);
+}
+
+//Función que modifica la tabla de resultados 
+function modificateTable(player) {
+    const tableRows = document.querySelectorAll('#standings_table tbody tr');
+        
+    //Busca en la tabla a los jugadores para modificar sus estadisticas
+    tableRows.forEach(row => {
+            
+        if(player.name == row.querySelector('td:nth-child(2)').textContent) {
+            player.wins += parseInt(row.querySelector('td:nth-child(3)').textContent);   // Partidos ganados
+            player.losses += parseInt(row.querySelector('td:nth-child(4)').textContent); // Partidos perdidos
+            player.ties += parseInt(row.querySelector('td:nth-child(5)').textContent); // Partidos empatados
+            player.goals += parseInt(row.querySelector('td:nth-child(7)').textContent); // goles totales
+            
+            updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals);
+        }
+    });
+}
+
+// Función para modificar los datos de un jugador
+function updatePlayerStats(playerName, newWon, newLost, newDraw, newPoints, newGoals) {
+    const tableRows = document.querySelectorAll('#standings_table tbody tr');
+    
+    tableRows.forEach(row => {
+        const name = row.querySelector('td:nth-child(2)').textContent;  // Nombre del jugador
+        if (name === playerName) {
+            row.querySelector('td:nth-child(3)').textContent = newWon;  // Actualiza partidos ganados
+            row.querySelector('td:nth-child(4)').textContent = newLost; // Actualiza partidos perdidos
+            row.querySelector('td:nth-child(5)').textContent = newDraw; // Actualiza partidos empatados
+            row.querySelector('td:nth-child(6)').textContent = newPoints; // Actualiza puntos de juego
+            row.querySelector('td:nth-child(7)').textContent = newGoals; // Actualiza puntos de juego
+        }
+    });
+    sortTable();
+}
+
+// Función para ordenar la tabla por partidos ganados
+function sortTable() {
+    const table = document.getElementById("standings_table");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+    
+    rows.sort((rowA, rowB) => {
+        const puntajeA = parseInt(rowA.cells[5].textContent);  // Obtener los partidos ganados de la fila A
+        const puntajeB = parseInt(rowB.cells[5].textContent);  // Obtener los partidos ganados de la fila B
+
+        const golesA = parseInt(rowA.cells[6].textContent); // Goles a favor
+        const golesB = parseInt(rowB.cells[6].textContent); // Goles a favor
+
+
+        // Ordenar por puntaje (descendente)
+        if (puntajeB !== puntajeA) {
+            return puntajeB - puntajeA;
+        }
+
+        // Si los puntajes son iguales, ordenar por goles (descendente)
+        return golesB - golesA;
+    });
+
+    // Reordenar las filas en el cuerpo de la tabla
+    const tbody = table.querySelector("tbody");
+    rows.forEach(row => tbody.appendChild(row));
+
+    // Actualizar el ranking
+    updateRanking();
+}
+
+// Función para actualizar los números de ranking después de ordenar
+function updateRanking() {
+    const table = document.getElementById("standings_table");
+    const rows = table.querySelectorAll("tbody tr");
+
+    rows.forEach((row, index) => {
+        row.cells[0].textContent = index + 1; // Actualiza la posición de ranking
+    });
+}
+
+//Función para contar el numero de partidos ganados, perdidos y empatados dentro del SVG
+function calculateSVGStats() {
+    const playersMap = new Map(); // Usamos un mapa para evitar duplicados y acceder rápido por nombre
+
+    // Recorrer los jugadores en los textos de clase "matchup__player1" y "matchup__player2"
+    const playerTexts = document.querySelectorAll(".matchup__player1, .matchup__player2");
+
+    playerTexts.forEach(playerText => {
+        const name = playerText.textContent.trim();
+        const parentGroup = playerText.closest(".matchup");
+
+        // Si no existe en el mapa, agregar un nuevo jugador
+        if (!playersMap.has(name)) {
+            playersMap.set(name, new Player(name));
+        }
+
+        const player = playersMap.get(name);
+
+        // Incrementar contadores según la clase del texto
+        if (playerText.classList.contains("winner")) {
+            player.wins++;
+        } else if (playerText.classList.contains("loser")) {
+            player.losses++;
+        } else if (playerText.classList.contains("tie")) {
+            player.ties++;
+        }
+
+        // Obtener los goles desde la clase "match__puntaje__playerX__text"
+        const playerIndex = playerText.classList.contains("matchup__player1") ? 1 : 2;
+        const goalsText = parentGroup.querySelector(`.match__puntaje__player${playerIndex}__text`);
+        if (goalsText) {
+            player.goals += parseInt(goalsText.textContent.trim()) || 0; // Sumar goles, o 0 si no hay un número válido
+        }
+        updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals);
+    });
 }
 
 function isDigit(str) {

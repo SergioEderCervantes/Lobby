@@ -8,7 +8,6 @@ h1{
 }
 #change_info{
     color: var(--body-fg);
-    margin: 20px 0 10px 20px;
     transition: all 250ms;
 }
 
@@ -49,7 +48,7 @@ h1{
     font-weight: 600;
     justify-content: center;
     line-height: 1;
-    margin: 20px;
+    margin: 20px 20px;
     min-height: 2rem;
     padding: calc(.875rem - 1px) calc(1.5rem - 1px);
     position: relative;
@@ -84,7 +83,7 @@ h1{
 .hide{
     display: none;
 }
-/* Misc de los SVG */
+/* ----------------------------Misc de los SVG--------------------------- */
 
 #svg_input {
     position: absolute;
@@ -109,7 +108,6 @@ h1{
 #svg_enfrentamientos {
     width: 90%;      /* Ocupa todo el ancho del contenedor */
     height: auto;     /* Ajusta la altura de acuerdo al ancho sin crecer */
-    max-height: 700px; /* Limita la altura máxima */
 }
 .connective__lines{
     stroke: var(--body-fg);
@@ -128,6 +126,6 @@ h1{
     font-weight: 700;
     fill: #7388b9;
 }
-.loser{
+.loser, .tie{
     opacity: 0.2;
 }
