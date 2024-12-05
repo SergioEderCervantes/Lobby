@@ -2,12 +2,16 @@
 
 
 .carrusel_body {
+  min-height: 70vh;
   margin: 0;
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  align-items: center;
   padding: 0;
   overflow: hidden; /* Esto ayuda a evitar barras de desplazamiento en la página */
 }
 .swiper {
-    width: 340px;
+    width: 22%;
     padding: 5% 0;
     overflow: visible;
   }
@@ -23,7 +27,16 @@
     border: 1px solid rgba(177, 177, 177, 0.4);
    overflow: hidden;
   }
-
+  .swiper-slide-active {
+    transform: scale(1.1); /* Escala para destacar */
+    transition: transform 0.3s ease; /* Suaviza la transición */
+  }
+  
+  /* Estilo para diapositivas laterales */
+  .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.7; /* Reduce la opacidad de las laterales */
+    transform: scale(0.9); /* Escala ligeramente más pequeña */
+  }
   .swiper-slide img {
     /* display: flex;
     width: 100%;

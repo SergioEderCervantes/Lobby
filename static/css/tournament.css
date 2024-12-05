@@ -2,6 +2,7 @@ body {
     background: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 39, 75, 1) 57%, rgba(55, 1, 60, 1) 96%);
     color: white;
     background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 .header {
@@ -12,26 +13,35 @@ body {
 h1 {
     font-size: 32px;
     text-align: center;
-    margin: 3rem auto;
+    margin: 0;
 }
 
 .tournament_container {
     width: 80%;
+    min-height: 65vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    /* justify-content: center; */
 }
 
 .tournament {
     border-radius: 10px;
     margin: 3rem;
-    padding: 3rem;
+    position: relative;
     width: 80%;
+    min-height: 250px;
     text-align: center;
+    overflow: hidden; /* Evita desbordamientos */
 }
 
+.backImage {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
 
 .blur {
     backdrop-filter: blur(30px);
@@ -41,38 +51,99 @@ h1 {
     transition: all 0.5s ease;
 }
 
-.blur:hover{
+.blur:hover {
     backdrop-filter: blur(50px);
     box-shadow: 0px 0px 50px rgba(277, 228, 237, 0.37);
+}
 
+.foreground {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Asegura que ocupe toda la altura */
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+    z-index: 1; /* Asegura que esté sobre la imagen de fondo */
+    visibility: visible; /* Siempre visible */
+}
+
+.foreground h3, .foreground p {
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 1), 0 2px 5px rgba(0, 0, 0, 0.9); /* Fuerte y dramático */
+    opacity: 1; /* El texto siempre es visible */
+    transition: opacity 0.5s ease;
+}
+
+.foreground a {
+    visibility: hidden; /* Botón oculto inicialmente */
+    opacity: 0; /* Transparente inicialmente */
+    transform: translateY(20px); /* Empieza desplazado hacia abajo */
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s; /* Animación suave */
+}
+
+.blur:hover .foreground a {
+    visibility: visible; /* Botón visible */
+    opacity: 1; /* Botón aparece */
+    transform: translateY(0); /* Botón sube a su posición final */
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0s;
+}
+
+.foreground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(1, 1, 1, 1) 15%, rgba(26, 110, 126, 0) 100%);
+    z-index: -1; /* Asegura que el degradado esté detrás del texto */
+    transition: opacity 0.5s ease;
+    opacity: 0; /* Degradado oculto inicialmente */
+}
+
+.blur:hover .foreground::before {
+    opacity: 1; /* Degradado aparece al hacer hover */
 }
 
 .btn {
+    width: 50%;
     display: inline-block;
     padding: 0.9rem 1.8rem;
     font-size: 16px;
     font-weight: 700;
     color: white;
-    border: 3px solid rgb(252, 70, 100);
+    border: 3px solid rgb(163, 1, 152);
     cursor: pointer;
     position: relative;
     background-color: transparent;
     text-decoration: none;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2; /* Asegura que esté por encima del gradiente */
     font-family: inherit;
+    transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 0, 221, 0.3); /* Suave sombra púrpura */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+.btn:hover{
+    color: white; /* Mantener el texto blanco */
+    box-shadow: 0 10px 30px rgba(255, 0, 221, 0.3); /* Sombra más prominente */
+    text-shadow: 0 0 5px rgb(247, 0, 231), 0 0 10px rgb(247, 0, 231);
+    transform: translateY(-2px); /* Efecto de elevación al hover */ 
 }
 
 .btn::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(252, 70, 100);
+    background-color: rgb(163, 1, 152);
     transform: translateX(-100%);
-    transition: all .3s;
+    transition: all 0.3s;
     z-index: -1;
 }
 

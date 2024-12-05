@@ -3,31 +3,38 @@
 {% load static %}
 
 {% block extrahead %}
-  <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
+<link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
+<script src="{% static 'js/tournaments.js' %}" defer></script>
 {% endblock %}
 
 {% block header %}
     <div class="login">
     {% include 'header/log.html' %}
     </div>
-    <div class="navbar sticky">
+    <div class="navbar">
         {% include 'header/navbar.html' %}
     </div>
     
 {% endblock %}
 
 {% block content %}
-  <div class="tournaments"> 
-  <h1>Tournaments</h1>
-  <section class="tournament_container">
-    {% for tournament in tournaments %}
-      <div class="tournament blur">
-        <h3>{{ tournament.name }}</h3>
-        <p>{{ tournament.date }}</p>
-        <p>Jugadores inscritos: {{ tournament.registered_players }}</p>
-        <a href="{% url 'tournament_detail' tournament.name %}" class="btn">Ingresar</a>
+<div class="body">
+
+  <div class="tournaments">
+    <h1>Tournaments</h1>
+    <section class="tournament_container">
+      {% for tournament in tournaments %}
+      <div class="tournament blur backImage " data-bg-url="{{ tournament.imagen_banner.url }}" >
+        <div class="foreground">
+          <h3>{{tournament.nombre_torneo}}</h3>
+          <p>fecha: {{tournament.fecha}}</p>
+          <p>Jugadores inscritos:{{tournament.num_players}}</p> 
+          <a href="{% url 'tournament_detail' tournament.nombre_torneo %}" class="btn">Ingresar</a>
+        </div>
+
       </div>
-    {% endfor %}
-  </section>
+      {% endfor %}
+    </section>
+  </div>
 </div>
 {% endblock %}

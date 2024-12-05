@@ -5,53 +5,58 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Lobby bar</title>
-        <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
         <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/field.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
         <link rel="stylesheet" href="{% static 'css/body.css' %}" />
         <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/perfil.css' %}" />
         {% block extrahead %}
-        <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
-        <script src="{% static '\js\carrusel.js' %}" defer></script>
-        <script src="{% static '\js\navbar.js' %}" defer></script>
-
-
+            <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/landpage.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/torneo_home.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/info_general.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/ubicacion_bottompage.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/contenedor_linkhome.css' %}" />
+        {% endblock extrahead %}
+        {% block extrascripts %}
+            <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
+            <script src="{% static '\js\carrusel.js' %}" defer></script>
+            <script src="{% static '\js\navbar.js' %}" defer></script>
+            <script src="{% static '\js\perfil.js' %}" defer></script>
         {% endblock %}
     </head>
     <body>
-        
         {% block header %}
-        <div class=" login pages">
-        {% include 'header/log.html' %}
-        </div>
-        <header class="navbar">
-            {% include 'header/navbar.html' %}
-        </header>
-        <section class="landpage">
-            
-        
-
-        {% include 'header/logo.html' %}
-        </section>
-    
+            {% include 'header/log.html' %}
+            <header class=" navbar">
+                {% include 'header/navbar.html' %}
+            </header>
+            <section class="landpage">
+                <div class="imagen-land">{% include 'header/logo.html' %}</div>
+            </section>
         {% endblock %}
-
         {% block content %}
-        
-        <main >
-        
-        {% include 'body/promociones.html' %}
-        <section class="body">
-        {% include 'body/informacion.html' %}
-        {% include 'body/ubicacion.html' %}
-        {% include 'body/bottompage.html' %}
-        </section>
-        </main>
-        {% endblock %}
-  </body>
+            <main>
+                {% include 'body/promociones.html' %}
+                <section class="body">
+                    {% if prox_torneo %}
+                        {% include 'body/torneo.html' with prox_torneo=prox_torneo num_players=num_players %}
+                    {% else %}
+                    {% endif %}
+                    {% include 'body/informacion.html' %}
+                    {% include 'body/ubicacion.html' %}
+                    {% include 'body/bottompage.html' %}
+                            {% include 'comments/comment_section.html' with comments=comments %}
+
+                </section>
+            </main>
+        {% endblock content %}
+        <footer class="footer">
+            {% include 'footer/footer.html' %}
+        </footer>
+    </body>
 </html>
