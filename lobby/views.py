@@ -1,28 +1,51 @@
 from django.shortcuts import render
 from django.templatetags.static import static
 from django.db import connection
-from tournaments.models import Torneo
 from django.utils.timezone import now
+from django.http import HttpResponseRedirect
+
+from tournaments.models import Torneo
+from lobby.models import Comment
 
 class Promocion(object):
     def __init__(self, nombre, imagen):
         self.nombre = nombre
         self.imagen = imagen
 def home(request):
-    promociones = {
-        
-            Promocion( "promocion1", static('img/promo.png')),
-            Promocion( "promocion2", static('img/promo2.jpg')),
-            Promocion( "promocion3", static('img/promo3.jpg')),
-            Promocion( "promocion4", static('img/promo4.jpg')),
-            Promocion( "promocion5", static('img/promo5.jpg')),
-        
-    }
+
+    if request.method == 'POST':
+        comentario = request.POST.get('comentario')
+        comment = Comment.objects.create(comentario=comentario, usuario=request.user)
+        comment.save()
+
+        return HttpResponseRedirect('/')
+    else:
+
+        comments = Comment.objects.all()
+
+        promociones = {
+            
+                Promocion( "promocion1", static('img/promo.png')),
+                Promocion( "promocion2", static('img/promo2.jpg')),
+                Promocion( "promocion3", static('img/promo3.jpg')),
+                Promocion( "promocion4", static('img/promo4.jpg')),
+                Promocion( "promocion5", static('img/promo5.jpg')),
+            
+        }
     
-    proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()
-    num_players = proximo_torneo.cantidad_usuarios_inscritos()
-    
-    return render(request, 'index.html', {'promociones' : promociones, 'prox_torneo': proximo_torneo, 'num_players': num_players})
+        proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()
+        num_players = proximo_torneo.cantidad_usuarios_inscritos() if proximo_torneo else 0 
+        print(proximo_torneo)
+        context = {
+        'promociones': promociones, 
+        'prox_torneo': proximo_torneo, 
+        'num_players': num_players, 
+        'comments': comments,
+        }
+
+        return render(request, 'index.html', context=context)
+
+
 
 def sql(request):
     # Consultas SQL
