@@ -34,8 +34,8 @@ def home(request):
         }
     
         proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()
-        num_players = proximo_torneo.cantidad_usuarios_inscritos() if proximo_torneo else 0 
-        print(proximo_torneo)
+        num_players = proximo_torneo.cantidad_usuarios_inscritos() if proximo_torneo else None
+        
         context = {
         'promociones': promociones, 
         'prox_torneo': proximo_torneo, 
