@@ -4,10 +4,17 @@
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/tournament_detail.css' %}" />
 <link rel="stylesheet" href="{% static 'css/resultTable.css' %}" />
+{% endblock extrahead %}
+{% block extrascripts %}
+<script>
+    const tournamentId = "{{ torneo.id }}";
+    const csrfToken = "{{ csrf_token }}";
+    const userId = "{{ user.id|default:"null" }}"
+</script>
 <script src="{% static 'js/tournament_detail.js' %}" defer></script>
 <script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
-{% endblock extrahead %}
 
+{% endblock extrascripts %}
 {% block content %}
 <div class="body">
     <div class="tournament_info">
@@ -79,11 +86,16 @@
         {% if user.is_authenticated %}
         <div class="already_authenticated">
             <h3> Ya esta registrado, deseas inscribirte a este torneo usando el correo: {{user.email}}</h3>
-            <a href="#" class="login__button"> Inscribirme </a>
+            <button id="tournament_register_btn" class="login-button alr_auth_btn">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <p class="front"> Inscribirme </p>
+            </button>
         </div>
         {% else %}
         <div class="guest_form">
-            <form class="form">
+            <form class="form" method="post" action="{% url 'register_guest_player' torneo.id %}">
+                {% csrf_token %}
                 <legend> Registrarse a {{torneo.nombre_torneo}} como invitado</legend>
                 <div class="form-group">
                     <label for="playerName">Nombre de jugador</label>

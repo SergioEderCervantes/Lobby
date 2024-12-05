@@ -1,18 +1,17 @@
 {% extends "admin/base_site.html" %}
 {% load static %}
+
 {% block extrahead %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/admin/tournament_view.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/resultTable.css' %}" />
-
-    <script>
-        const tournamentId = "{{ torneo.id }}";
-        const csrfToken = "{{ csrf_token }}";
-    </script>
-    <script src="{% static '/@svgdotjs/svg.js/dist/svg.min.js' %}" defer></script>
-    <script src="{% static '/@svgdotjs/svg.draggable.js/dist/svg.draggable.js' %}" defer></script>
-    <script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
-
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin/tournament_view.css' %}" />
+<link rel="stylesheet" href="{% static 'css/resultTable.css' %}" />
+<script>
+    const tournamentId = "{{ torneo.id }}";
+    const csrfToken = "{{ csrf_token }}";
+</script>
+<script src="{% static '/@svgdotjs/svg.js/dist/svg.min.js' %}" defer></script>
+<script src="{% static '/@svgdotjs/svg.draggable.js/dist/svg.draggable.js' %}" defer></script>
+<script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
 {% endblock extrahead %}
 
 

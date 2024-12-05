@@ -42,16 +42,15 @@ def check_availability(request):
     if request.method != "POST":
         return JsonResponse({'error': 'Método no permitido.'}, status=405)
     
-    data = json.loads(request.body)
-    fecha_str = data.get('fecha')
-    sucursal_id = data.get('sucursal_id')
     try:
+        data = json.loads(request.body)
+        fecha_str = data.get('fecha')
+        sucursal_id = data.get('sucursal_id')
+        
         # Validacion de existencia de datos
         if not fecha_str or not sucursal_id:
             return JsonResponse({'error': 'Fecha y sucursal son requeridos.'}, status = 400)
-    except Exception as e:
-        print(str(e))
-    try:
+
         # Validacion fecha
         print(fecha_str)
         fecha = validar_fecha(fecha_str)

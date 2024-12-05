@@ -161,17 +161,18 @@ li {
 .formulario_ingreso {
     display: grid;
     place-items: center;
-    padding: 5rem;
 }
 
 .already_authenticated {
-
-    height: auto;
-    min-height: 300px;
     text-align: center;
-
+    width: 40%;
 }
 
+/* Solo para tournament detail */
+.alr_auth_btn{
+    width: 40%;
+    margin: 2rem 0;
+}
 .register_options {
     display: flex;
     justify-content: space-around;
