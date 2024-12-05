@@ -14,14 +14,14 @@ def validar_fecha(fecha):
     elif not isinstance(fecha, (datetime, datetime.date)):
         raise TypeError("La fecha debe ser de tipo 'str', 'datetime' o 'date'.")
 
-    hoy = datetime.today().date
+    hoy = date.today()
     fecha_minima = hoy + timedelta(days=1)
     fecha_maxima = hoy + timedelta(days=30)
     
     if fecha < fecha_minima:
-        raise Exception("La fecha debe ser al menos un día después de la fecha actual.")
+        raise ValueError("La fecha debe ser al menos un día después de la fecha actual.")
     if fecha > fecha_maxima:
-        raise Exception("La fecha debe ser dentro del mes siguiente a la fecha actual.")
+        raise ValueError("La fecha debe ser dentro del mes siguiente a la fecha actual.")
     return fecha
     
     
@@ -77,11 +77,14 @@ def borrar_disponibilidad():
 
 # Funcion que toma todos los datos, aunque ya se hayan validado hace unas ultimas validaciones y crea la 
 # Reservacion con todos los datos
-def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, comentarios):
+def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, comentarios, telefono):
     with transaction.atomic():
+        # Obtener la disponibilidad de la consola
         disponibilidad = Consola_disponibilidad.objects.select_for_update().get(
-            sucursal_id=sucursal_id, console_id=consola_id, fecha=fecha
+            sucursal_id=sucursal_id, consola_id=consola_id, fecha=fecha
         )
+        
+        # Validar si hay consolas disponibles
         if disponibilidad.disponibles <= 0:
             raise ValueError("No hay consolas disponibles para esta fecha.")
         
@@ -91,17 +94,22 @@ def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, c
 
         # Crear la reserva
         Reservation.objects.create(
-            username=usuario,
-            sucursal_id=sucursal_id,
-            consola_id=consola_id,
-            fecha=fecha,
-            hora=hora,
-            num_personas=num_personas,
-            comentarios=comentarios
+            username=usuario,  
+            email=usuario.email,  
+            telefono=telefono,  
+            sucursal_id=sucursal_id,  
+            consola_seleccionada_id=consola_id,  
+            fecha=fecha,  
+            fecha_reservacion=fecha,  
+            hora=hora,  
+            num_personas=num_personas,  
+            comentarios=comentarios  
         )
+        return True  
+
 
 # Funcion que crea la disponibilidad diara de los siguientes 30 dias (only test)
 def test_disponibilidad():
     hoy = date.today()
-    for i in range(30):
+    for i in range(5):
         inicializar_disponibilidad(hoy + timedelta(days=i))
