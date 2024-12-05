@@ -50,10 +50,11 @@
                     {% include 'body/informacion.html' %}
                     {% include 'body/ubicacion.html' %}
                     {% include 'body/bottompage.html' %}
+                            {% include 'comments/comment_section.html' with comments=comments %}
+
                 </section>
             </main>
         {% endblock content %}
-        {% include 'comments/comment_section.html' with comments=comments %}
         <footer class="footer">
             {% include 'footer/footer.html' %}
         </footer>
