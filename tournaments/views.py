@@ -1,9 +1,8 @@
+import os
 from django.shortcuts import render
-from custom_admin.views import Tournament
-from .models import Torneo
 from django.shortcuts import get_object_or_404 
 from django.db.models import Count
-import os
+from .models import Torneo
 from settings import STATICFILES_DIRS 
 
 # Create your views here.
