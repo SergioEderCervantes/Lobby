@@ -29,11 +29,11 @@ async function checarDisp() {
         }
 
         const data = await response.json();
-        console.log("Disponibilidad:", data.disponibilidad);
-        alert(`Disponibilidad: ${JSON.stringify(data.disponibilidad)}`); // Mostrar disponibilidad
+        //console.log("Disponibilidad:", data.disponibilidad);
+        //alert(`Disponibilidad: ${JSON.stringify(data.disponibilidad)}`); // Mostrar disponibilidad
     } catch (error) {
-        console.error("Error inesperado:", error);
-        alert(`Error inesperado: ${error.message}`);
+        //console.error("Error inesperado:", error);
+        //alert(`Error inesperado: ${error.message}`);
     }
 }
 
