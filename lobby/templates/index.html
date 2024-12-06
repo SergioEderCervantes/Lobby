@@ -4,10 +4,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Quicksand:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
         <title>Lobby bar</title>
         <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
         <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/field.css' %}" />
         <link rel="stylesheet" href="{% static 'css/body.css' %}" />
         <link rel="stylesheet" href="{% static 'css/generic.css' %}" />
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
@@ -21,13 +21,15 @@
             <link rel="stylesheet" href="{% static 'css/info_general.css' %}" />
             <link rel="stylesheet" href="{% static 'css/ubicacion_bottompage.css' %}" />
             <link rel="stylesheet" href="{% static 'css/contenedor_linkhome.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/comentarios.css' %}" />
         {% endblock extrahead %}
         {% block extrascripts %}
             <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
             <script src="{% static '\js\carrusel.js' %}" defer></script>
             <script src="{% static '\js\navbar.js' %}" defer></script>
-            <script src="{% static '\js\perfil.js' %}" defer></script>
         {% endblock %}
+        <script src="{% static '\js\perfil.js' %}" defer></script>
+
     </head>
     <body>
         {% block header %}

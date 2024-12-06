@@ -1,6 +1,6 @@
 
 .body {
-    padding: 6% 0;
+        padding: 6% 0 0 0;
     width: 100%;
     min-height: 100vh;
     --s: 150px;

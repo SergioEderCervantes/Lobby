@@ -1,17 +1,15 @@
 :root {
 
-    font-size: 30%;
+    font-size: 90%;
     box-sizing: border-box;
-    font-size: clamp(12px, 1.5vw, 16px);
-    font-family: "Krub", sans-serif;
     background-image: url(../img/lobby_root.webp);
     background-size:cover;
     background-repeat: no-repeat; 
     background-position: center; 
     background-attachment: fixed;
-
+    color: white;
     scrollbar-width: none;
-    min-height: 100vh;
+    
 }
 main {
     flex: 1; /* Ocupa todo el espacio disponible */
@@ -24,7 +22,8 @@ main {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Titillium Web", sans-serif;
+
 }
 
  

@@ -1,10 +1,10 @@
-h1,
+.restaurante h1,
 h2,
 h3,
 p {
     color: #FFFFFF;
 }
-h1{
+.restaurante h1{
     text-align: center;
     margin: 0;
 }
