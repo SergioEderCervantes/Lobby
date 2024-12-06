@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 20px;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+body.dark-theme h1 {
+    color: #fff;
+}
+
+.consulta {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .consulta {
+    background: #212121;
+    border-color: #555;
+    color: #ddd;
+}
+
+.consulta h2 {
+    margin: 0 0 15px;
+    color: #007BFF;
+}
+
+button {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.consulta button, #toggleTheme{
+    display: block;
+    margin: 10px auto;
+}
+
+@media (min-width: 768px) {
+    .consulta button, #toggleTheme{
+        display: inline-block;
+        margin: auto;
+    }
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+#ejecutarTodo {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+#loader {
+    font-size: 18px;
+    color: #555;
+}
+
+body.dark-theme #loader {
+    color: #ddd;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.consulta div {
+    margin-top: 15px;
+}
+
+.consulta p {
+    background: #f7f7f7;
+    border-left: 4px solid #007BFF;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.consulta p:nth-child(even) {
+    background: #eef3ff;
+}
+
+body.dark-theme .consulta p {
+    background: #555;
+    border-color: #007BFF;
+}
+
+body.dark-theme .consulta p:nth-child(even) {
+    background: #666;
+}

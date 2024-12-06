@@ -1,132 +1,288 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Consulta SQL</title>
-    </head>
-    <body>
-        <h1>Resultados de las consultas</h1>
 
-        <!-- 1. Datos del Usuario con ID 1 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta SQL</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sql.css' %}">
+
+</head>
+
+<body>
+    <h1>Lobby Estadisticas</h1>
+
+    <button id="toggleTheme">Toggle Theme</button>
+    <button id="ejecutarTodo" onclick="ejecutarTodasLasConsultas()">Ejecutar Todo</button>
+    <div id="loader" style="display:none; text-align:center; margin-top:20px;">Cargando...</div>
+
+    <!-- 1. Datos del Usuario con ID 3 -->
+    <div class="consulta">
         <h2>Datos del Usuario con ID 3</h2>
-        {% for row in user %}
+        <button onclick="ejecutarConsulta('user', 'resultadoUser')">Ejecutar consulta</button>
+        <div id="resultadoUser" style="display:none;">
+            {% for row in user %}
             <p>{{ row }}</p>
-        {% endfor %}
+            {% empty %}
+            <p>No hay datos disponibles</p>
+            {% endfor %}
+        </div>
+    </div>
 
-        <!-- 2. Torneos -->
+    <!-- 2. Torneos -->
+    <div class="consulta">
         <h2>Torneos</h2>
-        {% for torneo in torneos %}
-            <p>{{ torneo }}</p>
-        {% endfor %}
+        <button onclick="ejecutarConsulta('torneos', 'resultadoTorneos')">Ejecutar consulta</button>
+        <div id="resultadoTorneos" style="display:none;">
+            {% for torneo in torneos %}
+            <p>Nombre: {{ torneo.1 }} - Fecha: {{ torneo.2|date:"d/m/Y" }} - Participantes: {{ torneo.3 }}</p>
+            {% empty %}
+            <p>No hay torneos disponibles</p>
+            {% endfor %}
+        </div>
+    </div>
 
-        <!-- 3. Participantes en el Torneo -->
+    <!-- 3. Participantes en el Torneo -->
+    <div class="consulta">
         <h2>Participantes en el Torneo</h2>
-        {% for participante in participantes %}
+        <button onclick="ejecutarConsulta('participantes', 'resultadoParticipantes')">Ejecutar consulta</button>
+        <div id="resultadoParticipantes" style="display:none;">
+            {% for participante in participantes %}
             <p>{{ participante }}</p>
-        {% endfor %}
+            {% empty %}
+            <p>No hay participantes disponibles</p>
+            {% endfor %}
+        </div>
+    </div>
 
-        <!-- 4. Usuarios con Reservaciones -->
+    <!-- 4. Usuarios con Reservaciones -->
+    <div class="consulta">
         <h2>Usuarios con Reservaciones</h2>
-        {% for usuario in usuarios_con_reservacion %}
+        <button onclick="ejecutarConsulta('usuariosConReservacion', 'resultadoUsuariosConReservacion')">Ejecutar
+            consulta</button>
+        <div id="resultadoUsuariosConReservacion" style="display:none;">
+            {% for usuario in usuarios_con_reservacion %}
             <p>{{ usuario }}</p>
-        {% endfor %}
+            {% empty %}
+            <p>No hay usuarios con reservaciones</p>
+            {% endfor %}
+        </div>
+    </div>
 
-        <!-- 5. Promociones asociadas a la sucursal 2 -->
+    <!-- 5. Promociones asociadas a la sucursal 2 -->
+    <div class="consulta">
         <h2>Promociones asociadas a la sucursal 2</h2>
-        {% for promocion in promociones_sucursal_2 %}
-            <p>{{ promocion }}</p>
-        {% endfor %}
+        <button onclick="ejecutarConsulta('promocionesSucursal2', 'resultadoPromocionesSucursal2')">Ejecutar consulta</button>
+        <div id="resultadoPromocionesSucursal2" style="display:none;">
+            {% for promocion in promociones_sucursal_2 %}
+                <p>{{ promocion }}</p>
+            {% empty %}
+                <p>No hay promociones actualmente en sucursal</p>
+            {% endfor %}
+        </div>
+    </div>
 
-        <!-- 6. Productos de la Sucursal 3 -->
+    <!-- 6. Productos de la Sucursal 3 -->
+    <div class="consulta">
         <h2>Productos de la Sucursal 3</h2>
-        {% for producto in productos_sucursal_3 %}
-            <p>{{ producto }}</p>
-        {% endfor %}
+        <button onclick="ejecutarConsulta('productosSucursal3', 'resultadoProductosSucursal3')">Ejecutar consulta</button>
+        <div id="resultadoProductosSucursal3" style="display:none;">
+            {% for producto in productos_sucursal_3 %}
+                <p>{{ producto }}</p>
+            {% empty %}
+                <p>No hay productos en la Sucursal 3</p>
+            {% endfor %}
+        </div>
+    </div>
 
         <!-- 7. Reservaciones del 24/11/24 -->
+    <div class="consulta">
         <h2>Reservaciones del 24/11/24</h2>
-        {% for reservacion in reservaciones_24_nov %}
-            <p>{{ reservacion }}</p>
-        {% endfor %}
-
+        <button onclick="ejecutarConsulta('reservaciones24Nov', 'resultadoReservaciones24Nov')">Ejecutar consulta</button>
+        <div id="resultadoReservaciones24Nov" style="display:none;">
+            {% for reservacion in reservaciones_24_nov %}
+                <p>{{ reservacion }}</p>
+            {% empty %}
+                <p>No hay reservaciones para el 24/11/24</p>
+            {% endfor %}
+        </div>
+    </div>
+    
         <!-- 8. Productos de tipo Bebidas sin Alcohol -->
+    <div class="consulta">
         <h2>Productos de tipo Bebidas sin Alcohol</h2>
-        {% for producto in productos_bebidas_sin_alcohol %}
-            <p>{{ producto }}</p>
-        {% endfor %}
+        <button onclick="ejecutarConsulta('productosBebidasSinAlcohol', 'resultadoProductosBebidasSinAlcohol')">Ejecutar consulta</button>
+        <div id="resultadoProductosBebidasSinAlcohol" style="display:none;">
+            {% for producto in productos_bebidas_sin_alcohol %}
+                <p>{{ producto }}</p>
+            {% empty %}
+                <p>No hay productos de tipo Bebidas sin Alcohol</p>
+            {% endfor %}
+        </div>
+    </div>
 
-        <!-- 9. Torneos del 30/11/24 -->
+    <!-- 9. Torneos del 30/11/24 -->
+    <div class="consulta">
         <h2>Torneos del 30/11/24</h2>
-        {% for torneo in torneos_30_nov %}
-            <p>{{ torneo }}</p>
-        {% endfor %}
-
-        <!-- 10. Descripción de la Promoción con ID 27 -->
+        <button onclick="ejecutarConsulta('torneos30Nov', 'resultadoTorneos30Nov')">Ejecutar consulta</button>
+        <div id="resultadoTorneos30Nov" style="display:none;">
+            {% for torneo in torneos_30_nov %}
+                <p>ID: {{ torneo.0 }}, Nombre: {{ torneo.1 }}, Fecha: {{ torneo.2|date:"d/m/Y" }}, Participantes: {{ torneo.3 }}</p>
+            {% empty %}
+                <p>No hay torneos programados para el 30/11/24</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 10. Descripción de la Promoción con ID 27 -->
+    <div class="consulta">
         <h2>Descripción de la Promoción con ID 27</h2>
-        {% for promocion in promocion_27 %}
-            <p>{{ promocion }}</p>
-        {% endfor %}
+        <button onclick="ejecutarConsulta('promocion27', 'resultadoPromocion27')">Ejecutar consulta</button>
+        <div id="resultadoPromocion27" style="display:none;">
+            {% for promocion in promocion_27 %}
+                <p>{{ promocion }}</p>
+            {% empty %}
+                <p>No hay descripción para la promoción con ID 27</p>
+            {% endfor %}
+        </div>
+    </div>
 
-        <!-- 11. Sucursales con muchas reservaciones -->
+    <!-- 11. Sucursales con muchas reservaciones -->
+    <div class="consulta">
         <h2>Sucursales con muchas reservaciones</h2>
-        {% for sucursal in sucursales_con_muchas_reservaciones %}
-            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_reservaciones }}</p>
-        {% endfor %}
-
+        <button onclick="ejecutarConsulta('sucursalesConReservaciones', 'resultadoSucursalesConReservaciones')">Ejecutar consulta</button>
+        <div id="resultadoSucursalesConReservaciones" style="display:none;">
+            {% for sucursal in sucursales_con_muchas_reservaciones %}
+                <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_reservaciones }}</p>
+            {% empty %}
+                <p>No hay sucursales con muchas reservaciones</p>
+            {% endfor %}
+        </div>
+    </div>
+    
         <!-- 12. Tipos con muchos productos -->
+    <div class="consulta">
         <h2>Tipos con muchos productos</h2>
-        {% for tipo in tipos_con_muchos_productos %}
-            <p>{{ tipo.tipo }}: {{ tipo.total_productos }}</p>
-        {% endfor %}
-
-        <!-- 13. Modos con muchos torneos -->
+        <button onclick="ejecutarConsulta('tiposConMuchosProductos', 'resultadoTiposConMuchosProductos')">Ejecutar consulta</button>
+        <div id="resultadoTiposConMuchosProductos" style="display:none;">
+            {% for tipo in tipos_con_muchos_productos %}
+                <p>{{ tipo.tipo }}: {{ tipo.total_productos }}</p>
+            {% empty %}
+                <p>No hay tipos con muchos productos</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 13. Modos con muchos torneos -->
+    <div class="consulta">
         <h2>Modos con muchos torneos</h2>
-        {% for modo in modos_con_muchos_torneos %}
-            <p>{{ modo.modo_torneo }}: {{ modo.total_torneos }}</p>
-        {% endfor %}
-
-        <!-- 14. Torneos con muchos usuarios -->
+        <button onclick="ejecutarConsulta('modosConMuchosTorneos', 'resultadoModosConMuchosTorneos')">Ejecutar consulta</button>
+        <div id="resultadoModosConMuchosTorneos" style="display:none;">
+            {% for modo in modos_con_muchos_torneos %}
+                <p>{{ modo.modo_torneo }}: {{ modo.total_torneos }}</p>
+            {% empty %}
+                <p>No hay modos con muchos torneos</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 14. Torneos con muchos usuarios -->
+    <div class="consulta">
         <h2>Torneos con muchos usuarios</h2>
-        {% for torneo in torneos_con_muchos_usuarios %}
-            <p>{{ torneo.nombre_torneo }}: {{ torneo.total_usuarios }}</p>
-        {% endfor %}
-
-        <!-- 15. Fechas con muchas reservaciones -->
+        <button onclick="ejecutarConsulta('torneosConMuchosUsuarios', 'resultadoTorneosConMuchosUsuarios')">Ejecutar consulta</button>
+        <div id="resultadoTorneosConMuchosUsuarios" style="display:none;">
+            {% for torneo in torneos_con_muchos_usuarios %}
+                <p>{{ torneo.nombre_torneo }}: {{ torneo.total_usuarios }}</p>
+            {% empty %}
+                <p>No hay torneos con muchos usuarios</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 15. Fechas con muchas reservaciones -->
+    <div class="consulta">
         <h2>Fechas con muchas reservaciones</h2>
-        {% for fecha in fechas_con_muchas_reservaciones %}
-            <p>{{ fecha.fecha_reservacion }}: {{ fecha.total_reservaciones }}</p>
-        {% endfor %}
-
-        <!-- 16. Sucursales con muchas promociones -->
+        <button onclick="ejecutarConsulta('fechasConReservaciones', 'resultadoFechasConReservaciones')">Ejecutar consulta</button>
+        <div id="resultadoFechasConReservaciones" style="display:none;">
+            {% for fecha in fechas_con_muchas_reservaciones %}
+                <p>{{ fecha.fecha_reservacion|date:"d/m/Y" }}: {{ fecha.total_reservaciones }}</p>
+            {% empty %}
+                <p>No hay fechas con muchas reservaciones</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 16. Sucursales con muchas promociones -->
+    <div class="consulta">
         <h2>Sucursales con muchas promociones</h2>
-        {% for sucursal in sucursales_con_muchas_promociones %}
-            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_promociones }}</p>
-        {% endfor %}
-
-        <!-- 17. Sucursales con muchos productos -->
+        <button onclick="ejecutarConsulta('sucursalesConPromociones', 'resultadoSucursalesConPromociones')">Ejecutar consulta</button>
+        <div id="resultadoSucursalesConPromociones" style="display:none;">
+            {% for sucursal in sucursales_con_muchas_promociones %}
+                <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_promociones }}</p>
+            {% empty %}
+                <p>No hay sucursales con muchas promociones</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 17. Sucursales con muchos productos -->
+    <div class="consulta">
         <h2>Sucursales con muchos productos</h2>
-        {% for sucursal in sucursales_con_muchos_productos %}
-            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_productos }}</p>
-        {% endfor %}
-
-        <!-- 18. Productos por tipo y sucursal -->
+        <button onclick="ejecutarConsulta('sucursalesConMuchosProductos', 'resultadoSucursalesConMuchosProductos')">Ejecutar consulta</button>
+        <div id="resultadoSucursalesConMuchosProductos" style="display:none;">
+            {% for sucursal in sucursales_con_muchos_productos %}
+                <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.total_productos }}</p>
+            {% empty %}
+                <p>No hay sucursales con muchos productos</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 18. Productos por tipo y sucursal -->
+    <div class="consulta">
         <h2>Productos por tipo y sucursal</h2>
-        {% for producto in productos_por_tipo_y_sucursal %}
-            <p>{{ producto.nombre_sucursal }} - {{ producto.tipo }}: {{ producto.total_productos }}</p>
-        {% endfor %}
-
-        <!-- 19. Torneos del 30/11/24 por modo -->
+        <button onclick="ejecutarConsulta('productosPorTipoYSucursal', 'resultadoProductosPorTipoYSucursal')">Ejecutar consulta</button>
+        <div id="resultadoProductosPorTipoYSucursal" style="display:none;">
+            {% for producto in productos_por_tipo_y_sucursal %}
+                <p>{{ producto.nombre_sucursal }} - {{ producto.tipo }}: {{ producto.total_productos }}</p>
+            {% empty %}
+                <p>No hay productos por tipo y sucursal</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 19. Torneos del 30/11/24 por modo -->
+    <div class="consulta">
         <h2>Torneos del 30/11/24 por modo</h2>
-        {% for torneo in torneos_30_nov_por_modo %}
-            <p>{{ torneo.modo_torneo }}: {{ torneo.total_torneos }}</p>
-        {% endfor %}
-
-        <!-- 20. Promedio de productos por sucursal -->
+        <button onclick="ejecutarConsulta('torneos30NovPorModo', 'resultadoTorneos30NovPorModo')">Ejecutar consulta</button>
+        <div id="resultadoTorneos30NovPorModo" style="display:none;">
+            {% for torneo in torneos_30_nov_por_modo %}
+                <p>{{ torneo.modo_torneo }}: {{ torneo.total_torneos }}</p>
+            {% empty %}
+                <p>No hay productos por tipo y sucursal</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- 20. Promedio de productos por sucursal -->
+    <div class="consulta">
         <h2>Promedio de productos por sucursal</h2>
-        {% for sucursal in promedio_productos_por_sucursal %}
-            <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.promedio_productos }}</p>
-        {% endfor %}
-        
-    </body>
+        <button onclick="ejecutarConsulta('promedioProductosPorSucursal', 'resultadoPromedioProductosPorSucursal')">Ejecutar consulta</button>
+        <div id="resultadoPromedioProductosPorSucursal" style="display:none;">
+            {% for sucursal in promedio_productos_por_sucursal %}
+                <p>{{ sucursal.nombre_sucursal }}: {{ sucursal.promedio_productos }}</p>
+            {% empty %}
+                <p>No hay productos por tipo y sucursal</p>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+    <script src="{% static 'js/sql.js' %}"></script>
+</body>
+
 </html>

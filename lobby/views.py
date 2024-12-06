@@ -52,7 +52,7 @@ def sql(request):
     with connection.cursor() as cursor:
         
         # 1. Traer todos los datos del usuario con id 1
-        cursor.execute("select id, first_name, last_name, username, email from users_user where id = 1")
+        cursor.execute("select id, first_name, last_name, username, email from users_user where id = 3")
         user = cursor.fetchall()
 
         # 2. Traer todos los torneos
