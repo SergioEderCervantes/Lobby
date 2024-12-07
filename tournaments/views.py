@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.http import JsonResponse
 from django.db import IntegrityError
+from django.utils.timezone import now
 from .models import Torneo
 from users.models import User
 from settings import STATICFILES_DIRS 
@@ -13,8 +14,9 @@ from settings import STATICFILES_DIRS
 
 def tournaments(request):
     tournaments = Torneo.objects.all().annotate(num_players = Count('jugadores_inscritos'))
+    proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()    
 
-    return render(request, 'tournaments.html', {'tournaments': tournaments})
+    return render(request, 'tournaments.html', {'tournaments': tournaments, 'prox_torneo': proximo_torneo})
 
 
 def tournament_detail(request, name):
@@ -35,6 +37,7 @@ def tournament_detail(request, name):
         with open(file_path, 'r') as svg_file:
             svg_data = svg_file.read()
             
+       
     context = {
         'torneo': torneo,
         'svg_data': svg_data,

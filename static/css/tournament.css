@@ -1,110 +1,268 @@
-body {
-    background: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 39, 75, 1) 57%, rgba(55, 1, 60, 1) 96%);
+.body {
+    padding: 0;
     color: white;
-    background-repeat: no-repeat;
-    min-height: 100vh;
 }
 
-.header {
-    display: flex;
-    justify-content: center;
-}
 
-h1 {
-    font-size: 32px;
-    text-align: center;
-    margin: 0;
-}
-
-.tournament_container {
-    width: 80%;
-    min-height: 65vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container {
+    /* background-color: #444; */
+    width: 100%;
+    min-height: 80vh;
+    position: relative;
     margin: 0 auto;
 }
 
-.tournament {
-    border-radius: 10px;
-    margin: 3rem;
-    position: relative;
-    width: 80%;
-    min-height: 250px;
-    text-align: center;
-    overflow: hidden; /* Evita desbordamientos */
+
+.hidden {
+    display: none;
 }
 
-.backImage {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-}
-
-.blur {
-    backdrop-filter: blur(30px);
-    box-shadow: 0px 0px 30px rgba(277, 228, 237, 0.37);
-    border: 1.5px solid rgba(255, 255, 255, 0.18);
-    border-radius: 1rem;
-    transition: all 0.5s ease;
-}
-
-.blur:hover {
-    backdrop-filter: blur(50px);
-    box-shadow: 0px 0px 50px rgba(277, 228, 237, 0.37);
-}
-
-.foreground {
-    position: relative;
+.container img.loaded {
+    display: block;
+    position: absolute;
     width: 100%;
-    height: 250px; /* Asegura que ocupe toda la altura */
-    padding: 3rem;
+    max-height: 80vh;
+    background-size: cover;
+    filter: brightness(0.6);
+    mask-image: linear-gradient(to bottom, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent);
+} 
+
+
+/* LOADER */
+.wrapper {
+    width: 100px;
+    /* Tamaño del loader */
+    height: 60px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    /* Por encima de la imagen */
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+    left: 15%;
+    transform-origin: 50%;
+    animation: circle7124 .5s alternate infinite ease;
+}
+
+@keyframes circle7124 {
+    0% {
+        top: 60px;
+        height: 5px;
+        border-radius: 50px 50px 25px 25px;
+        transform: scaleX(1.7);
+    }
+
+    40% {
+        height: 20px;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+
+    100% {
+        top: 0%;
+    }
+}
+
+.circle:nth-child(2) {
+    left: 45%;
+    animation-delay: .2s;
+}
+
+.circle:nth-child(3) {
+    left: auto;
+    right: 15%;
+    animation-delay: .3s;
+}
+
+.shadow {
+    width: 20px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 62px;
+    transform-origin: 50%;
+    z-index: -1;
+    left: 15%;
+    filter: blur(1px);
+    animation: shadow046 .5s alternate infinite ease;
+}
+
+@keyframes shadow046 {
+    0% {
+        transform: scaleX(1.5);
+    }
+
+    40% {
+        transform: scaleX(1);
+        opacity: .7;
+    }
+
+    100% {
+        transform: scaleX(.2);
+        opacity: .4;
+    }
+}
+
+.shadow:nth-child(4) {
+    left: 45%;
+    animation-delay: .2s
+}
+
+.shadow:nth-child(5) {
+    left: auto;
+    right: 15%;
+    animation-delay: .3s;
+}
+
+.titulo {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.titulo h1,
+.titulo h2 {
+    text-align: center;
+}
+
+.titulo h1 {
+    font-size: 80px;
+    font-weight: 700;
+    margin: 3rem;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.tournaments_container {
+    position: relative;
+    z-index: 2;
+    background-color: #02071d;
+    width: 80%;
+    margin: -200px auto 0 auto;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding: 3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.tournaments_container h2 {
+    color: #fff;
+}
+
+.tournament_list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    transition: all 0.5s ease;
-    z-index: 1; /* Asegura que esté sobre la imagen de fondo */
-    visibility: visible; /* Siempre visible */
+    margin: 20px auto;
 }
 
-.foreground h3, .foreground p {
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 1), 0 2px 5px rgba(0, 0, 0, 0.9); /* Fuerte y dramático */
-    opacity: 1; /* El texto siempre es visible */
-    transition: opacity 0.5s ease;
+.tournament_card {
+    margin: 20px 0;
+    background-color: #1a1a1a;
+    width: 70%;
+    min-height: 300px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.foreground a {
-    visibility: hidden; /* Botón oculto inicialmente */
-    opacity: 0; /* Transparente inicialmente */
-    transform: translateY(20px); /* Empieza desplazado hacia abajo */
-    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s; /* Animación suave */
+.tournament_card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
 
-.blur:hover .foreground a {
-    visibility: visible; /* Botón visible */
-    opacity: 1; /* Botón aparece */
-    transform: translateY(0); /* Botón sube a su posición final */
-    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0s;
+.tournament_card h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
 }
 
-.foreground::before {
-    content: '';
+.tournament_info {
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    justify-content: space-between;
+    color: white;
+}
+
+.image_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.tournament_card:hover .image_container {
+    opacity: 0.3;
+}
+
+.image_container img {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    border-radius: 10px;
+}
+
+.button_container {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tournament_card:hover .button_container {
+    opacity: 1;
+}
+
+.button_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.tournament_card::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, rgba(1, 1, 1, 1) 15%, rgba(26, 110, 126, 0) 100%);
-    z-index: -1; /* Asegura que el degradado esté detrás del texto */
-    transition: opacity 0.5s ease;
-    opacity: 0; /* Degradado oculto inicialmente */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
-.blur:hover .foreground::before {
-    opacity: 1; /* Degradado aparece al hacer hover */
+
+.tournament_card h3,
+.tournament_info,
+.button_container {
+    position: relative;
+    z-index: 2;
 }
 
 .btn {
@@ -120,18 +278,21 @@ h1 {
     background-color: transparent;
     text-decoration: none;
     overflow: hidden;
-    z-index: 2; /* Asegura que esté por encima del gradiente */
+    z-index: 2;
+    /* Asegura que esté por encima del gradiente */
     font-family: inherit;
     transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 5px 15px rgba(255, 0, 221, 0.3); /* Suave sombra púrpura */
-    border-radius: 5px; /* Bordes ligeramente redondeados */
+    box-shadow: 0 5px 15px rgba(255, 0, 221, 0.3);
+    /* Suave sombra púrpura */
+    border-radius: 5px;
+    /* Bordes ligeramente redondeados */
 }
 
-.btn:hover{
-    color: white; /* Mantener el texto blanco */
-    box-shadow: 0 10px 30px rgba(255, 0, 221, 0.3); /* Sombra más prominente */
+.btn:hover {
+    color: white;
+    box-shadow: 0 10px 30px rgba(255, 0, 221, 0.3);
     text-shadow: 0 0 5px rgb(247, 0, 231), 0 0 10px rgb(247, 0, 231);
-    transform: translateY(-2px); /* Efecto de elevación al hover */ 
+    transform: translateY(-2px);
 }
 
 .btn::before {
@@ -150,3 +311,4 @@ h1 {
 .btn:hover::before {
     transform: translateX(0);
 }
+
