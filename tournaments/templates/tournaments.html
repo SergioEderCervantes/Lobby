@@ -43,7 +43,7 @@
       <div class="tournament_card">
         <h3>{{tournament.nombre_torneo}}</h3>
         <div class="tournament_info">
-          <p>Fecha: <br> {{tournament.fecha}}</p>
+          <p>Fecha: <br> {{tournament.fecha|date:"d/m/Y"}}</p>
           <p>Jugadores Inscritos: <br> {{ tournament.num_players }}</p>
         </div>
         <div class="image_container">

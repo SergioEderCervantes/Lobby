@@ -2,10 +2,13 @@ import os
 import json
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404 
-from django.db.models import Count
+from django.db import models
+from django.db.models import Count, F, ExpressionWrapper
+from django.db.models.functions import Abs 
 from django.http import JsonResponse
 from django.db import IntegrityError
 from django.utils.timezone import now
+from datetime import date
 from .models import Torneo
 from users.models import User
 from settings import STATICFILES_DIRS 
@@ -13,7 +16,13 @@ from settings import STATICFILES_DIRS
 # Create your views here.
 
 def tournaments(request):
-    tournaments = Torneo.objects.all().annotate(num_players = Count('jugadores_inscritos'))
+    hoy = date.today()
+    tournaments = (
+    Torneo.objects.filter(fecha__gte=hoy)
+    .annotate(num_players=Count('jugadores_inscritos'))
+    .annotate(days_to_today=ExpressionWrapper(F('fecha') - hoy, output_field=models.DurationField()))
+    .order_by('days_to_today')  # Orden ascendente por días
+)
     proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()    
 
     return render(request, 'tournaments.html', {'tournaments': tournaments, 'prox_torneo': proximo_torneo})

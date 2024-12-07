@@ -28,7 +28,8 @@
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-    min-height: 90vh; /* Altura mínima del contenedor */
+    min-height: 90vh;
+    /* Altura mínima del contenedor */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -37,39 +38,51 @@
 /* Nombre del torneo */
 .tournament_name {
     text-align: center;
-    font-size: 3rem; /* Letra más grande */
+    font-size: 3rem;
+    /* Letra más grande */
     margin-bottom: 1rem;
     text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.7);
 }
 
 /* Imagen del banner */
 .banner_image {
-    width: 80%; /* Ancho del 60% del contenedor principal */
-    height: 250px; /* Altura fija */
-    margin: 1rem auto; /* Centrado horizontal con espacio alrededor */
+    width: 80%;
+    /* Ancho del 80% del contenedor principal */
+    height: auto;
+    /* Altura fija */
+    max-height: 250px;
+    margin: 1rem auto;
+    /* Centrado horizontal con espacio alrededor */
     overflow: hidden;
-    border-radius: 10px; /* Bordes redondeados para un diseño más atractivo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar el banner */
+    border-radius: 10px;
+    /* Bordes redondeados para un diseño más atractivo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Sombra para destacar el banner */
 }
 
 .banner_image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen se ajuste bien al tamaño */
+    object-fit: auto;
+    /* Asegura que la imagen se ajuste bien al tamaño */
+    border-radius: 10px;
 }
+
 /* Descripción */
 .description_section {
-    margin-bottom: 2rem; /* Espacio adicional antes de la línea */
+    margin-bottom: 2rem;
+    /* Espacio adicional antes de la línea */
 }
 
 .description_section h2 {
-    font-size: 2rem; /* Letra más grande */
+    font-size: 2rem;
+    /* Letra más grande */
     margin-bottom: 0.5rem;
     color: #fff;
 }
 
 .description_section p {
-    font-size: 1.4rem; /* Letra más grande */
+    font-size: 1.4rem;
+    /* Letra más grande */
     line-height: 1.8;
     margin-bottom: 2rem;
 }
@@ -89,21 +102,15 @@
     max-height: 300px;
     overflow-y: auto;
     position: relative;
-    padding: 2rem 10px 2rem 0; /* Espacio para separar elementos */
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Línea separadora */
-    border-top: 2px solid rgba(255, 255, 255, 0.3); /* Línea separadora */
+    padding: 2rem 10px 2rem 0;
+    /* Espacio para separar elementos */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    /* Línea separadora */
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    /* Línea separadora */
 }
 
-/* Línea vertical entre reglas y jugadores */
-.rules_and_players_container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background-color: rgba(255, 255, 255, 0.3);
-}
+
 
 /* Lista de reglas */
 .rules_section {
@@ -114,20 +121,25 @@
 }
 
 .rules_section h3 {
-    font-size: 1.8rem; /* Letra más grande */
+    font-size: 1.8rem;
+    /* Letra más grande */
     margin-bottom: 0.5rem;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .rules_section ul {
-    list-style: circle; /* Decoración en forma de círculo */
-    padding-left: 1.5rem; /* Espaciado para los círculos */
+    list-style: circle;
+    /* Decoración en forma de círculo */
+    padding-left: 1.5rem;
+    /* Espaciado para los círculos */
 }
 
 .rules_section li {
-    font-size: 1.2rem; /* Letra más grande */
+    font-size: 1.2rem;
+    /* Letra más grande */
     line-height: 1.8;
-    padding: 0.5rem 0; /* Padding adicional */
+    padding: 0.5rem 0;
+    /* Padding adicional */
 }
 
 /* Lista de jugadores */
@@ -136,36 +148,57 @@
     overflow-y: auto;
     padding-left: 1rem;
     color: #ddd;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .players_section {
+        display: block;
+    }
+
+    /* Línea vertical entre reglas y jugadores */
+    .rules_and_players_container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
 }
 
 .players_section h3 {
-    font-size: 1.8rem; /* Letra más grande */
+    font-size: 1.8rem;
+    /* Letra más grande */
     margin-bottom: 0.5rem;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .players_section ul {
-    list-style: none; /* Sin decoración */
+    list-style: none;
+    /* Sin decoración */
     padding: 0;
     margin: 0;
 }
 
 .players_section li {
-    font-size: 1.2rem; /* Letra más grande */
+    font-size: 1.2rem;
+    /* Letra más grande */
     line-height: 1.8;
-    padding: 0.5rem 0; /* Padding adicional */
+    padding: 0.5rem 0;
+    /* Padding adicional */
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Mostrar el SVG */
-.svg_title h2{
+.svg_title h2 {
+    display: none;
     margin: 30px 0 0 40px;
 }
 
 .svg_display {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
     margin: 2rem auto;
     max-width: 100%;
     overflow: hidden;
@@ -175,15 +208,27 @@
     padding: 1rem;
 }
 
+@media (min-width: 768px) {
+    .svg_title h2{
+        display: block;
+    }
+    .svg_display{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 /* Contenedor de la tabla de posiciones */
 
-.standings_title h2{
+.standings_title h2 {
     margin: 30px 0 0 50px;
 }
+
 .standings_container {
     margin: 2rem auto;
     width: 90%;
-    overflow-x: auto;
+    overflow-x:scroll;
     background: rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -197,7 +242,8 @@
     color: white;
 }
 
-#standings_table th, #standings_table td {
+#standings_table th,
+#standings_table td {
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 0.8rem;
     text-align: center;
@@ -300,6 +346,6 @@
     color: rgb(247, 0, 231);
 }
 
-.btn{
+.btn {
     margin: 1rem;
 }

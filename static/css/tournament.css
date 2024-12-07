@@ -3,15 +3,44 @@
     color: white;
 }
 
+h2 {
+    font-size: clamp(16px, 3vw, 30px);
+}
+.titulo {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.titulo h1,
+.titulo h2 {
+    text-align: center;
+}
+
+.titulo h1 {
+    font-size: clamp(50px, 6vw, 80px);
+    font-weight: 700;
+    margin: 3rem;
+}
 
 .container {
-    /* background-color: #444; */
+    /* padding-top: 130px; */
     width: 100%;
     min-height: 80vh;
     position: relative;
     margin: 0 auto;
 }
+@media (min-width: 768px) {
+    .titulo{
+        top: 30%;
+    }
 
+    .container{
+        padding-top: 0;
+    }
+}
 
 .hidden {
     display: none;
@@ -124,45 +153,35 @@
     animation-delay: .3s;
 }
 
-.titulo {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-.titulo h1,
-.titulo h2 {
-    text-align: center;
-}
-
-.titulo h1 {
-    font-size: 80px;
-    font-weight: 700;
-    margin: 3rem;
-}
-
-h2 {
-    font-size: 30px;
-}
 
 .tournaments_container {
     position: relative;
     z-index: 2;
     background-color: #02071d;
-    width: 80%;
-    margin: -200px auto 0 auto;
+    width: 100%;
+    margin: -300px auto 0 auto;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    padding: 3rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-
+    
+}
+@media (min-width: 768px) {
+    .tournaments_container{
+        margin: -350px auto 0 auto;
+        padding: 3rem;
+    }
+}
+@media (min-width: 1024px) {
+    .tournaments_container{
+        width: 80%;
+        margin: -200px auto 0 auto;
+    }
 }
 
 .tournaments_container h2 {
     color: #fff;
+    margin: 2rem auto 0 auto;
 }
 
 .tournament_list {
@@ -176,8 +195,7 @@ h2 {
 .tournament_card {
     margin: 20px 0;
     background-color: #1a1a1a;
-    width: 70%;
-    min-height: 300px;
+    width: 100%;
     border: 1px solid #444;
     border-radius: 10px;
     display: flex;
@@ -189,6 +207,12 @@ h2 {
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+    .tournament_card{
+        width: 70%;
+    }
 }
 
 .tournament_card:hover {
@@ -209,30 +233,42 @@ h2 {
     padding: 2rem;
     justify-content: space-between;
     color: white;
+    text-align: center;
 }
 
 .image_container {
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 1;
+    opacity: 0.3;
     transition: opacity 0.3s ease;
 }
-
-.tournament_card:hover .image_container {
-    opacity: 0.3;
+@media (min-width: 1024px) {
+    .image_container{
+        opacity: 1;
+    }
+    .tournament_card:hover .image_container {
+        opacity: 0.3;
+    }
 }
+
 
 .image_container img {
     width: 100%;
     height: 100%;
-    background-size: contain;
+    background-size: auto;
     border-radius: 10px;
 }
 
+
 .button_container {
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease;
+}
+@media (min-width: 1024px) {
+    .button_container{
+        opacity: 0;
+    }
 }
 
 .tournament_card:hover .button_container {
@@ -266,6 +302,7 @@ h2 {
 }
 
 .btn {
+
     width: 50%;
     display: inline-block;
     padding: 0.9rem 1.8rem;
