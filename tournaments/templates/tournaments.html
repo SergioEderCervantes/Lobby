@@ -6,14 +6,11 @@
 <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
 <script src="{% static 'js/tournaments.js' %}" defer></script>
 {% endblock %}
-
 {% block header %}
-    <div class="login">
-    {% include 'header/log.html' %}
-    </div>
-    <div class="navbar">
-        {% include 'header/navbar.html' %}
-    </div>
+{% include 'header/log.html' %}
+<header class=" navbar">
+    {% include 'header/navbar.html' %}
+</header>
     
 {% endblock %}
 

@@ -7,7 +7,13 @@
 <script src="{% static 'js/tournament_detail.js' %}" defer></script>
 <script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
 {% endblock extrahead %}
-
+{% block header %}
+{% include 'header/log.html' %}
+<header class=" navbar">
+    {% include 'header/navbar.html' %}
+</header>
+    
+{% endblock %}
 {% block content %}
 <div class="body">
     <div class="tournament_info">
