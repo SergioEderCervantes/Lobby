@@ -15,3 +15,11 @@
          image.src = defaultSrc; // Cambia de regreso al ícono en blanco y negro
      });
  });
+
+ const menu = document.querySelector('.menu');
+const section = document.querySelector('.navbar .section');
+ menu.addEventListener("click", function() {
+    
+        menu.classList.toggle('active');
+        section.classList.toggle('active');
+  });

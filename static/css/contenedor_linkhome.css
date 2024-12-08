@@ -103,3 +103,19 @@
     box-shadow: 0 4px 8px rgba(232, 7, 228, 0.4), 
     0 6px 20px rgba(232, 7, 228, 0.2);    text-shadow: 0 0 10px #e807e4, 0 0 10px #e807e4;
 }
+
+/* Movimiento desde la izquierda */
+.left-to-right {
+    transform: translateX(-100px); /* Posición inicial fuera de la pantalla, a la izquierda */
+  }
+  
+  /* Movimiento desde la derecha */
+  .right-to-left {
+    transform: translateX(100px); /* Posición inicial fuera de la pantalla, a la derecha */
+  }
+  
+  /* Movimiento desde arriba */
+  .up-to-down {
+    transform: translateY(100px); /* Posición inicial fuera de la pantalla, arriba */
+  }
+  

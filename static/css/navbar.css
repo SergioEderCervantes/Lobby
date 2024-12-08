@@ -1,51 +1,121 @@
 /* Navbar dentro de la landpage */
+.menu {
+  display: flex; /* Ocultar icono de hamburguesa en PC y tabletas */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+ transition: all 0.5s ease;
+ margin-bottom: 15px;
+  
+}
+
+.menu .line {
+    width: 100%;
+    height: 12px;
+     margin-top: 5px;
+    background-color: #fff;
+  }
+.menu.active{
+  transform: rotate(90deg);
+  transition: all 0.5s ease;
+  
+}
 .navbar {
-  left: 50%; /* Centrada horizontalmente */
-  transform: translateX(-50%); /* Ajuste para centrar */
   border-radius: 10px;
   z-index: 1000;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 10px 20px;
   width: auto;
-  margin-bottom: 3rem;
-
-
-  margin-top: 1rem;
-  position: fixed; /* Navbar fija al hacer scroll */
-  top: 10px; /* Fija en la parte superior de la página */
-
+  position: fixed;
   height: fit-content;
-  background: linear-gradient(84deg, rgba(2,0,36,0.6), rgba(111,9,121,0.6) , rgba(0,16,153,0.5));
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
- 
+  
 }
 
 
 .navbar .section {
-  list-style-type: none;
   display: flex;
-  justify-content: center; /* Asegura que las secciones estén centradas */
-  gap: 20px; /* Espacio entre los elementos */
-  margin: 0;
-  padding: 0;
+  gap: 20px;
+  transform: translateX(-200%);
+  flex-direction: column;
+  transition: all 0.5s ease;
+}
+.navbar .section.active {
+  display: flex;
+  transform: translateX(-22%);
+  transition: all 0.5s ease;
 }
 
 .navbar a {
-  display: flex;
-  margin: 0 10px; /* Ajusta el margen según el diseño deseado */
-  justify-content: space-between;
-  color: white;
+  color: transparent;
   text-decoration: none;
-  font-size: 1.2rem; /* Ajusta el tamaño del texto */
+  font-size: 0rem;
+  padding: 15px;
+  border-radius: 20px;
+  background: rgb(65 7 121 / 48%);
+  transform: translateX(0);
+  
 }
 .navbar a img {
   margin: 0 0.5rem ; /* Ajusta el margen según el diseño deseado */
-  
+  transition: all 0.5s ease;
 }
 .navbar a:hover {
   color: #ffe253;
   text-shadow: 0 0 10px #ebb60e, 0 0 1px #ebb60e, 0 0 1px #ebb60e, 0 0 100px #ebb60e;
 }
+@media (min-width: 768px) {
+  .menu {
+    display: none; /* Ocultar icono de hamburguesa en PC y tabletas */
+  }
+  .navbar {
+    left: 50%; /* Centrada horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centrar */
+    border-radius: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    width: auto;
+    margin-bottom: 3rem;
+  
+  
+    margin-top: 1rem;
+    position: fixed; /* Navbar fija al hacer scroll */
+    top: 10px; /* Fija en la parte superior de la página */
+  
+    height: fit-content;
+    background: linear-gradient(84deg, rgba(2,0,36,0.6), rgba(111,9,121,0.6) , rgba(0,16,153,0.5));
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+   
+  }
 
+  
+  .navbar .section {
+    list-style-type: none;
+    display: flex;
+    transform: none;
+    flex-direction: row;
+    justify-content: center; /* Asegura que las secciones estén centradas */
+    gap: 20px; /* Espacio entre los elementos */
+   
+    padding: 0;
+  }
+  
+  .navbar a {
+    display: flex;
+    margin: 0 10px; /* Ajusta el margen según el diseño deseado */
+    justify-content: space-between;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem; /* Ajusta el tamaño del texto */
+    background: transparent;
+    align-items: center;
+
+  }
+    
+}
 

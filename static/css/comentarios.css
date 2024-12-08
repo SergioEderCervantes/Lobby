@@ -55,21 +55,21 @@
         background-color: #950f9e;
     }
 .comments{
-    background-color: rgba(56, 0, 52, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     width: 80%;
     height: 80%;
     overflow-y: scroll;
 }
 .comment{
     display: flex;
-    width: 70%;
-    flex-direction: column;
-    justify-content: center;
-    margin: 1%;
-    padding: 1%;
-    border: 1px solid #FFFFFF;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
-    overflow: hidden;
+        width: 70%;
+        flex-direction: column;
+        justify-content: center;
+        margin: 1%;
+        padding: 1%;
+        border: 1px solid #0e0c3566;
+        border-radius: 10px;
+        background-color: rgb(79 9 77 / 35%);
+        overflow: hidden;
     
 }

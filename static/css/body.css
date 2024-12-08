@@ -36,7 +36,7 @@
 }
 .body-log {
     width: 100%;
-    min-height: 88vh;
+    min-height: 100vh;
     display: grid;
     --s: 150px;
    --c1: #1e001c;
