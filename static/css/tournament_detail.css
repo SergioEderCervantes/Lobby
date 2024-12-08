@@ -274,8 +274,14 @@
     padding: 1.5rem;
     color: white;
     font-size: 1.2rem;
+    margin-bottom: 9rem;
 }
 
+@media (min-width: 768px) {
+    .authenticated_message{
+        margin-bottom: 1rem;
+    }
+}
 /* Formulario de registro de invitados */
 .guest_registration_form {
     background: rgba(0, 0, 0, 0.5);
