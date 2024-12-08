@@ -64,5 +64,6 @@ function closePopup() {
     container.classList.add('hidden');
     setTimeout(() => {
         overlay.classList.add('hidden');
+        location.reload();
     }, 50);
 }

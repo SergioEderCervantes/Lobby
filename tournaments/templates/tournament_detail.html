@@ -140,7 +140,7 @@
         </div>
         {% else %}
         <!-- Mostrar el formulario de inscripción para invitados -->
-        <form method="post" action="{% url 'register_guest_player' torneo.id %}" class="guest_registration_form">
+        <form method="post" id="guest_register_form" action="{% url 'register_guest_player' torneo.id %}" class="guest_registration_form">
             {% csrf_token %}
             <h3>Registrarse a {{ torneo.nombre_torneo }} como invitado</h3>
             <div class="form_group">
