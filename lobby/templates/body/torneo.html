@@ -1,13 +1,15 @@
 {% load static %}
 
-<section class="torneo_home">
-  <img src="{% static 'img/landpage.jpg' %}" alt="Torneo" />  
-  <h1>Torneo</h1>
+<section class="torneo_home up-to-down">
+  <div class="imagen-tourn">
+    <img src="{{prox_torneo.imagen.url}}" alt="torneo" />
+    <h1>{{prox_torneo.nombre_torneo}}</h1>
+  </div>
   <div class="contenedor_info">
-    <p>jugadores: n</p>
+    <p>Jugadores inscritos: {{num_players}}</p>
     
-    <a href="#">Regístrate</a>
-    <p>Fecha: dd/mm/aaaa</p>
+    <a href="{% url 'tournament_detail' name=prox_torneo.nombre_torneo %}">Regístrate</a>
+    <p>Fecha: {{prox_torneo.fecha|date:"d/m/Y"}}</p>
   </div>
     
 </section>

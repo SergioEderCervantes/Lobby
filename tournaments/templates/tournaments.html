@@ -4,37 +4,58 @@
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
-<script src="{% static 'js/tournaments.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'css/popup.css' %}">
 {% endblock %}
+{% block extrascripts %}
+<script src="{% static 'js/tournaments.js' %}" defer></script>
+<script src="{% static 'js/popup.js' %}"></script>
+{% endblock extrascripts %}
 
 {% block header %}
-    <div class="login">
-    {% include 'header/log.html' %}
-    </div>
-    <div class="navbar">
-        {% include 'header/navbar.html' %}
-    </div>
+{% include 'header/log.html' %}
+<header class=" navbar">
+    {% include 'header/navbar.html' %}
+</header>
     
 {% endblock %}
 
 {% block content %}
 <div class="body">
-
-  <div class="tournaments">
-    <h1>Tournaments</h1>
-    <section class="tournament_container">
+  <div class="container">
+    <div class="wrapper">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+    </div>
+    <img src="{{prox_torneo.imagen.url}}" alt="Prox_torneo" class="hidden">
+    <div class="titulo">
+      <h1>Torneos</h1>
+      <h2>Inscribete a un torneo y participa para ganar premios increibles</h2>
+    </div>
+  </div>
+  <div class="tournaments_container">
+    <h2>Proximos torneos de Lobby:</h2>
+    <div class="tournament_list">
       {% for tournament in tournaments %}
-      <div class="tournament blur backImage " data-bg-url="{{ tournament.imagen.url }}" >
-        <div class="foreground">
-          <h3>{{tournament.nombre_torneo}}</h3>
-          <p>fecha: {{tournament.fecha}}</p>
-          <p>Jugadores inscritos:{{tournament.num_players}}</p> 
+      <div class="tournament_card">
+        <h3>{{tournament.nombre_torneo}}</h3>
+        <div class="tournament_info">
+          <p>Fecha: <br> {{tournament.fecha|date:"d/m/Y"}}</p>
+          <p>Jugadores Inscritos: <br> {{ tournament.num_players }}</p>
+        </div>
+        <div class="image_container">
+          <img src="{{ tournament.imagen_banner.url }}" alt="Imagen de torneo">
+        </div>
+        <div class="button_container">
           <a href="{% url 'tournament_detail' tournament.nombre_torneo %}" class="btn">Ingresar</a>
         </div>
-
       </div>
       {% endfor %}
-    </section>
+    </div>
   </div>
+
 </div>
 {% endblock %}

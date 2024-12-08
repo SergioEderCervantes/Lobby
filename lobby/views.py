@@ -1,34 +1,68 @@
 from django.shortcuts import render
 from django.templatetags.static import static
 from django.db import connection
-from tournaments.models import Torneo
 from django.utils.timezone import now
+from datetime import timedelta
+from django.http import HttpResponseRedirect
+
+from tournaments.models import Torneo
+from lobby.models import Comment
 
 class Promocion(object):
     def __init__(self, nombre, imagen):
         self.nombre = nombre
         self.imagen = imagen
+        
+
 def home(request):
-    promociones = {
+
+    if request.method == 'POST':
+        comentario = request.POST.get('comentario')
+        comment = Comment.objects.create(comentario=comentario, usuario=request.user)
+        comment.save()
+
+        return HttpResponseRedirect('/')
+    else:
+
+        comments = Comment.objects.all()
+
+        promociones = {
+            
+                Promocion( "promocion1", static('img/promo.png')),
+                Promocion( "promocion2", static('img/promo2.jpg')),
+                Promocion( "promocion3", static('img/promo3.jpg')),
+                Promocion( "promocion4", static('img/promo4.jpg')),
+                Promocion( "promocion5", static('img/promo5.jpg')),
+            
+        }
+        # Hora actual del servidor
+        ahora = now()
+
+        # Rango de tiempo permitido
+        inicio_rango = ahora - timedelta(hours=5)  # 5 horas atrás
+        fin_rango = ahora + timedelta(minutes=30)  # 30 minutos adelante
         
-            Promocion( "promocion1", static('img/promo.png')),
-            Promocion( "promocion2", static('img/promo2.jpg')),
-            Promocion( "promocion3", static('img/promo3.jpg')),
-            Promocion( "promocion4", static('img/promo4.jpg')),
-            Promocion( "promocion5", static('img/promo5.jpg')),
-        
-    }
-    
-    proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()
-    
-    return render(request, 'index.html', {'promociones' : promociones, 'prox_torneo': proximo_torneo})
+        proximo_torneo = Torneo.objects.filter(fecha__gte=ahora).order_by('fecha').first()
+        num_players = proximo_torneo.cantidad_usuarios_inscritos() if proximo_torneo else None
+        torneo_ejec = Torneo.objects.filter(fecha__range=(inicio_rango, fin_rango)).first()
+        context = {
+        'promociones': promociones, 
+        'prox_torneo': proximo_torneo, 
+        'num_players': num_players, 
+        'comments': comments,
+        'torneo_ejec': torneo_ejec,
+        }
+
+        return render(request, 'index.html', context=context)
+
+
 
 def sql(request):
     # Consultas SQL
     with connection.cursor() as cursor:
         
         # 1. Traer todos los datos del usuario con id 1
-        cursor.execute("select id, first_name, last_name, username, email from users_user where id = 1")
+        cursor.execute("select id, first_name, last_name, username, email from users_user where id = 3")
         user = cursor.fetchall()
 
         # 2. Traer todos los torneos

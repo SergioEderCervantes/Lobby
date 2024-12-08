@@ -28,6 +28,13 @@ class User(AbstractUser):
         },
     )
     
+    telefono = models.CharField(
+        _("Numero de telefono"),        
+        max_length=15,
+        null=True, 
+        blank=True,
+    )
+    
     # Eliminar Groups, ya que por la naturaleza del proyecto no seran necesarios
     groups = None
     
