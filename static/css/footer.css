@@ -1,7 +1,7 @@
 
 .pac{
     transform: translateY(120px);
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .footer {
@@ -26,6 +26,7 @@
         padding: 35px;
     }
     .pac{
+
         transform: translateY(0);
         transition: transform 0.5s ease;
     }
@@ -45,7 +46,8 @@
 @media (min-width: 768px) {
     .footer-align{
         padding: 0;
-        
+        margin-right: 2rem;
+
         justify-content: space-between;  
         font-size: 12px;
         align-items: center;
@@ -76,14 +78,14 @@
     color: white;
     text-align: center;
     transform: translateY(200%);
-    transition: all 0.5s ease;
+    transition: all 0.8s ease;
 }
 .content-icon img{
     width: 0;
 }
 .content-icon.active{
     transform: translateY(0);
-    transition: all 0.5s ease;
+    transition: all 0.8s ease ;
     width: 18%;
 
 }

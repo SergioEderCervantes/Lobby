@@ -1,4 +1,21 @@
-.ubicacion_contenedor {
+/* Animación de deslizamiento de derecha a izquierda */
+@keyframes slide-in-right {
+    0% {
+      transform: translateX(100%); /* Empieza fuera de la pantalla por la derecha */
+    }
+    100% {
+      transform: translateX(0); /* Termina en su posición original */
+    }
+  }
+  
+  /* Clase para activar la animación */
+  .show {
+    animation: slide-in-right 1s ease-out forwards; /* Animación de deslizamiento */
+    /* Hace que el elemento sea visible */
+  }
+  
+  /* Estilos generales para el contenedor de la ubicación */
+  .ubicacion_contenedor {
     background: rgba(43, 9, 79, 0.236);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2.5px);
@@ -9,30 +26,39 @@
     align-items: center;
     width: 90%;
     margin: 0 auto;
-}
-.ubicacion{
+    opacity: 1; /* Este contenedor no necesita animación */
+  }
+  
+  /* Estilo del contenedor .ubicacion que contiene el iframe */
+  .ubicacion {
     position: relative;
-    display: flex
-;
+    display: flex;
     align-items: center;
     width: 50%;
     flex-direction: column;
     left: 6%;
-}
-.ubicacion h2{
+    opacity: 0; /* Empezamos con opacidad 0 */
+    transition: opacity 0.5s ease; /* Transición suave */
+  }
+  
+  .ubicacion h2 {
     margin-bottom: 2.5%;
     color: white;
-}
-.ubicacion iframe{
+  }
+  
+  .ubicacion iframe {
     border-radius: 6px;
     transition: 0.5s;
-}
-.ubicacion iframe:hover{
+  }
+ .ubicacion.show {
+    transition: all 0.5s ease; /* Transición suave */
+    opacity: 1; /* Hace que el elemento sea visible */
+  } 
+  .ubicacion iframe:hover {
     transform: scale(1.1);
     transition: 0.5s;
-}
-
-
+  }
+  
 .bottom_contenedor {
     background: rgba(43, 9, 79, 0.236);
     padding: 3% 0;
