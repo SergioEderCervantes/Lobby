@@ -198,7 +198,7 @@
 }
 
 .svg_display {
-    display: none;
+    /* display: none; */
     margin: 2rem auto;
     max-width: 100%;
     overflow: hidden;
@@ -206,6 +206,13 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 1rem;
+    overflow-x: auto;
+}
+
+.svg_display svg{
+    width: 100%;
+    height: 100%;
+    min-width: 500px;
 }
 
 @media (min-width: 768px) {

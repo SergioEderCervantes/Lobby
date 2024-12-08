@@ -21,10 +21,12 @@
             <link rel="stylesheet" href="{% static 'css/info_general.css' %}" />
             <link rel="stylesheet" href="{% static 'css/ubicacion_bottompage.css' %}" />
             <link rel="stylesheet" href="{% static 'css/contenedor_linkhome.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/popup.css' %}">
         {% endblock extrahead %}
         {% block extrascripts %}
             <script src="{% static '\swiper\swiper-bundle.min.js' %}" defer></script>
             <script src="{% static '\js\carrusel.js' %}" defer></script>
+            <script src="{% static 'js\popup.js' %}" defer></script>
         {% endblock %}
             <script src="{% static '\js\navbar.js' %}" defer></script>
             <script src="{% static '\js\perfil.js' %}" defer></script>
@@ -39,13 +41,16 @@
                 <div class="imagen-land">{% include 'header/logo.html' %}</div>
             </section>
         {% endblock %}
+
+        {% block popup %}
+            {% include 'popup.html' with torneo_ejec=torneo_ejec %}
+        {% endblock popup %}
         {% block content %}
             <main>
                 {% include 'body/promociones.html' %}
                 <section class="body">
                     {% if prox_torneo %}
                     {% include 'body/torneo.html' with prox_torneo=prox_torneo num_players=num_players %}
-                    {% else %}
                     {% endif %}
                     {% include 'body/informacion.html' %}
                     {% include 'body/ubicacion.html' %}

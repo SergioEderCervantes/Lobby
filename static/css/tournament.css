@@ -1,6 +1,7 @@
 .body {
     padding: 0;
     color: white;
+    padding-bottom: 30px;
 }
 
 h2 {
@@ -157,7 +158,7 @@ h2 {
 .tournaments_container {
     position: relative;
     z-index: 2;
-    background-color: #02071d;
+    background-color: #02071df0;
     width: 100%;
     margin: -300px auto 0 auto;
     border-radius: 10px;
