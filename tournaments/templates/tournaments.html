@@ -12,13 +12,11 @@
 {% endblock extrascripts %}
 
 {% block header %}
-<div class="login">
-  {% include 'header/log.html' %}
-</div>
-<div class="navbar">
-  {% include 'header/navbar.html' %}
-</div>
-
+{% include 'header/log.html' %}
+<header class=" navbar">
+    {% include 'header/navbar.html' %}
+</header>
+    
 {% endblock %}
 
 {% block content %}

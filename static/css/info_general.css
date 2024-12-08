@@ -42,23 +42,32 @@
     margin-bottom: 20px;
 }
 .contenedor_infogeneral_img img {
-    margin-top: 5%;
-    width: 35%;
-    height: 80%;
-    border-radius: 5px;
+  
+    width: 100%;
     transition: 0.5s;
+    
 }
 .contenedor_infogeneral_img img:hover {
     transform: scale(1.1);
     transition: 0.5s;
 }
 .info_img1{
+    width: 100%;
+
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 8%;
+    margin-top: 8%;
 }
 .info_img2{
+    width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+.info_img1_position{
+    width: 35%;
+}
+.info_img2_position{
+    width: 50%;
+
 }
