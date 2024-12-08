@@ -1,6 +1,5 @@
 .ubicacion_contenedor {
     background: rgba(43, 9, 79, 0.236);
-    padding: 3% 0;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);

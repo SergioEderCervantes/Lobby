@@ -4,8 +4,8 @@
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);
     border-radius: 10px;
-    width: 900px;
-    height: 400px;
+    width: 70%;
+    height: 30%;
     border-radius: 26px;
     display: flex;
     margin: 0 auto;
@@ -14,28 +14,51 @@
     flex-basis: 200;
     flex-direction: column;
     justify-content: space-between;
-   transition: 0.5s;
+    align-items: center;
+   transition: all 1.5s ease;
+   opacity: 0;
 }
-.torneo_home:hover {
+
+.torneo_home .visible:hover {
     transform: scale(1.1);
     transition: 0.5s;
 }
 .torneo_home img {
     position: absolute;
-    width: 100%;
+    width: 80%;
     height: 100%;
     border-radius: 26px;
      z-index: -1;
 }
 .torneo_home h1 {
-    font-size: 40px;
+    font-size: 25px;
     color: white;
     text-align: center;
     margin-top: 20px;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 1), 0 2px 5px rgba(0, 0, 0, 0.9);
 }
+@media (min-width: 768px) and (max-width: 1440px)  {
+    .torneo_home  {
+        width: 60%;
+        height: 400px;
+    }
+    .torneo_home h1{
+        font-size: 40px;
+    }
+}
+@media (min-width: 1200px) {
+    .torneo_home  {
+        width: 60%;
+        height: 400px;
+    }
+    .torneo_home h1{
+        font-size: 40px;
+    }
+    
+}
 .contenedor_info {
     display: flex;
+    width: 80%;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 20px;
@@ -69,3 +92,10 @@
     font-size: 15px;
     color: white;
 }
+
+
+  /* Cuando el elemento entra en la vista, lo hacemos visible */
+  .torneo_home.visible {
+    opacity: 1;                   /* Hacer visible el elemento */
+    transform: translateY(0)      /* Moverlo a su posición original */
+  }
