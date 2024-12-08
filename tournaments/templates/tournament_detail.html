@@ -14,6 +14,8 @@
 </script>
 <script src="{% static 'js/tournament_detail.js' %}" defer></script>
 <script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
+{% endblock extrascripts %}
+
 {% block header %}
 {% include 'header/log.html' %}
 <header class=" navbar">
@@ -21,7 +23,6 @@
 </header>
     
 {% endblock %}
-{% endblock extrascripts %}
 {% block content %}
 <div class="tournament_description_view">
     <!-- Imagen de fondo -->

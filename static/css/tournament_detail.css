@@ -39,8 +39,7 @@
 .tournament_name {
     text-align: center;
     font-size: 3rem;
-    /* Letra más grande */
-    margin-bottom: 1rem;
+    margin: 5rem 0;
     text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.7);
 }
 
