@@ -7,18 +7,6 @@ from .services import gestionar_svg_torneo, gestionar_guardado_svg
 from django.http import HttpResponseNotFound
 # Create your views here.
 
-class Tournament(object):
-    def __init__(self, name, game_name, mode, date, description, rules):
-        self.name = name
-        self.game_name = game_name
-        self.mode = mode
-        self.date = date
-        self.description = description
-        self.rules = rules
-        # self.registered_players = registered_players
-        # self.imagen = imagen
-
-
 
 def tournament_view(request, tournament_id):
     # Dios perdoname

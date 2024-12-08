@@ -4,9 +4,18 @@
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/tournament_detail.css' %}" />
 <link rel="stylesheet" href="{% static 'css/resultTable.css' %}" />
+{% endblock extrahead %}
+{% block extrascripts %}
+{{ block.super }}
+<script>
+    const tournamentId = "{{ torneo.id }}";
+    const csrfToken = "{{ csrf_token }}";
+    const userId = "{{ user.id|default:'null' }}"
+</script>
 <script src="{% static 'js/tournament_detail.js' %}" defer></script>
 <script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
-{% endblock extrahead %}
+{% endblock extrascripts %}
+
 {% block header %}
 {% include 'header/log.html' %}
 <header class=" navbar">
@@ -15,57 +24,98 @@
     
 {% endblock %}
 {% block content %}
-<div class="body">
-    <div class="tournament_info">
-        <h1> {{torneo.nombre_torneo}} </h1>
-        <div class='tournament__info__image blur'>
-            <img src="{{torneo.imagen_banner.url}}" alt="imagen del torneo" />
+<div class="tournament_description_view">
+    <!-- Imagen de fondo -->
+    <div class="background_image">
+        <div class="wrapper">
+            <!-- Loader -->
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
         </div>
-        <div class="description">
-            <h2>Descripcion</h2>
-            <p> {{ torneo.descripcion }} </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur deserunt neque id temporibus. Ea ad saepe adipisci blanditiis? Harum quo voluptatem aut sint iusto in ab rem laboriosam facere repellendus.</p>
+        <img src="{{ torneo.imagen.url }}" alt="Imagen del torneo" class="hidden">
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content_container">
+        <!-- Nombre del torneo -->
+        <h1 class="tournament_name">{{ torneo.nombre_torneo }}</h1>
+
+        <!-- Imagen del banner -->
+        <div class="banner_image">
+            <div class="wrapper">
+                <!-- Loader -->
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+            </div>
+            <img src="{{ torneo.imagen_banner.url }}" alt="Banner del torneo" class="hidden">
         </div>
 
-        <section class="accordion">
-            <div class="accordion_item">
-                <h4 class="accordion_header">Reglas</h4>
-                <ul class="accordion_content">
-                    {% for rule in reglas %}
-                    <li> {{rule}} </li>
+        <!-- Descripción -->
+        <div class="description_section">
+            <h2>Descripción</h2>
+            <p>{{ torneo.descripcion }}</p>
+        </div>
+
+        <!-- Contenedor de reglas y jugadores -->
+        <div class="rules_and_players_container">
+            <!-- Lista de reglas -->
+            <div class="rules_section">
+                <h3>Reglas</h3>
+                <ul>
+                    {% for regla in reglas %}
+                    <li>{{ regla }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="accordion_item">
-                <h4 class="accordion_header">Jugadores Inscritos</h4>
-                <ul class="accordion_content">
+
+            <!-- Lista de jugadores -->
+            <div class="players_section">
+                <h3>Jugadores Inscritos</h3>
+                <ul>
+                    {% for jugador in players %}
+                    <li>{{ jugador }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {% if svg_data %}
+        <div class="svg_title">
+            <h2>Enfrentamientos</h2>
+        </div>
+        <!-- Mostrar el SVG si existe -->
+        <div class="svg_display">
+            {{ svg_data|safe }}
+        </div>
+
+        <!-- Si el modo del torneo es "Round", mostrar la tabla -->
+        {% if torneo.modo_torneo == 'Round' %}
+        <div class="standings_title">
+            <h2>Tabla de puntuaciones</h2>
+        </div>
+        <div class="standings_container">
+            <table id="standings_table">
+                <thead>
+                    <tr>
+                        <th>Ranking</th>
+                        <th>Jugador</th>
+                        <th>Partidos ganados</th>
+                        <th>Partidos perdidos</th>
+                        <th>Partidos empatados</th>
+                        <th>Puntuación</th>
+                        <th>Goles</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for player in players %}
-                    <li> {{player}} </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-    </div>
-    {% if svg_data %}
-    <div class="svg_container blur">
-        {{svg_data|safe}}
-    </div>
-    {% if torneo.modo_torneo == 'Round' %}
-    <div class = "standings__container" id =>
-        <table id = "standings_table">
-            <thead>
-                <tr>
-                    <th>Ranking</th>
-                    <th>Jugador</th>
-                    <th>Partidos ganados</th>
-                    <th>Partidos perdidos</th>
-                    <th>Partidos empatados</th>
-                    <th>Puntuación</th>
-                    <th>Goles</th>
-                <tr>
-            </thead>
-            <tbody>
-                {% for player in players %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ player }}</td>
@@ -75,41 +125,41 @@
                         <td>0</td>
                         <td>0</td>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         {% endif %}
-    {% else %}
-    <div class="formulario_ingreso">
+
+        {% else %}
+        <!-- Si no existe el SVG -->
         {% if user.is_authenticated %}
-        <div class="already_authenticated">
-            <h3> Ya esta registrado, deseas inscribirte a este torneo usando el correo: {{user.email}}</h3>
-            <a href="#" class="login__button"> Inscribirme </a>
+        <div class="authenticated_message">
+            <p>Ya estás autenticado. ¿Deseas inscribirte con el correo <strong>{{ user.email }}</strong>?</p>
+            <button id="tournament_register_btn" class="btn">Inscribirse</button>
         </div>
         {% else %}
-        <div class="guest_form">
-            <form class="form">
-                <legend> Registrarse a {{torneo.nombre_torneo}} como invitado</legend>
-                <div class="form-group">
-                    <label for="playerName">Nombre de jugador</label>
-                    <input type="text" id="playerName" name="playerName" required="">
-                </div>
-                <div class="form-group">
-                    <label for="tel">Numero de telefono</label>
-                    <input type="tel" id="tel" name="tel" required="">
-                </div>
-                <div class="form_bottom">
-                    <button class="form-submit-btn" type="submit">Submit</button>
-
-                    <a class="signup" href="{% url 'account_login' %}" class="">Ya tienes cuenta?</a>
-
-                </div>
-            </form>
-        </div>
+        <!-- Mostrar el formulario de inscripción para invitados -->
+        <form method="post" action="{% url 'register_guest_player' torneo.id %}" class="guest_registration_form">
+            {% csrf_token %}
+            <h3>Registrarse a {{ torneo.nombre_torneo }} como invitado</h3>
+            <div class="form_group">
+                <label for="playerName">Nombre</label>
+                <input type="text" name="playerName" id="playerName" required>
+            </div>
+            <div class="form_group">
+                <label for="tel">Teléfono</label>
+                <input type="tel" name="tel" id="tel" required>
+            </div>
+            <div class="form_actions">
+                <button type="submit">Inscribirse</button>
+                <a class="signup" href="{% url 'account_login' %}">Ya tienes cuenta?</a>
+            </div>
+        </form>
         {% endif %}
-    </div>
-    {% endif %}
+        {% endif %}
 
+    </div>
 </div>
+
 {% endblock content %}

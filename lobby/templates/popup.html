@@ -1,0 +1,37 @@
+<!-- Popup y Loader -->
+<div id="popup_overlay" class="popup_overlay hidden">
+    <!-- Nuevo Loader -->
+    <div id="popup_loader" class="popup_loader hidden">
+        <div class="loader">
+            <div class="loader__circle"></div>
+            <div class="loader__circle"></div>
+            <div class="loader__circle"></div>
+            <div class="loader__circle"></div>
+            <div class="loader__circle"></div>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup_container" class="popup_container hidden">
+        <div id="popup_content" class="popup_content">
+            <!-- Contenido dinámico del popup -->
+        </div>
+    </div>
+
+</div>
+
+<!-- Script para abrir el popup automáticamente -->
+{% if torneo_ejec %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        openPopup({
+            title: "{{ torneo_ejec.nombre_torneo|safe }} esta siendo disputado ahora mismo!!!",
+            imageUrl: "{{ torneo_ejec.imagen_banner.url|safe }}",
+            message: "Accede al toeneo para ver los enfrentamientos",
+            buttonText: "Accede",
+            size: "large",
+            torneoUrl: "{% url 'tournament_detail' torneo_ejec.nombre_torneo %}"
+        });
+    });
+</script>
+{% endif %}
