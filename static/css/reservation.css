@@ -88,23 +88,23 @@ form {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Button styling */
+/* Button styling 
 .campoForm button {
   width: 100%;
   padding: 15px;
-  background-color: rgba(167, 139, 250, 1); /* Color del botón */
-  color: rgba(17, 24, 39, 1); /* Texto oscuro */
+  background-color: rgba(167, 139, 250, 1); 
+  color: rgba(17, 24, 39, 1);
   border: none;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-}
+} 
 
 .campoForm button:hover {
   background-color: rgba(139, 92, 246, 1);
-  transform: translateY(-2px); /* Efecto de elevación */
-}
+  transform: translateY(-2px); 
+} */
 
 
 .flatpickr-calendar .flatpickr-day {
@@ -210,33 +210,34 @@ form {
   gap: 20px;
 }
 
+
 /* Estilo para cada botón */
-.consola-button {
-  background: transparent;
-  border: 2px solid #fff;
-  padding: 10px 20px;
+.consola-button { 
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
-  color: #fff;
   font-size: 16px;
   display: flex;
   flex-direction: column; /* Apila el icono y el texto */
   align-items: center; /* Centra el contenido dentro del botón */
   justify-content: center; /* Centra el contenido dentro del botón */
-  max-width: 120px; /* Ancho fijo de los botones */
-  height: 120px; /* Alto ajustado para los iconos y el texto */
-  border-radius: 8px; /* Bordes redondeados */
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  /* Texto blanco */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
 /* Espacio entre el icono y el texto */
 .consola-button i {
-  margin-bottom: 8px; /* Espacio entre el icono y el nombre */
-  font-size: 36px; /* Tamaño del icono */
+  margin-bottom: 5px; /* Espacio entre el icono y el nombre */
 }
 
 /* Estilo para el nombre de la consola */
 .consola-button span {
-  font-size: 14px; /* Tamaño del texto */
+  font-size: 15px; /* Tamaño del texto */
   text-align: center;
   white-space: nowrap;
   color: #fff;
