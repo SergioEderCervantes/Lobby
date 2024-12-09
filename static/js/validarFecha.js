@@ -31,11 +31,12 @@ async function checarDisp() {
         }
 
         const data = await response.json();
+        actualizarBotones(data.disponibilidad);
         //console.log("Disponibilidad:", data.disponibilidad);
         //alert(`Disponibilidad: ${JSON.stringify(data.disponibilidad)}`); // Mostrar disponibilidad
     } catch (error) {
         //console.error("Error inesperado:", error);
-        alert(`Error inesperado: ${error.message}`);
+        //alert(`Error inesperado: ${error.message}`);
     }
 }
 
@@ -69,6 +70,8 @@ function mostrarError(mensaje) {
         });
 
     });
+    
+    reestablecerBotones();
 }
 
 
@@ -83,4 +86,51 @@ function limpiarFormatoCampo(campo) {
     // Restaurar el formato original del campo
     campo.style.borderColor = "";
     campo.style.backgroundColor = "";
+}
+
+function reestablecerBotones(){
+    const botones = document.querySelectorAll(".consola-button");
+
+    botones.forEach(boton => {
+        const consola = boton.getAttribute("data-consola");
+            boton.disabled = false; // Habilitar el botón
+            boton.style.backgroundColor = ""; // Restaurar color original
+            boton.style.cursor = "pointer"; // Restaurar cursor
+            boton.classList.remove("disabled", "no-hover"); // Remover clases
+            boton.style.transform = ""; // Restaurar transformación al hover
+            boton.style.transition = ""; // Restaurar transición
+    });
+}
+
+function actualizarBotones(disponibilidad) {
+    const botones = document.querySelectorAll(".consola-button");
+
+    botones.forEach(boton => {
+        const consola = boton.getAttribute("data-consola");
+
+        // Si el botón es "sin consola", siempre habilítalo
+        if (consola === "sin-consola") {
+            boton.disabled = false;
+            boton.style.backgroundColor = ""; // Restaurar color original
+            boton.style.cursor = "pointer"; // Restaurar cursor
+            boton.classList.remove("disabled", "no-hover"); // Remover clases
+            return; // Saltar a la siguiente iteración
+        }
+
+        // Verifica la disponibilidad
+        if (disponibilidad[consola]) {
+            boton.disabled = false; // Habilitar el botón
+            boton.style.backgroundColor = ""; // Restaurar color original
+            boton.style.cursor = "pointer"; // Restaurar cursor
+            boton.classList.remove("disabled", "no-hover"); // Remover clases
+            boton.style.transform = ""; // Restaurar transformación al hover
+            boton.style.transition = ""; // Restaurar transición
+        } else {
+            boton.disabled = true; // Deshabilitar el botón
+            boton.style.backgroundColor = "rgba(255, 0, 0, 0.1)"; // Cambiar color a rojo claro
+            boton.style.cursor = "not-allowed"; // Cambiar cursor a "no permitido"
+            boton.style.transform = "none"; // Desactivar transformación al hover
+            boton.style.transition = "none"; // Desactivar transición al hover
+        }
+    });
 }

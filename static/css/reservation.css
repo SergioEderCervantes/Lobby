@@ -31,6 +31,50 @@ h2{
   color: #f1c40f;
 }
 
+.avisoLoggin {
+  margin: 20px auto;
+  max-width: 600px;
+
+  margin-bottom: 20px; /* Espacio entre los campos */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  backdrop-filter: blur(5px); /* Desenfoque */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para cada campo */
+  
+  /* Borde violeta fosforescente */
+  border: 2px solid #9400D3; /* Violeta fosforescente */
+
+  /* Agregar propiedades para visibilidad progresiva */
+  opacity: 1; /* Por defecto, borroso */
+  pointer-events: auto; /* Habilitar interacción */
+  transition: opacity 0.8s ease, backdrop-filter 0.8s ease, transform 0.6s ease, box-shadow 0.6s ease; /* Hacemos la transición más lenta */
+}
+
+.avisoLoggin h1 {
+    color: #9400D3; /* Violeta fosforescente */
+    text-shadow: 0 0 2px #9400D3, 0 0 20px #9400D3; /* Sombra luminosa para mayor efecto */
+
+  text-align: center; /* Centrado del texto */
+  font-size: 28px; /* Ajustar el tamaño de la fuente */
+  font-weight: bold; /* Hacer el texto en negrita */
+  margin-bottom: 5px; /* Separación de la etiqueta <h1> */
+}
+
+.avisoLoggin p {
+  color: white; /* Texto en blanco */
+  text-align: center; /* Centrar el texto */
+  font-size: 18px; /* Ajustar el tamaño de la fuente */
+  font-style: italic; /* Hacer el texto en cursiva */
+ 
+}
+
+.avisoLoggin:hover {
+  transform: translateY(-10px); /* Eleva el contenedor al pasar el mouse */
+  box-shadow: 0 0 20px rgba(155, 29, 255, 0.7); /* Borde brillante violeta */
+
+}
+
 
 form {
   margin: 0 auto;
@@ -254,6 +298,88 @@ form {
   border: 2px solid #4CAF50; /* Resaltado verde */
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra verde */
 }
+
+.spanPersonas{
+  font-size: 15px; /* Tamaño del texto */
+text-align: center;
+white-space: nowrap;
+color: #ff0000; /* Rojo fosforescente */
+text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
+}
+
+.spanComentarios {
+  font-size: 15px; /* Tamaño del texto */
+  text-align: center;
+  white-space: nowrap;
+  color: #8a2be2; /* Violeta */
+  text-shadow: 0 0 4px #8a2be2, 0 0 6px #8a2be2; /* Sombra más sutil y nítida en violeta */
+}
+
+
+/* Estilo para el botón habilitado */
+.btnForm {
+  width: 50%;
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid rgb(163, 1, 152);
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 2; /* Asegura que esté por encima del gradiente */
+  font-family: inherit;
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 0, 221, 0.3); /* Sombra suave púrpura */
+  border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+/* Efecto hover para el botón habilitado */
+.btnForm:hover {
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 0, 221, 0.3); /* Sombra más prominente */
+  text-shadow: 0 0 5px rgb(247, 0, 231), 0 0 10px rgb(247, 0, 231);
+  transform: translateY(-2px); /* Efecto de elevación al hover */
+}
+
+/* Estilo de transición del fondo del botón */
+.btnForm::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(163, 1, 152);
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+/* Efecto de transición al pasar el hover */
+.btnForm:hover::before {
+  transform: translateX(0);
+}
+
+/* Estilos para el botón deshabilitado */
+.btnForm:disabled {
+  opacity: 0.5; /* Transparente */
+  cursor: not-allowed; /* Cursor no permitido */
+  pointer-events: none; /* Desactiva la interacción con el botón */
+}
+
+/* Estilos del hover desactivado */
+.btnForm:disabled:hover {
+  color: white; /* No cambia el color */
+  box-shadow: none; /* Sin sombra */
+  transform: none; /* Sin transformación */
+}
+
+
+
 
 /* Responsive design for mobile */
 @media (max-width: 768px) {
