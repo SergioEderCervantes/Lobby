@@ -1,156 +1,383 @@
+body {
+  background-image: url("{% static 'fodnoReserv.jpeg' %}");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
 .lato-bold {
   font-family: "Lato", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
+
 h1{
+  font-size: 40px;
   color: white;
-  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
-.hcontainer{
-  display: grid;
-  place-items: center;
+h2{
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  padding-top: 40px;
+  padding-bottom: 10px;
 }
 
-.header-container {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo transparente */
-    border-radius: 12px; /* Esquinas redondeadas */
-    padding: 5px;
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+.avisoLoggin {
+  margin: 20px auto;
+  max-width: 600px;
+
+  margin-bottom: 20px; /* Espacio entre los campos */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  backdrop-filter: blur(5px); /* Desenfoque */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para cada campo */
+  
+  /* Borde violeta fosforescente */
+  border: 2px solid #9400D3; /* Violeta fosforescente */
+
+  /* Agregar propiedades para visibilidad progresiva */
+  opacity: 1; /* Por defecto, borroso */
+  pointer-events: auto; /* Habilitar interacción */
+  transition: opacity 0.8s ease, backdrop-filter 0.8s ease, transform 0.6s ease, box-shadow 0.6s ease; /* Hacemos la transición más lenta */
 }
 
-.header-container svg {
-    stroke: #FFFF;   /* Color del icono */
-    /*opacity: 0.5;  /* Transparente */
-  }
+.avisoLoggin h1 {
+    color: #9400D3; /* Violeta fosforescente */
+    text-shadow: 0 0 2px #9400D3, 0 0 20px #9400D3; /* Sombra luminosa para mayor efecto */
 
-h2 {
-    text-align: center;
-    color: #FFFF; /* Color dorado */
-    margin-top: 40px;
-    font-size: 2.5rem; /* Tamaño de letra más grande */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.2); /* Sombra y brillo sutil */
-    transform: translateY(-2px); /* Leve efecto de flotación hacia arriba */
-    transition: transform 0.3s ease, text-shadow 0.3s ease; /* Transición suave */
-    padding-right: 30px;
+  text-align: center; /* Centrado del texto */
+  font-size: 28px; /* Ajustar el tamaño de la fuente */
+  font-weight: bold; /* Hacer el texto en negrita */
+  margin-bottom: 5px; /* Separación de la etiqueta <h1> */
+}
+
+.avisoLoggin p {
+  color: white; /* Texto en blanco */
+  text-align: center; /* Centrar el texto */
+  font-size: 18px; /* Ajustar el tamaño de la fuente */
+  font-style: italic; /* Hacer el texto en cursiva */
+ 
+}
+
+.avisoLoggin:hover {
+  transform: translateY(-10px); /* Eleva el contenedor al pasar el mouse */
+  box-shadow: 0 0 20px rgba(155, 29, 255, 0.7); /* Borde brillante violeta */
+
 }
 
 
-/* Styling the form container */
 form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo más claro y translúcido */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    border-radius: 16px; /* Esquinas redondeadas */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más suave */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde claro y sutil */
-    color: #e0e0e0; /* Letras claras para combinar */
+  margin: 0 auto;
+  max-width: 600px; /* Controla el ancho del formulario */
 }
 
-/* Form labels */
-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #f5f5f5; /* Blanco suave */
+/* Styling for each individual field container */
+.campoForm {
+  margin-bottom: 20px; /* Espacio entre los campos */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  backdrop-filter: blur(5px); /* Desenfoque */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para cada campo */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+
+   /* Agregar propiedades para visibilidad progresiva */
+   opacity: 0.4; /* Por defecto, borroso */
+   pointer-events: none; /* Deshabilitar interacción */
+   transition: opacity 0.8s ease, backdrop-filter 0.8s ease; /* Transiciones suaves */
 }
 
-/* Input fields */
-/* General styles for inputs */
-form input,
-form textarea {
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
-    color: #f5f5f5; /* Texto claro */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    transition: background-color 0s, color 0s; /* Elimina animaciones no deseadas */
-}
-
-/* Target autofill styles for Webkit browsers (Chrome, Edge, Safari) */
-form input:-webkit-autofill,
-form textarea:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
-    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
-    background-color: rgba(255, 255, 255, 0.1) !important; /* Asegura el fondo */
-    color: #f5f5f5 !important; /* Asegura el texto */
-    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Mantén el borde */
-}
-
-/* Extra for first-line to ensure text color doesn't change */
-form input:-webkit-autofill::first-line {
-    color: #f5f5f5 !important;
-}
-
-/* Focused inputs (for consistency) */
-form input:focus,
-form textarea:focus {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.1);
+.campoForm.visible {
+  opacity: 1; /* Hacer visible */
+  pointer-events: auto; /* Habilitar interacción */
 }
 
 
-/* Textarea specific styling */
-form textarea {
-    height: 100px;
-    resize: none;
+/* Label styling */
+.campoForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #f5f5f5; /* Texto blanco */
 }
 
-/* Modificación para el botón de Reservar */
-form button {
-    display: block;
-    width: 100%;
-    background-color: rgba(167, 139, 250, 1); /* Mismo color de fondo del botón de Log In */
-    padding: 0.75rem;
-    text-align: center;
-    color: rgba(17, 24, 39, 1); /* Color de texto oscuro */
-    border: none;
-    border-radius: 0.375rem;
-    font-weight: 600;
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    transition: background-color 0.3s ease, transform 0.3s ease;
+/* Input and textarea styling */
+.campoForm input,
+.campoForm textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: #f5f5f5; /* Texto blanco */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
-/* Estilo de los enlaces en la parte inferior */
-form .forgot a {
-    color: rgba(243, 244, 246, 1);
-    text-decoration: none;
-    font-size: 14px;
+/* Add focus effects */
+.campoForm input:focus,
+.campoForm textarea:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-form .forgot a:hover {
-    text-decoration: underline rgba(167, 139, 250, 1);
+/* Button styling 
+.campoForm button {
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(167, 139, 250, 1); 
+  color: rgba(17, 24, 39, 1);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+} 
+
+.campoForm button:hover {
+  background-color: rgba(139, 92, 246, 1);
+  transform: translateY(-2px); 
+} */
+
+
+.flatpickr-calendar .flatpickr-day {
+  color: black; /* Color de texto */
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-/* Message styling */
-.messages {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro translúcido */
-    color: #f5f5f5; /* Letras claras */
+.flatpickr-calendar .flatpickr-day:hover {
+  background: rgba(255, 255, 255, 0.3); /* Fondo semi-transparente al pasar */
 }
 
-.messages .success {
-    background-color: rgba(40, 167, 69, 0.9); /* Verde translúcido */
+.flatpickr-calendar .flatpickr-day.today {
+  background: #4caf50; /* Verde para el día actual */
+  color: #fff;
 }
 
-.messages .error {
-    background-color: rgba(220, 53, 69, 0.9); /* Rojo translúcido */
+.flatpickr-calendar .flatpickr-day.selected {
+  color: #fff;
 }
+
+
+.time-picker {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.time-picker:focus {
+  outline: none;      /* Elimina el contorno al hacer foco */
+  border-color: #ccc; /* El borde sigue siendo el mismo color que el de estado normal */
+  background-color: #f9f9f9; /* Mantiene el fondo igual al de estado normal */
+}
+
+
+
+/* Fondo del modal */
+#modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+  z-index: 999;
+}
+
+/* Contenedor del modal */
+#error-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra del modal */
+  z-index: 1000;
+  text-align: center;
+}
+
+/* Título del modal */
+#error-modal h2 {
+  color: red;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Mensaje del modal */
+#error-modal p {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Botón del modal */
+#error-modal button {
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#error-modal button:hover {
+  background-color: darkred; /* Cambio de color al pasar el cursor */
+}
+
+
+/* Contenedor de los botones de consolas */
+.consolas-buttons {
+  display: flex;
+  flex-direction: row; /* Organiza los botones en una fila */
+  margin-top: 10px;
+  gap: 20px;
+}
+
+
+/* Estilo para cada botón */
+.consola-button { 
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column; /* Apila el icono y el texto */
+  align-items: center; /* Centra el contenido dentro del botón */
+  justify-content: center; /* Centra el contenido dentro del botón */
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  /* Texto blanco */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+/* Espacio entre el icono y el texto */
+.consola-button i {
+  margin-bottom: 5px; /* Espacio entre el icono y el nombre */
+}
+
+/* Estilo para el nombre de la consola */
+.consola-button span {
+  font-size: 15px; /* Tamaño del texto */
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+}
+
+/* Efecto de hover */
+.consola-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo cuando se pasa el mouse */
+}
+
+/* Estilo para la consola seleccionada */
+.consola-button.selected {
+  border: 2px solid #4CAF50; /* Resaltado verde */
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra verde */
+}
+
+.spanPersonas{
+  font-size: 15px; /* Tamaño del texto */
+text-align: center;
+white-space: nowrap;
+color: #ff0000; /* Rojo fosforescente */
+text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
+}
+
+.spanComentarios {
+  font-size: 15px; /* Tamaño del texto */
+  text-align: center;
+  white-space: nowrap;
+  color: #8a2be2; /* Violeta */
+  text-shadow: 0 0 4px #8a2be2, 0 0 6px #8a2be2; /* Sombra más sutil y nítida en violeta */
+}
+
+
+/* Estilo para el botón habilitado */
+.btnForm {
+  width: 50%;
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid rgb(163, 1, 152);
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 2; /* Asegura que esté por encima del gradiente */
+  font-family: inherit;
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 0, 221, 0.3); /* Sombra suave púrpura */
+  border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+/* Efecto hover para el botón habilitado */
+.btnForm:hover {
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 0, 221, 0.3); /* Sombra más prominente */
+  text-shadow: 0 0 5px rgb(247, 0, 231), 0 0 10px rgb(247, 0, 231);
+  transform: translateY(-2px); /* Efecto de elevación al hover */
+}
+
+/* Estilo de transición del fondo del botón */
+.btnForm::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(163, 1, 152);
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+/* Efecto de transición al pasar el hover */
+.btnForm:hover::before {
+  transform: translateX(0);
+}
+
+/* Estilos para el botón deshabilitado */
+.btnForm:disabled {
+  opacity: 0.5; /* Transparente */
+  cursor: not-allowed; /* Cursor no permitido */
+  pointer-events: none; /* Desactiva la interacción con el botón */
+}
+
+/* Estilos del hover desactivado */
+.btnForm:disabled:hover {
+  color: white; /* No cambia el color */
+  box-shadow: none; /* Sin sombra */
+  transform: none; /* Sin transformación */
+}
+
+
 
 
 /* Responsive design for mobile */
@@ -162,62 +389,72 @@ form .forgot a:hover {
 }
 
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    display: none;  /* Inicia oculto */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  display: none; /* Inicia oculto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+}
+
+.modal-content {
+  background: linear-gradient(
+      to bottom,
+      white 92%, /* Fondo blanco */
+      #ffcccc 92%, /* Simula el margen rojo de la izquierda */
+      #ffcccc 94% /* Continuación del margen */
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 24px,
+      #d3d3d3 25px /* Línea gris */
+    );
+  padding: 20px;
+  border-radius: 8px;
+  width: 60%;
+  max-width: 600px;
+  text-align: center;
+  border: 2px solid #d3d3d3; /* Opcional: Borde gris */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/*.modal-content button {
+  padding: 10px 15px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #0b7dda;
+}
+
+/* Animaciones del modal */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 60%;
-    max-width: 600px;
-    text-align: center;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .modal-content h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  .modal-content p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .modal-content button {
-    padding: 10px 15px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .modal-content button:hover {
-    background-color: #0b7dda;
-  }
-  
-  /* Animaciones del modal */
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .modal-content {
-    animation: slideIn 0.3s ease-out;
-  }
+}

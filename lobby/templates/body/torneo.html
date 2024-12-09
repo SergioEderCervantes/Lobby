@@ -1,8 +1,10 @@
 {% load static %}
 
-<section class="torneo_home">
-  <img src="{{prox_torneo.imagen.url}}" alt="torneo" /> 
-  <h1>{{prox_torneo.nombre_torneo}}</h1>
+<section class="torneo_home up-to-down">
+  <div class="imagen-tourn">
+    <img src="{{prox_torneo.imagen.url}}" alt="torneo" />
+    <h1>{{prox_torneo.nombre_torneo}}</h1>
+  </div>
   <div class="contenedor_info">
     <p>Jugadores inscritos: {{num_players}}</p>
     

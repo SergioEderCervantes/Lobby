@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.templatetags.static import static
 from django.db import connection
 from django.utils.timezone import now
+from datetime import timedelta
 from django.http import HttpResponseRedirect
 
 from tournaments.models import Torneo
@@ -11,6 +12,8 @@ class Promocion(object):
     def __init__(self, nombre, imagen):
         self.nombre = nombre
         self.imagen = imagen
+        
+
 def home(request):
 
     if request.method == 'POST':
@@ -32,15 +35,22 @@ def home(request):
                 Promocion( "promocion5", static('img/promo5.jpg')),
             
         }
-    
-        proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()
-        num_players = proximo_torneo.cantidad_usuarios_inscritos() if proximo_torneo else 0 
-        print(proximo_torneo)
+        # Hora actual del servidor
+        ahora = now()
+
+        # Rango de tiempo permitido
+        inicio_rango = ahora - timedelta(hours=5)  # 5 horas atrás
+        fin_rango = ahora + timedelta(minutes=30)  # 30 minutos adelante
+        
+        proximo_torneo = Torneo.objects.filter(fecha__gte=ahora).order_by('fecha').first()
+        num_players = proximo_torneo.cantidad_usuarios_inscritos() if proximo_torneo else None
+        torneo_ejec = Torneo.objects.filter(fecha__range=(inicio_rango, fin_rango)).first()
         context = {
         'promociones': promociones, 
         'prox_torneo': proximo_torneo, 
         'num_players': num_players, 
         'comments': comments,
+        'torneo_ejec': torneo_ejec,
         }
 
         return render(request, 'index.html', context=context)
@@ -52,7 +62,7 @@ def sql(request):
     with connection.cursor() as cursor:
         
         # 1. Traer todos los datos del usuario con id 1
-        cursor.execute("select id, first_name, last_name, username, email from users_user where id = 1")
+        cursor.execute("select id, first_name, last_name, username, email from users_user where id = 3")
         user = cursor.fetchall()
 
         # 2. Traer todos los torneos
