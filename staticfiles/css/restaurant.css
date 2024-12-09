@@ -1,0 +1,41 @@
+h1,
+h2,
+h3,
+p {
+    color: #FFFFFF;
+}
+h1{
+    text-align: center;
+    margin: 0;
+}
+
+.product-card h1,
+h2 {
+    margin: 1rem 0;
+    justify-self: center;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 3px solid;
+    border-radius: 50px;
+    border-color: rgba(104, 94, 119);
+    width: 900px;
+    margin: 0 auto;
+    margin-bottom: 2%;
+}
+
+.product-card .container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    padding: 0 0 2rem 0;
+    width: 95%;
+}
+
+.product-card .container .product {
+    width: 80%;
+}

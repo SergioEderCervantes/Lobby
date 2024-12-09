@@ -1,0 +1,49 @@
+/* -------------------------------------Estilos de la tabla RR --------------------------------------------*/
+.standings__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/* Estilo de la tabla */
+#standings_table {
+    border-collapse: collapse; /* Elimina los bordes dobles */
+    width: 90%;
+    margin: 0 auto;
+    text-align: center; 
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado de la tabla */
+#standings_table thead {
+    background-color: #212121; 
+    color: white; 
+}
+
+#standings_table thead th {
+    text-align: center;
+}
+
+/* Cuerpo de la tabla */
+#standings_table tbody tr {
+    background-color: #555555;
+    border: none;
+}
+
+/* Intercalar colores en las filas */
+#standings_table tbody tr:nth-child(even) {
+    background-color: #4D4D4D;
+}
+
+/* Estilo de las celdas */
+#standings_table th, #standings_table td {
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Hover para filas 
+#standings_table tbody tr:hover {
+    background-color: #d0d0d0; 
+    cursor: pointer; 
+}*/
