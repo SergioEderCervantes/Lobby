@@ -30,7 +30,6 @@ class Consola_disponibilidad(models.Model):
 class Reservation(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField()
-    telefono = models.CharField(max_length=15)
     fecha = models.DateField()
     fecha_reservacion = models.DateField()
     hora = models.TimeField()

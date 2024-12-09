@@ -77,7 +77,7 @@ def borrar_disponibilidad():
 
 # Funcion que toma todos los datos, aunque ya se hayan validado hace unas ultimas validaciones y crea la 
 # Reservacion con todos los datos
-def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, comentarios, telefono):
+def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, comentarios):
     with transaction.atomic():
         # Obtener la disponibilidad de la consola
         disponibilidad = Consola_disponibilidad.objects.select_for_update().get(
@@ -96,7 +96,6 @@ def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, c
         Reservation.objects.create(
             username=usuario,  
             email=usuario.email,  
-            telefono=telefono,  
             sucursal_id=sucursal_id,  
             consola_seleccionada_id=consola_id,  
             fecha=fecha,  
@@ -109,7 +108,7 @@ def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, c
 
 
 # Funcion que crea la disponibilidad diara de los siguientes 30 dias (only test)
-def test_disponibilidad():
+def init_disponibilidad():
     hoy = date.today()
-    for i in range(5):
+    for i in range(30):
         inicializar_disponibilidad(hoy + timedelta(days=i))
