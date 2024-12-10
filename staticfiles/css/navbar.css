@@ -1,0 +1,51 @@
+/* Navbar dentro de la landpage */
+.navbar {
+  left: 50%; /* Centrada horizontalmente */
+  transform: translateX(-50%); /* Ajuste para centrar */
+  border-radius: 10px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  width: auto;
+  margin-bottom: 3rem;
+
+
+  margin-top: 1rem;
+  position: fixed; /* Navbar fija al hacer scroll */
+  top: 0; /* Fija en la parte superior de la página */
+
+  height: fit-content;
+  background: linear-gradient(84deg, rgba(2,0,36,0.6), rgba(111,9,121,0.6) , rgba(0,16,153,0.5));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+ 
+}
+
+
+.navbar .section {
+  list-style-type: none;
+  display: flex;
+  justify-content: center; /* Asegura que las secciones estén centradas */
+  gap: 20px; /* Espacio entre los elementos */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  display: flex;
+  margin: 0 10px; /* Ajusta el margen según el diseño deseado */
+  justify-content: space-between;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem; /* Ajusta el tamaño del texto */
+}
+.navbar a img {
+  margin: 0 0.5rem ; /* Ajusta el margen según el diseño deseado */
+  
+}
+.navbar a:hover {
+  color: #ffe253;
+  text-shadow: 0 0 10px #ebb60e, 0 0 1px #ebb60e, 0 0 1px #ebb60e, 0 0 100px #ebb60e;
+}
+
+

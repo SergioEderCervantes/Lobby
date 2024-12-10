@@ -15,10 +15,12 @@ from google.oauth2 import service_account
 import os
 import environ
 
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
 
+env.read_env(str(BASE_DIR / ".django/.env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -29,7 +31,9 @@ SECRET_KEY = 'django-insecure-$sd@c&9x3$x**rf#j$5h6sw1y_)oew&by&0vi-ww5atx5k&tcw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*'
+]
 
 
 # Application definition
@@ -106,12 +110,15 @@ WSGI_APPLICATION = 'lobby.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+DB_USER = env("DB_USER")
+DB_PASSWORD = env("DB_PASSWORD")
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lobby',
-        'USER': 'root',
-        'PASSWORD': 'ThoryMia898',
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -153,12 +160,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-
-
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
     BASE_DIR / "node_modules",   
 ]
 
@@ -197,9 +202,6 @@ STORAGES = {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
-env = environ.Env()
-
-env.read_env(str(BASE_DIR / ".django/.env"))
 
 MEDIA_URL = "/app_gobierno/"
 
