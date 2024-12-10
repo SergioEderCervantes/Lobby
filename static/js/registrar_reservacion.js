@@ -72,7 +72,7 @@ async function register_reservation(event) {
         });
 
     } catch (error) {
-        console.error("Error capturado:", error);
+      
 
         // Intentar parsear el JSON del error lanzado
         let errorData;
@@ -81,11 +81,11 @@ async function register_reservation(event) {
         } catch {
             errorData = { message: error.message}; // Fallback
         }
-    
+        console.error("Error capturado:", errorData.error);
         openPopup({
             title: "Error en la reservación",
             svg: errorSVG,
-            message: errorData.message || "Error desconocido",
+            message: errorData.error || "Error desconocido",
             buttonText: "Aceptar",
             size: 'small'
         });

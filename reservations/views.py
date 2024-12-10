@@ -37,7 +37,6 @@ def reservations(request):
         form = ReservationForm()  # Crear el formulario vacío
     return render(request, 'reservations.html', {'form': form})
 
-@csrf_exempt
 def check_availability(request):
     if request.method != "POST":
         return JsonResponse({'error': 'Método no permitido.'}, status=405)
@@ -78,7 +77,6 @@ def check_availability(request):
     }
     return JsonResponse({'disponibilidad': resultado}, status= 200)
 
-@csrf_exempt
 def register_reservation(request):
     if request.method != "POST":
         return JsonResponse({"error": "Método inválido"}, status=405)
@@ -121,6 +119,6 @@ def register_reservation(request):
     except (Sucursal.DoesNotExist, Consola.DoesNotExist, User.DoesNotExist) as e:
         return JsonResponse({'error': f'{e.model.__name__} no encontrada'}, status=400)
     except ValueError as e:
-        return JsonResponse({'Value error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status=400)
     except Exception as e:
         return JsonResponse({'error': f'Ocurrió un error inesperado: {str(e)}'}, status=400)

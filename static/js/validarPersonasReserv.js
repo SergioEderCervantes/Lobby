@@ -23,11 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
-  
-    // Ocultar el modal y restablecer el valor a 6 cuando se haga clic en "Cerrar"
-    aceptarModalButton.addEventListener("click", function () {
-      errorModal.style.display = "none"; // Oculta el modal
-      numPersonasInput.value = 6; // Reinicia el valor a 6
-    });
+
   });
   

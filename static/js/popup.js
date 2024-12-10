@@ -14,7 +14,7 @@ function hideLoader() {
 }
 
 // Función para abrir el popup (después de que termine el loader)
-function openPopup({ title, svg, message, buttonText, size = 'large', imageUrl = null, torneoUrl = ""}) {
+function openPopup({ title, svg, message, buttonText, size = 'small', imageUrl = null, torneoUrl = ""}) {
     const overlay = document.getElementById('popup_overlay');
     const container = document.getElementById('popup_container');
     const content = document.getElementById('popup_content');
@@ -37,7 +37,7 @@ const dynamicContent = `
     ${
         size === 'large'
             ? `<a class="popup_button" href="${torneoUrl}" style="text-decoration: none;">${buttonText}</a>`
-            : `<button class="popup_button" onclick="closePopup()">${buttonText}</button>`
+            : `<button class="popup_button" onclick="closePopup('small')">${buttonText}</button>`
     }
 `;
 
@@ -51,19 +51,23 @@ const dynamicContent = `
     // Cerrar el popup al hacer clic fuera del contenedor
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) {
-            closePopup();
+            size === 'large'  
+            ? closePopup('large')
+            : closePopup('small')
         }
     });
 }
 
 // Función para cerrar el popup
-function closePopup() {
+function closePopup(size = 'small') {
     const overlay = document.getElementById('popup_overlay');
     const container = document.getElementById('popup_container');
 
     container.classList.add('hidden');
     setTimeout(() => {
         overlay.classList.add('hidden');
-        location.reload();
+        if (size === 'small'){
+            location.reload();
+         }
     }, 50);
 }
