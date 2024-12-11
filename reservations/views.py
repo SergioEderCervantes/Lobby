@@ -120,6 +120,7 @@ Datos de la Reservacion:
     -Numero de personas: {num_personas}
     -Consola elegida: {consola_name}
     -Comentarios adicionales: {comentarios}
+    -Telefono de contacto: {usuario.telefono}
             """
             response = send_whatsapp_message(success_msg)
             print(response)

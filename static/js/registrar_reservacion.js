@@ -40,11 +40,8 @@ function showConfirmation(event) {
             case 'hora':
                 dataDisplay = dataDisplay.replace("Hora: ", `Hora: ${value}`);
                 break;
-            case 'consola':
-                dataDisplay = dataDisplay.replace("Consola: ", `Consola: ${value}`);
-                break;
             case 'num_personas':
-                dataDisplay = dataDisplay.replace("Num_personas: ", `Num_personas: ${value}`);
+                dataDisplay = dataDisplay.replace("Num_personas: ", `# Personas: ${value}`);
                 break;
         }
     }
