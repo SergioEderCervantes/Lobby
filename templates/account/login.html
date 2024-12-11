@@ -4,22 +4,18 @@
 {% block extrahead %}
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
-{% block extrascripts %}
-
-{% endblock %}
-
-{% block header %}
- 
-{% endblock %}
+{% block extrascripts %}{% endblock %}
+{% block header %}{% endblock %}
 {% block content %}
   <div class="body-log">
     <div class="form-container">
-    
-        <form class="form" id="userLoginForm"
-              action="{% url 'account_login' %}"
-              method="post"
-              role="form">
-               <div><p class="title">Login</p>
+      <form class="form"
+            id="userLoginForm"
+            action="{% url 'account_login' %}"
+            method="post"
+            role="form">
+        <div>
+          <p class="title">Login</p>
           {% csrf_token %}
           {% if request.GET.next %}<input type="hidden" name="next" value="{{ request.GET.next }}">{% endif %}
           {% if form.non_field_errors %}
@@ -66,8 +62,9 @@
             data-default="{% static 'svg/facebook.svg' %}"alt="facebook">
           </a>
         </div>
-        <p class="signup">No tienes cuenta?
-          <a href="{% url 'account_signup' %}" class=""> Sign up</a>
+        <p class="signup">
+          No tienes cuenta?
+          <a href="{% url 'account_signup' %}" class="">Sign up</a>
         </p>
       </div>
     </div>

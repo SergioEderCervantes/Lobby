@@ -164,8 +164,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "node_modules",
-    BASE_DIR / "static",   
+    BASE_DIR / "static",
+    BASE_DIR / "node_modules",   
 ]
 
 
@@ -190,8 +190,14 @@ ACCOUNT_LOGOUT_ON_GET = True
 # Configuraciones extra para allauth
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+AUTH_USER_MODEL = 'users.User'
+
 # TODO: no se si debamos de dejar esto sin email de verificacion, ahorita esta asi para evitar error al crear una cuenta
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomSignupForm',
+}
 
 # Configuracion google cloud storage
 
@@ -285,4 +291,7 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_LOGIN_ON_GET=True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
+# Configuraciones para la API de What'sapp
+WHATSAPP_API_URL = env("WHATSAPP_API_URL")
+WHATSAPP_PHONE_ID = env("WHATSAPP_PHONE_ID")
+WHATSAPP_ACCESS_TOKEN = env("WHATSAPP_ACCESS_TOKEN")

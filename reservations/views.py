@@ -6,7 +6,7 @@ from lobby.models import Sucursal
 from .models import Consola, Consola_disponibilidad
 from users.models import User
 from .services import validar_fecha, validar_hora, crear_reserva
-from django.views.decorators.csrf import csrf_exempt # ONLY FOR TEST
+from lobby.services import send_whatsapp_message
 
 def reservations(request):
     if request.method == 'POST':
@@ -37,7 +37,6 @@ def reservations(request):
         form = ReservationForm()  # Crear el formulario vacío
     return render(request, 'reservations.html', {'form': form})
 
-@csrf_exempt
 def check_availability(request):
     if request.method != "POST":
         return JsonResponse({'error': 'Método no permitido.'}, status=405)
@@ -78,7 +77,6 @@ def check_availability(request):
     }
     return JsonResponse({'disponibilidad': resultado}, status= 200)
 
-@csrf_exempt
 def register_reservation(request):
     if request.method != "POST":
         return JsonResponse({"error": "Método inválido"}, status=405)
@@ -114,13 +112,25 @@ def register_reservation(request):
         reserva_creada = crear_reserva(usuario, sucursal_id, consola.pk, fecha, hora, num_personas, comentarios)
 
         if reserva_creada:
+                        # Crear mensaje
+            success_msg = f"""
+            Lobby Web Aplication: Se acaba de realizar una reservacion a nombre de: {usuario.username}!!!
+Datos de la Reservacion:
+    -Fecha y hora: {fecha}, {hora}
+    -Numero de personas: {num_personas}
+    -Consola elegida: {consola_name}
+    -Comentarios adicionales: {comentarios}
+    -Telefono de contacto: {usuario.telefono}
+            """
+            response = send_whatsapp_message(success_msg)
+            print(response)
             return JsonResponse({'message': 'Reserva creada exitosamente'}, status=201)
 
         return JsonResponse({'error': 'No se pudo crear la reserva'}, status=400)
-
+    
     except (Sucursal.DoesNotExist, Consola.DoesNotExist, User.DoesNotExist) as e:
         return JsonResponse({'error': f'{e.model.__name__} no encontrada'}, status=400)
     except ValueError as e:
-        return JsonResponse({'Value error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status=400)
     except Exception as e:
         return JsonResponse({'error': f'Ocurrió un error inesperado: {str(e)}'}, status=400)

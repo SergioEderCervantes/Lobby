@@ -4,12 +4,8 @@
 {% block extrahead %}
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
-{% block extrascripts %}
-
-{% endblock %}
-{% block header %}
- 
-{% endblock %}
+{% block extrascripts %}{% endblock %}
+{% block header %}{% endblock %}
 {% block content %}
   <div class="body-log">
     <div class="form-container">
@@ -17,7 +13,8 @@
         <div>
           <h3 class="title">Create New Account</h3>
         </div>
-        <form class="form" id="userSignupForm"
+        <form class="form"
+              id="userSignupForm"
               action="{% url 'account_signup' %}"
               method="post"
               role="form">
@@ -38,6 +35,10 @@
             <div class="input-group">
               <input type="text" id="id_email" name="email" placeholder="Email (opcional)">
               <span>{{ form.email.errors }}</span>
+            </div>
+            <div class="input-group">
+              <input type="tel" id="id_phone" name="phone" placeholder="Phone (opcional)">
+              <span>{{ form.phone.errors }}</span>
             </div>
             <div class="input-group">
               <input type="password"

@@ -124,7 +124,7 @@ async function register_gest_player(event) {
         openPopup({
             title: "Error en la inscripcion",
             svg: errorSVG,
-            message: error.message || "Error desconocido",
+            message: error.error || "Error desconocido",
             buttonText: "Aceptar",
             size: 'small'
         });
