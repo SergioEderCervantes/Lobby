@@ -34,7 +34,6 @@ h2{
 .avisoLoggin {
   margin: 20px auto;
   max-width: 600px;
-
   margin-bottom: 20px; /* Espacio entre los campos */
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
@@ -49,12 +48,33 @@ h2{
   opacity: 1; /* Por defecto, borroso */
   pointer-events: auto; /* Habilitar interacción */
   transition: opacity 0.8s ease, backdrop-filter 0.8s ease, transform 0.6s ease, box-shadow 0.6s ease; /* Hacemos la transición más lenta */
+  
+  /* Añadir animación de brillo */
+  animation: glow 2.5s ease-in-out infinite; /* Llama a la animación glow */
 }
 
-.avisoLoggin h1 {
-    color: #9400D3; /* Violeta fosforescente */
-    text-shadow: 0 0 2px #9400D3, 0 0 20px #9400D3; /* Sombra luminosa para mayor efecto */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(148, 0, 211, 0.6); /* Violeta débil */
+  }
+  25% {
+    box-shadow: 0 0 15px rgba(148, 0, 211, 0.8); /* Violeta más fuerte */
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(148, 0, 211, 1); /* Violeta brillante */
+  }
+  75% {
+    box-shadow: 0 0 15px rgba(148, 0, 211, 0.8); /* Violeta más fuerte */
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(148, 0, 211, 0.6); /* Violeta débil */
+  }
+}
 
+
+.avisoLoggin h1 {
+  color: #9400D3; /* Violeta fosforescente */
+  text-shadow: 0 0 2px #9400D3, 0 0 20px #9400D3; /* Sombra luminosa para mayor efecto */
   text-align: center; /* Centrado del texto */
   font-size: 28px; /* Ajustar el tamaño de la fuente */
   font-weight: bold; /* Hacer el texto en negrita */
@@ -66,14 +86,13 @@ h2{
   text-align: center; /* Centrar el texto */
   font-size: 18px; /* Ajustar el tamaño de la fuente */
   font-style: italic; /* Hacer el texto en cursiva */
- 
 }
 
 .avisoLoggin:hover {
   transform: translateY(-10px); /* Eleva el contenedor al pasar el mouse */
   box-shadow: 0 0 20px rgba(155, 29, 255, 0.7); /* Borde brillante violeta */
-
 }
+
 
 
 form {
@@ -132,25 +151,6 @@ form {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Button styling 
-.campoForm button {
-  width: 100%;
-  padding: 15px;
-  background-color: rgba(167, 139, 250, 1); 
-  color: rgba(17, 24, 39, 1);
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-} 
-
-.campoForm button:hover {
-  background-color: rgba(139, 92, 246, 1);
-  transform: translateY(-2px); 
-} */
-
-
 .flatpickr-calendar .flatpickr-day {
   color: black; /* Color de texto */
   font-weight: bold;
@@ -189,17 +189,6 @@ form {
 
 
 
-/* Fondo del modal */
-#modal-backdrop {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
-  z-index: 999;
-}
 
 /* Contenedor del modal */
 #error-modal {
@@ -208,41 +197,64 @@ form {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra del modal */
+  background-color: rgba(30, 30, 30, 0.95); /* Gris oscuro translúcido */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
   z-index: 1000;
-  text-align: center;
+}
+
+
+/* Estilo del modal */
+#error-modal {
+  display: none;
+  position: fixed;
+  top: 40%; /* Posiciona el modal */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(30, 30, 30, 0.98); /* Fondo gris oscuro translúcido */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
+  border: 2px solid rgba(255, 0, 0, 0.8); /* Borde rojo translúcido */
+  z-index: 1000;
 }
 
 /* Título del modal */
 #error-modal h2 {
-  color: red;
+  color: #d10000; /* Rojo oscuro menos brillante */
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Ajuste del espacio */
+  text-align: center;
 }
 
 /* Mensaje del modal */
 #error-modal p {
-  color: #333;
+  color: white; /* Texto blanco */
   font-size: 16px;
-  margin-bottom: 20px;
+  margin: 10px 0;
+  text-align: center;
+  line-height: 1.4; /* Mejora la legibilidad */
 }
 
 /* Botón del modal */
 #error-modal button {
+  display: block;
+  margin: 20px auto 0;
   padding: 10px 20px;
-  background-color: red;
+  background-color: #a00000; /* Rojo menos brillante */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Efecto al pasar el mouse */
 #error-modal button:hover {
-  background-color: darkred; /* Cambio de color al pasar el cursor */
+  background-color: #700000; /* Cambio a un rojo más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Efecto de aumento ligero */
 }
 
 
@@ -316,6 +328,244 @@ text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
 }
 
 
+/* Estilo del contenedor de los términos */
+.terms-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrar los elementos horizontalmente */
+  margin-top: 30px; /* Espacio superior para separarlo de otros elementos */
+  opacity: 1; /* Visible por defecto */
+  transition: opacity 0.3s ease; /* Transición suave para el cambio de opacidad */
+}
+
+/* Estilo del botón */
+.terms-button {
+  margin: 0 auto;
+  align-items: center;
+  background-color: #333333; /* Gris oscuro (antes del hover) */
+  color: #FFFFFF; /* Texto blanco */
+  padding: 8px 24px; /* Espaciado dentro del botón */
+  font-size: 16px; /* Tamaño de la fuente */
+  font-weight: bold; /* Texto en negrita */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Cambio de cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Efectos de transición */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  border: none; /* Eliminar borde */
+}
+
+/* Efecto al pasar el mouse (más claro) */
+.terms-button:hover {
+  background-color: #444444; /* Fondo más claro al pasar el mouse */
+  transform: translateY(-3px); /* Desplazamiento hacia arriba */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+}
+
+/* Efecto cuando el botón es presionado */
+.terms-button:active {
+  background-color: #333333; /* Fondo intermedio cuando se presiona */
+  transform: translateY(2px); /* Desplazamiento hacia abajo */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+}
+
+/* Estilo del contenedor del toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  margin-right: 10px; /* Espacio entre el toggle y el texto */
+}
+
+/* Estilo del input (oculto) */
+.toggle-switch .toggle-input {
+  display: none;
+}
+
+/* Estilo del label que rodea el toggle */
+.toggle-switch .toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 24px;
+  background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo para la parte redonda del toggle */
+.toggle-switch .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+/* Cuando el toggle está activado, cambia el color a violeta */
+.toggle-switch .toggle-input:checked + .toggle-label {
+  background-color: #9400D3; /* Violeta */
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px); /* Mueve el círculo al lado derecho */
+}
+
+/* Estado deshabilitado */
+.disabled {
+  opacity: 0.6; /* Hacer los elementos más transparentes */
+  pointer-events: none; /* Bloquear la interacción con los elementos */
+}
+
+
+
+/* Estilo del contenedor */
+.checkbox-container {
+  display: flex;
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Alineación horizontal */
+  margin: 30px; /* Margen del contenedor */
+}
+
+/* Estilo general del toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  margin-right: 10px; /* Espacio entre el toggle y el texto */
+}
+
+/* Estilo del input (oculto) */
+.toggle-switch .toggle-input {
+  display: none;
+}
+
+/* Estilo del label que rodea el toggle */
+.toggle-switch .toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 24px;
+  background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo para la parte redonda del toggle */
+.toggle-switch .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+/* Cuando el toggle está activado, cambia el color a violeta */
+.toggle-switch .toggle-input:checked + .toggle-label {
+  background-color: #9400D3; /* Violeta */
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px); /* Mueve el círculo al lado derecho */
+}
+
+/* Estilo para el texto junto al toggle */
+.terms-label {
+  font-size: 18px;  /* Tamaño de letra más grande */
+  color: white;
+  line-height: 24px; /* Alinear el texto con el toggle */
+  cursor: pointer;
+}
+
+#termsModal {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(30, 30, 30, 0.98); /* Fondo gris oscuro translúcido */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
+  z-index: 1000;
+}
+
+/* Estilo para el contenido del modal */
+.termsModal-content {
+  text-align: center;
+  color: white;
+  max-width: 500px; /* Establece un ancho máximo para evitar que se estire demasiado */
+  margin: 0 auto; /* Centra el contenido */
+}
+
+/* Título del modal */
+.termsModal-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif; /* Ajusta la fuente */
+  background: -webkit-linear-gradient(45deg, gold, violet); /* Gradiente dorado-violeta */
+  -webkit-background-clip: text; /* Hace que el gradiente se aplique solo al texto */
+  -webkit-text-fill-color: transparent; /* Fondo transparente para mostrar el gradiente */
+  text-align: center;
+}
+
+/* Estilo para la lista de términos */
+.termsModal-content ul {
+  font-size: 16px;
+  margin: 10px 0;
+  line-height: 1.4;
+  text-align: left; /* Alineación a la izquierda */
+  padding-left: 20px; /* Espaciado a la izquierda para los puntos */
+}
+
+
+.termsModal-content button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 12px 24px; /* Tamaño más grande */
+  background-color: #3a3a3a; /* Gris oscuro para el botón */
+  color: #d4a8ff; /* Violeta claro para el texto */
+  border: 2px solid #d4a8ff; /* Borde violeta */
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px; /* Texto más grande */
+  font-weight: bold; /* Hacer la letra más llamativa */
+  font-family: 'Arial', sans-serif; /* Fuente profesional */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+
+/* Efecto al pasar el mouse */
+.termsModal-content button:hover {
+  background-color: #4a4a4a; /* Gris más claro al pasar el cursor */
+  color: gold; /* Cambio a dorado para el texto */
+  transform: scale(1.1); /* Efecto de aumento */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra más intensa */
+}
+
+/* Efecto de enfoque */
+.termsModal-content button:focus {
+  outline: none;
+  box-shadow: 0 0 10px #d4a8ff; /* Resplandor violeta al enfoque */
+}
+
 /* Estilo para el botón habilitado */
 .btnForm {
   width: 50%;
@@ -380,7 +630,6 @@ text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
 
 
 
-
 /* Responsive design for mobile */
 @media (max-width: 768px) {
     form {
@@ -389,73 +638,3 @@ text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
     }
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-  display: none; /* Inicia oculto */
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
-}
-
-.modal-content {
-  background: linear-gradient(
-      to bottom,
-      white 92%, /* Fondo blanco */
-      #ffcccc 92%, /* Simula el margen rojo de la izquierda */
-      #ffcccc 94% /* Continuación del margen */
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      transparent,
-      transparent 24px,
-      #d3d3d3 25px /* Línea gris */
-    );
-  padding: 20px;
-  border-radius: 8px;
-  width: 60%;
-  max-width: 600px;
-  text-align: center;
-  border: 2px solid #d3d3d3; /* Opcional: Borde gris */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombras suaves */
-  animation: slideIn 0.3s ease-out;
-}
-
-.modal-content h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.modal-content p {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-/*.modal-content button {
-  padding: 10px 15px;
-  background-color: #2196F3;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.modal-content button:hover {
-  background-color: #0b7dda;
-}
-
-/* Animaciones del modal */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}

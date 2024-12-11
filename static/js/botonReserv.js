@@ -2,6 +2,8 @@ document.querySelectorAll('.consola-button').forEach((boton, index) => {
     const form = document.getElementById("reservation-form");
     const fields = form.querySelectorAll(".campoForm");
     const botonReservar = document.getElementById("register_reservation"); // Obtener el botón de reserva
+    const toggleSwitch = document.querySelector('.toggle-input'); // Obtener el interruptor de términos y condiciones
+    const termsContainer = document.querySelector('.terms-container'); // Obtener el contenedor de términos
     
     // Agrega un evento de clic a cada botón
     boton.addEventListener('click', () => {
@@ -24,6 +26,14 @@ document.querySelectorAll('.consola-button').forEach((boton, index) => {
             botonReservar.disabled = true;
             botonReservar.style.opacity = '0.5'; // Transparente
             botonReservar.style.cursor = 'not-allowed'; // Cursor no permitido
+
+            // Desactivar el toggle de términos y condiciones
+            toggleSwitch.disabled = true;
+            toggleSwitch.style.opacity = '0.5'; // Transparente
+
+            // Deshabilitar el contenedor de términos
+            termsContainer.style.opacity = '0.5'; // Transparente
+            termsContainer.style.pointerEvents = 'none'; // Desactiva la interactividad
         } else {
             // Si no está seleccionado, deseleccionamos todos los botones primero
             document.querySelectorAll('.consola-button').forEach(otroBoton => {
@@ -45,10 +55,14 @@ document.querySelectorAll('.consola-button').forEach((boton, index) => {
             const inputsField4 = fields[4].querySelectorAll("input, textarea");
             inputsField4.forEach(input => input.value = ''); // Reinicia los valores de los inputs dentro de fields[4]
 
-            // Habilitar el botón de reservar y activar el hover
-            botonReservar.disabled = false;
-            botonReservar.style.opacity = '1'; // Restaurar visibilidad
-            botonReservar.style.cursor = 'pointer'; // Cursor normal
+            // Habilitar el toggle de términos y condiciones
+            toggleSwitch.disabled = false;
+            toggleSwitch.style.opacity = '1'; // Restaurar visibilidad
+
+            // Habilitar el contenedor de términos
+            termsContainer.style.opacity = '1'; // Restaurar visibilidad
+            termsContainer.style.pointerEvents = 'auto'; // Restaurar interactividad
         }
     });
 });
+
