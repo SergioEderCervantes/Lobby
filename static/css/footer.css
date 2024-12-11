@@ -20,11 +20,12 @@
 }
 @media (min-width: 768px) {
     .footer {
-        position: unset;
+        position: relative;
         flex-direction: row;
         background-color: #110010;
-        height: 0;
-        padding: 35px;
+        bottom: 0;
+        height: 88px;
+        padding: 30px;
     }
     .pac{
 
