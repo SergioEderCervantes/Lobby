@@ -126,7 +126,7 @@ Datos de la Reservacion:
             return JsonResponse({'message': 'Reserva creada exitosamente'}, status=201)
 
         return JsonResponse({'error': 'No se pudo crear la reserva'}, status=400)
-
+    
     except (Sucursal.DoesNotExist, Consola.DoesNotExist, User.DoesNotExist) as e:
         return JsonResponse({'error': f'{e.model.__name__} no encontrada'}, status=400)
     except ValueError as e:
