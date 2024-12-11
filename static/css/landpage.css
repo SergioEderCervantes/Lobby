@@ -34,8 +34,17 @@
 .landpage .imag {
     aspect-ratio: 4/4;
     z-index: 1000;
+    width: 392px;
+    height: 298px;
+
+    
+    
+}
+@media (min-width: 768px) {
+   .landpage .imag{
     width: 600px;
     height: 450px;
+   }
     
 }
 .imag{

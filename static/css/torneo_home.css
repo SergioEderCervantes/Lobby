@@ -33,6 +33,13 @@
     margin-top: 20px;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 1), 0 2px 5px rgba(0, 0, 0, 0.9);
 }
+.torneo_home p {
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 1), 0 2px 5px rgba(0, 0, 0, 0.9);
+}
 @media (min-width: 768px)  {
     .torneo_home {
         width: 70%;
