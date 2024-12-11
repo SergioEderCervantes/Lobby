@@ -87,6 +87,7 @@ function reestablecerBotones(){
             boton.classList.remove("disabled", "no-hover"); // Remover clases
             boton.style.transform = ""; // Restaurar transformación al hover
             boton.style.transition = ""; // Restaurar transición
+            boton.style.border = "";
     });
 }
 
@@ -96,14 +97,6 @@ function actualizarBotones(disponibilidad) {
     botones.forEach(boton => {
         const consola = boton.getAttribute("data-consola");
 
-        // Si el botón es "sin consola", siempre habilítalo
-        if (consola === "sin-consola") {
-            boton.disabled = false;
-            boton.style.backgroundColor = ""; // Restaurar color original
-            boton.style.cursor = "pointer"; // Restaurar cursor
-            boton.classList.remove("disabled", "no-hover"); // Remover clases
-            return; // Saltar a la siguiente iteración
-        }
 
         // Verifica la disponibilidad
         if (disponibilidad[consola]) {
