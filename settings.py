@@ -190,8 +190,14 @@ ACCOUNT_LOGOUT_ON_GET = True
 # Configuraciones extra para allauth
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+AUTH_USER_MODEL = 'users.User'
+
 # TODO: no se si debamos de dejar esto sin email de verificacion, ahorita esta asi para evitar error al crear una cuenta
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomSignupForm',
+}
 
 # Configuracion google cloud storage
 
