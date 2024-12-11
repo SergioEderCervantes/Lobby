@@ -108,6 +108,7 @@
 .social-icons {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .social-icons .icon {
@@ -119,8 +120,7 @@
 }
 
 .social-icons .icon svg {
-  height: 1.25rem;
-  width: 1.25rem;
+  
   fill: #fff;
 }
 
