@@ -6,7 +6,7 @@ from lobby.models import Sucursal
 from .models import Consola, Consola_disponibilidad
 from users.models import User
 from .services import validar_fecha, validar_hora, crear_reserva
-from django.views.decorators.csrf import csrf_exempt # ONLY FOR TEST
+from lobby.services import send_whatsapp_message
 
 def reservations(request):
     if request.method == 'POST':
@@ -112,6 +112,17 @@ def register_reservation(request):
         reserva_creada = crear_reserva(usuario, sucursal_id, consola.pk, fecha, hora, num_personas, comentarios)
 
         if reserva_creada:
+                        # Crear mensaje
+            success_msg = f"""
+            Lobby Web Aplication: Se acaba de realizar una reservacion a nombre de: {usuario.username}!!!
+Datos de la Reservacion:
+    -Fecha y hora: {fecha}, {hora}
+    -Numero de personas: {num_personas}
+    -Consola elegida: {consola_name}
+    -Comentarios adicionales: {comentarios}
+            """
+            response = send_whatsapp_message(success_msg)
+            print(response)
             return JsonResponse({'message': 'Reserva creada exitosamente'}, status=201)
 
         return JsonResponse({'error': 'No se pudo crear la reserva'}, status=400)

@@ -160,10 +160,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
+    BASE_DIR / "static",
     BASE_DIR / "node_modules",   
 ]
 
@@ -284,4 +285,7 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_LOGIN_ON_GET=True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
+# Configuraciones para la API de What'sapp
+WHATSAPP_API_URL = env("WHATSAPP_API_URL")
+WHATSAPP_PHONE_ID = env("WHATSAPP_PHONE_ID")
+WHATSAPP_ACCESS_TOKEN = env("WHATSAPP_ACCESS_TOKEN")
