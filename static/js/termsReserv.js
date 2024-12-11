@@ -18,8 +18,15 @@ closeModal.addEventListener('click', () => {
 toggleInput.addEventListener('change', () => {
   if (toggleInput.checked) {
     reserveButton.disabled = false; // Activa el botón de reserva
+    reserveButton.style.opacity = '1'; // Totalmente visible
+    reserveButton.style.cursor = 'pointer'; // Cursor de puntero para indicar interactividad
+    
   } else {
     reserveButton.disabled = true; // Desactiva el botón de reserva
+    reserveButton.style.opacity = '0.5'; // Transparente
+    reserveButton.style.cursor = 'not-allowed'; // Cursor no permitido
+
+
   }
 });
 
