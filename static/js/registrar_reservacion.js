@@ -30,7 +30,7 @@ function showConfirmation(event) {
     const form = event.target;
     const formData = new FormData(form);
 
-    let dataDisplay = "Fecha: \n Hora: \n Consola: \n Num_personas: ";
+    let dataDisplay = "Fecha: \nHora: \nNum_personas: ";
 
     for (const [key, value] of formData.entries()) {
         switch (key) {
@@ -41,7 +41,7 @@ function showConfirmation(event) {
                 dataDisplay = dataDisplay.replace("Hora: ", `Hora: ${value}`);
                 break;
             case 'num_personas':
-                dataDisplay = dataDisplay.replace("Num_personas: ", `# Personas: ${value}`);
+                dataDisplay = dataDisplay.replace("Num_personas: ", `# Personas: ${value} `);
                 break;
         }
     }
