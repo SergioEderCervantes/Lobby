@@ -66,6 +66,29 @@
     border-radius: 10px;
 }
 
+/* Fecha */
+/* Descripción */
+.fecha {
+    margin-bottom: 2rem;
+    justify-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    /* Línea separadora */
+}
+
+.fecha h2 {
+    font-size: 2rem;
+    /* Letra más grande */
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.fecha p {
+    font-size: 1.4rem;
+    /* Letra más grande */
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
 /* Descripción */
 .description_section {
     margin-bottom: 2rem;
@@ -241,12 +264,7 @@
     padding: 1rem;
 }
 
-#standings_table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    color: white;
-}
+
 
 #standings_table th,
 #standings_table td {
@@ -361,3 +379,249 @@
 .btn {
     margin: 1rem;
 }
+
+/* Estilo del contenedor de los términos */
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    margin-top: 30px; /* Espacio superior para separarlo de otros elementos */
+    opacity: 1; /* Visible por defecto */
+    transition: opacity 0.3s ease; /* Transición suave para el cambio de opacidad */
+}
+  
+  /* Estilo del botón */
+  .terms-button {
+    margin: 0 auto;
+    align-items: center;
+    background-color: #333333; /* Gris oscuro (antes del hover) */
+    color: #FFFFFF; /* Texto blanco */
+    padding: 8px 24px; /* Espaciado dentro del botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambio de cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Efectos de transición */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    border: none; /* Eliminar borde */
+  }
+  
+  /* Efecto al pasar el mouse (más claro) */
+  .terms-button:hover {
+    background-color: #444444; /* Fondo más claro al pasar el mouse */
+    transform: translateY(-3px); /* Desplazamiento hacia arriba */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+  }
+  
+  /* Efecto cuando el botón es presionado */
+  .terms-button:active {
+    background-color: #333333; /* Fondo intermedio cuando se presiona */
+    transform: translateY(2px); /* Desplazamiento hacia abajo */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+  }
+  
+  /* Estilo del contenedor del toggle */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-right: 10px; /* Espacio entre el toggle y el texto */
+  }
+  
+  /* Estilo del input (oculto) */
+  .toggle-switch .toggle-input {
+    display: none;
+  }
+  
+  /* Estilo del label que rodea el toggle */
+  .toggle-switch .toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Estilo para la parte redonda del toggle */
+  .toggle-switch .toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+  }
+  
+  /* Cuando el toggle está activado, cambia el color a violeta */
+  .toggle-switch .toggle-input:checked + .toggle-label {
+    background-color: #9400D3; /* Violeta */
+  }
+  
+  .toggle-switch .toggle-input:checked + .toggle-label::before {
+    transform: translateX(16px); /* Mueve el círculo al lado derecho */
+  }
+  
+  /* Estado deshabilitado */
+  .disabled {
+    opacity: 0.6; /* Hacer los elementos más transparentes */
+    pointer-events: none; /* Bloquear la interacción con los elementos */
+  }
+  
+  
+  
+  /* Estilo del contenedor */
+  .checkbox-container {
+    display: flex;
+    align-items: center; /* Alineación vertical */
+    justify-content: center; /* Alineación horizontal */
+    margin: 30px; /* Margen del contenedor */
+  }
+  
+  /* Estilo general del toggle */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-right: 10px; /* Espacio entre el toggle y el texto */
+  }
+  
+  /* Estilo del input (oculto) */
+  .toggle-switch .toggle-input {
+    display: none;
+  }
+  
+  /* Estilo del label que rodea el toggle */
+  .toggle-switch .toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Estilo para la parte redonda del toggle */
+  .toggle-switch .toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+  }
+  
+  /* Cuando el toggle está activado, cambia el color a violeta */
+  .toggle-switch .toggle-input:checked + .toggle-label {
+    background-color: #9400D3; /* Violeta */
+  }
+  
+  .toggle-switch .toggle-input:checked + .toggle-label::before {
+    transform: translateX(16px); /* Mueve el círculo al lado derecho */
+  }
+  
+  /* Estilo para el texto junto al toggle */
+  .terms-label {
+    font-size: 18px;  /* Tamaño de letra más grande */
+    color: white;
+    line-height: 24px; /* Alinear el texto con el toggle */
+    cursor: pointer;
+  }
+  
+  #termsModal {
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(30, 30, 30, 0.98); /* Fondo gris oscuro translúcido */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
+    z-index: 1000;
+  }
+  
+  /* Estilo para el contenido del modal */
+  .termsModal-content {
+    text-align: center;
+    color: white;
+    max-width: 500px; /* Establece un ancho máximo para evitar que se estire demasiado */
+    margin: 0 auto; /* Centra el contenido */
+  }
+  
+  /* Título del modal */
+  .termsModal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif; /* Ajusta la fuente */
+    background: -webkit-linear-gradient(45deg, gold, violet); /* Gradiente dorado-violeta */
+    -webkit-background-clip: text; /* Hace que el gradiente se aplique solo al texto */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Fondo transparente para mostrar el gradiente */
+    text-align: center;
+  }
+  
+  /* Estilo para la lista de términos */
+  .termsModal-content ul {
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 1.4;
+    text-align: left; /* Alineación a la izquierda */
+    padding-left: 20px; /* Espaciado a la izquierda para los puntos */
+  }
+  
+  
+  .termsModal-content button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 24px; /* Tamaño más grande */
+    background-color: #3a3a3a; /* Gris oscuro para el botón */
+    color: #d4a8ff; /* Violeta claro para el texto */
+    border: 2px solid #d4a8ff; /* Borde violeta */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px; /* Texto más grande */
+    font-weight: bold; /* Hacer la letra más llamativa */
+    font-family: 'Arial', sans-serif; /* Fuente profesional */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+  }
+  
+  /* Efecto al pasar el mouse */
+  .termsModal-content button:hover {
+    background-color: #4a4a4a; /* Gris más claro al pasar el cursor */
+    color: gold; /* Cambio a dorado para el texto */
+    transform: scale(1.1); /* Efecto de aumento */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra más intensa */
+  }
+  
+  /* Efecto de enfoque */
+  .termsModal-content button:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d4a8ff; /* Resplandor violeta al enfoque */
+  }
+
+  /* Estado deshabilitado */
+.disabled {
+    opacity: 0.6; /* Hacer los elementos más transparentes */
+    pointer-events: none; /* Bloquear la interacción con los elementos */
+  }
+

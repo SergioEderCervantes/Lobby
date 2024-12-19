@@ -14,6 +14,7 @@
 </script>
 <script src="{% static 'js/tournament_detail.js' %}" defer></script>
 <script src="{% static 'js/admin/tournament_view.js' %}" defer></script>
+<script src="{% static 'js/termsTournament.js' %}" defer></script>
 {% endblock extrascripts %}
 
 {% block header %}
@@ -57,7 +58,11 @@
             </div>
             <img src="{{ torneo.imagen_banner.url }}" alt="Banner del torneo" class="hidden">
         </div>
-
+        <!-- Fecha y hora -->
+        <div class="fecha">
+            <h2>Fecha de inicio</h2>
+            <p>{{torneo.fecha}}</p>
+        </div>
         <!-- Descripción -->
         <div class="description_section">
             <h2>Descripción</h2>
@@ -111,7 +116,9 @@
                         <th>Partidos perdidos</th>
                         <th>Partidos empatados</th>
                         <th>Puntuación</th>
-                        <th>Goles</th>
+                        <th>Goles a favor</th>
+                        <th>Goles en contra</th>
+                        <th>Diferencia de goles</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,6 +126,8 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ player }}</td>
+                        <td>0</td>
+                        <td>0</td>
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
@@ -133,10 +142,31 @@
 
         {% else %}
         <!-- Si no existe el SVG -->
+        <div id="termsModal">
+            <div class="termsModal-content">
+              <h2>Términos y Condiciones</h2>
+              <ul>
+                <li>La cuota de inscripción es de $50.00, la cual se puede pagar directamente en la sucursal o por transferencia (mandar recibo por WhatsApp).</li>
+                <li>Participantes menores de edad deberán ir con la compañía de un adulto.</li>
+              <button type="button" id="closeModal">Cerrar</button>
+            </div>
+        </div>
         {% if user.is_authenticated %}
         <div class="authenticated_message">
             <p>Ya estás autenticado. ¿Deseas inscribirte con el correo <strong>{{ user.email }}</strong>?</p>
-            <button id="tournament_register_btn" class="btn">Inscribirse</button>
+            <button id="tournament_register_btn" class="btn disabled" disabled >Inscribirse</button>
+            <div class="terms-container">
+
+                <button type="button" id="termsButton" class="terms-button">Leer términos y condiciones</button>
+                <div class="checkbox-container">
+                  <div class="toggle-switch">
+                    <input class="toggle-input" id="toggle" type="checkbox">
+                    <label class="toggle-label" for="toggle"></label>
+                  </div>
+                  <label for="toggle" class="terms-label">Aceptar términos y condiciones</label>
+                </div>
+          
+            </div>
         </div>
         {% else %}
         <!-- Mostrar el formulario de inscripción para invitados -->
@@ -152,8 +182,20 @@
                 <input type="tel" name="tel" id="tel" required>
             </div>
             <div class="form_actions">
-                <button type="submit">Inscribirse</button>
+                <button type="submit" id="tournament_register_btn" class="disabled" disabled >Inscribirse</button>
                 <a class="signup" href="{% url 'account_login' %}">Ya tienes cuenta?</a>
+            </div>
+            <div class="terms-container">
+
+                <button type="button" id="termsButton" class="terms-button">Leer términos y condiciones</button>
+                <div class="checkbox-container">
+                  <div class="toggle-switch">
+                    <input class="toggle-input" id="toggle" type="checkbox">
+                    <label class="toggle-label" for="toggle"></label>
+                  </div>
+                  <label for="toggle" class="terms-label">Aceptar términos y condiciones</label>
+                </div>
+          
             </div>
         </form>
         {% endif %}

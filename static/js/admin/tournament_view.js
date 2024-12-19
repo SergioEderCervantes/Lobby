@@ -9,6 +9,7 @@ class Player {
         this.ties = 0;
         this.points = 0;
         this.goals = 0;
+        this.againistGoals = 0;
     }
 }
 
@@ -296,7 +297,9 @@ function calculatePuntuation(puntaje1, puntaje2, parentGroup, changeBand) {
         perdedor.classList.add('loser');
     }
     player1.goals = parseInt(parentGroup.querySelector(".match__puntaje__player1__text").textContent);
+    player1.againistGoals = parseInt(parentGroup.querySelector(".match__puntaje__player2__text").textContent);
     player2.goals = parseInt(parentGroup.querySelector(".match__puntaje__player2__text").textContent);
+    player2.againistGoals = parseInt(parentGroup.querySelector(".match__puntaje__player1__text").textContent);
    
     if(changeBand) {
         calculateSVGStats()
@@ -318,14 +321,15 @@ function modificateTable(player) {
             player.losses += parseInt(row.querySelector('td:nth-child(4)').textContent); // Partidos perdidos
             player.ties += parseInt(row.querySelector('td:nth-child(5)').textContent); // Partidos empatados
             player.goals += parseInt(row.querySelector('td:nth-child(7)').textContent); // goles totales
+            player.againistGoals += parseInt(row.querySelector('td:nth-child(8)').textContent);
             
-            updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals);
+            updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals, player.againistGoals);
         }
     });
 }
 
 // Función para modificar los datos de un jugador
-function updatePlayerStats(playerName, newWon, newLost, newDraw, newPoints, newGoals) {
+function updatePlayerStats(playerName, newWon, newLost, newDraw, newPoints, newGoals, newAgainistGoals) {
     const tableRows = document.querySelectorAll('#standings_table tbody tr');
     
     tableRows.forEach(row => {
@@ -335,7 +339,13 @@ function updatePlayerStats(playerName, newWon, newLost, newDraw, newPoints, newG
             row.querySelector('td:nth-child(4)').textContent = newLost; // Actualiza partidos perdidos
             row.querySelector('td:nth-child(5)').textContent = newDraw; // Actualiza partidos empatados
             row.querySelector('td:nth-child(6)').textContent = newPoints; // Actualiza puntos de juego
-            row.querySelector('td:nth-child(7)').textContent = newGoals; // Actualiza puntos de juego
+            row.querySelector('td:nth-child(7)').textContent = newGoals; // Actualiza goles a favor
+            row.querySelector('td:nth-child(8)').textContent = newAgainistGoals; // Actualiza goles en contra
+            if(newGoals - newAgainistGoals >= 0)
+                row.querySelector('td:nth-child(9)').textContent = newGoals - newAgainistGoals; // Actualiza diferencia de goles
+            else   
+            row.querySelector('td:nth-child(9)').textContent = newAgainistGoals - newGoals;
+
         }
     });
     sortTable();
@@ -350,8 +360,8 @@ function sortTable() {
         const puntajeA = parseInt(rowA.cells[5].textContent);  // Obtener los partidos ganados de la fila A
         const puntajeB = parseInt(rowB.cells[5].textContent);  // Obtener los partidos ganados de la fila B
 
-        const golesA = parseInt(rowA.cells[6].textContent); // Goles a favor
-        const golesB = parseInt(rowB.cells[6].textContent); // Goles a favor
+        const golesA = parseInt(rowA.cells[8].textContent); // diferencia de goles
+        const golesB = parseInt(rowB.cells[8].textContent); // diferencia de goles
 
 
         // Ordenar por puntaje (descendente)
@@ -409,12 +419,25 @@ function calculateSVGStats() {
         }
 
         // Obtener los goles desde la clase "match__puntaje__playerX__text"
-        const playerIndex = playerText.classList.contains("matchup__player1") ? 1 : 2;
+        let playerIndex;
+        let oponentIndex = playerText.classList.contains("matchup__player1") ? 1 : 2;
+        if(playerText.classList.contains("matchup__player1")){
+            playerIndex = 1;
+            oponentIndex = 2;
+        }
+        else {
+            playerIndex = 2;
+            oponentIndex = 1;
+        }
         const goalsText = parentGroup.querySelector(`.match__puntaje__player${playerIndex}__text`);
+        const goalsOpponentText = parentGroup.querySelector(`.match__puntaje__player${oponentIndex}__text`);
         if (goalsText) {
             player.goals += parseInt(goalsText.textContent.trim()) || 0; // Sumar goles, o 0 si no hay un número válido
         }
-        updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals);
+        if (goalsOpponentText) {
+            player.againistGoals += parseInt(goalsOpponentText.textContent.trim()) || 0; // Sumar goles, o 0 si no hay un número válido
+        }
+        updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals, player.againistGoals);
     });
 }
 
