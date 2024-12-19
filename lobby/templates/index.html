@@ -56,7 +56,7 @@
         {% block content %}
             <main>
                 {% include 'body/promociones.html' %}
-                <section class="body">
+                <section class="">
                     {% if prox_torneo %}
                     {% include 'body/torneo.html' with prox_torneo=prox_torneo num_players=num_players %}
                     {% endif %}

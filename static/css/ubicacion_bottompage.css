@@ -16,8 +16,6 @@
   
   /* Estilos generales para el contenedor de la ubicación */
   .ubicacion_contenedor {
-    background: rgba(43, 9, 79, 0.236);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);
     border-radius: 26px;
@@ -64,11 +62,8 @@
   }
   
 .bottom_contenedor {
-    background: rgba(43, 9, 79, 0.236);
-    padding: 3% 0;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(2.5px);
-    -webkit-backdrop-filter: blur(2.5px);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
     border-radius: 26px;
     display: flex;
     justify-content: space-evenly;
@@ -112,8 +107,14 @@
   font-size: 2em;
   font-weight: 600;
   color: #ffffff;
-  text-align:start ;
+  text-align:center ;
   margin-bottom: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid black;
+  width: 0;
+  animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+
 }
 .heart_contenedor {
   transform: rotate(355deg);
@@ -121,7 +122,8 @@
     align-items: center;
     width: 100%;
     flex-direction: column;
-  
+    animation: bounceh 1s ease infinite;
+
 }
 
 .heart_contenedor img {

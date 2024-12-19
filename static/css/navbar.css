@@ -59,6 +59,13 @@
   transform: translateX(0);
   
 }
+.navbar h1
+{
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
 .navbar a img {
   margin: 0 0.5rem ; /* Ajusta el margen según el diseño deseado */
   transition: all 0.5s ease;

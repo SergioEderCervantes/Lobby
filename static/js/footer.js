@@ -36,15 +36,15 @@ function startVibration() {
 
   setTimeout(() => {
     pacman.classList.remove('vibrate'); 
-  }, 1000); 
+  }, 500); 
 }
 
   setInterval(() => {
     if(!moved){
-      if (Math.random() > 0.7) { // Probabilidad del 30% de vibrar cada 5 segundos
+      if (Math.random() > 0.3) { // Probabilidad del 30% de vibrar cada 5 segundos
         startVibration();
       }
     }
-  }, 1000);
+  }, 2000);
 
 

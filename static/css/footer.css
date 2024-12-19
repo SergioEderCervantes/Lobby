@@ -20,7 +20,6 @@
 }
 @media (min-width: 768px) {
     .footer {
-        position: relative;
         flex-direction: row;
         background-color: #110010;
         bottom: 0;
@@ -43,14 +42,13 @@
     color: white;
     text-align: center;
     font-size: 8px;
+    justify-content: space-around;
     align-items: center;
 }
 @media (min-width: 768px) {
     .footer-align{
         padding: 0;
-        margin-right: 2rem;
 
-        justify-content: space-between;  
         font-size: 12px;
         align-items: center;
     }

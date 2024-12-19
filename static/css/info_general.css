@@ -64,10 +64,9 @@
 }
 .contenedor_infogeneral p {
     text-align: justify;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: normal;
-    color: #ffffff;
-    
+
 }
 .contenedor_infogeneral h1 {
     font-size: 2em;
@@ -75,6 +74,9 @@
     color: #ffffff;
     text-align:start ;
     margin-bottom: 20px;
+    
+    animation: pulse 1.5s infinite ease-in-out;
+
 }
 .contenedor_infogeneral_img {
     width: 100%;
@@ -100,11 +102,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    
 }
 .info_img2{
     width: 100%;
     display: flex;
     justify-content: center;
+    animation: bounce 3s ease infinite;
 }
 
 .info_img1_position{

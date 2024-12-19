@@ -8,7 +8,7 @@ body {
 
 /* Estilo para el ícono del menú */
 .menu-icon {
-  background: linear-gradient(84deg, rgba(2,0,36,0.6), rgba(111,9,121,0.6) , rgba(0,16,153,0.5));
+  background: #1B1B2F;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
@@ -30,7 +30,7 @@ body {
   right: 160px;  /* Nueva posición cuando se abre */
 }
 .menu-icon-login {
-  background: linear-gradient(84deg, rgba(2,0,36,0.6), rgba(111,9,121,0.6) , rgba(0,16,153,0.5));
+  background: #1B1B2F;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
@@ -62,7 +62,7 @@ body {
     right: 0;
     color: rgb(255, 255, 255);
     
-    background: linear-gradient(84deg, rgba(2,0,36,0.6), rgba(111,9,121,0.6) , rgba(0,16,153,0.5));
+    background: #1b1b2f8f;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   
     overflow-x: hidden;
@@ -82,7 +82,7 @@ body {
   right: 0;
   color: rgb(255, 255, 255);
   
-  background: linear-gradient(84deg, rgba(2,0,36,0.6), rgba(111,9,121,0.6) , rgba(0,16,153,0.5));
+  background: #1b1b2f8f;;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 
   overflow-x: hidden;

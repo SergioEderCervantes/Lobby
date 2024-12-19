@@ -1,7 +1,5 @@
 
 .torneo_home {
-    background: rgba(43, 9, 79, 0.236);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);
     border-radius: 10px;
@@ -47,6 +45,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        margin-top: 64px;
     }
     .torneo_home h1{
         font-size: 40px;
@@ -85,12 +84,15 @@
     text-decoration: none;
     font-size: 20px;
     padding: 12.5px 30px;
-    border: 0;
+    border: solid 2px #4d156d;
     border-radius: 100px;
-    background-color: #ad05c3;
+    background-color: #1b1b2F;
+    box-shadow: #4d156d;
     color: #ffffff;
     font-weight: Bold;
-    
+    transition: all 0.25s;
+    animation: bounce 2s ease infinite;
+
 }
 @media (min-width: 768px) {
     .contenedor_info {
@@ -106,12 +108,16 @@
 }
 .contenedor_info a:hover {
     background-color: #ad05c3;
+    border: solid 2px #4d156d;
+
     box-shadow: 0 0 20px #6fc5ff50;
     transform: scale(1.1);
+    transition: all 0.25s;
   }
   
   .contenedor_info a:active {
     background-color: #ad05c3;
+    border: solid 2px #4d156d;
     transition: all 0.25s;
     -webkit-transition: all 0.25s;
     box-shadow: none;

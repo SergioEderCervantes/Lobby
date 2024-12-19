@@ -9,6 +9,7 @@
     background-attachment: fixed;
     color: white;
     scrollbar-width: none;
+    margin-bottom: 130px;
     
 }
 main {
@@ -25,9 +26,50 @@ main {
     font-family: "Titillium Web", sans-serif;
 
 }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+}
+@keyframes bounceh {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) rotate(355deg);
+    }
+    40% {
+      transform: translateY(-10px) rotate(355deg);
+    }
+    60% {
+      transform: translateY(-5px) rotate(355deg);
+    }
+}
+@keyframes typing {
+    to {
+      width: 100%;
+    }
+  }
 
- 
-
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 .tarjeta {
     background: rgba(43, 9, 79, 0.236);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
