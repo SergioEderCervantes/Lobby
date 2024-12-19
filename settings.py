@@ -67,7 +67,8 @@ INSTALLED_APPS = [
     'restaurante',
     'politicas',
     'cookies_servicios',
-
+    'custom_perfil',
+    
     # Desinstalar django extensions para produccion
     'django_extensions',
 ]
