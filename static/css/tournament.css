@@ -157,7 +157,7 @@ h2 {
 
 .tournaments_container {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     background-color: #02071df0;
     width: 100%;
     margin: -300px auto 0 auto;
