@@ -8,6 +8,12 @@
     background-attachment: fixed;
     color: white;
     scrollbar-width: none;
+    --heartcolor: #f22613;
+    --heartcolor2: #f2af13;
+    --heartcolor3: #65f213;
+    --heartcolor4: #1335f2;
+    --heartcolor5: #c513f2;
+    
 }
 main {
     flex: 1; /* Ocupa todo el espacio disponible */

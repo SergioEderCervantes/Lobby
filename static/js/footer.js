@@ -6,14 +6,6 @@ let isMobile = window.matchMedia('(max-width: 767px)').matches; // Detectar si e
 
 // Función para manejar el clic en pacman
 function handlePacmanClick() {
-  
-  if (!isMobile) return; // Si no es móvil, no hacer nada
-
-  if (!moved) {
-    pacman.style.transform = 'translateY(-10%)';
-  } else {
-    pacman.style.transform = 'translateY(120px)';
-  }
 
   sections.forEach((section) => {
     section.classList.toggle('active');

@@ -16,52 +16,17 @@
         <p>{{ user.email }}</p>
         <a href="#">editar</a>
         <p>Nó. Torneos</p>
-        <div class="rating">
-          
-          <input type="radio" id="heart5" name="rate" value="5" />
-          <label for="heart5" >
-            <svg viewBox="0 0 24 24" height="1em" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              ></path>
-            </svg>
-          </label>
-        
-          <input type="radio" id="heart4" name="rate" value="4" />
-          <label for="heart4" >
-            <svg viewBox="0 0 24 24" height="1em" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              ></path>
-            </svg>
-          </label>
-        
-          <input type="radio" id="heart3" name="rate" value="3" />
-          <label for="heart3" >
-            <svg viewBox="0 0 24 24" height="1em" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              ></path>
-            </svg>
-          </label>
-        
-          <input type="radio" id="heart2" name="rate" value="2" />
-          <label for="heart2" >
-            <svg viewBox="0 0 24 24" height="1em" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              ></path>
-            </svg>
-          </label>
-        
-          <input type="radio" id="heart1" name="rate" value="1" />
-          <label for="heart1" >
-            <svg viewBox="0 0 24 24" height="1em" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              ></path>
-            </svg>
-          </label>
+        <div class="heart-display">
+          <img class="heart-red" id="red1" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red" id="red2" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red" id="red3" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red" id="red4" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red" id="red5" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray" id="gray1" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray" id="gray2" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray" id="gray3" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray" id="gray4" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray" id="gray5" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
         </div>
         <button class="login-button">
           <span class="shadow"></span>
