@@ -9,7 +9,11 @@
     background-attachment: fixed;
     color: white;
     scrollbar-width: none;
-    margin-bottom: 130px;
+    --heartcolor: #f22613;
+    --heartcolor2: #f2af13;
+    --heartcolor3: #65f213;
+    --heartcolor4: #1335f2;
+    --heartcolor5: #c513f2;
     
 }
 main {
