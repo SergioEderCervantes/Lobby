@@ -1,0 +1,77 @@
+{% extends "index.html" %} {% load static %}
+
+{%block extrascripts %}
+<script src="{% static 'js/custom_perfil.js' %}" defer></script>
+{% endblock %}
+{% block estandar %}
+{% endblock%}
+
+{% block header %}
+{% endblock%}
+
+{% block content %}
+  <div class="body-log">
+    <a href="{% url "home" %}" class="btn-home">🢀</a>
+        
+    <div class="form-container">
+      <div>
+        <div>
+          <h2 class="title">Editar Perfil</h2>
+        </div>
+        
+        <form class="form" action="/save-profile" enctype="multipart/form-data"
+              id="userSignupForm"
+              method="post"
+              role="form">
+          {% csrf_token %}
+          {% if request.GET.next %}<input type="hidden" name="next" value="{{ request.GET.next }}">{% endif %}
+          {% if form.non_field_errors %}
+            <div>
+              <ul>
+                {% for error in form.non_field_errors %}<li>{{ error|lower }}</li>{% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          <div>
+            <!-- Avatar -->
+          <div class="profile-avatar">
+            <img src="{% static 'svg/profile.svg' %}" alt="Avatar del usuario" id="profile-avatar">
+            <input type="file" name="avatar" accept="image/*" onchange="previewAvatar(event)">
+          </div>
+
+            <div class="input-group">
+              <input type="text" id="id_username" value="{{ user.username }}" placeholder="Username">
+              <span>{{ form.username.errors }}</span>
+            </div>
+            <div class="input-group">
+              <input type="text" id="id_email" value="{{ user.email}}" name="email" placeholder="Email">
+              <span>{{ form.email.errors }}</span>
+            </div>
+            <div class="input-group">
+              <input type="tel" id="id_phone" value="{{ user.telefono}}" name="phone" placeholder="Phone">
+              <span>{{ form.phone.errors }}</span>
+            </div>
+            <div class="input-group">
+              <input type="password"
+                     id="id_password1"
+                     value="{{ user.password1 }}"
+                     name="password1"
+                     placeholder="Password">
+              <span>{{ form.password1.errors }}</span>
+            </div>
+            <div class="input-group">
+              <input type="password"
+                     id="id_password2"
+                     name="password2"
+                     placeholder="Confirm Password">
+              <span>{{ form.password2.errors }}</span>
+            </div>
+            <div class="form-actions">
+                <button class="sign" type="submit">Guardar Cambios</button>
+              </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block footer %}
+{% endblock%}

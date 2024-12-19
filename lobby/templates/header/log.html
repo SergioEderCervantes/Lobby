@@ -17,7 +17,7 @@
       <section class="position">
         <h3>¡Hola, {{ user.username }}!</h3>
         <p>{{ user.email }}</p>
-        <a href="#">editar</a>
+        <a href="{% url 'custom_perfil' %}">editar</a>
         <p>Nó. Torneos</p>
         <div class="heart-display" id= "heart-display">
           <img class="heart-red hidden" id="red1" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">

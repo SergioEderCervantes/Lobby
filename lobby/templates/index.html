@@ -32,11 +32,12 @@
             <script src="{% static '\js\cards_home.js' %}" defer></script>
 
         {% endblock %}
+        {%block estandar%}
         <script src="{% static '\js\navbar.js' %}" defer></script>
         <script src="{% static '\js\perfil.js' %}" defer></script>
 
         <script src="{% static '\js\footer.js' %}" defer></script>
-
+        {% endblock%}
     </head>
     <body>
         {% block header %}
