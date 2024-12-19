@@ -97,21 +97,12 @@ function actualizarBotones(disponibilidad) {
     botones.forEach(boton => {
         const consola = boton.getAttribute("data-consola");
 
-
-        // Verifica la disponibilidad
         if (disponibilidad[consola]) {
             boton.disabled = false; // Habilitar el botón
-            boton.style.backgroundColor = ""; // Restaurar color original
-            boton.style.cursor = "pointer"; // Restaurar cursor
-            boton.classList.remove("disabled", "no-hover"); // Remover clases
-            boton.style.transform = ""; // Restaurar transformación al hover
-            boton.style.transition = ""; // Restaurar transición
+            boton.classList.remove("disabled"); // Remover la clase de deshabilitado
         } else {
             boton.disabled = true; // Deshabilitar el botón
-            boton.style.backgroundColor = "rgba(255, 0, 0, 0.1)"; // Cambiar color a rojo claro
-            boton.style.cursor = "not-allowed"; // Cambiar cursor a "no permitido"
-            boton.style.transform = "none"; // Desactivar transformación al hover
-            boton.style.transition = "none"; // Desactivar transición al hover
+            boton.classList.add("disabled"); // Agregar la clase de deshabilitado
         }
     });
 }
