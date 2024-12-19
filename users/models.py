@@ -34,7 +34,6 @@ class User(AbstractUser):
         null=False, 
         blank=False,
         unique=True,
-        default="",
         error_messages={
             "unique": _("Ya existe un usuario con este número de teléfono, por favor verifíquelo."),
         },
