@@ -20,9 +20,9 @@ class User(AbstractUser):
     email = models.EmailField(
         _("Correo electrónico"),
         # TODO: settear False si se quiere obligar a poner email
-        blank=True,
+        blank=False,
         # TODO: Settear a True, este si es de ahuevo pero lo puse False para hacer pruebas
-        unique=False,
+        unique=True,
         error_messages={
             "unique": _("Ya existe un usuario con este correo electrónico, por favor verifíquelo."),
         },
@@ -31,8 +31,12 @@ class User(AbstractUser):
     telefono = models.CharField(
         _("Numero de telefono"),        
         max_length=15,
-        null=True, 
-        blank=True,
+        null=False, 
+        blank=False,
+        unique=True,
+        error_messages={
+            "unique": _("Ya existe un usuario con este número de teléfono, por favor verifíquelo."),
+        },
     )
     
     # Eliminar Groups, ya que por la naturaleza del proyecto no seran necesarios
