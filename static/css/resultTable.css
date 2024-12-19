@@ -9,6 +9,7 @@
 
 /* Estilo de la tabla */
 #standings_table {
+
     border-collapse: collapse; /* Elimina los bordes dobles */
     width: 90%;
     margin: 0 auto;
@@ -47,3 +48,11 @@
     background-color: #d0d0d0; 
     cursor: pointer; 
 }*/
+
+td, th {
+    font-size: 0.8125rem;
+    line-height: 1rem;
+    border-bottom: 1px solid var(--hairline-color);
+    vertical-align: top;
+    padding: 8px;
+}

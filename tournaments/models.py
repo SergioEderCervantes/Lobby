@@ -15,7 +15,6 @@ class Torneo(models.Model):
     modo_torneo = models.CharField(choices=MODOS_TORNEO, max_length=8, default="Direct")
     imagen = models.ImageField("Imagen principal del torneo", upload_to='imagen_torneo', null=False, blank=False)
     imagen_banner = models.ImageField("Banner del torneo",upload_to='imagen_torneo', null=True, blank=False )
-
     fecha = models.DateTimeField("Fecha y Hora del torneo")
     is_defined = models.BooleanField(default=False)
     descripcion = models.TextField("Descripcion breve del torneo",max_length=500, null=True, blank=True)
