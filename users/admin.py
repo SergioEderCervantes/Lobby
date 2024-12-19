@@ -7,5 +7,6 @@ from custom_admin.admin import admin_site
 
 class user_admin(admin.ModelAdmin):
     list_display = ('username', 'email', 'tipo_usuario')
+    exclude = ("juegos_inscritos","user_permissions")
     
 admin_site.register(User,user_admin)

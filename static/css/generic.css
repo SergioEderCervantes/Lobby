@@ -1,5 +1,4 @@
 :root {
-
     font-size: 90%;
     box-sizing: border-box;
     background-image: url(../img/lobby_root.webp);
@@ -9,8 +8,6 @@
     background-attachment: fixed;
     color: white;
     scrollbar-width: none;
-    margin-bottom: 130px;
-    
 }
 main {
     flex: 1; /* Ocupa todo el espacio disponible */

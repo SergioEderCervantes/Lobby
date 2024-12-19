@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404 
 from django.db import models
 from django.db.models import Count, F, ExpressionWrapper
-from django.db.models.functions import Abs 
 from django.http import JsonResponse
 from django.db import IntegrityError
 from django.utils.timezone import now
@@ -80,8 +79,12 @@ def register_player(request):
 
         # Inscribir al usuario en el torneo
         torneo.jugadores_inscritos.add(usuario)
+        
+        # Actualizar su numero de torneos inscritos y mandar mensaje si es que tiene la promocion
+        mensaje = 'Felicidades!! su inscripcion a este torneo es gratuita!!.' if usuario.agregar_juego(torneo.nombre_juego) else 'Usuario inscrito exitosamente al torneo.' 
 
-        return JsonResponse({'message': 'Usuario inscrito exitosamente al torneo.'}, status=201)
+
+        return JsonResponse({'message': mensaje}, status=201)
 
         
     except (User.DoesNotExist, Torneo.DoesNotExist) as e:

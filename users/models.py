@@ -49,6 +49,9 @@ class User(AbstractUser):
     related_name="customuser_permissions",  # Nombre único
     blank=True,
     )
+    
+    juegos_inscritos = models.JSONField(_("Nombres de juegos que ya se inscribio"), default=list)
+    
     def save(self, **kwargs):
         # Ajustes previos a guardar para mantener la coherencia en la base de datos
         if self.tipo_usuario == 'AD':
@@ -58,3 +61,31 @@ class User(AbstractUser):
             self.tipo_usuario = 'AD'
         super().save(**kwargs)
 
+    def agregar_juego(self, nombre_juego: str) -> bool:
+        """
+        Agrega un juego a la lista de juegos inscritos si no está ya inscrito.
+        Aplica una promoción si alcanza el límite de 6 juegos inscritos.
+        
+        :param nombre_juego: Nombre del juego a agregar.
+        :return: True si se aplica la promoción y se reinicia la lista, False si no.
+        """
+        if not isinstance(nombre_juego, str):
+            raise ValueError("El nombre del juego debe ser un string.")
+
+        # Verificar si el juego ya está en la lista
+        if nombre_juego not in self.juegos_inscritos:
+            self.juegos_inscritos.append(nombre_juego)
+            
+            # Verificar si se alcanza el límite para la promoción
+            if self.num_torneos_dif_inscritos() >= 6:
+                self.juegos_inscritos.clear()  # Reiniciar la lista de juegos inscritos
+                self.save()  # Guardar el cambio después de reiniciar
+                return True
+
+            self.save()  # Guardar el cambio después de agregar el juego
+        
+        return False
+
+    def num_torneos_dif_inscritos(self) -> int:
+        print(len(self.juegos_inscritos))
+        return len(self.juegos_inscritos)
