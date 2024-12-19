@@ -273,6 +273,27 @@ form {
 }
 
 
+/* Botones deshabilitados */
+.consola-button.disabled {
+  position: relative;
+  cursor: not-allowed; /* Cursor de "no permitido" */
+  pointer-events: none; /* Deshabilita la interacción */
+}
+
+/* Capa con la imagen */
+.consola-button.disabled .image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/static/img/agotado2.png') center/contain no-repeat;
+  background-size: 100%;
+  background-position: center;
+  opacity: 0.85; /* Opacidad de la imagen */
+  z-index: 1; /* Coloca la imagen debajo del icono y el texto */
+}
+
 
 /* Estilo para cada botón */
 .consola-button { 
@@ -296,6 +317,8 @@ form {
 /* Espacio entre el icono y el texto */
 .consola-button i {
   margin-bottom: 5px; /* Espacio entre el icono y el nombre */
+  position: relative;
+  z-index: 1;
 }
 
 /* Estilo para el nombre de la consola */
@@ -304,6 +327,8 @@ form {
   text-align: center;
   white-space: nowrap;
   color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 /* Efecto de hover */
