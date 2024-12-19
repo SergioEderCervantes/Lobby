@@ -42,15 +42,23 @@ def home(request):
         inicio_rango = ahora - timedelta(hours=5)  # 5 horas atrás
         fin_rango = ahora + timedelta(minutes=30)  # 30 minutos adelante
         
+        # Proximo torneo
         proximo_torneo = Torneo.objects.filter(fecha__gte=ahora).order_by('fecha').first()
         num_players = proximo_torneo.cantidad_usuarios_inscritos() if proximo_torneo else None
         torneo_ejec = Torneo.objects.filter(fecha__range=(inicio_rango, fin_rango)).first()
+        
+        # Corazones
+        usuario = request.user
+        
+        num_torneos_inscritos = usuario.num_torneos_dif_inscritos() if usuario.is_authenticated else 0 
+        
         context = {
         'promociones': promociones, 
         'prox_torneo': proximo_torneo, 
         'num_players': num_players, 
         'comments': comments,
         'torneo_ejec': torneo_ejec,
+        'num_torneos_inscritos': num_torneos_inscritos,
         }
 
         return render(request, 'index.html', context=context)

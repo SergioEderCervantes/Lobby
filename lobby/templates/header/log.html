@@ -1,4 +1,7 @@
 {% load static %}
+  <script> 
+    const num_torneos = {{num_torneos_inscritos}}
+  </script>
   {% if user.is_authenticated %}
   <div id="menu-toggle" class="menu-icon">
     <img id="perfil"
@@ -16,17 +19,17 @@
         <p>{{ user.email }}</p>
         <a href="#">editar</a>
         <p>Nó. Torneos</p>
-        <div class="heart-display">
-          <img class="heart-red" id="red1" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-red" id="red2" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-red" id="red3" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-red" id="red4" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-red" id="red5" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-gray" id="gray1" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-gray" id="gray2" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-gray" id="gray3" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-gray" id="gray4" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
-          <img class="heart-gray" id="gray5" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+        <div class="heart-display" id= "heart-display">
+          <img class="heart-red hidden" id="red1" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red hidden" id="red2" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red hidden" id="red3" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red hidden" id="red4" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-red hidden" id="red5" src="{% static 'svg/1.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray " id="gray1" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray " id="gray2" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray " id="gray3" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray " id="gray4" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
+          <img class="heart-gray " id="gray5" src="{% static 'svg/2.svg' %}" alt="Ubicacion" class="ubicacion_img">
         </div>
         <button class="login-button">
           <span class="shadow"></span>

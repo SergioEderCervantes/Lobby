@@ -1,14 +1,12 @@
-.heart-red{
-  display: none;
-}
-.heart-gray{
-  display: inherit;
-}
 
 .heart-display {
   display: flex;
   flex-direction: row;
  
+}
+
+.hidden{
+  display: none;
 }
 
 /* Estilo para el ícono del menú */

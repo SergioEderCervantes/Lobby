@@ -15,6 +15,11 @@ from settings import STATICFILES_DIRS
 # Create your views here.
 
 def tournaments(request):
+    # Corazones 
+    usuario = request.user
+    
+    num_torneos_inscritos = usuario.num_torneos_dif_inscritos() if usuario.is_authenticated else 0 
+    
     hoy = date.today()
     tournaments = (
     Torneo.objects.filter(fecha__gte=hoy)
@@ -24,11 +29,15 @@ def tournaments(request):
 )
     proximo_torneo = Torneo.objects.filter(fecha__gte=now()).order_by('fecha').first()    
 
-    return render(request, 'tournaments.html', {'tournaments': tournaments, 'prox_torneo': proximo_torneo})
+    return render(request, 'tournaments.html', {'tournaments': tournaments, 'prox_torneo': proximo_torneo, 'num_torneos_inscritos': num_torneos_inscritos})
 
 
 def tournament_detail(request, name):
-        
+        # Corazones 
+    usuario = request.user
+    
+    num_torneos_inscritos = usuario.num_torneos_dif_inscritos() if usuario.is_authenticated else 0     
+    
     # Obtener el torneo y su número de jugadores inscritos
     torneo = get_object_or_404(Torneo, nombre_torneo=name)
 
@@ -51,7 +60,8 @@ def tournament_detail(request, name):
         'svg_data': svg_data,
         'reglas': torneo.reglas_como_lista(),
         'num_players': num_players,
-        'players': players
+        'players': players,
+        'num_torneos_inscritos': num_torneos_inscritos
     }
 
 

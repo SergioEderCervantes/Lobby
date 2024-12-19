@@ -9,6 +9,11 @@ from .services import validar_fecha, validar_hora, crear_reserva
 from lobby.services import send_whatsapp_message
 
 def reservations(request):
+        # Corazones 
+    usuario = request.user
+    
+    num_torneos_inscritos = usuario.num_torneos_dif_inscritos() if usuario.is_authenticated else 0 
+    
     if request.method == 'POST':
         
         form = ReservationForm(request.POST)
@@ -35,7 +40,7 @@ def reservations(request):
 
     else:
         form = ReservationForm()  # Crear el formulario vacío
-    return render(request, 'reservations.html', {'form': form})
+    return render(request, 'reservations.html', {'form': form, 'num_torneos_inscritos': num_torneos_inscritos})
 
 def check_availability(request):
     if request.method != "POST":

@@ -8,6 +8,11 @@ class Section():
         
         
 def restaurante(request):
+    # Corazones 
+    usuario = request.user
+    
+    num_torneos_inscritos = usuario.num_torneos_dif_inscritos() if usuario.is_authenticated else 0 
+    
     #Agarrar todos los productos
     productos = Producto.objects.all()
     context = {
@@ -17,8 +22,11 @@ def restaurante(request):
             Section("Cervezas", [product for product in productos if product.tipo_producto == 'C']),
             Section("Bebidas con alcohol", [product for product in productos if product.tipo_producto == 'D']),
             Section("Botellas", [product for product in productos if product.tipo_producto == 'E']),
-        ]
+        ],
+        "num_torneos_inscritos": num_torneos_inscritos,
     }
+
+    
     return render(request, 'restaurante.html', context)
 
 def prueba(request):

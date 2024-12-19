@@ -87,5 +87,4 @@ class User(AbstractUser):
         return False
 
     def num_torneos_dif_inscritos(self) -> int:
-        print(len(self.juegos_inscritos))
         return len(self.juegos_inscritos)
