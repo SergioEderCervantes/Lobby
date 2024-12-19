@@ -1,12 +1,13 @@
 import json
+import random
 from django.shortcuts import render
 from django.http import JsonResponse
-from .forms import ReservationForm  # Asegúrate de tener el formulario definido
 from lobby.models import Sucursal
 from .models import Consola, Consola_disponibilidad
 from users.models import User
 from .services import validar_fecha, validar_hora, crear_reserva
 from lobby.services import send_whatsapp_message
+from django.templatetags.static import static
 
 def reservations(request):
         # Corazones 
@@ -14,33 +15,21 @@ def reservations(request):
     
     num_torneos_inscritos = usuario.num_torneos_dif_inscritos() if usuario.is_authenticated else 0 
     
-    if request.method == 'POST':
-        
-        form = ReservationForm(request.POST)
+    
+    
+    # Fondo cambiante 
+    match random.randint(1,4):
+        case 1:
+            imagen_fondo = static("img/BG-XBOX.jpg")
+        case 2:
+            imagen_fondo = static("img/BG-PLAY.jpg")
+        case 3:
+            imagen_fondo = static("img/BG-NINTENDO.jpg")
+        case 4:
+            imagen_fondo = static("img/BG-BILLAR.jpeg")
 
-        if form.is_valid():
-            # Procesar la reservación (puedes guardarlo en la base de datos si es necesario)
-            #form.save()
-
-            # Recopilar los datos de la reservación para pasarlos al frontend
-            reservation_data = {
-                'nombre': form.cleaned_data['nombre'],
-                'email': form.cleaned_data['email'],
-                'telefono': form.cleaned_data['telefono'],
-                'fecha': form.cleaned_data['fecha'],
-                'hora': form.cleaned_data['hora'],
-                'num_personas': form.cleaned_data['num_personas'],
-                'comentarios': form.cleaned_data['comentarios']
-            }
-
-            # Devolver los datos como JSON si estás usando AJAX
-            #return JsonResponse({'success': True, 'data': reservation_data})
-        else:
-            return JsonResponse({'success': False, 'error': 'Formulario inválido'})
-
-    else:
-        form = ReservationForm()  # Crear el formulario vacío
-    return render(request, 'reservations.html', {'form': form, 'num_torneos_inscritos': num_torneos_inscritos})
+    
+    return render(request, 'reservations.html', {'num_torneos_inscritos': num_torneos_inscritos, 'background': imagen_fondo})
 
 def check_availability(request):
     if request.method != "POST":
@@ -129,9 +118,9 @@ Datos de la Reservacion:
             """
             response = send_whatsapp_message(success_msg)
             print(response)
-            return JsonResponse({'message': 'Reserva creada exitosamente'}, status=201)
+            return JsonResponse({'message': 'Reservacion creada exitosamente'}, status=201)
 
-        return JsonResponse({'error': 'No se pudo crear la reserva'}, status=400)
+        return JsonResponse({'error': 'No se pudo crear la reservacion'}, status=400)
     
     except (Sucursal.DoesNotExist, Consola.DoesNotExist, User.DoesNotExist) as e:
         return JsonResponse({'error': f'{e.model.__name__} no encontrada'}, status=400)
