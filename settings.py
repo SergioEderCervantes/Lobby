@@ -15,10 +15,12 @@ from google.oauth2 import service_account
 import os
 import environ
 
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
 
+env.read_env(str(BASE_DIR / ".django/.env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -29,7 +31,9 @@ SECRET_KEY = 'django-insecure-$sd@c&9x3$x**rf#j$5h6sw1y_)oew&by&0vi-ww5atx5k&tcw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*'
+]
 
 
 # Application definition
@@ -106,12 +110,15 @@ WSGI_APPLICATION = 'lobby.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+DB_USER = env("DB_USER")
+DB_PASSWORD = env("DB_PASSWORD")
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lobby',
-        'USER': 'root',
-        'PASSWORD': 'campeon09',
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -153,9 +160,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-
-
-STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -184,8 +190,14 @@ ACCOUNT_LOGOUT_ON_GET = True
 # Configuraciones extra para allauth
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+AUTH_USER_MODEL = 'users.User'
+
 # TODO: no se si debamos de dejar esto sin email de verificacion, ahorita esta asi para evitar error al crear una cuenta
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomSignupForm',
+}
 
 # Configuracion google cloud storage
 
@@ -197,9 +209,6 @@ STORAGES = {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
-env = environ.Env()
-
-env.read_env(str(BASE_DIR / ".django/.env"))
 
 MEDIA_URL = "/app_gobierno/"
 
@@ -282,4 +291,7 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_LOGIN_ON_GET=True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
+# Configuraciones para la API de What'sapp
+WHATSAPP_API_URL = env("WHATSAPP_API_URL")
+WHATSAPP_PHONE_ID = env("WHATSAPP_PHONE_ID")
+WHATSAPP_ACCESS_TOKEN = env("WHATSAPP_ACCESS_TOKEN")

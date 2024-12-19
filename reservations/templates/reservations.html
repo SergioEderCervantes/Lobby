@@ -1,24 +1,42 @@
-{% extends "index.html" %} {% load static %}
+{% extends "index.html" %} 
+{% load static %}
 
 {% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/reservation.css' %}" />
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="{% static 'flatpickr\dist\flatpickr.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/reservation.css' %}" />
+<link rel="stylesheet" href="{% static 'css/popup.css' %}">
+
 {% endblock %}
+{% block extrascripts %}
+
+
+<script src="{% static 'flatpickr\dist\flatpickr.min.js' %}" defer></script>
+<script src="{% static 'js/calendario.js' %}" defer></script>
+<script src="{% static 'js/hora.js' %}" defer></script>
+<script src="{% static 'js/autorrelleno.js' %}" defer></script>
+<script src="{% static 'js/llenadoProgresivo.js' %}" defer></script>
+<script src="{% static 'js/validarFecha.js' %}" defer></script>
+<script src="{% static 'js/botonReserv.js' %}" defer></script>
+<script src="{% static 'js/validarPersonasReserv.js' %}" defer></script>
+<script src="{% static 'js/registrar_reservacion.js' %}" defer></script>
+<script src="{% static 'js/popup.js' %}" defer></script>
+<script src="{% static 'js/termsReserv.js' %}" defer></script>
+{% endblock extrascripts %}
+
+
 
 {% block header %}
-<div class="login">
-  {% include 'header/log.html' %}
-</div>
-<div class="navbar">
-  {% include 'header/navbar.html' %}
-</div>
-
+{% include 'header/log.html' %}
+<header class=" navbar">
+    {% include 'header/navbar.html' %}
+</header>
+    
 {% endblock %}
 
 {% block content %}
 
-<div class="body">
+<div class="body" style="background-image: url('{% static "img/fondo_rsv.jpeg" %}');">
   
   <h2>¡Bienvenido {{user.username }}!</h2>
 
@@ -26,17 +44,18 @@
   <!-- Usuario autenticado -->
     <h1>Realiza tu reservación</h1>
 
-  <form method="post" action="{% url 'reservations' %}" id="reservation-form">
+  <form method="post" action="{% url 'register_reservation' %}" id="reservation-form">
     {% csrf_token %}
-    
+    <input type="hidden" name="sucursal_id" value="1">
+
     <div class="campoForm visible">   
       <label for="fecha">Fecha de Reservación:</label>
-      <input type="text" id="fecha" class="date-picker" placeholder="Selecciona una fecha" type="hidden">
+      <input type="text" id="fecha" class="date-picker" placeholder="Selecciona una fecha" name="fecha">
     </div>
     
     <div class="campoForm">
       <label for="hora">Hora de Reservación:</label>
-      <input type="text" id="hora" class="time-picker" placeholder="Selecciona una hora">   
+      <input type="text" id="hora" class="time-picker" placeholder="Selecciona una hora" name="hora">   
       <span class="spanPersonas">Horario de 18:00 a 22:00 hrs</span>  
     </div>
 
@@ -65,7 +84,7 @@
       
         <button type="button" class="consola-button" data-consola="NintendoSwitch">
         <i>
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-device-nintendo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-device-nintendo">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <!-- Joy-Con izquierdo en azul neón -->
           <path d="M10 20v-16h-3a4 4 0 0 0 -4 4v8a4 4 0 0 0 4 4h3z" fill="#0AB9E6" />
@@ -113,7 +132,7 @@
 
     <div class="terms-container disabled">
 
-      <button id="termsButton" class="terms-button">Leer términos y condiciones</button>
+      <button type="button" id="termsButton" class="terms-button">Leer términos y condiciones</button>
       <div class="checkbox-container">
         <div class="toggle-switch">
           <input class="toggle-input" id="toggle" type="checkbox">
@@ -132,7 +151,7 @@
           <li>No se permitirán cambios de consola una vez en el establecimiento.</li>
           <li>En caso de que el número de personas sea inferior a 6, la reservación será cancelada.</li>
         </ul>
-        <button id="closeModal">Cerrar</button>
+        <button type="button" id="closeModal">Cerrar</button>
       </div>
     </div>
     
@@ -160,7 +179,7 @@
   </div>
 
 
-  <form method="post" action="{% url 'reservations' %}" id="reservation-form">
+  <form method="post" action="{% url 'register_reservation' %}" id="reservation-form">
     {% csrf_token %}
     
     <div class="campoForm" disabled>   
@@ -175,7 +194,7 @@
 
     <div class="campoForm">
       <label for="consola">Selecciona una consola:</label>
-      <div id="consolas-buttons" class="consolas-buttons">
+      <div class="consolas-buttons">
         <button type="button" class="consola-button" data-consola="Xbox">
           <i>
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48">
@@ -198,7 +217,7 @@
       
         <button type="button" class="consola-button" data-consola="NintendoSwitch">
         <i>
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-device-nintendo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon2 icon-tabler icons-tabler-outline icon-tabler-device-nintendo">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <!-- Joy-Con izquierdo en azul neón -->
           <path d="M10 20v-16h-3a4 4 0 0 0 -4 4v8a4 4 0 0 0 4 4h3z" fill="#0AB9E6" />
@@ -226,7 +245,6 @@
       </i>
          <span> Billar</span>
         </button>
-        hola 
     </div>
 
   </div>
@@ -245,7 +263,7 @@
 
     </div>
 
-    <button type="submit" class="btnForm" id="register_reservation" disabled>Reservar</button>
+    <button type="submit" class="btnForm"  disabled>Reservar</button>
 
 
   </form>
@@ -256,15 +274,5 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="{% static 'js/calendario.js' %}"></script>
-<script src="{% static 'js/hora.js' %}"></script>
-<script src="{% static 'js/autorrelleno.js' %}"></script>
-<script src="{% static 'js/llenadoProgresivo.js' %}"></script>
-<script src="{% static 'js/validarFecha.js' %}"></script>
-<script src="{% static 'js/botonReserv.js' %}"></script>
-<script src="{% static 'js/validarPersonasReserv.js' %}"></script>
-<script src="{% static 'js/registrar_reservacion.js' %}"></script>
-<script src="{% static 'js/termsReserv.js' %}"></script>
 
 {%endblock%}

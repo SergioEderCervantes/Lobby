@@ -1,0 +1,131 @@
+h1{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.tabla__datos{
+    width: 100%;
+}
+#change_info{
+    color: var(--body-fg);
+    transition: all 250ms;
+}
+
+.matches{
+    width: 100%;
+    background-color:var(--darkened-bg);
+    border: 1px solid var(--hairline-color);
+    border-radius: 10px;
+    margin: 10px;
+    min-width: 600px;
+    padding: 20px 0;
+}
+.matches__list{
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+
+}
+.options{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.options__button{
+    align-items: center;
+    background-color: var(--darkened-bg);
+    border: 1px solid var(--hairline-color);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: var(--body-fg);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1;
+    margin: 20px 20px;
+    min-height: 2rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+
+.options__button:hover,
+.options__button:focus {
+  border-color: var(--body-fg);
+  box-shadow: var(--body-fg) 0 2px 8px;
+  color: var(--body-fg);
+}
+
+.options__button:hover {
+  transform: translateY(-1px);
+}
+
+.options__button:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+.hide{
+    display: none;
+}
+/* ----------------------------Misc de los SVG--------------------------- */
+
+#svg_input {
+    position: absolute;
+    border: none;
+    font-size: 16px;
+    display: none;
+    outline: none;
+    background-color: transparent; 
+    text-align: center;
+    color: black;
+    width: 9px;
+    height: 9px;
+    font-size: 11px;
+    font-weight: 700;
+
+}
+#svg_input::-webkit-outer-spin-button,
+#svg_input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#svg_enfrentamientos {
+    width: 90%;      /* Ocupa todo el ancho del contenedor */
+    height: auto;     /* Ajusta la altura de acuerdo al ancho sin crecer */
+}
+.connective__lines{
+    stroke: var(--body-fg);
+}
+.etiquetas_levels{
+    fill: var(--body-fg);
+}
+/* Visualizacion de los ganados y perdidos */
+.matchup__player1, .matchup__player2{
+    fill: white;
+    transition: fill 1s ease, opacity 1s ease, font-weight 1s ease;
+}
+
+
+.winner{
+    font-weight: 700;
+    fill: #7388b9;
+}
+.loser, .tie{
+    opacity: 0.2;
+}

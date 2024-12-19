@@ -3,6 +3,7 @@ from django.urls import path
 from allauth.account.models import EmailAddress
 from allauth.socialaccount.models import SocialAccount
 from .views import tournament_view, save_svg
+from lobby.models import Sucursal, Promocion, Comment
 # Register your models here.
 
 
@@ -31,3 +32,4 @@ class SocialAccount_Admin(admin.ModelAdmin):
 
 admin_site.register(EmailAddress, EmailAddress_Admin)
 admin_site.register(SocialAccount,SocialAccount_Admin)
+admin_site.register([Sucursal, Promocion, Comment])

@@ -1,8 +1,9 @@
-body {
-  background-image: url("{% static 'fodnoReserv.jpeg' %}");
+.body {
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
+  
 }
 
 .lato-bold {
@@ -28,7 +29,6 @@ h2{
   white-space: nowrap;
   padding-top: 40px;
   padding-bottom: 10px;
-  color: #f1c40f;
 }
 
 .avisoLoggin {
@@ -105,7 +105,7 @@ form {
   margin-bottom: 20px; /* Espacio entre los campos */
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
-  backdrop-filter: blur(5px); /* Desenfoque */
+  backdrop-filter: blur(10px); /* Desenfoque */
   border-radius: 12px; /* Bordes redondeados */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para cada campo */
   border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
@@ -264,7 +264,14 @@ form {
   flex-direction: row; /* Organiza los botones en una fila */
   margin-top: 10px;
   gap: 20px;
+  flex-wrap: wrap;
 }
+@media (min-width: 768px) {
+    .consolas-buttons{
+      flex-wrap: nowrap;
+    }
+}
+
 
 
 /* Estilo para cada botón */
@@ -520,6 +527,7 @@ text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
   font-family: 'Arial', sans-serif; /* Ajusta la fuente */
   background: -webkit-linear-gradient(45deg, gold, violet); /* Gradiente dorado-violeta */
   -webkit-background-clip: text; /* Hace que el gradiente se aplique solo al texto */
+  background-clip: text;
   -webkit-text-fill-color: transparent; /* Fondo transparente para mostrar el gradiente */
   text-align: center;
 }
@@ -635,6 +643,7 @@ text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
     form {
         width: 90%;
         padding: 15px;
+        padding-bottom:12rem ;
     }
 }
 

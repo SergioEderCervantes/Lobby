@@ -3,20 +3,19 @@
 {% block extrahead %}
   <link rel="stylesheet" href="{% static 'css/restaurant.css' %}" />
 {% endblock %}
-
+{% block extrascripts%}
+{% endblock %}
 {% block header %}
-    <div class=" login">
-    {% include 'header/log.html' %}
-    </div>
-    <div class="navbar">
-        {% include 'header/navbar.html' %}
-    </div>
-
+{% include 'header/log.html' %}
+<header class=" navbar">
+    {% include 'header/navbar.html' %}
+</header>
+    
 {% endblock %}
 
 {% block content %}
-<div class="body">
-    <section id="restaurante">
+<div >
+    <section class="restaurante" id="restaurante">
         <h1>MENÚ</h1>
     
         {% for menu_section in menu_sections %}
