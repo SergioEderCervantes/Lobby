@@ -9,7 +9,7 @@
           <!-- Slides -->
           {% for promo in promociones %}
             <div class="swiper-slide">
-                <img src="{{ promo.imagen }}" alt="{{ promo.nombre }}">
+                <img src="{{ promo.imagen.url }}" alt="{{ promo.nombre }}">
                 <p>{{ promo.nombre }}</p>
             </div>
             {% endfor %}

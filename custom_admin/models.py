@@ -8,6 +8,7 @@ class Upload:
     @staticmethod
     def upload_image(file, filename):
         try:
+            print("HOLA: " + filename)
             target_path = '/images/' + filename
             path = storage.save(target_path, file)
             return storage.url(path)

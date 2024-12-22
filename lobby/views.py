@@ -4,15 +4,10 @@ from django.db import connection
 from django.utils.timezone import now
 from datetime import timedelta
 from django.http import HttpResponseRedirect
-
 from tournaments.models import Torneo
-from lobby.models import Comment
+from lobby.models import Comment, Promocion
+from django.db import models
 
-class Promocion(object):
-    def __init__(self, nombre, imagen):
-        self.nombre = nombre
-        self.imagen = imagen
-        
 
 def home(request):
 
@@ -24,20 +19,15 @@ def home(request):
         return HttpResponseRedirect('/')
     else:
 
-        comments = Comment.objects.all()
-
-        promociones = {
-            
-                Promocion( "promocion1", static('img/promo.png')),
-                Promocion( "promocion2", static('img/promo2.jpg')),
-                Promocion( "promocion3", static('img/promo3.jpg')),
-                Promocion( "promocion4", static('img/promo4.jpg')),
-                Promocion( "promocion5", static('img/promo5.jpg')),
-            
-        }
         # Hora actual del servidor
         ahora = now()
+        comments = Comment.objects.all()
 
+        promociones = Promocion.objects.filter(
+                models.Q(tiene_vigencia = False) |
+                models.Q(vigencia__gte=ahora.date())
+                )
+        
         # Rango de tiempo permitido
         inicio_rango = ahora - timedelta(hours=5)  # 5 horas atrás
         fin_rango = ahora + timedelta(minutes=30)  # 30 minutos adelante

@@ -4,6 +4,7 @@ from allauth.account.models import EmailAddress
 from allauth.socialaccount.models import SocialAccount
 from .views import tournament_view, save_svg
 from lobby.models import Sucursal, Promocion, Comment
+from django.forms import ModelForm, ValidationError
 # Register your models here.
 
 
@@ -20,10 +21,50 @@ class custom_admin_site(admin.AdminSite):
         return custom_urls + urls
     
     
-
+# Instanciacion del customAdmin
 admin_site = custom_admin_site(name='customAdmin')
 
-# Clases manejadoras del display de los modelos del allAuth
+# Clases manejadoras y registros de modelos de aplicacion lobby
+
+class Promocion_Form(ModelForm):
+    class Meta:
+        model = Promocion
+        fields = '__all__'
+        
+    def clean(self):
+        cleaned_data = super().clean()
+        tiene_vigencia = cleaned_data.get('tiene_vigencia')
+        vigencia = cleaned_data.get('vigencia')
+        
+        if tiene_vigencia and not vigencia:
+            raise ValidationError(
+                "Debe especificar una fecha de vencimiento si la promocion tiene vigencia"
+            )
+        return cleaned_data
+
+class Promocion_Admin(admin.ModelAdmin):
+    form = Promocion_Form
+    list_display = ('nombre', 'tiene_vigencia', 'vigencia', 'es_vigente')
+    list_filter = ('tiene_vigencia', 'vigencia')
+    ordering = ('-vigencia',)
+    
+    
+class Sucursal_Admin(admin.ModelAdmin):
+    list_display = ('nombre_sucursal', 'direccion')
+    
+    
+class Comment_Admin(admin.ModelAdmin):
+    list_display = ('comentario', 'fecha', 'usuario')
+    ordering = ("-fecha",)
+    
+    
+    
+admin_site.register(Promocion,Promocion_Admin)
+admin_site.register(Sucursal,Sucursal_Admin)
+admin_site.register(Comment,Comment_Admin)
+
+
+# Clases manejadoras y registro de modelos AllAuth
 class EmailAddress_Admin(admin.ModelAdmin):
     list_display = ('email', 'user', 'verified', 'primary')
 
@@ -32,4 +73,3 @@ class SocialAccount_Admin(admin.ModelAdmin):
 
 admin_site.register(EmailAddress, EmailAddress_Admin)
 admin_site.register(SocialAccount,SocialAccount_Admin)
-admin_site.register([Sucursal, Promocion, Comment])
