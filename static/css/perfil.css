@@ -4,6 +4,10 @@
   flex-direction: row;
  
 }
+.heart-display img{
+  width: 32px;
+ 
+}
 
 .hidden{
   display: none;
