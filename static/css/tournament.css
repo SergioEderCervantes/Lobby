@@ -2,8 +2,80 @@
     padding: 0;
     color: white;
     padding-bottom: 30px;
-}
+    background-image: url(../img/backTournaments.jpg);
+    min-height: 100vh;
 
+}
+.icons-over {
+    position: absolute;
+    top: 7rem;
+    left: 6rem;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.icons-over1 {
+    position: absolute;
+    bottom: 540px;
+    right: 13px;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(12deg);
+    z-index: 1;
+}
+.icons-over2 {
+    position: absolute;
+    bottom: 64px;
+    right: 91px;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(353deg);
+    z-index: 1;
+}
+.icons-over3 {
+    position: absolute;
+    top: 355px;
+    right: 68px;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(352deg);
+    z-index: 1;
+}
+.icons-over4 {
+    position: absolute;
+    bottom: 330px;
+    left: 78px;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.icons-over5 {
+    position: absolute;
+    top: 591px;
+    left: 45px;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(345deg);
+    z-index: 1;
+}
 h2 {
     font-size: clamp(16px, 3vw, 30px);
 }

@@ -1,0 +1,77 @@
+.custom-perfil {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  background: #1b1b2f;
+}
+.profile-container {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #242f49;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="file"],
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #384358;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group input[type="file"] {
+  padding: 3px;
+}
+
+.form-group textarea {
+   background-color: #384358;
+  resize: none;
+}
+
+
+.form-actions {
+  text-align: center;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-actions button:hover {
+  background-color: #2980b9;
+}
