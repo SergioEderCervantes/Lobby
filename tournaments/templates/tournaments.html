@@ -4,11 +4,12 @@
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/tournament.css' %}" />
-<link rel="stylesheet" href="{% static 'css/popup.css' %}">
+<link rel="stylesheet" href="c{% static 'css/popup.css' %}">
 {% endblock %}
 {% block extrascripts %}
 <script src="{% static 'js/tournaments.js' %}" defer></script>
 <script src="{% static 'js/popup.js' %}"></script>
+<script src="{% static 'js/icons-tournament.js' %}" defer></script>
 {% endblock extrascripts %}
 
 {% block header %}
@@ -37,6 +38,12 @@
     </div>
   </div>
   <div class="tournaments_container">
+    <img src="{% static 'svg/fifa.svg' %}" alt="Prox_torneo" class="icons-over"> 
+    <img src="{% static 'svg/space_invaders.svg' %}" alt="Prox_torneo" class="icons-over1"> 
+    <img src="{% static 'svg/lakitu.svg' %}" alt="Prox_torneo" class="icons-over2"> 
+    <img src="{% static 'svg/mario.svg' %}" alt="Prox_torneo" class="icons-over3"> 
+    <img src="{% static 'svg/cereza.svg' %}" alt="Prox_torneo" class="icons-over4"> 
+    <img src="{% static 'svg/zelda.svg' %}" alt="Prox_torneo" class="icons-over5">
     <h2>Proximos torneos de Lobby:</h2>
     <div class="tournament_list">
       {% for tournament in tournaments %}
