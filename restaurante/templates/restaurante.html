@@ -20,14 +20,26 @@
     
         {% for menu_section in menu_sections %}
         <div class="product-card">
-            <h2> {{menu_section.section_title}} </h2>
+            <h2>{{ menu_section.section_title }}</h2>
             <div class="container">
                 {% for product in menu_section.products %}
                 <div class="product">
-                    <h3> {{product.nombre_producto}} - ${{product.precio}} </h3>
-                    <p> {{product.descripcion}} </p>
+                    <h3>{{ product.nombre_producto }} - ${{ product.precio }}</h3>
+                    <p>{{ product.descripcion }}</p>
                 </div>
                 {% endfor %}
+                {% if 1 != menu_section.products|length|divisibleby:2 %}
+                <div class="product"></div>
+                {% endif %}
+
+                <!-- Imagenes de Referencia  -->
+                <div class="image-container">
+                    <img src="{{ menu_section.imagen1.url }}" alt="Imagen 1 de {{ menu_section.section_title }}" />
+                </div>
+                
+                <div class="image-container">
+                    <img src="{{ menu_section.imagen2.url }}" alt="Imagen 2 de {{ menu_section.section_title }}" />
+                </div>
             </div>
         </div>
         {% endfor %}

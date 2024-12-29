@@ -5,6 +5,16 @@
   background-attachment: fixed;
   
 }
+.body h2{
+  padding: 1rem 0;
+}
+
+@media (min-width: 768px) {
+    .body h2{
+      padding: 110px 0px 40px;
+
+    }
+}
 
 .lato-bold {
   font-family: "Lato", sans-serif;
@@ -668,7 +678,3 @@ text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
   box-shadow: none; /* Sin sombra */
   transform: none; /* Sin transformación */
 }
-
-
-
-
