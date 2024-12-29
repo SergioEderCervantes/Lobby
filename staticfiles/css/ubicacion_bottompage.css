@@ -1,45 +1,69 @@
-.ubicacion_contenedor {
-    background: rgba(43, 9, 79, 0.236);
-    padding: 3% 0;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+/* Animación de deslizamiento de derecha a izquierda */
+@keyframes slide-in-right {
+    0% {
+      transform: translateX(100%); /* Empieza fuera de la pantalla por la derecha */
+    }
+    100% {
+      transform: translateX(0); /* Termina en su posición original */
+    }
+  }
+  
+  /* Clase para activar la animación */
+  .show {
+    animation: slide-in-right 1s ease-out forwards; /* Animación de deslizamiento */
+    /* Hace que el elemento sea visible */
+  }
+  
+  /* Estilos generales para el contenedor de la ubicación */
+  .ubicacion_contenedor {
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);
     border-radius: 26px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 90%;
-    margin: 0 auto;
-}
-.ubicacion{
-    position: relative;
-    display: flex
-;
+    width: 100%;
+    opacity: 1; /* Este contenedor no necesita animación */
+  }
+  
+  /* Estilo del contenedor .ubicacion que contiene el iframe */
+  .ubicacion {
+    display: flex;
     align-items: center;
-    width: 50%;
+    width: 80%;
     flex-direction: column;
-    left: 6%;
-}
-.ubicacion h2{
-    margin-bottom: 2.5%;
+    opacity: 0; /* Empezamos con opacidad 0 */
+    transition: opacity 0.5s ease; /* Transición suave */
+  }
+  
+  .ubicacion h2 {
+    margin-bottom: 4.5%;
     color: white;
-}
-.ubicacion iframe{
+  }
+  
+  .ubicacion iframe {
+    width: -webkit-fill-available;
     border-radius: 6px;
     transition: 0.5s;
-}
-.ubicacion iframe:hover{
+  }
+ .ubicacion.show {
+    transition: all 0.5s ease; /* Transición suave */
+    opacity: 1; /* Hace que el elemento sea visible */
+  } 
+  .ubicacion iframe:hover {
     transform: scale(1.1);
     transition: 0.5s;
-}
-
-
+  }
+  @media (min-width: 768px) {
+    .ubicacion_contenedor h2{
+      margin-bottom: 2.5%;
+    }
+      
+  }
+  
 .bottom_contenedor {
-    background: rgba(43, 9, 79, 0.236);
-    padding: 3% 0;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(2.5px);
-    -webkit-backdrop-filter: blur(2.5px);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
     border-radius: 26px;
     display: flex;
     justify-content: space-evenly;
@@ -48,33 +72,76 @@
     margin: 0 auto;
     margin-top: 8%;
     color: white;
-}
-
-.heart_contenedor {
-    display: flex;
-    align-items: flex-start;
-    width: 50%;
     flex-direction: column;
-    left: 6%;
+}
+@media (min-width: 1200px) {
+    .bottom_contenedor {
+        flex-direction: row;
+    }
+}
+.text_tournament {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    justify-content: center;
+   
+}
+@media (min-width: 1200px){
+  .text_tournament {
+    width: 35%;
+    align-items: center;
+    margin: 0 0 20px 15px;
+  }
+}
+.text_tournament p {
+  text-align: justify;
+  font-size: 18px;
+  font-weight: normal;
+  color: #ffffff;
+ 
+  
+}
+.text_tournament h1 {
+  font-size: 2em;
+  font-weight: 600;
+  color: #ffffff;
+  text-align:center ;
+  margin-bottom: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid black;
+  width: 0;
+  animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+
+}
+.heart_contenedor {
+  transform: rotate(355deg);
+      display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    animation: bounceh 1s ease infinite;
+
 }
 
-.heart_contenedor h2 {
-    margin-bottom: 2.5%;
-    color: white;
-}
-.heart_contenedor p {
-    text-align: center;
-    color: white;
-    z-index: 1000;
-    text-shadow: 0 0 10px #000000, 0 0 10px #000000; 
-
-}
 .heart_contenedor img {
-    width: 75%;
-    border-radius: 6px;
+  
+    width: 100%;
     transition: 0.5s;
 }
 .heart_contenedor img:hover {
     transform: scale(1.1);
     transition: 0.5s;
+}
+
+@media (min-width: 1200px) {
+    .heart_contenedor {
+        width: 40%;
+    }
+    .text_tournament p{
+      font-size: 20px;
+      margin: 0;
+    }
 }

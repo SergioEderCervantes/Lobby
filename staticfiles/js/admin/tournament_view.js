@@ -9,6 +9,7 @@ class Player {
         this.ties = 0;
         this.points = 0;
         this.goals = 0;
+        this.againistGoals = 0;
     }
 }
 
@@ -75,14 +76,18 @@ function activateInput(target, playerNum) {
     inputField.style.top = `${rect.top + window.scrollY}px`;
 
     // Mostrar el input
-    inputField.value = matchText.textContent;
+    //inputField.value = matchText.textContent;
+    inputField.value;
     inputField.style.display = 'block';
     inputField.focus();
 
     // Actualizar texto
     inputField.onblur = () => {
+        if(inputField.value != "") {
+            inputField.value = "";
+        }
         //Mostrar nuevamente valor cuando se pierde el foco
-        if(aux != "") {
+        if(aux != "" && matchText.textContent == "") {
             inputField.value = aux;
             aux = "";
             putPuntuationValue(inputField, matchText, matchGroup);
@@ -131,16 +136,37 @@ function putPuntuationValue(inputField, matchText, parentGroup) {
     const puntaje1 = parentGroup.querySelector(".match__puntaje__player1__text").textContent;
     const puntaje2 = parentGroup.querySelector(".match__puntaje__player2__text").textContent;
     if (puntaje1 != "" && puntaje2 != "") {
+        const players = parentGroup.querySelectorAll('.matchup__player1, .matchup__player2');
+        let changeBand = false; //bandera para cuando hay cambio de resultados en el match
+        players.forEach(player => {
+            // Verifica si el elemento tiene la clase 'winner' y la elimina
+            if (player.classList.contains('winner')) {
+                player.classList.remove('winner');
+                changeBand = true;
+            }
+        
+            // Verifica si el elemento tiene la clase 'loser' y la elimina
+            if (player.classList.contains('loser')) {
+                player.classList.remove('loser');
+                changeBand = true;
+            }
+
+            // Verifica si el elemento tiene la clase 'tie' y la elimina
+            if (player.classList.contains('tie')) {
+                player.classList.remove('tie');
+                changeBand = true;
+            }
+        });
         if(tournamentType == "Round") {
-            calculatePuntuation(puntaje1, puntaje2, parentGroup);
+            calculatePuntuation(puntaje1, puntaje2, parentGroup, changeBand);
         } else {
-            playerToNextMatch(puntaje1, puntaje2, parentGroup);
+            playerToNextMatch(puntaje1, puntaje2, parentGroup, changeBand);
         }
     }  
 }
 
 // Funcion que maneja la logica cuando ya se introdujeron los dos puntajes de los players y uno debe de pasar a la siguente ronda
-function playerToNextMatch(puntaje1, puntaje2, parentGroup) {
+function playerToNextMatch(puntaje1, puntaje2, parentGroup, changeBand) {
     const intPuntaje1 = parseInt(puntaje1)
     const intPuntaje2 = parseInt(puntaje2)
     const matchId = parentGroup.id.split("__")[1];
@@ -165,7 +191,7 @@ function playerToNextMatch(puntaje1, puntaje2, parentGroup) {
     const nextPlayerPlace= findPlayerInOtherMatch(matchId);
     // Sabiendo el jugador del matchup, ponemos el nombre del ganador en vez del id del matchup
     nextPlayerPlace.textContent = ganador.textContent;
-    nextPlayerPlace.classList.add('changed');
+    nextPlayerPlace.classList.add('changed', matchId);
 }
 
 // Devuelve el elemento text del DOM que tenga el idToSearch como player
@@ -174,6 +200,15 @@ function findPlayerInOtherMatch(idToSearch) {
     let result;
     for (let i = 0; i < matchups.length; i++) {
         const element = matchups[i];
+
+        if(element.querySelector(".matchup__player1").classList.contains(idToSearch)) { 
+            result = element.querySelector(".matchup__player1");
+            break;     
+        }
+        if(element.querySelector(".matchup__player2").classList.contains(idToSearch)) {
+            result = element.querySelector(".matchup__player2");
+            break;
+        }
         if (element.querySelector(".matchup__player1").textContent == idToSearch){
             result = element.querySelector(".matchup__player1");
             break;
@@ -229,7 +264,7 @@ function regresarPlayers(players, changed){
 }
 
 //Función que hace el calculo de puntuaciones para Round Robin
-function calculatePuntuation(puntaje1, puntaje2, parentGroup) {
+function calculatePuntuation(puntaje1, puntaje2, parentGroup, changeBand) {
     const intPuntaje1 = parseInt(puntaje1)
     const intPuntaje2 = parseInt(puntaje2)
     const player1 = new Player(parentGroup.querySelector(".matchup__player1").textContent);
@@ -262,10 +297,16 @@ function calculatePuntuation(puntaje1, puntaje2, parentGroup) {
         perdedor.classList.add('loser');
     }
     player1.goals = parseInt(parentGroup.querySelector(".match__puntaje__player1__text").textContent);
+    player1.againistGoals = parseInt(parentGroup.querySelector(".match__puntaje__player2__text").textContent);
     player2.goals = parseInt(parentGroup.querySelector(".match__puntaje__player2__text").textContent);
+    player2.againistGoals = parseInt(parentGroup.querySelector(".match__puntaje__player1__text").textContent);
    
-    modificateTable(player1);
-    modificateTable(player2);
+    if(changeBand) {
+        calculateSVGStats()
+    } else {
+        modificateTable(player1);
+        modificateTable(player2);
+    }
 }
 
 //Función que modifica la tabla de resultados 
@@ -280,14 +321,15 @@ function modificateTable(player) {
             player.losses += parseInt(row.querySelector('td:nth-child(4)').textContent); // Partidos perdidos
             player.ties += parseInt(row.querySelector('td:nth-child(5)').textContent); // Partidos empatados
             player.goals += parseInt(row.querySelector('td:nth-child(7)').textContent); // goles totales
+            player.againistGoals += parseInt(row.querySelector('td:nth-child(8)').textContent);
             
-            updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals);
+            updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals, player.againistGoals);
         }
     });
 }
 
 // Función para modificar los datos de un jugador
-function updatePlayerStats(playerName, newWon, newLost, newDraw, newPoints, newGoals) {
+function updatePlayerStats(playerName, newWon, newLost, newDraw, newPoints, newGoals, newAgainistGoals) {
     const tableRows = document.querySelectorAll('#standings_table tbody tr');
     
     tableRows.forEach(row => {
@@ -297,7 +339,13 @@ function updatePlayerStats(playerName, newWon, newLost, newDraw, newPoints, newG
             row.querySelector('td:nth-child(4)').textContent = newLost; // Actualiza partidos perdidos
             row.querySelector('td:nth-child(5)').textContent = newDraw; // Actualiza partidos empatados
             row.querySelector('td:nth-child(6)').textContent = newPoints; // Actualiza puntos de juego
-            row.querySelector('td:nth-child(7)').textContent = newGoals; // Actualiza puntos de juego
+            row.querySelector('td:nth-child(7)').textContent = newGoals; // Actualiza goles a favor
+            row.querySelector('td:nth-child(8)').textContent = newAgainistGoals; // Actualiza goles en contra
+            if(newGoals - newAgainistGoals >= 0)
+                row.querySelector('td:nth-child(9)').textContent = newGoals - newAgainistGoals; // Actualiza diferencia de goles
+            else   
+            row.querySelector('td:nth-child(9)').textContent = newAgainistGoals - newGoals;
+
         }
     });
     sortTable();
@@ -312,8 +360,8 @@ function sortTable() {
         const puntajeA = parseInt(rowA.cells[5].textContent);  // Obtener los partidos ganados de la fila A
         const puntajeB = parseInt(rowB.cells[5].textContent);  // Obtener los partidos ganados de la fila B
 
-        const golesA = parseInt(rowA.cells[6].textContent); // Goles a favor
-        const golesB = parseInt(rowB.cells[6].textContent); // Goles a favor
+        const golesA = parseInt(rowA.cells[8].textContent); // diferencia de goles
+        const golesB = parseInt(rowB.cells[8].textContent); // diferencia de goles
 
 
         // Ordenar por puntaje (descendente)
@@ -371,12 +419,25 @@ function calculateSVGStats() {
         }
 
         // Obtener los goles desde la clase "match__puntaje__playerX__text"
-        const playerIndex = playerText.classList.contains("matchup__player1") ? 1 : 2;
+        let playerIndex;
+        let oponentIndex = playerText.classList.contains("matchup__player1") ? 1 : 2;
+        if(playerText.classList.contains("matchup__player1")){
+            playerIndex = 1;
+            oponentIndex = 2;
+        }
+        else {
+            playerIndex = 2;
+            oponentIndex = 1;
+        }
         const goalsText = parentGroup.querySelector(`.match__puntaje__player${playerIndex}__text`);
+        const goalsOpponentText = parentGroup.querySelector(`.match__puntaje__player${oponentIndex}__text`);
         if (goalsText) {
             player.goals += parseInt(goalsText.textContent.trim()) || 0; // Sumar goles, o 0 si no hay un número válido
         }
-        updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals);
+        if (goalsOpponentText) {
+            player.againistGoals += parseInt(goalsOpponentText.textContent.trim()) || 0; // Sumar goles, o 0 si no hay un número válido
+        }
+        updatePlayerStats(player.name, player.wins, player.losses, player.ties, player.wins * 3 + player.ties, player.goals, player.againistGoals);
     });
 }
 

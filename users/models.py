@@ -8,7 +8,7 @@ class User(AbstractUser):
         ('US', 'User'),
         ('GU', 'Guest'),
     ]
-
+    
     tipo_usuario = models.CharField(
         _("Tipo de usuario"),
         blank=False,
@@ -33,12 +33,18 @@ class User(AbstractUser):
         max_length=15,
         null=False, 
         blank=False,
-        unique=False,
+        unique=True,
         error_messages={
             "unique": _("Ya existe un usuario con este número de teléfono, por favor verifíquelo."),
         },
     )
     
+    avatar = models.ImageField(
+        upload_to='avatars/',  # Carpeta dentro de MEDIA_ROOT donde se guardarán las imágenes
+        null=True,
+        blank=True,
+        verbose_name="Avatar del usuario"
+    )
     # Eliminar Groups, ya que por la naturaleza del proyecto no seran necesarios
     groups = None
     

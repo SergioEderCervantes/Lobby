@@ -34,7 +34,7 @@
   background: linear-gradient(109deg, rgba(85,54,26,0) 45%, rgba(255,219,48,0) 67%);
   box-shadow: none;
 
-  right: 160px;  /* Nueva posición cuando se abre */
+  right: 152px;  /* Nueva posición cuando se abre */
 }
 .menu-icon-login {
   background: #1B1B2F;
@@ -50,6 +50,25 @@
   /* height: 7.5%; */
   transition: all 0.2s ease-out 0s;
 }
+.menu-icon.active img {
+  width: 70px;
+  height: 70px;
+  top: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.menu-icon img {
+  position: relative;
+
+  width: 60px;
+  height: 60px;
+  top: 5px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
 .menu-icon-login.active {
   background: linear-gradient(109deg, rgba(85,54,26,0) 45%, rgba(255,219,48,0) 67%);
   box-shadow: none;
@@ -115,6 +134,10 @@
   overflow: hidden; 
   transition: all 0.2s ease-out 0s;
 }
+
+.sidebar.open h3 {
+  margin-top: revert;
+}
 .sidebar-out.open {
   right: 0;
   width: 100%;
@@ -124,13 +147,14 @@
 
 @media (min-width: 768px) {
   .menu-icon {
-    top: 12%;
+    top: 15%;
   }
   .menu-icon-login {
     top: 12%;
   }
   .menu-icon.active{
-    right: 118px;
+    right: 110px;
+    top: 80px;
   }
   .menu-icon-login.active{
     right: 89px;
@@ -164,62 +188,3 @@
     margin-right: 1%;
   }
 }
-
-
-.rating > label {
-  margin-right: 4px;
-}
-
-.rating:not(:checked) > input {
-  display: none;
-}
-
-.rating:not(:checked) > label {
-  float: right;
-  cursor: pointer;
-  font-size: 24px;
-}
-
-.rating:not(:checked) > label > svg {
-  fill: #666;
-  transition:
-    fill 0.3s ease,
-    transform 0.3s ease;
-}
-
-.rating > input:checked ~ label > svg {
-  fill: #ff0000;
-  transform: scale(1.1);
-}
-
-.rating:not(:checked) > label:hover ~ label > svg,
-.rating:not(:checked) > label:hover > svg {
-  fill: #ff1a1a;
-  transform: scale(1.05);
-}
-
-#heart1:checked ~ label > svg {
-  fill: #ff0000;
-}
-
-#heart2:checked ~ label > svg {
-  fill: #ff4d00;
-}
-
-#heart3:checked ~ label > svg {
-  fill: #ff9900;
-}
-
-#heart4:checked ~ label > svg {
-  fill: #ccff00;
-}
-
-#heart5:checked ~ label > svg {
-  fill: #66ff00;
-}
-
-
-
-
-
-  

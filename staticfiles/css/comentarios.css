@@ -1,19 +1,44 @@
-.contenedor_comments{
 
+.contenedor_comments {
     display: flex;
+   
     flex-direction: column;
     align-items: center;
+    backdrop-filter: blur(3px);
     width: 100%;
-    height: 50vh;
-    scrollbar-color: rgba(212, 45, 227, 0.6) rgba(0, 0, 0, 0.6);
+    margin: 0px 0 50px 0;
+    height: 75vh;
+    scrollbar-color: #7a0f9987 rgb(0 0 0 / 0%);
 }
-.contenedor_comment{
+
+.contenedor_comments h1{
+    margin: 52px 0;
+}
+.contenedor_comments h2{
+    font-size: 1.5rem;
+    margin: 2rem 0 0;
+    color: #f4f4f4;
+    background-color: #00000078;
+    width: 80%;
+    border-radius: 12px;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .contenedor_comments h2{
+        font-size: 2rem;
+    }
+    
+}
+.contenedor_comment {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 80%;
-    margin-bottom: 2%;
-    
+    width: 90%;
+   
 }
 .contenedor_comment textarea {
     width: 100%;
@@ -21,7 +46,7 @@
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid #160020;
+    border: 2px solid #6c069ca2;
     border-radius: 4px;
     background-color: #950f9e52;
     resize: none;
@@ -50,26 +75,45 @@
         font-family: "Roboto", sans-serif;
         outline: none;
         transition: 0.3s;
+        animation: bounce 4s ease infinite;
+
     }
     .contenedor_comment button:hover {
         background-color: #950f9e;
     }
-.comments{
-    background-color: rgb(136 0 194 / 62%);
-    width: 80%;
-    height: 80%;
+
+.comments {
+    width: 90%;
+    height: 270px;
     overflow-y: scroll;
 }
-.comment{
+
+
+.comment {
     display: flex;
-        width: 70%;
+        width: 100%;
         flex-direction: column;
         justify-content: center;
         margin: 1%;
         padding: 1%;
-        border: 1px solid #0e0c3566;
+        border: 1px solid #b40eeb82;
         border-radius: 10px;
-        background-color: rgb(0 0 0 / 82%);
+        background-color: #490c49f0;
         overflow: hidden;
-    
+}
+@media (min-width: 768px) {
+    .contenedor_comments{
+        height: 85vh;
+
+    }
+    .comments{
+        width: 80%;
+    }
+    .comment{
+        width: 70%;
+    }
+    .contenedor_comment{
+        width: 80%;
+    margin-bottom: 2%;
+    }
 }

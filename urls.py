@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.urls import path, include
 from custom_admin.admin import admin_site
+from django.conf import settings
+from django.conf.urls.static import static
 
+handler404 = 'lobby.views.custom_404'
 
 urlpatterns = [
     path('', include('lobby.urls')),

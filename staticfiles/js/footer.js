@@ -6,14 +6,6 @@ let isMobile = window.matchMedia('(max-width: 767px)').matches; // Detectar si e
 
 // Función para manejar el clic en pacman
 function handlePacmanClick() {
-  
-  if (!isMobile) return; // Si no es móvil, no hacer nada
-
-  if (!moved) {
-    pacman.style.transform = 'translateY(-10%)';
-  } else {
-    pacman.style.transform = 'translateY(120px)';
-  }
 
   sections.forEach((section) => {
     section.classList.toggle('active');
@@ -36,15 +28,15 @@ function startVibration() {
 
   setTimeout(() => {
     pacman.classList.remove('vibrate'); 
-  }, 1000); 
+  }, 500); 
 }
 
   setInterval(() => {
     if(!moved){
-      if (Math.random() > 0.7) { // Probabilidad del 30% de vibrar cada 5 segundos
+      if (Math.random() > 0.3) { // Probabilidad del 30% de vibrar cada 5 segundos
         startVibration();
       }
     }
-  }, 1000);
+  }, 2000);
 
 

@@ -1,223 +1,674 @@
+.body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  
+}
+
 .lato-bold {
   font-family: "Lato", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
+
 h1{
+  font-size: 40px;
   color: white;
-  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
-.hcontainer{
-  display: grid;
-  place-items: center;
+h2{
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  padding-top: 40px;
+  padding-bottom: 10px;
 }
 
-.header-container {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo transparente */
-    border-radius: 12px; /* Esquinas redondeadas */
-    padding: 5px;
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+.avisoLoggin {
+  margin: 20px auto;
+  max-width: 600px;
+  margin-bottom: 20px; /* Espacio entre los campos */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  backdrop-filter: blur(5px); /* Desenfoque */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para cada campo */
+  
+  /* Borde violeta fosforescente */
+  border: 2px solid #9400D3; /* Violeta fosforescente */
+
+  /* Agregar propiedades para visibilidad progresiva */
+  opacity: 1; /* Por defecto, borroso */
+  pointer-events: auto; /* Habilitar interacción */
+  transition: opacity 0.8s ease, backdrop-filter 0.8s ease, transform 0.6s ease, box-shadow 0.6s ease; /* Hacemos la transición más lenta */
+  
+  /* Añadir animación de brillo */
+  animation: glow 2.5s ease-in-out infinite; /* Llama a la animación glow */
 }
 
-.header-container svg {
-    stroke: #FFFF;   /* Color del icono */
-    /*opacity: 0.5;  /* Transparente */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(148, 0, 211, 0.6); /* Violeta débil */
   }
-
-h2 {
-    text-align: center;
-    color: #FFFF; /* Color dorado */
-    margin-top: 40px;
-    font-size: 2.5rem; /* Tamaño de letra más grande */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.2); /* Sombra y brillo sutil */
-    transform: translateY(-2px); /* Leve efecto de flotación hacia arriba */
-    transition: transform 0.3s ease, text-shadow 0.3s ease; /* Transición suave */
-    padding-right: 30px;
+  25% {
+    box-shadow: 0 0 15px rgba(148, 0, 211, 0.8); /* Violeta más fuerte */
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(148, 0, 211, 1); /* Violeta brillante */
+  }
+  75% {
+    box-shadow: 0 0 15px rgba(148, 0, 211, 0.8); /* Violeta más fuerte */
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(148, 0, 211, 0.6); /* Violeta débil */
+  }
 }
 
 
-/* Styling the form container */
+.avisoLoggin h1 {
+  color: #9400D3; /* Violeta fosforescente */
+  text-shadow: 0 0 2px #9400D3, 0 0 20px #9400D3; /* Sombra luminosa para mayor efecto */
+  text-align: center; /* Centrado del texto */
+  font-size: 28px; /* Ajustar el tamaño de la fuente */
+  font-weight: bold; /* Hacer el texto en negrita */
+  margin-bottom: 5px; /* Separación de la etiqueta <h1> */
+}
+
+.avisoLoggin p {
+  color: white; /* Texto en blanco */
+  text-align: center; /* Centrar el texto */
+  font-size: 18px; /* Ajustar el tamaño de la fuente */
+  font-style: italic; /* Hacer el texto en cursiva */
+}
+
+.avisoLoggin:hover {
+  transform: translateY(-10px); /* Eleva el contenedor al pasar el mouse */
+  box-shadow: 0 0 20px rgba(155, 29, 255, 0.7); /* Borde brillante violeta */
+}
+
+
+
 form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo más claro y translúcido */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    border-radius: 16px; /* Esquinas redondeadas */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más suave */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde claro y sutil */
-    color: #e0e0e0; /* Letras claras para combinar */
+  margin: 0 auto;
+  width: 90%;
+    padding: 15px;
+    padding-bottom:12rem; /* Controla el ancho del formulario */
+}
+@media (min-width: 768px) {
+  form {
+    width: 600px;
+    padding: 15px;
+    padding-bottom:12rem;
+}
 }
 
-/* Form labels */
-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #f5f5f5; /* Blanco suave */
+/* Styling for each individual field container */
+.campoForm {
+  margin-bottom: 20px; /* Espacio entre los campos */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  backdrop-filter: blur(10px); /* Desenfoque */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para cada campo */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+
+   /* Agregar propiedades para visibilidad progresiva */
+   opacity: 0.4; /* Por defecto, borroso */
+   pointer-events: none; /* Deshabilitar interacción */
+   transition: opacity 0.8s ease, backdrop-filter 0.8s ease; /* Transiciones suaves */
 }
 
-/* Input fields */
-/* General styles for inputs */
-form input,
-form textarea {
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
-    color: #f5f5f5; /* Texto claro */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    transition: background-color 0s, color 0s; /* Elimina animaciones no deseadas */
-}
-
-/* Target autofill styles for Webkit browsers (Chrome, Edge, Safari) */
-form input:-webkit-autofill,
-form textarea:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
-    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
-    background-color: rgba(255, 255, 255, 0.1) !important; /* Asegura el fondo */
-    color: #f5f5f5 !important; /* Asegura el texto */
-    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Mantén el borde */
-}
-
-/* Extra for first-line to ensure text color doesn't change */
-form input:-webkit-autofill::first-line {
-    color: #f5f5f5 !important;
-}
-
-/* Focused inputs (for consistency) */
-form input:focus,
-form textarea:focus {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.1);
+.campoForm.visible {
+  opacity: 1; /* Hacer visible */
+  pointer-events: auto; /* Habilitar interacción */
 }
 
 
-/* Textarea specific styling */
-form textarea {
-    height: 100px;
-    resize: none;
+/* Label styling */
+.campoForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #f5f5f5; /* Texto blanco */
 }
 
-/* Modificación para el botón de Reservar */
-form button {
-    display: block;
-    width: 100%;
-    background-color: rgba(167, 139, 250, 1); /* Mismo color de fondo del botón de Log In */
-    padding: 0.75rem;
-    text-align: center;
-    color: rgba(17, 24, 39, 1); /* Color de texto oscuro */
-    border: none;
-    border-radius: 0.375rem;
-    font-weight: 600;
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    transition: background-color 0.3s ease, transform 0.3s ease;
+/* Input and textarea styling */
+.campoForm input,
+.campoForm textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: #f5f5f5; /* Texto blanco */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
-/* Estilo de los enlaces en la parte inferior */
-form .forgot a {
-    color: rgba(243, 244, 246, 1);
-    text-decoration: none;
-    font-size: 14px;
+/* Add focus effects */
+.campoForm input:focus,
+.campoForm textarea:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-form .forgot a:hover {
-    text-decoration: underline rgba(167, 139, 250, 1);
+.flatpickr-calendar .flatpickr-day {
+  color: black; /* Color de texto */
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-/* Message styling */
-.messages {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro translúcido */
-    color: #f5f5f5; /* Letras claras */
+.flatpickr-calendar .flatpickr-day:hover {
+  background: rgba(255, 255, 255, 0.3); /* Fondo semi-transparente al pasar */
 }
 
-.messages .success {
-    background-color: rgba(40, 167, 69, 0.9); /* Verde translúcido */
+.flatpickr-calendar .flatpickr-day.today {
+  background: #4caf50; /* Verde para el día actual */
+  color: #fff;
 }
 
-.messages .error {
-    background-color: rgba(220, 53, 69, 0.9); /* Rojo translúcido */
+.flatpickr-calendar .flatpickr-day.selected {
+  color: #fff;
 }
 
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-    form {
-        width: 90%;
-        padding: 15px;
+.time-picker {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.time-picker:focus {
+  outline: none;      /* Elimina el contorno al hacer foco */
+  border-color: #ccc; /* El borde sigue siendo el mismo color que el de estado normal */
+  background-color: #f9f9f9; /* Mantiene el fondo igual al de estado normal */
+}
+
+
+
+
+/* Contenedor del modal */
+#error-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(30, 30, 30, 0.95); /* Gris oscuro translúcido */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
+  z-index: 1000;
+}
+
+
+/* Estilo del modal */
+#error-modal {
+  display: none;
+  position: fixed;
+  top: 40%; /* Posiciona el modal */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(30, 30, 30, 0.98); /* Fondo gris oscuro translúcido */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
+  border: 2px solid rgba(255, 0, 0, 0.8); /* Borde rojo translúcido */
+  z-index: 1000;
+}
+
+/* Título del modal */
+#error-modal h2 {
+  color: #d10000; /* Rojo oscuro menos brillante */
+  font-size: 20px;
+  margin-bottom: 10px; /* Ajuste del espacio */
+  text-align: center;
+}
+
+/* Mensaje del modal */
+#error-modal p {
+  color: white; /* Texto blanco */
+  font-size: 16px;
+  margin: 10px 0;
+  text-align: center;
+  line-height: 1.4; /* Mejora la legibilidad */
+}
+
+/* Botón del modal */
+#error-modal button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #a00000; /* Rojo menos brillante */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+#error-modal button:hover {
+  background-color: #700000; /* Cambio a un rojo más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Efecto de aumento ligero */
+}
+
+
+/* Contenedor de los botones de consolas */
+.consolas-buttons {
+  display: flex;
+  flex-direction: row; /* Organiza los botones en una fila */
+  margin-top: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+    .consolas-buttons{
+      flex-wrap: nowrap;
     }
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    display: none;  /* Inicia oculto */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 60%;
-    max-width: 600px;
-    text-align: center;
-  }
-  
-  .modal-content h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  .modal-content p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .modal-content button {
-    padding: 10px 15px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .modal-content button:hover {
-    background-color: #0b7dda;
-  }
-  
-  /* Animaciones del modal */
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .modal-content {
-    animation: slideIn 0.3s ease-out;
-  }
+
+/* Botones deshabilitados */
+.consola-button.disabled {
+  position: relative;
+  cursor: not-allowed; /* Cursor de "no permitido" */
+  pointer-events: none; /* Deshabilita la interacción */
+}
+
+/* Capa con la imagen */
+.consola-button.disabled .image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/static/img/agotado2.png') center/contain no-repeat;
+  background-size: 100%;
+  background-position: center;
+  opacity: 0.85; /* Opacidad de la imagen */
+  z-index: 1; /* Coloca la imagen debajo del icono y el texto */
+}
+
+
+/* Estilo para cada botón */
+.consola-button { 
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column; /* Apila el icono y el texto */
+  align-items: center; /* Centra el contenido dentro del botón */
+  justify-content: center; /* Centra el contenido dentro del botón */
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  /* Texto blanco */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+/* Espacio entre el icono y el texto */
+.consola-button i {
+  margin-bottom: 5px; /* Espacio entre el icono y el nombre */
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilo para el nombre de la consola */
+.consola-button span {
+  font-size: 15px; /* Tamaño del texto */
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+/* Efecto de hover */
+.consola-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo cuando se pasa el mouse */
+}
+
+/* Estilo para la consola seleccionada */
+.consola-button.selected {
+  border: 2px solid #4CAF50; /* Resaltado verde */
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra verde */
+}
+
+.spanPersonas{
+  font-size: 15px; /* Tamaño del texto */
+text-align: center;
+white-space: nowrap;
+color: #ff0000; /* Rojo fosforescente */
+text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
+}
+
+.spanComentarios {
+  font-size: 15px; /* Tamaño del texto */
+  text-align: center;
+  white-space: nowrap;
+  color: #8a2be2; /* Violeta */
+  text-shadow: 0 0 4px #8a2be2, 0 0 6px #8a2be2; /* Sombra más sutil y nítida en violeta */
+}
+
+
+/* Estilo del contenedor de los términos */
+.terms-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrar los elementos horizontalmente */
+  margin-top: 30px; /* Espacio superior para separarlo de otros elementos */
+  opacity: 1; /* Visible por defecto */
+  transition: opacity 0.3s ease; /* Transición suave para el cambio de opacidad */
+}
+
+/* Estilo del botón */
+.terms-button {
+  margin: 0 auto;
+  align-items: center;
+  background-color: #333333; /* Gris oscuro (antes del hover) */
+  color: #FFFFFF; /* Texto blanco */
+  padding: 8px 24px; /* Espaciado dentro del botón */
+  font-size: 16px; /* Tamaño de la fuente */
+  font-weight: bold; /* Texto en negrita */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Cambio de cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Efectos de transición */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  border: none; /* Eliminar borde */
+}
+
+/* Efecto al pasar el mouse (más claro) */
+.terms-button:hover {
+  background-color: #444444; /* Fondo más claro al pasar el mouse */
+  transform: translateY(-3px); /* Desplazamiento hacia arriba */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+}
+
+/* Efecto cuando el botón es presionado */
+.terms-button:active {
+  background-color: #333333; /* Fondo intermedio cuando se presiona */
+  transform: translateY(2px); /* Desplazamiento hacia abajo */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+}
+
+/* Estilo del contenedor del toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  margin-right: 10px; /* Espacio entre el toggle y el texto */
+}
+
+/* Estilo del input (oculto) */
+.toggle-switch .toggle-input {
+  display: none;
+}
+
+/* Estilo del label que rodea el toggle */
+.toggle-switch .toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 24px;
+  background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo para la parte redonda del toggle */
+.toggle-switch .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+/* Cuando el toggle está activado, cambia el color a violeta */
+.toggle-switch .toggle-input:checked + .toggle-label {
+  background-color: #9400D3; /* Violeta */
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px); /* Mueve el círculo al lado derecho */
+}
+
+/* Estado deshabilitado */
+.disabled {
+  opacity: 0.6; /* Hacer los elementos más transparentes */
+  pointer-events: none; /* Bloquear la interacción con los elementos */
+}
+
+
+
+/* Estilo del contenedor */
+.checkbox-container {
+  display: flex;
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Alineación horizontal */
+  margin: 30px; /* Margen del contenedor */
+}
+
+/* Estilo general del toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  margin-right: 10px; /* Espacio entre el toggle y el texto */
+}
+
+/* Estilo del input (oculto) */
+.toggle-switch .toggle-input {
+  display: none;
+}
+
+/* Estilo del label que rodea el toggle */
+.toggle-switch .toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 24px;
+  background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo para la parte redonda del toggle */
+.toggle-switch .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+/* Cuando el toggle está activado, cambia el color a violeta */
+.toggle-switch .toggle-input:checked + .toggle-label {
+  background-color: #9400D3; /* Violeta */
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px); /* Mueve el círculo al lado derecho */
+}
+
+/* Estilo para el texto junto al toggle */
+.terms-label {
+  font-size: 18px;  /* Tamaño de letra más grande */
+  color: white;
+  line-height: 24px; /* Alinear el texto con el toggle */
+  cursor: pointer;
+}
+
+#termsModal {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(30, 30, 30, 0.98); /* Fondo gris oscuro translúcido */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
+  z-index: 1000;
+}
+
+/* Estilo para el contenido del modal */
+.termsModal-content {
+  text-align: center;
+  color: white;
+  max-width: 500px; /* Establece un ancho máximo para evitar que se estire demasiado */
+  margin: 0 auto; /* Centra el contenido */
+}
+
+/* Título del modal */
+.termsModal-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif; /* Ajusta la fuente */
+  background: -webkit-linear-gradient(45deg, gold, violet); /* Gradiente dorado-violeta */
+  -webkit-background-clip: text; /* Hace que el gradiente se aplique solo al texto */
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Fondo transparente para mostrar el gradiente */
+  text-align: center;
+}
+
+/* Estilo para la lista de términos */
+.termsModal-content ul {
+  font-size: 16px;
+  margin: 10px 0;
+  line-height: 1.4;
+  text-align: left; /* Alineación a la izquierda */
+  padding-left: 20px; /* Espaciado a la izquierda para los puntos */
+}
+
+
+.termsModal-content button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 12px 24px; /* Tamaño más grande */
+  background-color: #3a3a3a; /* Gris oscuro para el botón */
+  color: #d4a8ff; /* Violeta claro para el texto */
+  border: 2px solid #d4a8ff; /* Borde violeta */
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px; /* Texto más grande */
+  font-weight: bold; /* Hacer la letra más llamativa */
+  font-family: 'Arial', sans-serif; /* Fuente profesional */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+
+/* Efecto al pasar el mouse */
+.termsModal-content button:hover {
+  background-color: #4a4a4a; /* Gris más claro al pasar el cursor */
+  color: gold; /* Cambio a dorado para el texto */
+  transform: scale(1.1); /* Efecto de aumento */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra más intensa */
+}
+
+/* Efecto de enfoque */
+.termsModal-content button:focus {
+  outline: none;
+  box-shadow: 0 0 10px #d4a8ff; /* Resplandor violeta al enfoque */
+}
+
+/* Estilo para el botón habilitado */
+.btnForm {
+  width: 50%;
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid rgb(163, 1, 152);
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  font-family: inherit;
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 0, 221, 0.3); /* Sombra suave púrpura */
+  border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+/* Efecto hover para el botón habilitado */
+.btnForm:hover {
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 0, 221, 0.3); /* Sombra más prominente */
+  text-shadow: 0 0 5px rgb(247, 0, 231), 0 0 10px rgb(247, 0, 231);
+  transform: translateY(-2px); /* Efecto de elevación al hover */
+}
+
+/* Estilo de transición del fondo del botón */
+.btnForm::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(163, 1, 152);
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+/* Efecto de transición al pasar el hover */
+.btnForm:hover::before {
+  transform: translateX(0);
+}
+
+/* Estilos para el botón deshabilitado */
+.btnForm:disabled {
+  opacity: 0.5; /* Transparente */
+  cursor: not-allowed; /* Cursor no permitido */
+  pointer-events: none; /* Desactiva la interacción con el botón */
+}
+
+/* Estilos del hover desactivado */
+.btnForm:disabled:hover {
+  color: white; /* No cambia el color */
+  box-shadow: none; /* Sin sombra */
+  transform: none; /* Sin transformación */
+}
+
+
+
+

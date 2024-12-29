@@ -8,6 +8,11 @@ from tournaments.models import Torneo
 from lobby.models import Comment, Promocion
 from django.db import models
 
+# En lobby/views.py
+from django.shortcuts import render
+
+def custom_404(request, exception):
+    return render(request, 'error_404.html', status=404)
 
 def home(request):
 

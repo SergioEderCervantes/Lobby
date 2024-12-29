@@ -1,290 +1,627 @@
-p,
-li {
-    font-size: 18px;
-}
-
-.tournament_info {
-    text-align: center;
-    width: 80%;
-    margin: 0 auto;
-    padding: 2rem 5rem;
-}
-
-.tournament__info__image {
+/* Imagen de fondo */
+.background_image {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 15rem;
-    position: relative;
+    height: 100%;
+    z-index: -1;
     overflow: hidden;
-    border-radius: 15px;
 }
 
-.tournament__info__image img {
-    position: absolute;
-    top: 50%;
-    left: 50%;  
+.background_image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: translate(-50%, -50%);
+    filter: blur(3px) brightness(0.5);
+    pointer-events: none;
 }
 
-.description{
-    margin: 3rem auto;
-    width: 80%;
-    
+/* Contenedor principal */
+.tournament_description_view .content_container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: white;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    min-height: 90vh;
+    /* Altura mínima del contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.description h2{
-    font-size: 30px;
+
+/* Nombre del torneo */
+.tournament_name {
+    text-align: center;
+    font-size: 3rem;
+    margin: 5rem 0;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Imagen del banner */
+.banner_image {
+    width: 80%;
+    /* Ancho del 80% del contenedor principal */
+    height: auto;
+    /* Altura fija */
+    max-height: 250px;
+    margin: 1rem auto;
+    /* Centrado horizontal con espacio alrededor */
+    overflow: hidden;
+    border-radius: 10px;
+    /* Bordes redondeados para un diseño más atractivo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Sombra para destacar el banner */
+}
+
+.banner_image img {
+    width: 100%;
+    object-fit: auto;
+    /* Asegura que la imagen se ajuste bien al tamaño */
+    border-radius: 10px;
+}
+
+/* Fecha */
+/* Descripción */
+.fecha {
+    margin-bottom: 2rem;
+    justify-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    /* Línea separadora */
+}
+
+.fecha h2 {
+    font-size: 2rem;
+    /* Letra más grande */
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.fecha p {
+    font-size: 1.4rem;
+    /* Letra más grande */
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Descripción */
+.description_section {
+    margin-bottom: 2rem;
+    /* Espacio adicional antes de la línea */
+}
+
+.description_section h2 {
+    font-size: 2rem;
+    /* Letra más grande */
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.description_section p {
+    font-size: 1.4rem;
+    /* Letra más grande */
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Línea de separación */
+.separator {
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 2rem;
+}
+
+/* Contenedor de reglas y jugadores */
+.rules_and_players_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    max-height: 300px;
+    overflow-y: auto;
+    position: relative;
+    padding: 2rem 10px 2rem 0;
+    /* Espacio para separar elementos */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    /* Línea separadora */
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    /* Línea separadora */
+}
+
+
+
+/* Lista de reglas */
+.rules_section {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 1rem;
+    color: white;
+}
+
+.rules_section h3 {
+    font-size: 1.8rem;
+    /* Letra más grande */
+    margin-bottom: 0.5rem;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.rules_section ul {
+    list-style: circle;
+    /* Decoración en forma de círculo */
+    padding-left: 1.5rem;
+    /* Espaciado para los círculos */
+}
+
+.rules_section li {
+    font-size: 1.2rem;
+    /* Letra más grande */
+    line-height: 1.8;
+    padding: 0.5rem 0;
+    /* Padding adicional */
+}
+
+/* Lista de jugadores */
+.players_section {
+    flex: 1;
+    overflow-y: auto;
+    padding-left: 1rem;
+    color: #ddd;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .players_section {
+        display: block;
+    }
+
+    /* Línea vertical entre reglas y jugadores */
+    .rules_and_players_container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.players_section h3 {
+    font-size: 1.8rem;
+    /* Letra más grande */
+    margin-bottom: 0.5rem;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.players_section ul {
+    list-style: none;
+    /* Sin decoración */
+    padding: 0;
+    margin: 0;
+}
+
+.players_section li {
+    font-size: 1.2rem;
+    /* Letra más grande */
+    line-height: 1.8;
+    padding: 0.5rem 0;
+    /* Padding adicional */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Mostrar el SVG */
+.svg_title h2 {
+    display: none;
+    margin: 30px 0 0 40px;
+}
+
+.svg_display {
+    /* display: none; */
+    margin: 2rem auto;
+    max-width: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.svg_display svg{
+    width: 100%;
+    height: 100%;
+    min-width: 500px;
+}
+
+@media (min-width: 768px) {
+    .svg_title h2{
+        display: block;
+    }
+    .svg_display{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Contenedor de la tabla de posiciones */
+
+.standings_title h2 {
+    margin: 30px 0 0 50px;
+}
+
+.standings_container {
+    margin: 2rem auto;
+    width: 90%;
+    overflow-x:scroll;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+
+
+#standings_table th,
+#standings_table td {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.8rem;
+    text-align: center;
+}
+
+#standings_table th {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+}
+
+#standings_table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mensaje de autenticado */
+.authenticated_message {
+    margin: 3rem 0 0 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 1.5rem;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 9rem;
+}
+
+@media (min-width: 768px) {
+    .authenticated_message{
+        margin-bottom: 1rem;
+    }
+}
+/* Formulario de registro de invitados */
+.guest_registration_form {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    color: white;
+}
+
+.guest_registration_form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.form_group {
     margin-bottom: 1rem;
 }
 
-.description p {
-    text-align: justify;
-}
-.reglas_jugadores_section{
-    display: flex;
-    justify-content: space-around;
-    column-gap: 1rem;
-}
-
-/* Accordeon */
-
-.accordion{
-    border-radius: 5px;
-    margin: 20px auto;
-    display: flex;
-    width: 80%;
-    justify-content: space-around;
-    height: 350px;
-}
-
-.accordion_item{
-    background: linear-gradient(#212121, #212121) padding-box,
-    linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    transition: all 0.3s;
-    width: 40%;
-    height: fit-content;
-    text-align: start;
-}
-.accordion_item:hover {
-    background-color: #e81cff;
-}
-
-
-
-.accordion_header{
-    cursor: pointer;
-    padding: 15px 20px;
-    color: white;
-    font-size: 18px;
-    margin: 0;
-    position: relative; /* Necesario para posicionar el ícono */
-}
-
-
-
-.accordion_header::after {
-    content: ">";
-    font-size: 16px;
-    position: absolute;
-    right: 15px; 
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease; 
-}
-
-
-.accordion_header.active::after {
-    content: "v";
-}
-
-
-.accordion_content {
-    max-height: 0; 
-    overflow: hidden; 
-    transition: max-height 0.3s ease; 
-    
-    list-style: circle;
-    margin: 0;
-    padding-left: 30px;
-    
-}
-
-.accordion_content li {
-    transition: all 1s ease;
-    margin: 2px 0;
-    padding: 5px;
-}
-
-
-.accordion_content li:hover {
-    background-color: rgb(119, 119, 119,0.7);
-}
-
-
-
-.accordion_content.open {
-    overflow: auto;
-    max-height: 350px; 
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-
-
-/* Parte del svg */
-.svg_container {
-    display: grid;
-    place-items: center;
-}
-
-/* Visualizacion de los ganados y perdidos */
-.matchup__player1,
-.matchup__player2 {
-    fill: white;
-    transition: fill 1s ease, opacity 1s ease, font-weight 1s ease;
-}
-
-.winner {
-    font-weight: 700;
-    fill: #7388b9;
-}
-
-.loser {
-    opacity: 0.2;
-}
-
-
-/* Formulario de inscripcion y jugadores */
-.formulario_ingreso {
-    display: grid;
-    place-items: center;
-    padding: 5rem;
-}
-
-.already_authenticated {
-
-    height: auto;
-    min-height: 300px;
-    text-align: center;
-
-}
-
-.register_options {
-    display: flex;
-    justify-content: space-around;
-}
-
-/* Formulario */
-.guest_form {
-    background: linear-gradient(#212121, #212121) padding-box,
-    linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
-    border: 2px solid transparent;
-    width: 400px;
-    padding: 32px 24px;
-    font-size: 14px;
-    font-family: inherit;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    box-sizing: border-box;
-    border-radius: 16px;
-}
-
-.guest_form legend {
-    font-size: 22px;
-    font-weight: 700;
-    color: #b2b2b2;
-}
-
-.guest_form button:active {
-    scale: 0.95;
-}
-
-.guest_form .form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.guest_form .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.guest_form .form-group label {
+.form_group label {
     display: block;
-    margin-bottom: 5px;
-    color: #717171;
-    font-weight: 600;
-    font-size: 14px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
 }
 
-.guest_form .form-group input {
+.form_group input {
     width: 100%;
-    padding: 12px 16px;
-    border-radius: 8px;
-    color: #fff;
-    font-family: inherit;
-    background-color: transparent;
-    border: 1px solid #414141;
-}
-
-
-.guest_form .form-group input::placeholder {
-    opacity: 0.5;
-}
-
-.guest_form .form-group input:focus {
-    outline: none;
-    border-color: #e81cff;
-}
-
-.guest_form .form-group textarea:focus {
-    outline: none;
-    border-color: #e81cff;
-}
-
-.guest_form .form-submit-btn {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    align-self: flex-start;
-    font-family: inherit;
-    color: #717171;
-    font-weight: 600;
-    width: 40%;
-    background: #313131;
-    border: 1px solid #414141;
-    padding: 12px 16px;
-    font-size: inherit;
-    gap: 8px;
-    margin-top: 8px;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.guest_form .form-submit-btn:hover {
-    background-color: #fff;
-    border-color: #fff;
-}
-
-.form_bottom {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.form_bottom a {
-    text-decoration: none;
-    transition: all 0.5s ease;
-}
-
-.form_bottom a:hover {
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background: #222;
     color: white;
-    font-weight: 600;
+    transition: border-color 0.3s ease;
 }
+
+.form_group input:focus {
+    outline: none;
+    border-color: rgb(247, 0, 231);
+}
+
+.form_actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.form_actions button {
+    padding: 0.8rem 1.5rem;
+    background-color: rgb(163, 1, 152);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form_actions button:hover {
+    background-color: rgb(247, 0, 231);
+}
+
+.signup {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.signup:hover {
+    color: rgb(247, 0, 231);
+}
+
+.btn {
+    margin: 1rem;
+}
+
+/* Estilo del contenedor de los términos */
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    margin-top: 30px; /* Espacio superior para separarlo de otros elementos */
+    opacity: 1; /* Visible por defecto */
+    transition: opacity 0.3s ease; /* Transición suave para el cambio de opacidad */
+}
+  
+  /* Estilo del botón */
+  .terms-button {
+    margin: 0 auto;
+    align-items: center;
+    background-color: #333333; /* Gris oscuro (antes del hover) */
+    color: #FFFFFF; /* Texto blanco */
+    padding: 8px 24px; /* Espaciado dentro del botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambio de cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Efectos de transición */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    border: none; /* Eliminar borde */
+  }
+  
+  /* Efecto al pasar el mouse (más claro) */
+  .terms-button:hover {
+    background-color: #444444; /* Fondo más claro al pasar el mouse */
+    transform: translateY(-3px); /* Desplazamiento hacia arriba */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+  }
+  
+  /* Efecto cuando el botón es presionado */
+  .terms-button:active {
+    background-color: #333333; /* Fondo intermedio cuando se presiona */
+    transform: translateY(2px); /* Desplazamiento hacia abajo */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+  }
+  
+  /* Estilo del contenedor del toggle */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-right: 10px; /* Espacio entre el toggle y el texto */
+  }
+  
+  /* Estilo del input (oculto) */
+  .toggle-switch .toggle-input {
+    display: none;
+  }
+  
+  /* Estilo del label que rodea el toggle */
+  .toggle-switch .toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Estilo para la parte redonda del toggle */
+  .toggle-switch .toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+  }
+  
+  /* Cuando el toggle está activado, cambia el color a violeta */
+  .toggle-switch .toggle-input:checked + .toggle-label {
+    background-color: #9400D3; /* Violeta */
+  }
+  
+  .toggle-switch .toggle-input:checked + .toggle-label::before {
+    transform: translateX(16px); /* Mueve el círculo al lado derecho */
+  }
+  
+  /* Estado deshabilitado */
+  .disabled {
+    opacity: 0.6; /* Hacer los elementos más transparentes */
+    pointer-events: none; /* Bloquear la interacción con los elementos */
+  }
+  
+  
+  
+  /* Estilo del contenedor */
+  .checkbox-container {
+    display: flex;
+    align-items: center; /* Alineación vertical */
+    justify-content: center; /* Alineación horizontal */
+    margin: 30px; /* Margen del contenedor */
+  }
+  
+  /* Estilo general del toggle */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-right: 10px; /* Espacio entre el toggle y el texto */
+  }
+  
+  /* Estilo del input (oculto) */
+  .toggle-switch .toggle-input {
+    display: none;
+  }
+  
+  /* Estilo del label que rodea el toggle */
+  .toggle-switch .toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    background-color: #8A8A8A; /* Gris oscuro antes de seleccionar */
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Estilo para la parte redonda del toggle */
+  .toggle-switch .toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+  }
+  
+  /* Cuando el toggle está activado, cambia el color a violeta */
+  .toggle-switch .toggle-input:checked + .toggle-label {
+    background-color: #9400D3; /* Violeta */
+  }
+  
+  .toggle-switch .toggle-input:checked + .toggle-label::before {
+    transform: translateX(16px); /* Mueve el círculo al lado derecho */
+  }
+  
+  /* Estilo para el texto junto al toggle */
+  .terms-label {
+    font-size: 18px;  /* Tamaño de letra más grande */
+    color: white;
+    line-height: 24px; /* Alinear el texto con el toggle */
+    cursor: pointer;
+  }
+  
+  #termsModal {
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(30, 30, 30, 0.98); /* Fondo gris oscuro translúcido */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
+    z-index: 1000;
+  }
+  
+  /* Estilo para el contenido del modal */
+  .termsModal-content {
+    text-align: center;
+    color: white;
+    max-width: 500px; /* Establece un ancho máximo para evitar que se estire demasiado */
+    margin: 0 auto; /* Centra el contenido */
+  }
+  
+  /* Título del modal */
+  .termsModal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif; /* Ajusta la fuente */
+    background: -webkit-linear-gradient(45deg, gold, violet); /* Gradiente dorado-violeta */
+    -webkit-background-clip: text; /* Hace que el gradiente se aplique solo al texto */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Fondo transparente para mostrar el gradiente */
+    text-align: center;
+  }
+  
+  /* Estilo para la lista de términos */
+  .termsModal-content ul {
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 1.4;
+    text-align: left; /* Alineación a la izquierda */
+    padding-left: 20px; /* Espaciado a la izquierda para los puntos */
+  }
+  
+  
+  .termsModal-content button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 24px; /* Tamaño más grande */
+    background-color: #3a3a3a; /* Gris oscuro para el botón */
+    color: #d4a8ff; /* Violeta claro para el texto */
+    border: 2px solid #d4a8ff; /* Borde violeta */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px; /* Texto más grande */
+    font-weight: bold; /* Hacer la letra más llamativa */
+    font-family: 'Arial', sans-serif; /* Fuente profesional */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+  }
+  
+  /* Efecto al pasar el mouse */
+  .termsModal-content button:hover {
+    background-color: #4a4a4a; /* Gris más claro al pasar el cursor */
+    color: gold; /* Cambio a dorado para el texto */
+    transform: scale(1.1); /* Efecto de aumento */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra más intensa */
+  }
+  
+  /* Efecto de enfoque */
+  .termsModal-content button:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d4a8ff; /* Resplandor violeta al enfoque */
+  }
+
+  /* Estado deshabilitado */
+.disabled {
+    opacity: 0.6; /* Hacer los elementos más transparentes */
+    pointer-events: none; /* Bloquear la interacción con los elementos */
+  }
+

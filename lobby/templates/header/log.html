@@ -5,8 +5,7 @@
   {% if user.is_authenticated %}
   <div id="menu-toggle" class="menu-icon">
     <img id="perfil"
-    src="{% static 'svg/profile.svg' %}"
-    data-hover="{% static 'svg/profile.svg' %}"
+    src={{ user.avatar.url }} 
     data-default="{% static 'svg/profile.svg' %}"
     alt="Porfile"
     />
