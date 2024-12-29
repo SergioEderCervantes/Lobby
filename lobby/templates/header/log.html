@@ -4,11 +4,12 @@
   </script>
   {% if user.is_authenticated %}
   <div id="menu-toggle" class="menu-icon">
-    <img id="perfil"
-    src={{ user.avatar.url }} 
-    data-default="{% static 'svg/profile.svg' %}"
-    alt="Porfile"
-    />
+   
+    {% if user.avatar %}
+      <img src="{{ user.avatar.url }}" alt="Avatar de {{ user.username }}">
+    {% else %}
+      <img src="{% static 'svg/profile.svg' %}" alt="Avatar por defecto">
+    {% endif %}
 
     </div>
   <div id="sidebar" class="sidebar">
