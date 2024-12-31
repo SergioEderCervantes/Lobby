@@ -1,9 +1,11 @@
 import random
 import string
+import random
+import string
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Permission
 from django.utils.translation import gettext_lazy as _
-
+from django.db import IntegrityError
 class User(AbstractUser):
     USER_TYPE_CHOICES = [
         ('AD', 'Admin'),
@@ -66,7 +68,7 @@ class User(AbstractUser):
         return f"{usuario}@{dominio}"
     
     def save(self, **kwargs):
-        # Ajustes previos a guardar para mantener la coherencia en la base de datos
+        # Ajustes previos a guardar para mantener la coherencia en la base de datos        
         if self.tipo_usuario == 'AD':
             self.is_staff = True
             self.is_superuser = True

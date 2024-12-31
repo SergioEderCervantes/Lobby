@@ -17,9 +17,15 @@ class Torneo(models.Model):
     imagen_banner = models.ImageField("Banner del torneo",upload_to='imagen_torneo', null=True, blank=False )
     fecha = models.DateTimeField("Fecha y Hora del torneo")
     is_defined = models.BooleanField(default=False)
-    descripcion = models.TextField("Descripcion breve del torneo",max_length=500, null=True, blank=True)
-    reglas = models.TextField("Reglas del torneo (Poner cada regla separada por espacios)", max_length=500,  null=True, blank=True)
+    descripcion = models.TextField("Descripcion breve del torneo",max_length=750, null=True, blank=True)
+    requisitos = models.TextField("Requisitos del torneo (Poner cada requisito separado por espacios)", max_length=750, null=True, blank=True)
+    reglas = models.TextField("Reglas del torneo (Poner cada regla separada por espacios)", max_length=750,  null=True, blank=True)
     jugadores_inscritos = models.ManyToManyField(User,verbose_name="Usuarios Inscritos al torneo", blank=True)
+    
+    
+    def requisitos_como_lista(self):
+        # Devuelve un array de cadenas con todos los requisitos del torneo
+        return self.requisitos.splitlines()
     
     def reglas_como_lista(self):
         # Devuelve un array de cadenas con todas las reglas del torneo

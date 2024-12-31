@@ -58,6 +58,7 @@ def tournament_detail(request, name):
     context = {
         'torneo': torneo,
         'svg_data': svg_data,
+        'requisitos': torneo.requisitos_como_lista(),
         'reglas': torneo.reglas_como_lista(),
         'num_players': num_players,
         'players': players,

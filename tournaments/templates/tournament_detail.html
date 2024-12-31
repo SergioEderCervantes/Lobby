@@ -22,7 +22,7 @@
 <header class=" navbar">
     {% include 'header/navbar.html' %}
 </header>
-    
+
 {% endblock %}
 {% block content %}
 <div class="tournament_description_view">
@@ -69,8 +69,17 @@
             <p>{{ torneo.descripcion }}</p>
         </div>
 
-        <!-- Contenedor de reglas y jugadores -->
-        <div class="rules_and_players_container">
+        <!-- Contenedor de reglas y requisitos -->
+        <div class="rules_and_req_container">
+            <!-- Lista de requisitos -->
+            <div class="req_section">
+                <h3>Requisitos</h3>
+                <ul>
+                    {% for requisito in requisitos %}
+                    <li>{{ requisito }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
             <!-- Lista de reglas -->
             <div class="rules_section">
                 <h3>Reglas</h3>
@@ -81,16 +90,22 @@
                 </ul>
             </div>
 
-            <!-- Lista de jugadores -->
+        </div>
+        {% if not svg_data %}
+        <!-- Lista de jugadores inscritos -->
+        <div class="players_container">
+
             <div class="players_section">
-                <h3>Jugadores Inscritos</h3>
+                <h3>Jugadores inscritos</h3>
                 <ul>
-                    {% for jugador in players %}
-                    <li>{{ jugador }}</li>
+                    {% for player in players %}
+                    <li> {{player}} </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
+
+        {% endif %}
 
         {% if svg_data %}
         <div class="svg_title">
@@ -144,33 +159,35 @@
         <!-- Si no existe el SVG -->
         <div id="termsModal">
             <div class="termsModal-content">
-              <h2>Términos y Condiciones</h2>
-              <ul>
-                <li>La cuota de inscripción es de $50.00, la cual se puede pagar directamente en la sucursal o por transferencia (mandar recibo por WhatsApp).</li>
-                <li>Participantes menores de edad deberán ir con la compañía de un adulto.</li>
-              <button type="button" id="closeModal">Cerrar</button>
+                <h2>Términos y Condiciones</h2>
+                <ul>
+                    <li>La cuota de inscripción es de $50.00, la cual se puede pagar directamente en la sucursal o por
+                        transferencia (mandar recibo por WhatsApp).</li>
+                    <li>Participantes menores de edad deberán ir con la compañía de un adulto.</li>
+                    <button type="button" id="closeModal">Cerrar</button>
             </div>
         </div>
         {% if user.is_authenticated %}
         <div class="authenticated_message">
             <p>Ya estás autenticado. ¿Deseas inscribirte con el correo <strong>{{ user.email }}</strong>?</p>
-            <button id="tournament_register_btn" class="btn disabled" disabled >Inscribirse</button>
+            <button id="tournament_register_btn" class="btn disabled" disabled>Inscribirse</button>
             <div class="terms-container">
 
                 <button type="button" id="termsButton" class="terms-button">Leer términos y condiciones</button>
                 <div class="checkbox-container">
-                  <div class="toggle-switch">
-                    <input class="toggle-input" id="toggle" type="checkbox">
-                    <label class="toggle-label" for="toggle"></label>
-                  </div>
-                  <label for="toggle" class="terms-label">Aceptar términos y condiciones</label>
+                    <div class="toggle-switch">
+                        <input class="toggle-input" id="toggle" type="checkbox">
+                        <label class="toggle-label" for="toggle"></label>
+                    </div>
+                    <label for="toggle" class="terms-label">Aceptar términos y condiciones</label>
                 </div>
-          
+
             </div>
         </div>
         {% else %}
         <!-- Mostrar el formulario de inscripción para invitados -->
-        <form method="post" id="guest_register_form" action="{% url 'register_guest_player' torneo.id %}" class="guest_registration_form">
+        <form method="post" id="guest_register_form" action="{% url 'register_guest_player' torneo.id %}"
+            class="guest_registration_form">
             {% csrf_token %}
             <h3>Registrarse a {{ torneo.nombre_torneo }} como invitado</h3>
             <div class="form_group">
@@ -182,20 +199,20 @@
                 <input type="tel" name="tel" id="tel" required>
             </div>
             <div class="form_actions">
-                <button type="submit" id="tournament_register_btn" class="disabled" disabled >Inscribirse</button>
+                <button type="submit" id="tournament_register_btn" class="disabled" disabled>Inscribirse</button>
                 <a class="signup" href="{% url 'account_login' %}">Ya tienes cuenta?</a>
             </div>
             <div class="terms-container">
 
                 <button type="button" id="termsButton" class="terms-button">Leer términos y condiciones</button>
                 <div class="checkbox-container">
-                  <div class="toggle-switch">
-                    <input class="toggle-input" id="toggle" type="checkbox">
-                    <label class="toggle-label" for="toggle"></label>
-                  </div>
-                  <label for="toggle" class="terms-label">Aceptar términos y condiciones</label>
+                    <div class="toggle-switch">
+                        <input class="toggle-input" id="toggle" type="checkbox">
+                        <label class="toggle-label" for="toggle"></label>
+                    </div>
+                    <label for="toggle" class="terms-label">Aceptar términos y condiciones</label>
                 </div>
-          
+
             </div>
         </form>
         {% endif %}
