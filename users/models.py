@@ -1,3 +1,5 @@
+import random
+import string
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Permission
 from django.utils.translation import gettext_lazy as _
@@ -33,14 +35,10 @@ class User(AbstractUser):
         max_length=15,
         null=False, 
         blank=False,
-        unique=True,
-        error_messages={
-            "unique": _("Ya existe un usuario con este número de teléfono, por favor verifíquelo."),
-        },
     )
     
     avatar = models.ImageField(
-        upload_to='avatars/',  # Carpeta dentro de MEDIA_ROOT donde se guardarán las imágenes
+        upload_to='avatars/',  
         null=True,
         blank=True,
         verbose_name="Avatar del usuario"
@@ -57,6 +55,16 @@ class User(AbstractUser):
     
     juegos_inscritos = models.JSONField(_("Nombres de juegos que ya se inscribio"), default=list)
     
+    def generar_numero_celular(self):
+        return ''.join([str(random.randint(0, 9)) for _ in range(10)])
+    
+    def generar_correo_electronico(self):
+        # Generar un nombre de usuario aleatorio de 8 caracteres
+        usuario = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
+        # Dominio fijo o aleatorio
+        dominio = 'example.com'
+        return f"{usuario}@{dominio}"
+    
     def save(self, **kwargs):
         # Ajustes previos a guardar para mantener la coherencia en la base de datos
         if self.tipo_usuario == 'AD':
@@ -64,6 +72,25 @@ class User(AbstractUser):
             self.is_superuser = True
         if self.is_staff or self.is_superuser:
             self.tipo_usuario = 'AD'
+            
+        # Ajustes para asegurarse que el superuser tenga numero y los guest tengan correo
+        if self.is_superuser and not self.telefono:
+            while True:
+                aux = self.generar_numero_celular()
+                # Validar unicidad
+                if not User.objects.filter(telefono = aux).exists():
+                    self.telefono = aux
+                    break
+        elif self.tipo_usuario == 'GU' and not self.email:
+            while True:
+                aux = self.generar_correo_electronico()
+                # Validar unicidad
+                if not User.objects.filter(email = aux).exists():
+                    self.email = aux
+                    break
+        
+        
+        
         super().save(**kwargs)
 
     def agregar_juego(self, nombre_juego: str) -> bool:
