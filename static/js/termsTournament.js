@@ -2,7 +2,7 @@ const termsButton = document.getElementById('termsButton');
 const termsModal = document.getElementById('termsModal');
 const closeModal = document.getElementById('closeModal');
 const toggleInput = document.getElementById('toggle'); // El toggle
-const inscribirseButton = document.getElementById('tournament_register_btn'); 
+const inscribirseButton = document.querySelector('.register_btn'); 
 
 // Función para abrir el modal
 termsButton.addEventListener('click', () => {

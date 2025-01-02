@@ -104,6 +104,8 @@ def register_player(request):
         return JsonResponse({'error': str(e)}, status = 400)
     
 def register_guest_player(request, torneo_id):
+    
+    print(f"TORNEO ID LLEGADO: {torneo_id}" )
     if request.method != "POST":
         return JsonResponse({"error": "Método inválido"}, status=405)
     

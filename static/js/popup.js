@@ -14,7 +14,7 @@ function hideLoader() {
 }
 
 // Función para abrir el popup (después de que termine el loader)
-function openPopup({ title, svg, message, buttonText, size = 'small', imageUrl = null, torneoUrl = "", onEvent = null}) {
+function openPopup({ title, svg, message, buttonText, size = 'small', imageUrl = null, torneoUrl = "", onEvent = null, redirectHome = false}) {
     const overlay = document.getElementById('popup_overlay');
     const container = document.getElementById('popup_container');
     const content = document.getElementById('popup_content');
@@ -42,7 +42,7 @@ function openPopup({ title, svg, message, buttonText, size = 'small', imageUrl =
     if (size === 'large') {
         dynamicContent += `<a href="${torneoUrl}" class="popup_button" target="_blank">${buttonText}</a>`;
     } else {
-        dynamicContent += `<button class="popup_button" onclick="handlePopupAction('${size}', ${onEvent ? 'true' : 'false'})">${buttonText}</button>`;
+        dynamicContent += `<button class="popup_button" onclick="handlePopupAction('${size}', ${onEvent ? 'true' : 'false'}, ${redirectHome ? 'true' : 'false'}) ">${buttonText}</button>`;
     }
 
     // Insertar contenido dinámico
@@ -56,14 +56,14 @@ function openPopup({ title, svg, message, buttonText, size = 'small', imageUrl =
     // Cerrar el popup al hacer clic fuera del contenedor
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) {
-            closePopup(size);
+            closePopup(size, redirectHome);
         }
     });
 }
 
 // Manejar la acción del botón del popup
-function handlePopupAction(size, hasEvent) {
-    closePopup(size);
+function handlePopupAction(size, hasEvent, redirectHome = false) {
+    closePopup(size, redirectHome);
     if (hasEvent && typeof register_reservation === 'function') {
         showLoader();
         register_reservation();
@@ -72,7 +72,7 @@ function handlePopupAction(size, hasEvent) {
 
 
 // Función para cerrar el popup
-function closePopup(size = 'small') {
+function closePopup(size = 'small', redirectHome = false) {
     const overlay = document.getElementById('popup_overlay');
     const container = document.getElementById('popup_container');
 
@@ -82,7 +82,12 @@ function closePopup(size = 'small') {
             overlay.classList.add('hidden');
         }
         if (size === 'small'){
-            location.reload();
+            if (!redirectHome){
+                location.reload();
+            }
+            else{
+                window.location.href = '/';
+            }
          }
     }, 50);
 }
