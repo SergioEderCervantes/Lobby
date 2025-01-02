@@ -3,7 +3,8 @@
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/politicas.css' %}" />
 {% endblock %}
-
+{% block extrascripts%}
+{% endblock %}
 {% block header %}
 {% include 'header/log.html' %}
 <header class=" navbar">
@@ -14,7 +15,7 @@
 
 {% block content %}
 
-  <div class="body">
+  <div class="body-log">
     <div class="tarjeta_info">
       <h1>Aviso de Cookies</h1>
       <p>En nuestra página web utilizamos cookies para mejorar la experiencia del usuario. Este aviso explica qué son las cookies, qué tipo de cookies utilizamos y cómo puedes gestionarlas.</p>

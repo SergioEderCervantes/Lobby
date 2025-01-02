@@ -27,7 +27,7 @@
               {% else %}
               <img src="{% static 'svg/profile.svg' %}" alt="Avatar del usuario" id="profile-avatar">
               {% endif %}
-              <input type="file" name="avatar" accept="media/avatars/*" onchange="previewAvatar(event)">
+              <input type="file" class="file-input" name="avatar" accept="media/avatars/*" onchange="previewAvatar(event)">
           </div>
       
           <!-- Resto del formulario -->

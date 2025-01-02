@@ -24,7 +24,7 @@ def reservations(request):
         case 2:
             imagen_fondo = static("img/BG-PLAY.jpg")
         case 3:
-            imagen_fondo = static("img/BG-NINTENDO.jpg")
+            imagen_fondo = static("img/BG-NINTENDO1.webp")
         case 4:
             imagen_fondo = static("img/BG-BILLAR.jpeg")
 

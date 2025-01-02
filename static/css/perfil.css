@@ -51,18 +51,19 @@
   transition: all 0.2s ease-out 0s;
 }
 .menu-icon.active img {
-  width: 70px;
-  height: 70px;
-  top: 20px;
+  width: 55px;
+  height: 55px;
+  top: 36px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
+  transition: all 0.35s ease;
 }
 .menu-icon img {
   position: relative;
 
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   top: 5px;
   border-radius: 50%;
   object-fit: cover;
@@ -152,15 +153,15 @@
   .menu-icon-login {
     top: 12%;
   }
-  .menu-icon.active{
-    right: 110px;
+  .menu-icon.active {
+    right: 120px;
     top: 80px;
-  }
+}
   .menu-icon-login.active{
     right: 89px;
   }
   .sidebar {
-    top: 12%;
+    top: 14%;
    
     height: 375px;
     clip-path: polygon(30px 0%, calc(100% - 30px) 0%, 100% 30px, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0% calc(100% - 30px), 0% 30px);
@@ -187,4 +188,58 @@
     width: 230px;
     margin-right: 1%;
   }
+}
+input[type="file"] {
+  /* Oculta los bordes y define un estilo base */
+  border: none;
+  background-color: transparent;
+  color: transparent; /* Para ocultar el texto predeterminado */
+  font-size: 0; /* Oculta texto adicional del input */
+  cursor: pointer;
+}
+
+/* Personaliza el botón en navegadores WebKit (Chrome, Edge, Safari) */
+input[type="file"]::-webkit-file-upload-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #0056b3;
+}
+
+/* Personaliza el botón en navegadores basados en MS Edge/IE */
+input[type="file"]::-ms-browse {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+/* Para otros navegadores */
+input[type="file"]::file-selector-button {
+  background-color: #141123;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #19004b;
 }

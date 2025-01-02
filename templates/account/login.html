@@ -5,9 +5,14 @@
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 {% block extrascripts %}{% endblock %}
+{%block estandar%}
+<script src="{% static '\js\footer.js' %}" defer></script>
+{% endblock%}
 {% block header %}{% endblock %}
 {% block content %}
   <div class="body-log">
+    <a href="{% url "home" %}" class="btn-home">🡸</a>
+
     <div class="form-container">
       <form class="form"
             id="userLoginForm"

@@ -3,6 +3,8 @@
 {% block extrahead %}
   <link rel="stylesheet" href="{% static 'css/politicas.css' %}" />
 {% endblock %}
+{% block extrascripts%}
+{% endblock %}
 {% block header %}
 {% include 'header/log.html' %}
 <header class=" navbar">
@@ -12,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="body">
+<div class="body-log">
   
     <div class="tarjeta_info">
       <h1>Políticas de Privacidad</h1>
