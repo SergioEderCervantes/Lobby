@@ -170,7 +170,7 @@
         {% if user.is_authenticated %}
         <div class="authenticated_message">
             <p>Ya estás autenticado. ¿Deseas inscribirte con el correo <strong>{{ user.email }}</strong>?</p>
-            <button id="tournament_register_btn" class="btn disabled" disabled>Inscribirse</button>
+            <button id="tournament_register_btn" class="btn disabled register_btn" disabled>Inscribirse</button>
             <div class="terms-container">
 
                 <button type="button" id="termsButton" class="terms-button">Leer términos y condiciones</button>
@@ -199,7 +199,7 @@
                 <input type="tel" name="tel" id="tel" required>
             </div>
             <div class="form_actions">
-                <button type="submit" id="tournament_register_btn" class="disabled" disabled>Inscribirse</button>
+                <button type="submit" class="disabled register_btn" disabled>Inscribirse</button>
                 <a class="signup" href="{% url 'account_login' %}">Ya tienes cuenta?</a>
             </div>
             <div class="terms-container">

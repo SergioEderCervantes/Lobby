@@ -1,7 +1,11 @@
 {% extends "index.html" %} {% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/popup.css' %}">
+{% endblock extrahead %}
 
 {%block extrascripts %}
 <script src="{% static 'js/custom_perfil.js' %}" defer></script>
+<script src="{% static 'js/popup.js' %}" defer></script>
 {% endblock %}
 {% block estandar %}
 {% endblock%}
@@ -11,7 +15,7 @@
 
 {% block content %}
   <div class="body-log">
-    <a href="{% url "home" %}" class="btn-home">🡸</a>
+    <a href="{% url 'home' %}" class="btn-home">🡸</a>
         
     <div class="form-container-user">
       <div>
@@ -40,18 +44,6 @@
           <div class="input-group">
             <input type="text" id="id_telefono" name="telefono" value={{user.telefono}}>
           </div>
-          {% comment %} <div class="input-group">
-            <input type="password"
-                   id="id_password1"
-                   name="password1"
-                   placeholder="Password">
-          </div>
-          <div class="input-group">
-            <input type="password"
-                   id="id_password2"
-                   name="password2"
-                   placeholder="Confirm Password">
-          </div> {% endcomment %}
           <div class="form-actions">
               <button type="submit" class="sign">Guardar Cambios</button>
           </div>

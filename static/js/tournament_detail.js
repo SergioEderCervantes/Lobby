@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Manejo del evento de inscripcion
     const registerButton = document.getElementById("tournament_register_btn");
-    const submitGuestButton = document.getElementById("guest_register_form");
+    const guestForm = document.getElementById("guest_register_form");
     if (registerButton) {
         registerButton.addEventListener("click", register_player);
     }
-    if (submitGuestButton) {
-        submitGuestButton.addEventListener("submit", register_gest_player)
+    if (guestForm) {
+        guestForm.addEventListener("submit", register_gest_player)
     }
 
 });
@@ -80,7 +80,7 @@ async function register_gest_player(event) {
     event.preventDefault();
     showLoader();
 
-
+    console.log("Q")
     const form = event.target;
     const url = form.action;
     const formData = new FormData(form);
