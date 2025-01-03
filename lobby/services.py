@@ -4,9 +4,8 @@
 import requests
 from django.conf import settings
 
-def send_whatsapp_message(message):
+def send_whatsapp_message(message, destination_number):
     url = f"{settings.WHATSAPP_API_URL}{settings.WHATSAPP_PHONE_ID}/messages"
-    phone_number = "524492580708"
 
 
     headers = {
@@ -15,7 +14,7 @@ def send_whatsapp_message(message):
     }
     data ={
         "messaging_product": "whatsapp",
-        "to": phone_number,
+        "to": destination_number,
         "type": "text",
         "text": {
             "body": message
