@@ -103,20 +103,48 @@ def gestionar_guardado_svg(request):
 def export_to_excel(modeladmin, request, queryset):
     # Crear un libro de trabajo en memoria
     workbook = openpyxl.Workbook()
-    worksheet = workbook.active
-    worksheet.title = "Datos Exportados"
-
-    # Encabezados de las columnas
-    headers = ["ID", "Nombre"]
-    worksheet.append(headers)
-
-    # Agregar los datos seleccionados
-    for obj in queryset:
+    is_first = True
+    
+    for torneo in queryset:
+        worksheet = workbook.active if is_first else workbook.create_sheet(str(torneo))
+        is_first = False
+        # Encabezados de los datos identificadores
+        headers = ["Nombre Torneo", "Juego", "Modo", "fecha"]
+        worksheet.append(headers)
+        
+        # Datos identificadores de los torneos
         row = [
-            obj.id,
-            str(obj)
+            torneo.nombre_torneo,
+            torneo.nombre_juego,
+            torneo.modo_torneo,
+            str(torneo.fecha.date())
         ]
+        
         worksheet.append(row)
+        # Dos lineas en blanco
+        worksheet.append([])
+        worksheet.append([])
+        
+        # Titulo de jugadores inscritos
+        worksheet.append(["Jugadores inscritos"])
+        
+        # Encabezados de la tabla de jugadores inscritos
+        headers = ["Username", "Tipo", "email", "Telefono"]
+        worksheet.append(headers)
+        
+        # Datos de los jugadores inscritos
+        for jugador in torneo.jugadores_inscritos.values():
+            aux = jugador["tipo_usuario"]
+            tipo = "usuario" if aux=="US" else "Invitado" if aux=="GU" else "Admin"
+            row = [
+                jugador['username'],
+                tipo,
+                jugador['email'],
+                jugador['telefono']
+            ]
+            worksheet.append(row)
+        
+
 
     # Guardar el archivo en memoria
     buffer = io.BytesIO()
