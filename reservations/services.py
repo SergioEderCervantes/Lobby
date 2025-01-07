@@ -110,5 +110,5 @@ def crear_reserva(usuario, sucursal_id, consola_id, fecha, hora, num_personas, c
 # Funcion que crea la disponibilidad diara de los siguientes 30 dias (only test)
 def init_disponibilidad():
     hoy = date.today()
-    for i in range(30):
+    for i in range(60):
         inicializar_disponibilidad(hoy + timedelta(days=i))

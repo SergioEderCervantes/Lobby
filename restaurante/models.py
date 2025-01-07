@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Seccion_productos(models.Model):
     class Meta:
-        verbose_name = "Seccion"
+        verbose_name = "Seccione"
     nombre_seccion = models.CharField("Nombre de la seccion de productos", max_length=20)
     imagen_respaldo_1 = models.ImageField("Imagen de apoyo 1", upload_to="imagen_seccion", null=False, blank=False)
     imagen_respaldo_2 = models.ImageField("Imagen de apoyo 2", upload_to="imagen_seccion", null=False, blank=False)

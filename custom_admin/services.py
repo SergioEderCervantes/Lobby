@@ -1,5 +1,8 @@
 import os
 import json
+import openpyxl
+import io
+from django.http import HttpResponse
 from settings import STATICFILES_DIRS
 from .eliminacion_directa import crearMatch
 from .round_robin import createRounds
@@ -91,3 +94,41 @@ def gestionar_guardado_svg(request):
 
     # Guardar el archivo SVG
     guardar_svg(svg_data, torneo_id)
+    
+    
+    
+# ---------------- Exportacion a excel de los torneos y usuarios -------------------------------
+
+
+def export_to_excel(modeladmin, request, queryset):
+    # Crear un libro de trabajo en memoria
+    workbook = openpyxl.Workbook()
+    worksheet = workbook.active
+    worksheet.title = "Datos Exportados"
+
+    # Encabezados de las columnas
+    headers = ["ID", "Nombre"]
+    worksheet.append(headers)
+
+    # Agregar los datos seleccionados
+    for obj in queryset:
+        row = [
+            obj.id,
+            str(obj)
+        ]
+        worksheet.append(row)
+
+    # Guardar el archivo en memoria
+    buffer = io.BytesIO()
+    workbook.save(buffer)
+    buffer.seek(0)
+
+    # Crear una respuesta de descarga
+    response = HttpResponse(
+        buffer,
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+    response["Content-Disposition"] = 'attachment; filename="datos_exportados.xlsx"'
+
+    return response
+
