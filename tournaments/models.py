@@ -6,7 +6,8 @@ from users.models import User
 class Torneo(models.Model):
     MODOS_TORNEO = [
         ("Direct", "Eliminacion directa"),
-        ("Double", "Eliminacion doble (loser bracket)"),
+        # TODO: proxima feature:
+        # ("Double", "Eliminacion doble (loser bracket)"),
         ("Round", "Round Robin"),
     ]
     
