@@ -57,19 +57,12 @@ class Comment_Admin(admin.ModelAdmin):
     list_display = ('comentario', 'fecha', 'usuario')
     ordering = ("-fecha",)
     
+    def has_add_permission(self, request):
+        return False
+    
     
     
 admin_site.register(Promocion,Promocion_Admin)
 admin_site.register(Sucursal,Sucursal_Admin)
 admin_site.register(Comment,Comment_Admin)
 
-
-# Clases manejadoras y registro de modelos AllAuth
-class EmailAddress_Admin(admin.ModelAdmin):
-    list_display = ('email', 'user', 'verified', 'primary')
-
-class SocialAccount_Admin(admin.ModelAdmin):
-    list_display = ('user', 'provider', 'uid')
-
-admin_site.register(EmailAddress, EmailAddress_Admin)
-admin_site.register(SocialAccount,SocialAccount_Admin)

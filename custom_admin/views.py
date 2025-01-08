@@ -5,11 +5,12 @@ from django.template.response import TemplateResponse
 from django.db.models import Count
 from .services import gestionar_svg_torneo, gestionar_guardado_svg
 from django.http import HttpResponseNotFound
+from django.forms import ValidationError
+from django.contrib import messages
 # Create your views here.
 
 
 def tournament_view(request, tournament_id):
-    # Dios perdoname
     from custom_admin.admin import admin_site
         
     # Obtener el torneo y su número de jugadores inscritos
@@ -17,6 +18,8 @@ def tournament_view(request, tournament_id):
 
     # Obtener el número de jugadores inscritos
     num_players = tournament.cantidad_usuarios_inscritos()
+
+
 
     #Obtener lista de los jugadores inscritos
     players = tournament.usuarios_inscritos()
@@ -30,6 +33,9 @@ def tournament_view(request, tournament_id):
         svg_data = gestionar_svg_torneo(request, tournament)
     except FileNotFoundError:
         return HttpResponseNotFound("El archivo SVG no existe.")
+    except ValidationError:
+        svg_data = None
+        messages.error(request, "El numero de jugadores debe de ser igual o mayor a 6 para crear el torneo")
 
         
     # Obtener el contexto de custom_admin_site
@@ -45,7 +51,6 @@ def tournament_view(request, tournament_id):
         "app_label": "tournaments",  # Pasar app_label explícitamente
         "players": players
     })
-    #if(tournament.modo_torneo == 'Round') : context.update(results_table)
     return TemplateResponse(request, 'admin/tournament_view.html', context)
 
 

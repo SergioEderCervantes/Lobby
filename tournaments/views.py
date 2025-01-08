@@ -11,6 +11,7 @@ from datetime import date
 from .models import Torneo
 from users.models import User
 from settings import STATICFILES_DIRS 
+from lobby.services import send_whatsapp_message
 
 # Create your views here.
 
@@ -94,7 +95,21 @@ def register_player(request):
         # Actualizar su numero de torneos inscritos y mandar mensaje si es que tiene la promocion
         mensaje = 'Felicidades!! su inscripcion a este torneo es gratuita!!.' if usuario.agregar_juego(torneo.nombre_juego) else 'Usuario inscrito exitosamente al torneo.' 
 
-
+        # Mensaje de Whats a la persona que se inscribio
+        numero = "52".join(usuario.telefono)
+        print(numero)
+        success_message = f"""
+        Lobby Web aplication: Gracias por tu inscripcion a {torneo.nombre_torneo}!!
+te esperamos el dia {torneo.fecha.date()} para que te lo pases de lo mejor en Lobby, para el pago de los $50 de inscripcion lo puedes hacer
+directamente en lobby o por transferencia bancaria, aqui los datos para la transferencia:
+Banco: HSBC
+No. cuenta: 4069787109
+CLABE: 021010040697871095
+Si decides hacer el pago por transferencia, por favor manda a este mismo numero el recibo de la misma.
+Nos vemos en Lobby ;)
+            """
+        response = send_whatsapp_message(success_message, numero)
+        print(response)
         return JsonResponse({'message': mensaje}, status=201)
 
         
@@ -132,6 +147,21 @@ def register_guest_player(request, torneo_id):
         # Asociar el usuario al torneo
         torneo = Torneo.objects.get(id=torneo_id)
         torneo.jugadores_inscritos.add(user)
+        
+        # Mensaje de Whats a la persona que se inscribio
+        numero = "52".join(user.telefono)
+        success_message = f"""
+        Lobby Web aplication: Gracias por tu inscripcion a {torneo.nombre_torneo}!!
+te esperamos el dia {torneo.fecha.date()} para que te lo pases de lo mejor en Lobby, para el pago de los $50 de inscripcion lo puedes hacer
+directamente en lobby o por transferencia bancaria, aqui los datos para la transferencia:
+Banco: HSBC
+No. cuenta: 4069787109
+CLABE: 021010040697871095
+Si decides hacer el pago por transferencia, por favor manda a este mismo numero el recibo de la misma.
+Nos vemos en Lobby ;)
+            """
+        response = send_whatsapp_message(success_message, numero)
+        print(response)
 
         return JsonResponse({'message': 'Jugador registrado como invitado correctamente'}, status=201)
     except IntegrityError as e:

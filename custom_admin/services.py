@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from settings import STATICFILES_DIRS
 from .eliminacion_directa import crearMatch
 from .round_robin import createRounds
+from django.forms import ValidationError
 # Funciones de ayuda para otras vistas
 
 
@@ -22,7 +23,9 @@ def manejar_post(tournament, parent_dir):
     print(players)
     modo = tournament.modo_torneo
     file_path = None
-
+    if len(players) < 6:
+        raise ValidationError("Deben de haber al menos 6 jugadores inscritos para crear el torneo")
+    
     if modo == 'Direct':
         file_path = crearMatch(players, tournament.pk, parent_dir=parent_dir)
     elif modo == 'Round':
