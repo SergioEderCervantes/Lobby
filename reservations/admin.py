@@ -40,4 +40,3 @@ class Consola_Disponibilidad_Admin(admin.ModelAdmin):
     
 admin_site.register(Consola_disponibilidad,Consola_Disponibilidad_Admin)
 admin_site.register(Reservation)
-admin_site.register(Consola)
