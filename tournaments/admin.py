@@ -10,6 +10,7 @@ class Torneo_admin(admin.ModelAdmin):
     exclude = ('is_defined',)
     filter_horizontal = ('jugadores_inscritos',)
     readonly_fields = ('jugadores_inscritos',)
+    ordering = ('-fecha',)
     actions = [export_to_excel]
     
     

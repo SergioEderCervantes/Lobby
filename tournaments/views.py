@@ -96,7 +96,7 @@ def register_player(request):
         mensaje = 'Felicidades!! su inscripcion a este torneo es gratuita!!.' if usuario.agregar_juego(torneo.nombre_juego) else 'Usuario inscrito exitosamente al torneo.' 
 
         # Mensaje de Whats a la persona que se inscribio
-        numero = "52".join(usuario.telefono)
+        numero = "52" + usuario.telefono
         print(numero)
         success_message = f"""
         Lobby Web aplication: Gracias por tu inscripcion a {torneo.nombre_torneo}!!
