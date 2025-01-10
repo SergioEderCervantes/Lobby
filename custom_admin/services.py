@@ -1,8 +1,12 @@
 import os
 import json
+import openpyxl
+import io
+from django.http import HttpResponse
 from settings import STATICFILES_DIRS
 from .eliminacion_directa import crearMatch
 from .round_robin import createRounds
+from django.forms import ValidationError
 # Funciones de ayuda para otras vistas
 
 
@@ -19,7 +23,9 @@ def manejar_post(tournament, parent_dir):
     print(players)
     modo = tournament.modo_torneo
     file_path = None
-
+    if len(players) < 6:
+        raise ValidationError("Deben de haber al menos 6 jugadores inscritos para crear el torneo")
+    
     if modo == 'Direct':
         file_path = crearMatch(players, tournament.pk, parent_dir=parent_dir)
     elif modo == 'Round':
@@ -91,3 +97,69 @@ def gestionar_guardado_svg(request):
 
     # Guardar el archivo SVG
     guardar_svg(svg_data, torneo_id)
+    
+    
+    
+# ---------------- Exportacion a excel de los torneos y usuarios -------------------------------
+
+
+def export_to_excel(modeladmin, request, queryset):
+    # Crear un libro de trabajo en memoria
+    workbook = openpyxl.Workbook()
+    is_first = True
+    
+    for torneo in queryset:
+        worksheet = workbook.active if is_first else workbook.create_sheet(str(torneo))
+        is_first = False
+        # Encabezados de los datos identificadores
+        headers = ["Nombre Torneo", "Juego", "Modo", "fecha"]
+        worksheet.append(headers)
+        
+        # Datos identificadores de los torneos
+        row = [
+            torneo.nombre_torneo,
+            torneo.nombre_juego,
+            torneo.modo_torneo,
+            str(torneo.fecha.date())
+        ]
+        
+        worksheet.append(row)
+        # Dos lineas en blanco
+        worksheet.append([])
+        worksheet.append([])
+        
+        # Titulo de jugadores inscritos
+        worksheet.append(["Jugadores inscritos"])
+        
+        # Encabezados de la tabla de jugadores inscritos
+        headers = ["Username", "Tipo", "email", "Telefono"]
+        worksheet.append(headers)
+        
+        # Datos de los jugadores inscritos
+        for jugador in torneo.jugadores_inscritos.values():
+            aux = jugador["tipo_usuario"]
+            tipo = "usuario" if aux=="US" else "Invitado" if aux=="GU" else "Admin"
+            row = [
+                jugador['username'],
+                tipo,
+                jugador['email'],
+                jugador['telefono']
+            ]
+            worksheet.append(row)
+        
+
+
+    # Guardar el archivo en memoria
+    buffer = io.BytesIO()
+    workbook.save(buffer)
+    buffer.seek(0)
+
+    # Crear una respuesta de descarga
+    response = HttpResponse(
+        buffer,
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+    response["Content-Disposition"] = 'attachment; filename="datos_exportados.xlsx"'
+
+    return response
+

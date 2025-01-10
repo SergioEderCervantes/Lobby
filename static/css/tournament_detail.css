@@ -45,7 +45,6 @@
 
 /* Imagen del banner */
 .banner_image {
-    width: 80%;
     /* Ancho del 80% del contenedor principal */
     height: auto;
     /* Altura fija */
@@ -64,6 +63,12 @@
     object-fit: auto;
     /* Asegura que la imagen se ajuste bien al tamaño */
     border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    .banner_image{
+      width: 80%;
+    }
 }
 
 /* Fecha */
@@ -113,9 +118,9 @@
 /* Contenedor de reglas y jugadores */
 .rules_and_req_container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
-    max-height: 300px;
     overflow-y: auto;
     position: relative;
     padding: 2rem 10px 2rem 0;
@@ -164,14 +169,15 @@
     overflow-y: auto;
     padding-left: 1rem;
     color: #ddd;
-    display: none;
+    display: block;
 }
 
 @media (min-width: 768px) {
-    .req_section {
-        display: block;
-    }
 
+    .rules_and_req_container{
+      flex-direction: row;
+      max-height: 300px;
+    }
     /* Línea vertical entre reglas y jugadores */
     .rules_and_req_container::before {
         content: '';

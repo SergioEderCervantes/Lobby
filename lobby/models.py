@@ -10,6 +10,9 @@ class Sucursal(models.Model):
     telefono = models.CharField(max_length=10)
     correo = models.EmailField(max_length=50)
     
+    class Meta:
+        verbose_name= "Sucursale"
+        
     def __str__(self):
         return f"Sucursal: {self.nombre_sucursal}, Direccion: {self.direccion}"
 
@@ -21,6 +24,8 @@ class Promocion(models.Model):
     tiene_vigencia = models.BooleanField("Tiene vigencia?", default=False, null=False, blank=False)
     vigencia = models.DateField("Vecha de vencimiento", null=True, blank=True)
     
+    class Meta:
+        verbose_name = "Promocione"
     
     def es_vigente(self):
         if not self.tiene_vigencia:
@@ -46,5 +51,8 @@ class Comment(models.Model):
     comentario = models.CharField(max_length=100)
     fecha = models.DateTimeField(auto_now_add=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "Comentario"
   
 

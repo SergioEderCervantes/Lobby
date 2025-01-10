@@ -1,7 +1,5 @@
 from django.contrib import admin
 from django.urls import path
-from allauth.account.models import EmailAddress
-from allauth.socialaccount.models import SocialAccount
 from .views import tournament_view, save_svg
 from lobby.models import Sucursal, Promocion, Comment
 from django.forms import ModelForm, ValidationError
@@ -10,7 +8,7 @@ from django.forms import ModelForm, ValidationError
 
 class custom_admin_site(admin.AdminSite):
     site_header = 'Lobby Bar Administration'
-    
+
     def get_urls(self):
         urls =  super().get_urls()
         custom_urls = [
@@ -19,8 +17,9 @@ class custom_admin_site(admin.AdminSite):
             path('save_svg/',self.admin_view(save_svg), name="save_svg")
         ]
         return custom_urls + urls
-    
-    
+
+
+
 # Instanciacion del customAdmin
 admin_site = custom_admin_site(name='customAdmin')
 
@@ -51,25 +50,17 @@ class Promocion_Admin(admin.ModelAdmin):
     
 class Sucursal_Admin(admin.ModelAdmin):
     list_display = ('nombre_sucursal', 'direccion')
-    
-    
+
+   
 class Comment_Admin(admin.ModelAdmin):
     list_display = ('comentario', 'fecha', 'usuario')
     ordering = ("-fecha",)
     
-    
-    
+    def has_add_permission(self, request):
+        return False
+
+
 admin_site.register(Promocion,Promocion_Admin)
 admin_site.register(Sucursal,Sucursal_Admin)
 admin_site.register(Comment,Comment_Admin)
 
-
-# Clases manejadoras y registro de modelos AllAuth
-class EmailAddress_Admin(admin.ModelAdmin):
-    list_display = ('email', 'user', 'verified', 'primary')
-
-class SocialAccount_Admin(admin.ModelAdmin):
-    list_display = ('user', 'provider', 'uid')
-
-admin_site.register(EmailAddress, EmailAddress_Admin)
-admin_site.register(SocialAccount,SocialAccount_Admin)

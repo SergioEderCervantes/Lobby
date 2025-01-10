@@ -106,7 +106,7 @@ def register_reservation(request):
         reserva_creada = crear_reserva(usuario, sucursal_id, consola.pk, fecha, hora, num_personas, comentarios)
 
         if reserva_creada:
-                        # Crear mensaje
+            # Crear mensaje
             success_msg = f"""
             Lobby Web Aplication: Se acaba de realizar una reservacion a nombre de: {usuario.username}!!!
 Datos de la Reservacion:
@@ -116,7 +116,7 @@ Datos de la Reservacion:
     -Comentarios adicionales: {comentarios}
     -Telefono de contacto: {usuario.telefono}
             """
-            response = send_whatsapp_message(success_msg)
+            response = send_whatsapp_message(success_msg, "524492580708")
             print(response)
             return JsonResponse({'message': 'Reservacion creada exitosamente'}, status=201)
 

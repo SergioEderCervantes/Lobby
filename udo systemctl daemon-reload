@@ -1,0 +1,24 @@
+[0;1;32m●[0m gunicorn.service - gunicorn daemon
+     Loaded: loaded (]8;;file://debian-s-1vcpu-1gb-nyc1-01/etc/systemd/system/gunicorn.service/etc/systemd/system/gunicorn.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Tue 2024-12-10 20:21:43 UTC; 3 weeks 6 days ago
+TriggeredBy: [0;1;32m●[0m gunicorn.socket
+   Main PID: 2035 (gunicorn)
+      Tasks: 4 (limit: 1107)
+     Memory: 179.7M
+        CPU: 10min 324ms
+     CGroup: /system.slice/gunicorn.service
+             ├─[0;38;5;245m2035 /home/luis/lobby_env/bin/python3 /home/luis/lobby_env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock lobby.wsgi:application[0m
+             ├─[0;38;5;245m2036 /home/luis/lobby_env/bin/python3 /home/luis/lobby_env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock lobby.wsgi:application[0m
+             ├─[0;38;5;245m2037 /home/luis/lobby_env/bin/python3 /home/luis/lobby_env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock lobby.wsgi:application[0m
+             └─[0;38;5;245m2038 /home/luis/lobby_env/bin/python3 /home/luis/lobby_env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock lobby.wsgi:application[0m
+
+Jan 07 16:59:53 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2038]:  - - [07/Jan/2025:10:59:53 -0600] "GET /backup/mailer_url_keys HTTP/1.0" 404 3813 "-" "-"
+Jan 07 16:59:53 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2037]: Not Found: /secrets/mailer_dsn_keys
+Jan 07 16:59:53 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2037]:  - - [07/Jan/2025:10:59:53 -0600] "GET /secrets/mailer_dsn_keys HTTP/1.0" 404 3816 "-" "-"
+Jan 07 17:07:21 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2037]: Not Found: /.env
+Jan 07 17:07:21 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2037]:  - - [07/Jan/2025:11:07:21 -0600] "GET /.env HTTP/1.0" 404 3759 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+Jan 07 17:07:21 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2038]: Forbidden (CSRF cookie not set.): /
+Jan 07 17:07:21 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2038]:  - - [07/Jan/2025:11:07:21 -0600] "POST / HTTP/1.0" 403 2907 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+Jan 07 17:09:00 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2036]:  - - [07/Jan/2025:11:09:00 -0600] "GET / HTTP/1.0" 200 10460 "-" "-"
+Jan 07 17:09:03 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2036]:  - - [07/Jan/2025:11:09:03 -0600] "GET / HTTP/1.0" 200 10460 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
+Jan 07 17:20:25 debian-s-1vcpu-1gb-nyc1-01 gunicorn[2038]:  - - [07/Jan/2025:11:20:25 -0600] "GET / HTTP/1.0" 200 10460 "-" "curl/7.88.1"
