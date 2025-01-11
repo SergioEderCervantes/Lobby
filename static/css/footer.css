@@ -143,6 +143,9 @@ footer a{
     
 }
   /* Clase que activa la vibración */
+  .pac{
+    margin-left: 0.5rem;
+  }
   .vibrate {
     animation: vibrate-rotate 0.5s linear infinite; /* Ciclo continuo */
   }

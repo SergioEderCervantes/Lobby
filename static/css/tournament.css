@@ -372,6 +372,7 @@ h2 {
 .button_container {
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .btn {
