@@ -108,3 +108,11 @@ p {
     object-fit: cover;
     border-radius: 10px;
 }
+
+#subsection_title{
+    font-size: clamp(16px, 2.5vw, 30px);
+    font-weight: bold;
+    color: #ec7def;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ec7def, 0 0 20px #ec7def, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+    padding: 10px;
+}
