@@ -1,13 +1,20 @@
 from django.shortcuts import render
-from .models import Producto, Seccion_productos
+from .models import Producto, Seccion_productos, Subseccion_Productos
 # Create your views here.
 class Section():
-    def __init__(self, title = "", products = [], imagen1 = None, imagen2 = None):
+    def __init__(self, title = "", subsections = [], imagen1 = None, imagen2 = None):
         self.section_title = title
-        self.products = products
+        self.subsections = subsections
         self.imagen1 = imagen1
         self.imagen2 = imagen2
+    def append_subsection(self, subsection):
+        self.subsections.append(subsection)
         
+class Subsection():
+    def __init__(self, nombre = "",  productos = []):
+        self.nombre_subseccion = nombre
+        self.productos = productos
+             
         
 def restaurante(request):
     # Corazones
@@ -16,12 +23,17 @@ def restaurante(request):
     num_torneos_inscritos = usuario.num_torneos_dif_inscritos() if usuario.is_authenticated else 0 
     
     # Agarrar todas las secciones y sus productos
-    secciones = Seccion_productos.objects.all()  # Asegúrate de que `Seccion` sea el nombre del modelo relacionado
+    secciones = Seccion_productos.objects.all()  
     menu_sections = []
 
     for seccion in secciones:
-        productos = Producto.objects.filter(seccion_producto=seccion)
-        menu_sections.append(Section(seccion.nombre_seccion, productos, seccion.imagen_respaldo_1, seccion.imagen_respaldo_2))
+        aux = Section(seccion.nombre_seccion, [], seccion.imagen_respaldo_1, seccion.imagen_respaldo_2)
+        subsecciones = Subseccion_Productos.objects.filter(seccion_producto=seccion)
+        for subseccion in subsecciones:
+            productos = Producto.objects.filter(subseccion = subseccion)
+            aux.append_subsection(Subsection(subseccion.nombre_subseccion, productos))
+        
+        menu_sections.append(aux)
     
     context = {
         "menu_sections": menu_sections,
