@@ -23,7 +23,7 @@
 }
 
 h1{
-  font-size: 40px;
+  font-size: 22px;
   color: white;
   margin: 0 auto;
   text-align: center;
@@ -31,7 +31,11 @@ h1{
   padding-top: 10px;
   padding-bottom: 20px;
 }
-
+@media (min-width: 390px) {
+    h1{
+      font-size: 40px;
+    }
+}
 h2{
   color: white;
   margin: 0 auto;
@@ -363,7 +367,7 @@ form {
 }
 
 .spanPersonas{
-  font-size: 15px; /* Tamaño del texto */
+  font-size: 12px; /* Tamaño del texto */
 text-align: center;
 white-space: nowrap;
 color: #ff0000; /* Rojo fosforescente */
@@ -371,7 +375,7 @@ text-shadow: 0 0 4px #ff0000, 0 0 6px #ff0000; /* Sombra más sutil y nítida */
 }
 
 .spanComentarios {
-  font-size: 15px; /* Tamaño del texto */
+  font-size: 12px; /* Tamaño del texto */
   text-align: center;
   white-space: nowrap;
   color: #8a2be2; /* Violeta */
