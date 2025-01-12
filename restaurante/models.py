@@ -20,11 +20,11 @@ class Subseccion_Productos(models.Model):
     
     
     def __str__(self):
-        return f"Subseccion {self.nombre_subseccion} perteneciente a {self.seccion_producto}"
+        return self.nombre_subseccion
     
     
 class Producto(models.Model):
-    nombre_producto = models.CharField(_("Nombre del producto"), max_length=30)
+    nombre_producto = models.CharField(_("Nombre del producto"), max_length=50)
     precio = models.IntegerField(_("Precio del producto"))
     descripcion = models.TextField(_("Descripcion del producto"), blank=True, null=True)
     subseccion= models.ForeignKey(Subseccion_Productos, verbose_name="Subseccion a la que pertenece el producto", null=True, on_delete=models.SET_NULL)
