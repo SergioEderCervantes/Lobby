@@ -78,9 +78,7 @@ function closePopup(size = 'small', redirectHome = false) {
 
     container.classList.add('hidden');
     setTimeout(() => {
-        if (size !== 'medium'){
-            overlay.classList.add('hidden');
-        }
+        overlay.classList.add('hidden');
         if (size === 'small'){
             if (!redirectHome){
                 location.reload();

@@ -22,21 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
             fields[2].classList.add("visible");
         } else {
             fields[2].classList.remove("visible");
+            document.getElementById("toggle").disabled = false;
         }
     });
   
-    /*/// Para el resto de los campos
-    fields.forEach((field, index) => {
-        if (index > 1) {
-            const input = field.querySelector("input, textarea");
-  
-            input.addEventListener("input", function () {
-                if (input.value.trim() !== "" && index + 1 < fields.length) {
-                    fields[index + 1].classList.add("visible");
-                }
-            });
-        }
-    });*/
   
   });
   
