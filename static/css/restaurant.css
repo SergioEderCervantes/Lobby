@@ -33,7 +33,7 @@ p {
     flex-direction: column;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-    border: 3px solid rgba(134, 114, 149); /* Color ligeramente más brillante */
+    border: 3px solid rgb(142 134 103);; /* Color ligeramente más brillante */
     border-radius: 50px;
     width: 80%;
     max-width: 1000px;
@@ -109,10 +109,10 @@ p {
     border-radius: 10px;
 }
 
-#subsection_title{
+#subsection_title {
     font-size: clamp(16px, 2.5vw, 30px);
     font-weight: bold;
-    color: #ec7def;
-    text-shadow: 0 0 5px #fff, 0 0 10px #ec7def, 0 0 20px #ec7def, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+    color: #f3c544;;
+    text-shadow: 0 0 5px #000000, 0 0 10px #323232, 0 0 20px #626262, 0 0 30px #2b2b2b, 0 0 40px #2d2d2d, 0 0 50px #202020, 0 0 60px #181818;
     padding: 10px;
 }
