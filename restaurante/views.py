@@ -11,8 +11,8 @@ class Section():
         self.subsections.append(subsection)
         
 class Subsection():
-    def __init__(self, nombre = "",  productos = []):
-        self.nombre_subseccion = nombre
+    def __init__(self, nombre = "", es_visible = True,  productos = []):
+        self.nombre_subseccion = nombre if es_visible else ""
         self.productos = productos
              
         
@@ -28,10 +28,10 @@ def restaurante(request):
 
     for seccion in secciones:
         aux = Section(seccion.nombre_seccion, [], seccion.imagen_respaldo_1, seccion.imagen_respaldo_2)
-        subsecciones = Subseccion_Productos.objects.filter(seccion_producto=seccion)
+        subsecciones = Subseccion_Productos.objects.filter(seccion_producto=seccion).order_by('-es_visible')
         for subseccion in subsecciones:
             productos = Producto.objects.filter(subseccion = subseccion)
-            aux.append_subsection(Subsection(subseccion.nombre_subseccion, productos))
+            aux.append_subsection(Subsection(subseccion.nombre_subseccion, subseccion.es_visible, productos))
         
         menu_sections.append(aux)
     
