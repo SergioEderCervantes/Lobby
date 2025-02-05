@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
         <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
         <link rel="stylesheet" href="{% static 'css/perfil.css' %}" />
+        <link rel="stylesheet" href="{% static '\sweetalert2\dist\sweetalert2.css' %}" />
         {% block extrahead %}
             <link rel="stylesheet" href="{% static '\swiper\swiper-bundle.min.css' %}" />
             <link rel="stylesheet" href="{% static 'css/carrusel.css' %}" />
@@ -30,13 +31,15 @@
             <script src="{% static '\js\info.js' %}" defer></script>
             <script src="{% static '\js\ubi.js' %}" defer></script>
             <script src="{% static '\js\cards_home.js' %}" defer></script>
-
+            
         {% endblock %}
-        {%block estandar%}
-        <script src="{% static '\js\navbar.js' %}" defer></script>
-        <script src="{% static '\js\perfil.js' %}" defer></script>
-
-        <script src="{% static '\js\footer.js' %}" defer></script>
+        {% block estandar%}
+            <script src="{% static '\js\navbar.js' %}" defer></script>
+            <script src="{% static '\js\perfil.js' %}" defer></script>
+            <script src="{% static '\js\footer.js' %}" defer></script>
+            <script src="{% static '\sweetalert2\dist\sweetalert2.js' %}" ></script>
+            {% comment %} <script src="https://cdn.jsdelivr.net/npm/sweetalert2" defer></script> {% endcomment %}
+            <script src="{% static "\js\newPopup.js" %}"></script>
         {% endblock%}
     </head>
     <body>
@@ -50,9 +53,12 @@
             </section>
         {% endblock %}
 
-        {% block popup %}
-            {% include 'popup.html' with torneo_ejec=torneo_ejec %}
-        {% endblock popup %}
+
+        {% if torneo_ejec %}
+            {% comment "TODO" %} Aqui mostrar un popup con el torneo en ejecucion {% endcomment %}
+        {% endif %}
+
+    
         {% block content %}
             <main>
                 {% include 'body/promociones.html' %}

@@ -165,7 +165,7 @@ Nos vemos en Lobby ;)
 
         return JsonResponse({'message': 'Jugador registrado como invitado correctamente'}, status=201)
     except IntegrityError as e:
-        return JsonResponse({"error:": f"Error de integridad: {str(e)}"}, status=500)
+        return JsonResponse({"error": f"Error de integridad: {str(e)}"}, status=500)
     except ValueError as e:
         return JsonResponse({'error': f'Error en los valores provistos {str(e)}'}, status=500)
     except TypeError as e:
