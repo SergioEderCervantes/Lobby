@@ -1,13 +1,11 @@
 {% extends "index.html" %} {% load static %}
-{% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/popup.css' %}">
-{% endblock extrahead %}
 
-{%block extrascripts %}
+{% block extrascripts %}
 <script src="{% static 'js/custom_perfil.js' %}" defer></script>
-<script src="{% static 'js/popup.js' %}" defer></script>
 {% endblock %}
 {% block estandar %}
+  <script src="{% static '\sweetalert2\dist\sweetalert2.js' %}" ></script>
+  <script src="{% static "\js\newPopup.js" %}"></script>
 {% endblock%}
 
 {% block header %}

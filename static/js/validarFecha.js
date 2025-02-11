@@ -24,27 +24,21 @@ async function checarDisp() {
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(JSON.stringify(errorData));
+            throw new Error(errorData.error);
         }
         
         const data = await response.json();
         console.log("Disponibilidad:", data.disponibilidad);
         actualizarBotones(data.disponibilidad);
     } catch (error) {
-        let errorData;
-        try{
-            errorData = JSON.parse(error.message)
-        } catch{
-            errorData = { message: error.message}
-        }
-        console.error("Error capturado:", errorData.error);
-        openPopup({
+        const popup = new Popup();
+        await popup.ejec({
             title: "Error",
-            svg: errorSVG,
-            message: errorData.error || "Error desconocido",
-            buttonText: "Aceptar",
-            size: 'small'
-        })
+            icon: "error",
+            text: error.message || "Error desconocido"
+        });
+        popup.closeLoader();
+        popup.closeOverlay();
     }
 }
 
