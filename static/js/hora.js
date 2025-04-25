@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
         dateFormat: "H:i",      // Formato 24 horas
         time_24hr: true,        // Activar formato de 24 horas
         minuteIncrement: 5,     // Incrementos de 5 minutos
-        minTime: "18:00",       // Hora mínima
-        maxTime: "23:00",       // Hora máxima
-        defaultDate: "18:00"    // Hora preseleccionada en el reloj
+        minTime: "16:00",       // Hora mínima
+        maxTime: "22:00",       // Hora máxima
+        defaultDate: "16:00"    // Hora preseleccionada en el reloj
     });
 
     // Verificar si el campo se llena automáticamente y reiniciarlo

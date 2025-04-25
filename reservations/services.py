@@ -39,11 +39,11 @@ def validar_hora(hora):
 
     # Definir el rango de horas válidas (4:00 PM - 11:00 PM)
     hora_inicio = time(16, 0)  # 4:00 PM
-    hora_fin = time(23, 0)     # 11:00 PM
+    hora_fin = time(22, 0)     # 11:00 PM
 
     # Verificar si la hora está dentro del rango permitido
     if not (hora_inicio <= hora <= hora_fin):
-        raise ValueError("La hora debe estar entre las 16:00 y las 23:00.")
+        raise ValueError("La hora debe estar entre las 16:00 y las 22:00.")
 
     return hora
 
