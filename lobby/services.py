@@ -4,25 +4,17 @@
 import requests
 from django.conf import settings
 
-def send_whatsapp_message(message, destination_number):
-    url = f"{settings.WHATSAPP_API_URL}{settings.WHATSAPP_PHONE_ID}/messages"
 
-
-    headers = {
-        'Authorization': f"Bearer {settings.WHATSAPP_ACCESS_TOKEN}",
-        'Content-type': 'application/json',
-    }
-    data ={
-        "messaging_product": "whatsapp",
-        "to": destination_number,
-        "type": "text",
-        "text": {
-            "body": message
-        }
-    }
+def notify(message: str) -> None:
+    url = "https://ntfy.sh/LobbyRestaurantBar"
     
-    response = requests.post(url, json=data, headers=headers)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        return {"error": response.json(), "status": response.status_code}
+    requests.post(url=url, data=message,
+                  headers={
+                      "Title": "Lobby Web Aplication"
+                  })
+    
+    
+    
+if __name__ == "__main__":
+    notify("Hola, primera Prueba ")
+    

@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from tournaments.models import Torneo
 from lobby.models import Comment, Promocion
 from django.db import models
-from .services import send_whatsapp_message
+from .services import notify
 
 def custom_404(request, exception):
     return render(request, 'error_404.html', status=404)
@@ -20,12 +20,12 @@ def home(request):
             comment.save()
             # Mensaje de Whats a Christian
             success_message = f"""
-            Lobby Web aplication: Se acaba de escribir un comentario en nuestra pagina!!
+            Se acaba de escribir un comentario en nuestra pagina!!
 El comentario esta a nombre de {request.user.username}
 El comentario dice lo siguiente:
 {comentario}
             """
-            response = send_whatsapp_message(success_message, "524492580708")
+            response = notify(success_message)
             print(response)
         return HttpResponseRedirect('/')
     else:

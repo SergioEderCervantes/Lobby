@@ -6,7 +6,7 @@ from lobby.models import Sucursal
 from .models import Consola, Consola_disponibilidad
 from users.models import User
 from .services import validar_fecha, validar_hora, crear_reserva
-from lobby.services import send_whatsapp_message
+from lobby.services import notify
 from django.templatetags.static import static
 
 def reservations(request):
@@ -108,7 +108,7 @@ def register_reservation(request):
         if reserva_creada:
             # Crear mensaje
             success_msg = f"""
-            Lobby Web Aplication: Se acaba de realizar una reservacion a nombre de: {usuario.username}!!!
+            Se acaba de realizar una reservacion a nombre de: {usuario.username}!!!
 Datos de la Reservacion:
     -Fecha y hora: {fecha}, {hora}
     -Numero de personas: {num_personas}
@@ -116,8 +116,8 @@ Datos de la Reservacion:
     -Comentarios adicionales: {comentarios}
     -Telefono de contacto: {usuario.telefono}
             """
-            response = send_whatsapp_message(success_msg, "524492580708")
-            print(response)
+            notify(success_msg)
+            
             return JsonResponse({'message': 'Reservacion creada exitosamente'}, status=201)
 
         return JsonResponse({'error': 'No se pudo crear la reservacion'}, status=400)
