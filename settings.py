@@ -114,14 +114,14 @@ WSGI_APPLICATION = 'lobby.wsgi.application'
 
 DB_USER = env("DB_USER")
 DB_PASSWORD = env("DB_PASSWORD")
-
+DB_HOST = env("DB_HOST",default="localhost")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lobby',
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
-        'HOST': 'localhost',
+        'HOST': DB_HOST,
         'PORT': '3306'
     }
 }
@@ -293,7 +293,3 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_LOGIN_ON_GET=True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-# Configuraciones para la API de What'sapp
-WHATSAPP_API_URL = env("WHATSAPP_API_URL")
-WHATSAPP_PHONE_ID = env("WHATSAPP_PHONE_ID")
-WHATSAPP_ACCESS_TOKEN = env("WHATSAPP_ACCESS_TOKEN")

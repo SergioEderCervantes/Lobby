@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: lobbyDB
+    restart: always
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "ThoryMia898"
+      MYSQL_DATABASE: "lobby"
+      MYSQL_USER: "eder"
+      MYSQL_PASSWORD: "ThoryMia898"
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysql", "-h", "localhost", "-u", "root", "-pThoryMia898", "-e", "SELECT 1" ]
+      timeout: 20s
+      retries: 10
+  redis:
+    image: redis:latest
+    container_name: lobbyRedis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lobbyWeb
+    command: sh -c "python3 manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.django/.env
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      
+        
+volumes:
+  data:
